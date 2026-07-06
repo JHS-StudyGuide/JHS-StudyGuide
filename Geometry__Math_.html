@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Segments, Betweenness &amp; Midpoints — Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee3;
+    --paper-2:#ece4d3;
+    --ink:#232320;
+    --ink-soft:#5c574c;
+    --navy:#1f3a5f;
+    --navy-2:#16283f;
+    --orange:#e2622a;
+    --sage:#4f7942;
+    --grid:#d9cfba;
+    --white:#fffdf8;
+    --radius:10px;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', -apple-system, sans-serif;
+    --mono:'JetBrains Mono', 'Courier New', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(var(--grid) 1px, transparent 1px) 0 0/100% 32px,
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0/32px 100%,
+      var(--paper);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- Margin rail ---------- */
+  .page{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 24px 80px;
+    position:relative;
+  }
+  .page::before{
+    content:"";
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:0;
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(243,238,227,0.94);
+    backdrop-filter:blur(4px);
+    border-bottom:2px solid var(--navy);
+    padding:10px 16px;
+    display:flex; gap:4px; flex-wrap:wrap;
+    justify-content:center;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  nav a{
+    font-family:var(--mono);
+    font-size:12.5px;
+    text-decoration:none;
+    color:var(--navy);
+    padding:9px 12px;
+    border-radius:6px;
+    letter-spacing:0.02em;
+    white-space:nowrap;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  nav a:hover, nav a:focus-visible{
+    background:var(--navy);
+    color:var(--paper);
+    outline:none;
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    padding:56px 24px 20px;
+    max-width:900px;
+    margin:0 auto;
+    text-align:left;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--orange);
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    margin:0 0 10px;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(32px, 5.5vw, 52px);
+    line-height:1.05;
+    margin:0 0 14px;
+    color:var(--navy-2);
+  }
+  .hero p.lead{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:60ch;
+    margin:0 0 8px;
+  }
+
+  /* ---------- Sections ---------- */
+  section{
+    max-width:900px;
+    margin:0 auto;
+    padding:52px 24px 0;
+    scroll-margin-top:70px;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:6px;
+  }
+  .tag{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--white);
+    background:var(--navy);
+    padding:3px 8px;
+    border-radius:4px;
+    white-space:nowrap;
+  }
+  h2{
+    font-family:var(--serif);
+    font-size:28px;
+    font-weight:600;
+    margin:0;
+    color:var(--navy-2);
+  }
+  .deck{
+    color:var(--ink-soft);
+    max-width:65ch;
+    margin:10px 0 26px;
+    font-size:15.5px;
+  }
+  .card{
+    background:var(--white);
+    border:1.5px solid var(--navy);
+    border-radius:var(--radius);
+    box-shadow:4px 4px 0 rgba(31,58,95,0.14);
+    padding:24px;
+    margin-bottom:20px;
+  }
+  .def-term{
+    font-family:var(--mono);
+    font-weight:700;
+    color:var(--orange);
+  }
+  .formula{
+    font-family:var(--mono);
+    background:var(--paper-2);
+    border-left:4px solid var(--orange);
+    padding:12px 16px;
+    border-radius:4px;
+    margin:14px 0;
+    font-size:15px;
+    overflow-x:auto;
+  }
+
+  /* ---------- Interactive ruler ---------- */
+  .ruler-widget{
+    background:var(--white);
+    border:2px solid var(--navy);
+    border-radius:var(--radius);
+    box-shadow:6px 6px 0 rgba(31,58,95,0.18);
+    padding:22px 20px 26px;
+    margin-top:22px;
+  }
+  .ruler-widget h3{
+    font-family:var(--serif);
+    font-size:19px;
+    margin:0 0 4px;
+    color:var(--navy-2);
+  }
+  .ruler-widget .hint{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  .ruler-track-wrap{
+    position:relative;
+    padding:34px 10px 46px;
+    overflow:visible;
+  }
+  svg.ruler{
+    width:100%;
+    height:auto;
+    display:block;
+    touch-action:none;
+  }
+  .point-handle{ cursor:grab; }
+  .point-handle:active{ cursor:grabbing; }
+  .point-label{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:15px;
+  }
+  .readouts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:6px;
+  }
+  .readout{
+    font-family:var(--mono);
+    font-size:13.5px;
+    background:var(--paper-2);
+    border-radius:6px;
+    padding:8px 12px;
+    flex:1 1 140px;
+  }
+  .readout b{ color:var(--navy-2); }
+  .verdict{
+    margin-top:14px;
+    font-family:var(--mono);
+    font-size:14px;
+    padding:10px 14px;
+    border-radius:6px;
+    font-weight:600;
+  }
+  .verdict.yes{ background:#e7f0e3; color:var(--sage); border:1.5px solid var(--sage); }
+  .verdict.no{ background:#fbe9e2; color:var(--orange); border:1.5px solid var(--orange); }
+  .nudge-row{
+    display:flex; gap:6px; flex-wrap:wrap; margin-top:16px;
+  }
+  .nudge-row button{
+    font-family:var(--mono);
+    font-size:13px;
+    background:var(--navy);
+    color:var(--paper);
+    border:none;
+    border-radius:6px;
+    padding:10px 14px;
+    min-height:40px;
+    cursor:pointer;
+    transition:background 0.15s ease;
+    touch-action:manipulation;
+  }
+  .nudge-row button:hover, .nudge-row button:focus-visible{ background:var(--orange); outline:none; }
+
+  /* ---------- Midpoint tool ---------- */
+  .midpoint-tool{
+    display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; margin-top:6px;
+  }
+  .midpoint-tool label{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    display:block;
+    margin-bottom:4px;
+  }
+  .midpoint-tool input{
+    font-family:var(--mono);
+    font-size:16px;
+    width:90px;
+    padding:8px 10px;
+    border:1.5px solid var(--navy);
+    border-radius:6px;
+    background:var(--paper-2);
+    color:var(--ink);
+  }
+  .midpoint-result{
+    font-family:var(--mono);
+    background:var(--paper-2);
+    border-left:4px solid var(--sage);
+    padding:12px 16px;
+    border-radius:4px;
+    margin-top:16px;
+    font-size:15px;
+  }
+
+  /* ---------- Practice ---------- */
+  .problem{
+    background:var(--white);
+    border:1.5px solid var(--navy);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .problem p.q{ margin:0 0 10px; font-weight:600; }
+  .reveal-btn{
+    font-family:var(--mono);
+    font-size:13px;
+    background:transparent;
+    color:var(--navy);
+    border:1.5px solid var(--navy);
+    border-radius:6px;
+    padding:10px 14px;
+    min-height:40px;
+    cursor:pointer;
+    touch-action:manipulation;
+  }
+  .reveal-btn:hover, .reveal-btn:focus-visible{ background:var(--navy); color:var(--paper); outline:none; }
+  .solution{
+    display:none;
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1.5px dashed var(--grid);
+    font-family:var(--mono);
+    font-size:14px;
+    color:var(--ink-soft);
+    white-space:pre-line;
+  }
+  .solution.open{ display:block; }
+
+  /* ---------- Summary table ---------- */
+  .table-scroll{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    border-radius:var(--radius);
+  }
+  table{
+    width:100%;
+    min-width:480px;
+    border-collapse:collapse;
+    background:var(--white);
+    border:1.5px solid var(--navy);
+    border-radius:var(--radius);
+    overflow:hidden;
+    font-size:14px;
+  }
+  th, td{
+    text-align:left;
+    padding:12px 14px;
+    border-bottom:1px solid var(--grid);
+    vertical-align:top;
+  }
+  th{
+    background:var(--navy);
+    color:var(--paper);
+    font-family:var(--mono);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+  td.expr{ font-family:var(--mono); color:var(--navy-2); white-space:nowrap; }
+  tr:last-child td{ border-bottom:none; }
+
+  footer{
+    max-width:900px;
+    margin:60px auto 0;
+    padding:24px 24px 10px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:13px;
+    font-family:var(--mono);
+  }
+
+  @media (max-width:560px){
+    header.hero{padding-top:28px; padding-bottom:8px;}
+    .hero p.lead{font-size:15.5px;}
+    section{padding:36px 16px 0;}
+    .card, .ruler-widget{padding:16px;}
+    .section-head{flex-direction:column; align-items:flex-start; gap:4px;}
+    h2{font-size:23px;}
+    .formula{font-size:13px; padding:10px 12px;}
+    .ruler-track-wrap{padding:26px 0 40px;}
+    .readouts{gap:8px;}
+    .readout{flex:1 1 100px; font-size:12.5px;}
+    .midpoint-tool{gap:10px;}
+    .midpoint-tool input{width:100px; font-size:16px;}
+    .problem{padding:16px;}
+    .solution{font-size:13px;}
+    table{font-size:12.5px;}
+    th, td{padding:10px 10px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#betweenness">Betweenness</a>
+  <a href="#ruler">Ruler Postulate</a>
+  <a href="#addition">Segment Addition</a>
+  <a href="#congruent">Congruent Segments</a>
+  <a href="#midpoint">Midpoint</a>
+  <a href="#practice">Practice</a>
+  <a href="#summary">Summary</a>
+</nav>
+
+<header class="hero">
+  <p class="eyebrow">Math 9 · Plane Geometry</p>
+  <h1>Segments, Betweenness &amp; Midpoints</h1>
+  <p class="lead">Drag the points on the ruler below. Watch the distances update live, and see exactly when the Segment Addition Postulate holds — that's the whole idea of this unit, in one moving picture.</p>
+</header>
+
+<section id="hero-tool" style="padding-top:20px;">
+  <div class="ruler-widget">
+    <h3>Live number line</h3>
+    <p class="hint">Drag <b>A</b>, <b>B</b>, or <b>C</b> along the ruler (or use the buttons below). AB, BC, and AC recalculate instantly using the Ruler Postulate: distance = |x₁ − x₂|.</p>
+    <div class="ruler-track-wrap">
+      <svg class="ruler" viewBox="0 0 640 130" xmlns="http://www.w3.org/2000/svg" id="rulerSvg" aria-label="Interactive number line with three draggable points A, B, and C">
+        <!-- ticks drawn by JS -->
+      </svg>
+    </div>
+    <div class="readouts" id="readouts"></div>
+    <div class="verdict" id="verdict"></div>
+    <div class="nudge-row" id="nudgeRow"></div>
+  </div>
+</section>
+
+<section id="betweenness">
+  <div class="section-head"><span class="tag">01</span><h2>Betweenness of Points</h2></div>
+  <p class="deck">Before you can say a point "lies between" two others, two conditions have to hold at once — not just that it looks like it's in the middle.</p>
+  <div class="card">
+    <p>Point <span class="def-term">B</span> is <b>between</b> points A and C if and only if:</p>
+    <ol>
+      <li>A, B, and C are <b>distinct points on the same line</b> (they're collinear).</li>
+      <li>The distances satisfy <span class="def-term">AB + BC = AC</span>.</li>
+    </ol>
+    <div class="formula">B is between A and C  ⟺  AB + BC = AC</div>
+    <p>This means B sits somewhere on segment AC, and the two smaller pieces add up exactly to the whole. Try dragging point B outside segment AC in the ruler above — you'll see the verdict flip to "not between," because the addition no longer works.</p>
+  </div>
+</section>
+
+<section id="ruler">
+  <div class="section-head"><span class="tag">02</span><h2>The Ruler Postulate</h2></div>
+  <p class="deck">This is the postulate that lets you turn a line into a set of numbers you can actually calculate with.</p>
+  <div class="card">
+    <p>Every point on a line corresponds to exactly one real number, and every real number corresponds to exactly one point — a <b>one-to-one correspondence</b>. The distance between two points is just the absolute value of the difference between their numbers:</p>
+    <div class="formula">Distance between P and Q = | x<sub>P</sub> − x<sub>Q</sub> |</div>
+    <p>That's literally what the ruler widget above is computing every time you drag a point. The absolute value matters because distance can't be negative — |3 − 7| and |7 − 3| both give 4.</p>
+  </div>
+</section>
+
+<section id="addition">
+  <div class="section-head"><span class="tag">03</span><h2>Segment Addition Postulate</h2></div>
+  <p class="deck">The same rule as betweenness, but used in the other direction — to build up an unknown length instead of testing one.</p>
+  <div class="card">
+    <p>If B is between A and C, then AB + BC = AC. And the postulate also works backward: <b>if the equation holds, B must be between A and C</b>. That two-way property is what makes it a postulate you can use for proofs, not just an observation.</p>
+    <div class="formula">B between A and C  ⟺  AB + BC = AC</div>
+    <p><b>Worked example:</b> if AB = 9 and BC = 14, and B is between A and C, then AC = 9 + 14 = 23. Flip it around: if AC = 23 and AB = 9, then BC = 23 − 9 = 14.</p>
+  </div>
+</section>
+
+<section id="congruent">
+  <div class="section-head"><span class="tag">04</span><h2>Congruent Segments</h2></div>
+  <p class="deck">Congruent just means "same length" — position and direction don't matter at all.</p>
+  <div class="card">
+    <div class="formula">AB ≅ CD  ⟺  AB = CD</div>
+    <p>The tick marks (like one small hash mark on both segments in a diagram) are how a figure tells you two segments are congruent without stating the numbers. If two segments both measure 6 cm, they're congruent even if one is horizontal and the other is vertical, or one is on the left side of the page and the other is on the right.</p>
+  </div>
+</section>
+
+<section id="midpoint">
+  <div class="section-head"><span class="tag">05</span><h2>Midpoint of a Segment</h2></div>
+  <p class="deck">A midpoint has to satisfy both betweenness <i>and</i> equal distance — it's a special case built from ideas you already have.</p>
+  <div class="card">
+    <p>M is the <b>midpoint</b> of segment AB if and only if:</p>
+    <ol>
+      <li>M is between A and B, and</li>
+      <li>AM = MB.</li>
+    </ol>
+    <div class="formula">M is the midpoint of AB  ⟺  M is between A and B, and AM = MB</div>
+    <p>M splits AB into two congruent segments: AM ≅ MB. On a number line, the midpoint's coordinate is just the average of the two endpoint coordinates.</p>
+    <div class="formula">x<sub>M</sub> = (x<sub>A</sub> + x<sub>B</sub>) / 2</div>
+
+    <div class="midpoint-tool">
+      <div>
+        <label for="ptA">Coordinate of A</label>
+        <input type="number" id="ptA" value="2">
+      </div>
+      <div>
+        <label for="ptB">Coordinate of B</label>
+        <input type="number" id="ptB" value="14">
+      </div>
+    </div>
+    <div class="midpoint-result" id="midpointResult"></div>
+  </div>
+</section>
+
+<section id="practice">
+  <div class="section-head"><span class="tag">06</span><h2>Practice</h2></div>
+  <p class="deck">Try each one before revealing the solution. Full working shown, step by step.</p>
+
+  <div class="problem">
+    <p class="q">1. On a number line, A is at −3 and C is at 10. B is between A and C, and AB = 6. Find BC and confirm the Segment Addition Postulate.</p>
+    <button class="reveal-btn" onclick="toggleSolution(this)">Show solution</button>
+    <div class="solution">Step 1 — Find AC using the Ruler Postulate:
+AC = |x_A − x_C| = |−3 − 10| = 13
+
+Step 2 — Apply the Segment Addition Postulate:
+AB + BC = AC
+6 + BC = 13
+BC = 13 − 6 = 7
+
+Step 3 — Check:
+AB + BC = 6 + 7 = 13 = AC ✓</div>
+  </div>
+
+  <div class="problem">
+    <p class="q">2. M is the midpoint of segment PQ. PM = 3x + 2 and MQ = 5x − 8. Find x, then find PM.</p>
+    <button class="reveal-btn" onclick="toggleSolution(this)">Show solution</button>
+    <div class="solution">Step 1 — Midpoint means PM = MQ:
+3x + 2 = 5x − 8
+
+Step 2 — Solve for x:
+2 + 8 = 5x − 3x
+10 = 2x
+x = 5
+
+Step 3 — Substitute back into PM:
+PM = 3(5) + 2 = 17
+
+Check MQ = 5(5) − 8 = 17 — matches PM ✓</div>
+  </div>
+
+  <div class="problem">
+    <p class="q">3. Points D, E, F lie on a line with coordinates 4, 9, and 17. Is E between D and F? Justify using the definition of betweenness.</p>
+    <button class="reveal-btn" onclick="toggleSolution(this)">Show solution</button>
+    <div class="solution">Step 1 — Check collinearity:
+All three points are given as being on the same line ✓
+
+Step 2 — Compute distances:
+DE = |4 − 9| = 5
+EF = |9 − 17| = 8
+DF = |4 − 17| = 13
+
+Step 3 — Test DE + EF = DF:
+5 + 8 = 13 = DF ✓
+
+Conclusion: Since both conditions of betweenness are satisfied, E is between D and F.</div>
+  </div>
+</section>
+
+<section id="summary" style="padding-bottom:20px;">
+  <div class="section-head"><span class="tag">07</span><h2>Summary Table</h2></div>
+  <p class="deck">Everything above, condensed to one reference.</p>
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Concept</th><th>Definition</th><th>Expression</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Betweenness</td><td>B is between A and C if they're collinear and AB + BC = AC</td><td class="expr">AB + BC = AC</td></tr>
+      <tr><td>Ruler Postulate</td><td>Distance between two points equals the absolute difference of their coordinates</td><td class="expr">d(P,Q) = |x_P − x_Q|</td></tr>
+      <tr><td>Segment Addition</td><td>If B is between A and C, then AB + BC = AC — and the reverse also holds</td><td class="expr">B between A,C ⟺ AB+BC=AC</td></tr>
+      <tr><td>Congruent Segments</td><td>Segments with equal length</td><td class="expr">AB ≅ CD ⟺ AB = CD</td></tr>
+      <tr><td>Midpoint</td><td>Point M between A and B where AM = MB</td><td class="expr">AM = MB</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<footer>Segments &amp; Midpoints — Math 9 Study Guide</footer>
+
+<script>
+// ---------------- Interactive ruler ----------------
+const svg = document.getElementById('rulerSvg');
+const NS = "http://www.w3.org/2000/svg";
+const MIN_X = 0, MAX_X = 20;          // coordinate range shown
+const PAD = 40, TRACK_W = 560;        // px
+const Y = 60;                          // track y position
+
+let coords = { A: 2, B: 8, C: 15 };
+const colors = { A: '#1f3a5f', B: '#e2622a', C: '#4f7942' };
+
+function coordToX(c){ return PAD + (c - MIN_X) / (MAX_X - MIN_X) * TRACK_W; }
+function xToCoord(x){
+  let c = MIN_X + (x - PAD) / TRACK_W * (MAX_X - MIN_X);
+  c = Math.max(MIN_X, Math.min(MAX_X, c));
+  return Math.round(c * 2) / 2; // snap to 0.5
+}
+
+function buildStaticTicks(){
+  let ticks = '';
+  for(let i = MIN_X; i <= MAX_X; i++){
+    const x = coordToX(i);
+    const tall = i % 5 === 0;
+    ticks += `<line x1="${x}" y1="${Y-8}" x2="${x}" y2="${tall? Y+8 : Y+4}" stroke="#5c574c" stroke-width="${tall?1.5:1}"/>`;
+    if(tall){
+      ticks += `<text x="${x}" y="${Y+24}" font-family="JetBrains Mono, monospace" font-size="10" fill="#5c574c" text-anchor="middle">${i}</text>`;
+    }
+  }
+  return `<line x1="${PAD}" y1="${Y}" x2="${PAD+TRACK_W}" y2="${Y}" stroke="#232320" stroke-width="2"/>` + ticks;
+}
+
+function render(){
+  const order = Object.keys(coords).sort((a,b) => coords[a]-coords[b]);
+  let html = buildStaticTicks();
+
+  // connecting braces between consecutive points (in coordinate order)
+  for(let i=0;i<order.length-1;i++){
+    const p1 = order[i], p2 = order[i+1];
+    const x1 = coordToX(coords[p1]), x2 = coordToX(coords[p2]);
+    html += `<line x1="${x1}" y1="${Y-22}" x2="${x2}" y2="${Y-22}" stroke="#d9cfba" stroke-width="4" stroke-linecap="round"/>`;
+  }
+
+  // points
+  Object.keys(coords).forEach(key=>{
+    const x = coordToX(coords[key]);
+    html += `<g class="point-handle" data-point="${key}" tabindex="0" role="slider" aria-label="Point ${key}, value ${coords[key]}" aria-valuenow="${coords[key]}">
+      <line x1="${x}" y1="${Y-14}" x2="${x}" y2="${Y+14}" stroke="${colors[key]}" stroke-width="2"/>
+      <circle cx="${x}" cy="${Y-30}" r="26" fill="transparent"/>
+      <circle cx="${x}" cy="${Y-30}" r="14" fill="${colors[key]}"/>
+      <text x="${x}" y="${Y-30}" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" fill="#fffdf8" text-anchor="middle" dominant-baseline="central">${key}</text>
+    </g>`;
+  });
+
+  svg.innerHTML = html;
+  attachDrag();
+  updateReadouts();
+}
+
+function attachDrag(){
+  const handles = svg.querySelectorAll('.point-handle');
+  handles.forEach(h=>{
+    const key = h.getAttribute('data-point');
+    let dragging = false;
+
+    const move = (clientX) => {
+      const rect = svg.getBoundingClientRect();
+      const scale = 640 / rect.width; // viewBox width / rendered width
+      const localX = (clientX - rect.left) * scale;
+      coords[key] = xToCoord(localX);
+      render();
+    };
+
+    h.addEventListener('pointerdown', (e)=>{ dragging = true; h.setPointerCapture(e.pointerId); });
+    h.addEventListener('pointermove', (e)=>{ if(dragging) move(e.clientX); });
+    h.addEventListener('pointerup', ()=>{ dragging = false; });
+    h.addEventListener('pointercancel', ()=>{ dragging = false; });
+
+    h.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowRight'){ coords[key] = Math.min(MAX_X, coords[key]+0.5); render(); e.preventDefault(); }
+      if(e.key === 'ArrowLeft'){ coords[key] = Math.max(MIN_X, coords[key]-0.5); render(); e.preventDefault(); }
+    });
+  });
+}
+
+function updateReadouts(){
+  const AB = Math.abs(coords.A - coords.B);
+  const BC = Math.abs(coords.B - coords.C);
+  const AC = Math.abs(coords.A - coords.C);
+
+  document.getElementById('readouts').innerHTML = `
+    <div class="readout">A = <b>${coords.A}</b></div>
+    <div class="readout">B = <b>${coords.B}</b></div>
+    <div class="readout">C = <b>${coords.C}</b></div>
+    <div class="readout">AB = <b>${AB}</b></div>
+    <div class="readout">BC = <b>${BC}</b></div>
+    <div class="readout">AC = <b>${AC}</b></div>
+  `;
+
+  const verdict = document.getElementById('verdict');
+  const between = Math.abs((AB + BC) - AC) < 0.001;
+  if(between){
+    verdict.className = 'verdict yes';
+    verdict.textContent = `✓ AB + BC = AC  (${AB} + ${BC} = ${AC})  →  B is between A and C`;
+  } else {
+    verdict.className = 'verdict no';
+    verdict.textContent = `✗ AB + BC ≠ AC  (${AB} + ${BC} ≠ ${AC})  →  B is NOT between A and C`;
+  }
+}
+
+// nudge buttons
+document.getElementById('nudgeRow').innerHTML = ['A','B','C'].map(k=>`
+  <button onclick="nudge('${k}',-1)">${k} −1</button>
+  <button onclick="nudge('${k}',1)">${k} +1</button>
+`).join('');
+function nudge(key, dir){
+  coords[key] = Math.max(MIN_X, Math.min(MAX_X, coords[key] + dir));
+  render();
+}
+
+render();
+
+// ---------------- Midpoint tool ----------------
+const ptA = document.getElementById('ptA');
+const ptB = document.getElementById('ptB');
+function updateMidpoint(){
+  const a = parseFloat(ptA.value);
+  const b = parseFloat(ptB.value);
+  const out = document.getElementById('midpointResult');
+  if(isNaN(a) || isNaN(b)){ out.textContent = 'Enter both coordinates.'; return; }
+  const m = (a+b)/2;
+  const am = Math.abs(m - a);
+  const mb = Math.abs(b - m);
+  out.innerHTML = `x_M = (${a} + ${b}) / 2 = <b>${m}</b>
+AM = |${m} − ${a}| = ${am}
+MB = |${b} − ${m}| = ${mb}
+AM = MB → confirmed midpoint ✓`;
+}
+ptA.addEventListener('input', updateMidpoint);
+ptB.addEventListener('input', updateMidpoint);
+updateMidpoint();
+
+// ---------------- Practice reveal ----------------
+function toggleSolution(btn){
+  const sol = btn.nextElementSibling;
+  sol.classList.toggle('open');
+  btn.textContent = sol.classList.contains('open') ? 'Hide solution' : 'Show solution';
+}
+</script>
+
+</body>
+</html>

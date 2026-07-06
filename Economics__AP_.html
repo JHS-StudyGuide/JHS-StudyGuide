@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ekonomiks Review — Allocation & Economic Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Serif+4:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4EFE4;
+    --bg-raised: #FFFDF8;
+    --ink: #2B2620;
+    --ink-soft: #5B5346;
+    --rule: #D8CFBA;
+    --accent: #A8752C;
+    --accent-soft: #E4C98F;
+    --tag-bg: #EADFC4;
+    --shadow: rgba(43,38,32,0.08);
+    --radius: 4px;
+  }
+  html.dark {
+    --bg: #1B1812;
+    --bg-raised: #242019;
+    --ink: #EDE6D6;
+    --ink-soft: #B5AA92;
+    --rule: #3A3327;
+    --accent: #E0AC50;
+    --accent-soft: #4A3D22;
+    --tag-bg: #332B1C;
+    --shadow: rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.65;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  /* Top bar */
+  header.topbar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 28px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+  }
+  .brand { display: flex; align-items: baseline; gap: 10px; }
+  .brand .mark {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; letter-spacing: 0.08em;
+    color: var(--accent); border: 1px solid var(--accent);
+    padding: 2px 6px; border-radius: var(--radius);
+  }
+  .brand h1 { font-size: 18px; margin: 0; }
+  nav.toc { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav.toc a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; text-decoration: none; color: var(--ink-soft);
+    padding-bottom: 2px; border-bottom: 1px solid transparent;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible { color: var(--accent); border-bottom-color: var(--accent); }
+
+  button#toggle {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--bg-raised); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 999px;
+    padding: 6px 12px; cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  }
+  button#toggle:hover { border-color: var(--accent); }
+
+  main { max-width: 860px; margin: 0 auto; padding: 40px 28px 100px; }
+
+  .hero {
+    padding: 30px 0 44px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 44px;
+  }
+  .hero .eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .hero h2 { font-size: clamp(28px, 5vw, 42px); margin: 0 0 14px; line-height: 1.1; }
+  .hero p { color: var(--ink-soft); max-width: 60ch; font-size: 17px; margin: 0; }
+
+  section { margin-bottom: 56px; scroll-margin-top: 80px; }
+  section .num {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent);
+    display: block; margin-bottom: 6px;
+  }
+  section h2 { font-size: 25px; margin: 0 0 16px; }
+  section > p { color: var(--ink-soft); }
+
+  .card {
+    background: var(--bg-raised);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+  .card h3 { font-size: 16px; margin: 0 0 6px; }
+  .card p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+
+  .three-questions { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 12px; }
+  .qcard { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: var(--radius); padding: 16px; }
+  .qcard .q { font-family: 'Fraunces', serif; font-size: 20px; color: var(--accent); }
+  .qcard p { color: var(--ink-soft); font-size: 14px; margin: 6px 0 0; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); font-size: 14.5px; vertical-align: top; }
+  th { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
+  tr:last-child td { border-bottom: none; }
+  td.examples, td.feature { color: var(--accent); }
+
+  /* Allocation demo — signature element */
+  .demo {
+    background: var(--bg-raised); border: 1px solid var(--rule); border-radius: var(--radius);
+    padding: 22px 24px;
+  }
+  .demo p.setup { color: var(--ink-soft); font-size: 15px; margin-top: 0; }
+  .sheet-row { display: flex; align-items: center; gap: 14px; margin: 14px 0; }
+  .sheet-row label { font-family: 'IBM Plex Mono', monospace; font-size: 12px; width: 90px; color: var(--ink-soft); }
+  .sheets {
+    display: flex; gap: 3px; flex: 1; flex-wrap: wrap;
+  }
+  .sheet {
+    width: 12px; height: 16px; background: var(--accent-soft);
+    border: 1px solid var(--accent); border-radius: 2px;
+    transition: opacity 0.2s ease;
+  }
+  .sheet.spent { opacity: 0.15; border-style: dashed; }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  .demo-readout {
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--ink);
+    margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--rule);
+  }
+  .demo-readout span { color: var(--accent); }
+
+  .glossary { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: var(--tag-bg); color: var(--ink);
+    font-family: 'IBM Plex Mono', monospace; font-size: 12.5px;
+    padding: 5px 10px; border-radius: 999px; border: 1px solid var(--rule);
+    cursor: default;
+  }
+
+  .keypoints { padding-left: 0; list-style: none; margin: 0; }
+  .keypoints li {
+    position: relative; padding-left: 22px; margin-bottom: 10px; color: var(--ink-soft); font-size: 15px;
+  }
+  .keypoints li::before {
+    content: "—"; position: absolute; left: 0; color: var(--accent);
+  }
+
+  footer {
+    text-align: center; padding: 30px; color: var(--ink-soft);
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 8px; }
+  .table-scroll table { margin-top: 0; min-width: 480px; }
+
+  @media (max-width: 640px) {
+    header.topbar { flex-wrap: wrap; gap: 10px; padding: 12px 16px; }
+    nav.toc {
+      order: 3; width: 100%;
+      display: flex; flex-wrap: nowrap; overflow-x: auto;
+      gap: 14px; padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+    nav.toc a { flex: 0 0 auto; }
+    main { padding: 24px 16px 80px; }
+    .hero { padding: 20px 0 32px; margin-bottom: 32px; }
+    .sheet-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .sheet-row label { width: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="mark">AP</span>
+    <h1>Ekonomiks Review</h1>
+  </div>
+  <nav class="toc">
+    <a href="#allocation">Allocation</a>
+    <a href="#questions">3 Questions</a>
+    <a href="#products">Products</a>
+    <a href="#systems">Systems</a>
+    <a href="#theories">Theories</a>
+    <a href="#demo">Try It</a>
+    <a href="#glossary">Glossary</a>
+  </nav>
+  <button id="toggle" aria-label="Toggle dark mode">
+    <span id="toggle-icon">☾</span> <span id="toggle-label">Dark</span>
+  </button>
+</header>
+
+<main>
+
+  <div class="hero">
+    <div class="eyebrow">Araling Panlipunan · Economics Reviewer</div>
+    <h2>Scarcity, allocation, and the systems built to manage them</h2>
+    <p>A study companion on how societies decide what gets made, how, and for whom — from the classroom paper problem to centuries of economic theory.</p>
+  </div>
+
+  <section id="allocation">
+    <span class="num">01</span>
+    <h2>Allocation (Alokasyon)</h2>
+    <div class="card">
+      <h3>Definition</h3>
+      <p>The mechanism used to distribute, assign, and manage scarce or limited resources to address a country's economic problems — deciding how limited resources can satisfy competing economic needs.</p>
+    </div>
+  </section>
+
+  <section id="questions">
+    <span class="num">02</span>
+    <h2>The Three Fundamental Questions</h2>
+    <p>Every economic decision in a society ultimately answers these:</p>
+    <div class="three-questions">
+      <div class="qcard">
+        <div class="q">What?</div>
+        <p>Which goods and services should be produced.</p>
+      </div>
+      <div class="qcard">
+        <div class="q">How?</div>
+        <p>What methods or processes are used to produce them.</p>
+      </div>
+      <div class="qcard">
+        <div class="q">For whom?</div>
+        <p>Who the target consumers or beneficiaries are.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <span class="num">03</span>
+    <h2>Types of Products</h2>
+    <p>Products are classified by how accessible and contested they are:</p>
+    <div class="table-scroll"><table>
+      <thead>
+        <tr><th>Type</th><th>Description</th><th>Examples</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="feature">Private goods<br><span class="mono" style="font-size:12px;color:var(--ink-soft)">Pampribadong produkto</span></td>
+          <td>Not easily accessible to everyone — usually available only to those with high income. Also called excludable goods.</td>
+          <td class="examples">Vehicles, expensive clothing, gadgets</td>
+        </tr>
+        <tr>
+          <td class="feature">Club goods<br><span class="mono" style="font-size:12px;color:var(--ink-soft)">Pangkapisanang produkto</span></td>
+          <td>Not contested or competed over by consumers; usually want-based, created goods.</td>
+          <td class="examples">—</td>
+        </tr>
+        <tr>
+          <td class="feature">Common goods<br><span class="mono" style="font-size:12px;color:var(--ink-soft)">Karaniwang produkto</span></td>
+          <td>Meet the basic needs or desires of all people; often contested but generally affordable and adequately supplied.</td>
+          <td class="examples">—</td>
+        </tr>
+        <tr>
+          <td class="feature">Public goods<br><span class="mono" style="font-size:12px;color:var(--ink-soft)">Pampublikong produkto</span></td>
+          <td>Serve the entire household or community; benefit all people.</td>
+          <td class="examples">Roads, bridges, public parks</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="systems">
+    <span class="num">04</span>
+    <h2>Economic Systems</h2>
+    <div class="card">
+      <h3>What is an economic system?</h3>
+      <p>A combination of structures and institutions designed to implement allocation methods — organizing production, distribution, and consumption to solve a society's economic problems.</p>
+    </div>
+    <div class="card">
+      <h3>What shapes the choice of system?</h3>
+      <p>Historical development and evolution of ideas, the practical and structural needs of society, available resources and sociopolitical environment, and the economic theories explaining behavior and institutions.</p>
+    </div>
+  </section>
+
+  <section id="theories">
+    <span class="num">05</span>
+    <h2>Theories That Shaped Economic Systems</h2>
+    <div class="table-scroll"><table>
+      <thead>
+        <tr><th>Theory</th><th>Description</th><th>Key feature</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="feature">Feudalism<br><span style="font-size:12px;color:var(--ink-soft)">Piyudalismo</span></td>
+          <td>Power derives from land ownership — controlling large land areas equates to economic and political power.</td>
+          <td class="examples">Land-based power</td>
+        </tr>
+        <tr>
+          <td class="feature">Mercantilism<br><span style="font-size:12px;color:var(--ink-soft)">Merkantilismo</span></td>
+          <td>Values precious metals (gold, silver) as wealth; favors exporting over importing for national growth.</td>
+          <td class="examples">Export priority, bullionism</td>
+        </tr>
+        <tr>
+          <td class="feature">Physiocrats</td>
+          <td>Highlights the importance of nature and free trade in economic development.</td>
+          <td class="examples">Nature-centered, laissez-faire</td>
+        </tr>
+        <tr>
+          <td class="feature">Classical Economics</td>
+          <td>Advocates minimal government intervention; the "invisible hand" naturally regulates supply and demand.</td>
+          <td class="examples">Free market adjustment</td>
+        </tr>
+        <tr>
+          <td class="feature">Neoclassical Economics<br><span style="font-size:12px;color:var(--ink-soft)">Neoklasiko</span></td>
+          <td>Focuses on demand, supply, elasticity, and production as the key economic factors.</td>
+          <td class="examples">Demand–supply analysis</td>
+        </tr>
+        <tr>
+          <td class="feature">Keynesian Economics</td>
+          <td>Sees capitalism as effective but stresses government's role in regulating demand, supply, investment, and pricing.</td>
+          <td class="examples">Active government intervention</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="demo">
+    <span class="num">06</span>
+    <h2>Try It: The Classroom Allocation Problem</h2>
+    <div class="demo">
+      <p class="setup">You have <strong>20 sheets of paper</strong>. Friends keep asking for more. Move the slider to see how many you give away — and how many you have left for yourself. This is the allocation problem in miniature: limited resources, competing wants.</p>
+      <div class="sheet-row">
+        <label>Sheets</label>
+        <div class="sheets" id="sheets"></div>
+      </div>
+      <input type="range" id="allocSlider" min="0" max="20" value="6">
+      <div class="demo-readout">
+        Given away: <span id="given">6</span> · Kept for yourself: <span id="kept">14</span> · Scarcity hits at <span>0</span> remaining.
+      </div>
+    </div>
+  </section>
+
+  <section id="glossary">
+    <span class="num">07</span>
+    <h2>Key Takeaways</h2>
+    <ul class="keypoints">
+      <li>Allocation addresses scarcity by directing limited resources effectively.</li>
+      <li>Every society answers what, how, and for whom to produce.</li>
+      <li>Products range from exclusive (private, club) to widely shared (common, public).</li>
+      <li>Economic systems organize allocation and are shaped by historical theory.</li>
+      <li>Economic thought moved from land-based power and mercantilism toward free-market and interventionist models.</li>
+    </ul>
+    <br>
+    <div class="glossary">
+      <span class="chip">Alokasyon</span>
+      <span class="chip">Produkto</span>
+      <span class="chip">Pampubliko</span>
+      <span class="chip">Pampribado</span>
+      <span class="chip">Pangkapisanan</span>
+      <span class="chip">Karaniwan</span>
+      <span class="chip">Sistemang Pang-ekonomiya</span>
+      <span class="chip">Piyudalismo</span>
+      <span class="chip">Merkantilismo</span>
+      <span class="chip">Physiocrats</span>
+      <span class="chip">Classical</span>
+      <span class="chip">Neoclassical</span>
+      <span class="chip">Keynesianism</span>
+      <span class="chip">Invisible hand</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>Ekonomiks Reviewer · Allocation & Economic Systems</footer>
+
+<script>
+  // Dark mode toggle
+  const root = document.documentElement;
+  const toggle = document.getElementById('toggle');
+  const icon = document.getElementById('toggle-icon');
+  const label = document.getElementById('toggle-label');
+  function setMode(dark) {
+    root.classList.toggle('dark', dark);
+    icon.textContent = dark ? '☀' : '☾';
+    label.textContent = dark ? 'Light' : 'Dark';
+  }
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  setMode(prefersDark);
+  toggle.addEventListener('click', () => setMode(!root.classList.contains('dark')));
+
+  // Allocation demo
+  const sheetsEl = document.getElementById('sheets');
+  const slider = document.getElementById('allocSlider');
+  const givenEl = document.getElementById('given');
+  const keptEl = document.getElementById('kept');
+  const TOTAL = 20;
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'sheet';
+    sheetsEl.appendChild(d);
+  }
+  function render() {
+    const given = parseInt(slider.value, 10);
+    const sheets = sheetsEl.children;
+    for (let i = 0; i < TOTAL; i++) {
+      sheets[i].classList.toggle('spent', i < given);
+    }
+    givenEl.textContent = given;
+    keptEl.textContent = TOTAL - given;
+  }
+  slider.addEventListener('input', render);
+  render();
+</script>
+
+</body>
+</html>
