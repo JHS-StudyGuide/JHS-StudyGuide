@@ -18,7 +18,7 @@ export default async (request, context) => {
     });
   }
 
-  const password = Deno.env.get("SITE_PASSWORD");
+  const password = Netlify.env.get("SITE_PASSWORD");
 
   // Fail closed: if you forget to set the password in the dashboard, block everything
   // rather than accidentally leaving the site open.
