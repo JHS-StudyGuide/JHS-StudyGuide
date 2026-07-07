@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Segments, Betweenness &amp; Midpoints — Study Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Basic Geometry &amp; Angles — Study Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -17,11 +17,35 @@
     --orange:#e2622a;
     --sage:#4f7942;
     --grid:#d9cfba;
-    --white:#fffdf8;
+    --card:#fffdf8;
+    --on-accent:#fffdf8;
+    --ok-bg:#e7f0e3;
+    --warn-bg:#fbe9e2;
     --radius:10px;
     --serif:'Fraunces', Georgia, serif;
     --sans:'Inter', -apple-system, sans-serif;
     --mono:'JetBrains Mono', 'Courier New', monospace;
+    --shadow:4px 4px 0 rgba(31,58,95,0.14);
+    --shadow-strong:6px 6px 0 rgba(31,58,95,0.18);
+    color-scheme: light;
+  }
+  html[data-theme="dark"]{
+    --paper:#161512;
+    --paper-2:#201e19;
+    --ink:#e9e3d4;
+    --ink-soft:#a89f8c;
+    --navy:#7fa8dd;
+    --navy-2:#e7edf7;
+    --orange:#ff9a5f;
+    --sage:#84cf70;
+    --grid:#332f26;
+    --card:#201e19;
+    --on-accent:#14130f;
+    --ok-bg:#1c2c17;
+    --warn-bg:#3a2015;
+    --shadow:4px 4px 0 rgba(0,0,0,0.35);
+    --shadow-strong:6px 6px 0 rgba(0,0,0,0.45);
+    color-scheme: dark;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -35,43 +59,49 @@
     color:var(--ink);
     font-family:var(--sans);
     line-height:1.6;
+    overflow-x:hidden;
+    transition:background-color 0.2s ease, color 0.2s ease;
   }
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
   }
 
-  /* ---------- Margin rail ---------- */
-  .page{
-    max-width:900px;
-    margin:0 auto;
-    padding:0 24px 80px;
-    position:relative;
-  }
-  .page::before{
-    content:"";
-    position:absolute;
-    left:0; top:0; bottom:0;
-    width:0;
-  }
+  .page{ max-width:900px; margin:0 auto; padding:0 24px 80px; }
 
   /* ---------- Nav ---------- */
   nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(243,238,227,0.94);
+    background:var(--paper);
+    background:color-mix(in srgb, var(--paper) 94%, transparent);
     backdrop-filter:blur(4px);
     border-bottom:2px solid var(--navy);
-    padding:10px 16px;
-    display:flex; gap:4px; flex-wrap:wrap;
-    justify-content:center;
+    padding:8px 10px;
+    display:flex; gap:4px; flex-wrap:nowrap;
+    align-items:center;
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
   }
+  nav .nav-links{
+    display:flex; gap:2px; flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  nav .nav-links::-webkit-scrollbar{ display:none; }
+  nav .nav-group{
+    display:flex; gap:2px; align-items:center;
+    padding:0 6px;
+    border-right:1.5px dashed var(--grid);
+    margin-right:4px;
+  }
+  nav .nav-group:last-child{ border-right:none; }
   nav a{
     font-family:var(--mono);
-    font-size:12.5px;
+    font-size:12px;
     text-decoration:none;
     color:var(--navy);
-    padding:9px 12px;
+    padding:9px 10px;
     border-radius:6px;
     letter-spacing:0.02em;
     white-space:nowrap;
@@ -79,13 +109,27 @@
   }
   nav a:hover, nav a:focus-visible{
     background:var(--navy);
-    color:var(--paper);
+    color:var(--on-accent);
     outline:none;
   }
+  #themeToggle{
+    flex:0 0 auto;
+    margin-left:6px;
+    width:38px; height:38px;
+    border-radius:8px;
+    border:1.5px solid var(--navy);
+    background:var(--card);
+    color:var(--navy);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    font-size:16px;
+    touch-action:manipulation;
+  }
+  #themeToggle:hover, #themeToggle:focus-visible{ background:var(--navy); color:var(--on-accent); outline:none; }
 
   /* ---------- Hero ---------- */
   header.hero{
-    padding:56px 24px 20px;
+    padding:52px 24px 20px;
     max-width:900px;
     margin:0 auto;
     text-align:left;
@@ -101,312 +145,314 @@
   h1{
     font-family:var(--serif);
     font-weight:700;
-    font-size:clamp(32px, 5.5vw, 52px);
+    font-size:clamp(30px, 7vw, 50px);
     line-height:1.05;
     margin:0 0 14px;
     color:var(--navy-2);
   }
   .hero p.lead{
-    font-size:17px;
+    font-size:16.5px;
     color:var(--ink-soft);
     max-width:60ch;
     margin:0 0 8px;
   }
+  .part-chips{ display:flex; gap:8px; margin-top:18px; flex-wrap:wrap; }
+  .part-chip{
+    font-family:var(--mono); font-size:12px;
+    border:1.5px solid var(--navy); border-radius:20px;
+    padding:6px 12px; color:var(--navy); text-decoration:none;
+  }
+  .part-chip:hover{ background:var(--navy); color:var(--on-accent); }
+
+  /* ---------- Part dividers ---------- */
+  .part-divider{
+    max-width:900px; margin:64px auto 0; padding:0 24px;
+  }
+  .part-divider .line{
+    display:flex; align-items:center; gap:14px;
+  }
+  .part-divider .line::before, .part-divider .line::after{
+    content:""; flex:1; height:2px; background:var(--navy);
+  }
+  .part-divider .label{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--orange); white-space:nowrap;
+  }
+  .part-title{
+    font-family:var(--serif); font-size:clamp(24px,4.5vw,36px);
+    color:var(--navy-2); margin:10px 0 0; font-weight:600;
+  }
+  .part-sub{ color:var(--ink-soft); max-width:65ch; margin:6px 0 0; font-size:15px; }
 
   /* ---------- Sections ---------- */
   section{
     max-width:900px;
     margin:0 auto;
-    padding:52px 24px 0;
-    scroll-margin-top:70px;
+    padding:48px 24px 0;
+    scroll-margin-top:64px;
   }
-  .section-head{
-    display:flex;
-    align-items:baseline;
-    gap:12px;
-    margin-bottom:6px;
-  }
+  .section-head{ display:flex; align-items:baseline; gap:12px; margin-bottom:6px; }
   .tag{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--white);
-    background:var(--navy);
-    padding:3px 8px;
-    border-radius:4px;
-    white-space:nowrap;
+    font-family:var(--mono); font-size:12px; color:var(--on-accent);
+    background:var(--navy); padding:3px 8px; border-radius:4px; white-space:nowrap;
   }
-  h2{
-    font-family:var(--serif);
-    font-size:28px;
-    font-weight:600;
-    margin:0;
-    color:var(--navy-2);
-  }
-  .deck{
-    color:var(--ink-soft);
-    max-width:65ch;
-    margin:10px 0 26px;
-    font-size:15.5px;
-  }
+  h2{ font-family:var(--serif); font-size:26px; font-weight:600; margin:0; color:var(--navy-2); }
+  h3.sub-h{ font-family:var(--serif); font-size:19px; font-weight:600; margin:0 0 8px; color:var(--navy-2); }
+  .deck{ color:var(--ink-soft); max-width:65ch; margin:10px 0 26px; font-size:15px; }
   .card{
-    background:var(--white);
-    border:1.5px solid var(--navy);
-    border-radius:var(--radius);
-    box-shadow:4px 4px 0 rgba(31,58,95,0.14);
-    padding:24px;
-    margin-bottom:20px;
+    background:var(--card); border:1.5px solid var(--navy); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:22px; margin-bottom:18px;
   }
-  .def-term{
-    font-family:var(--mono);
-    font-weight:700;
-    color:var(--orange);
-  }
+  .def-term{ font-family:var(--mono); font-weight:700; color:var(--orange); }
   .formula{
-    font-family:var(--mono);
-    background:var(--paper-2);
-    border-left:4px solid var(--orange);
-    padding:12px 16px;
-    border-radius:4px;
-    margin:14px 0;
-    font-size:15px;
-    overflow-x:auto;
+    font-family:var(--mono); background:var(--paper-2); border-left:4px solid var(--orange);
+    padding:12px 16px; border-radius:4px; margin:14px 0; font-size:14.5px; overflow-x:auto;
   }
+  .note{
+    font-size:13.5px; color:var(--ink-soft); background:var(--paper-2);
+    border-radius:6px; padding:10px 14px; margin-top:12px; border-left:3px solid var(--sage);
+  }
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:640px){ .two-col{ grid-template-columns:1fr; } }
+  .mini-card{
+    background:var(--paper-2); border:1.5px solid var(--grid); border-radius:8px; padding:14px 16px;
+  }
+  .mini-card .k{ font-family:var(--mono); font-size:11.5px; color:var(--orange); text-transform:uppercase; letter-spacing:0.06em; }
+  .mini-card .v{ margin:4px 0 0; font-size:14.5px; }
 
-  /* ---------- Interactive ruler ---------- */
-  .ruler-widget{
-    background:var(--white);
-    border:2px solid var(--navy);
-    border-radius:var(--radius);
-    box-shadow:6px 6px 0 rgba(31,58,95,0.18);
-    padding:22px 20px 26px;
-    margin-top:22px;
+  /* ---------- glossary grid ---------- */
+  .term-table{ width:100%; border-collapse:collapse; }
+  .term-table th, .term-table td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--grid); vertical-align:top; font-size:14px; }
+  .term-table th{ font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); }
+  .term-table td.notn{ font-family:var(--mono); color:var(--navy-2); white-space:nowrap; }
+
+  /* ---------- widgets (shared look) ---------- */
+  .widget{
+    background:var(--card); border:2px solid var(--navy); border-radius:var(--radius);
+    box-shadow:var(--shadow-strong); padding:22px 20px 26px; margin-top:22px;
   }
-  .ruler-widget h3{
-    font-family:var(--serif);
-    font-size:19px;
-    margin:0 0 4px;
-    color:var(--navy-2);
-  }
-  .ruler-widget .hint{
-    font-size:13.5px;
-    color:var(--ink-soft);
-    margin:0 0 18px;
-  }
-  .ruler-track-wrap{
-    position:relative;
-    padding:34px 10px 46px;
-    overflow:visible;
-  }
-  svg.ruler{
-    width:100%;
-    height:auto;
-    display:block;
-    touch-action:none;
-  }
-  .point-handle{ cursor:grab; }
-  .point-handle:active{ cursor:grabbing; }
-  .point-label{
-    font-family:var(--mono);
-    font-weight:700;
-    font-size:15px;
-  }
-  .readouts{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:6px;
-  }
-  .readout{
-    font-family:var(--mono);
-    font-size:13.5px;
-    background:var(--paper-2);
-    border-radius:6px;
-    padding:8px 12px;
-    flex:1 1 140px;
-  }
+  .widget h3{ font-family:var(--serif); font-size:19px; margin:0 0 4px; color:var(--navy-2); }
+  .widget .hint{ font-size:13.5px; color:var(--ink-soft); margin:0 0 18px; }
+  .track-wrap{ position:relative; padding:20px 10px; overflow:visible; }
+  svg.diagram{ width:100%; height:auto; display:block; touch-action:none; }
+  .point-handle{ cursor:grab; } .point-handle:active{ cursor:grabbing; }
+  .readouts{ display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; }
+  .readout{ font-family:var(--mono); font-size:13px; background:var(--paper-2); border-radius:6px; padding:8px 12px; flex:1 1 130px; }
   .readout b{ color:var(--navy-2); }
-  .verdict{
-    margin-top:14px;
-    font-family:var(--mono);
-    font-size:14px;
-    padding:10px 14px;
-    border-radius:6px;
-    font-weight:600;
+  .verdict{ margin-top:14px; font-family:var(--mono); font-size:13.5px; padding:10px 14px; border-radius:6px; font-weight:600; }
+  .verdict.yes{ background:var(--ok-bg); color:var(--sage); border:1.5px solid var(--sage); }
+  .verdict.no{ background:var(--warn-bg); color:var(--orange); border:1.5px solid var(--orange); }
+  .badge{ display:inline-block; font-family:var(--mono); font-size:12.5px; font-weight:700; padding:5px 10px; border-radius:20px; }
+  .nudge-row{ display:flex; gap:6px; flex-wrap:wrap; margin-top:16px; }
+  .nudge-row button, .toggle-row button{
+    font-family:var(--mono); font-size:12.5px; background:var(--navy); color:var(--on-accent);
+    border:none; border-radius:6px; padding:10px 14px; min-height:40px; cursor:pointer;
+    transition:background 0.15s ease; touch-action:manipulation;
   }
-  .verdict.yes{ background:#e7f0e3; color:var(--sage); border:1.5px solid var(--sage); }
-  .verdict.no{ background:#fbe9e2; color:var(--orange); border:1.5px solid var(--orange); }
-  .nudge-row{
-    display:flex; gap:6px; flex-wrap:wrap; margin-top:16px;
-  }
-  .nudge-row button{
-    font-family:var(--mono);
-    font-size:13px;
-    background:var(--navy);
-    color:var(--paper);
-    border:none;
-    border-radius:6px;
-    padding:10px 14px;
-    min-height:40px;
-    cursor:pointer;
-    transition:background 0.15s ease;
-    touch-action:manipulation;
-  }
-  .nudge-row button:hover, .nudge-row button:focus-visible{ background:var(--orange); outline:none; }
+  .nudge-row button:hover, .nudge-row button:focus-visible,
+  .toggle-row button:hover, .toggle-row button:focus-visible{ background:var(--orange); outline:none; }
+  .toggle-row{ display:flex; gap:6px; flex-wrap:wrap; margin-top:14px; }
+  .toggle-row button.active{ background:var(--orange); }
+  input[type="range"]{ width:100%; accent-color:var(--orange); height:36px; touch-action:pan-y; }
+  .slider-tool{ margin-top:6px; }
+  .slider-tool label{ font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); display:block; margin-bottom:6px; }
+  .slider-value{ font-family:var(--mono); font-size:22px; color:var(--navy-2); font-weight:700; }
 
-  /* ---------- Midpoint tool ---------- */
-  .midpoint-tool{
-    display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; margin-top:6px;
-  }
-  .midpoint-tool label{
-    font-family:var(--mono);
-    font-size:12.5px;
-    color:var(--ink-soft);
-    display:block;
-    margin-bottom:4px;
-  }
-  .midpoint-tool input{
-    font-family:var(--mono);
-    font-size:16px;
-    width:90px;
-    padding:8px 10px;
-    border:1.5px solid var(--navy);
-    border-radius:6px;
-    background:var(--paper-2);
-    color:var(--ink);
+  .midpoint-tool{ display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; margin-top:6px; }
+  .midpoint-tool label{ font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); display:block; margin-bottom:4px; }
+  .midpoint-tool input[type="number"]{
+    font-family:var(--mono); font-size:16px; width:90px; padding:8px 10px;
+    border:1.5px solid var(--navy); border-radius:6px; background:var(--paper-2); color:var(--ink);
   }
   .midpoint-result{
-    font-family:var(--mono);
-    background:var(--paper-2);
-    border-left:4px solid var(--sage);
-    padding:12px 16px;
-    border-radius:4px;
-    margin-top:16px;
-    font-size:15px;
+    font-family:var(--mono); background:var(--paper-2); border-left:4px solid var(--sage);
+    padding:12px 16px; border-radius:4px; margin-top:16px; font-size:14.5px; white-space:pre-line;
   }
 
   /* ---------- Practice ---------- */
-  .problem{
-    background:var(--white);
-    border:1.5px solid var(--navy);
-    border-radius:var(--radius);
-    padding:18px 20px;
-    margin-bottom:16px;
-  }
+  .problem{ background:var(--card); border:1.5px solid var(--navy); border-radius:var(--radius); padding:18px 20px; margin-bottom:16px; }
   .problem p.q{ margin:0 0 10px; font-weight:600; }
   .reveal-btn{
-    font-family:var(--mono);
-    font-size:13px;
-    background:transparent;
-    color:var(--navy);
-    border:1.5px solid var(--navy);
-    border-radius:6px;
-    padding:10px 14px;
-    min-height:40px;
-    cursor:pointer;
-    touch-action:manipulation;
+    font-family:var(--mono); font-size:13px; background:transparent; color:var(--navy);
+    border:1.5px solid var(--navy); border-radius:6px; padding:10px 14px; min-height:40px;
+    cursor:pointer; touch-action:manipulation;
   }
-  .reveal-btn:hover, .reveal-btn:focus-visible{ background:var(--navy); color:var(--paper); outline:none; }
+  .reveal-btn:hover, .reveal-btn:focus-visible{ background:var(--navy); color:var(--on-accent); outline:none; }
   .solution{
-    display:none;
-    margin-top:14px;
-    padding-top:14px;
-    border-top:1.5px dashed var(--grid);
-    font-family:var(--mono);
-    font-size:14px;
-    color:var(--ink-soft);
-    white-space:pre-line;
+    display:none; margin-top:14px; padding-top:14px; border-top:1.5px dashed var(--grid);
+    font-family:var(--mono); font-size:13.5px; color:var(--ink-soft); white-space:pre-line;
   }
   .solution.open{ display:block; }
 
   /* ---------- Summary table ---------- */
-  .table-scroll{
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    border-radius:var(--radius);
+  .table-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:var(--radius); }
+  table.summary{
+    width:100%; min-width:480px; border-collapse:collapse; background:var(--card);
+    border:1.5px solid var(--navy); border-radius:var(--radius); overflow:hidden; font-size:13.5px;
   }
-  table{
-    width:100%;
-    min-width:480px;
-    border-collapse:collapse;
-    background:var(--white);
-    border:1.5px solid var(--navy);
-    border-radius:var(--radius);
-    overflow:hidden;
-    font-size:14px;
-  }
-  th, td{
-    text-align:left;
-    padding:12px 14px;
-    border-bottom:1px solid var(--grid);
-    vertical-align:top;
-  }
-  th{
-    background:var(--navy);
-    color:var(--paper);
-    font-family:var(--mono);
-    font-size:12.5px;
-    text-transform:uppercase;
-    letter-spacing:0.04em;
-  }
-  td.expr{ font-family:var(--mono); color:var(--navy-2); white-space:nowrap; }
-  tr:last-child td{ border-bottom:none; }
+  table.summary th, table.summary td{ text-align:left; padding:12px 14px; border-bottom:1px solid var(--grid); vertical-align:top; }
+  table.summary th{ background:var(--navy); color:var(--on-accent); font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.04em; }
+  table.summary td.expr{ font-family:var(--mono); color:var(--navy-2); white-space:nowrap; }
+  table.summary tr:last-child td{ border-bottom:none; }
 
-  footer{
-    max-width:900px;
-    margin:60px auto 0;
-    padding:24px 24px 10px;
-    text-align:center;
-    color:var(--ink-soft);
-    font-size:13px;
-    font-family:var(--mono);
-  }
+  footer{ max-width:900px; margin:60px auto 0; padding:24px 24px 10px; text-align:center; color:var(--ink-soft); font-size:13px; font-family:var(--mono); }
 
   @media (max-width:560px){
-    header.hero{padding-top:28px; padding-bottom:8px;}
-    .hero p.lead{font-size:15.5px;}
-    section{padding:36px 16px 0;}
-    .card, .ruler-widget{padding:16px;}
-    .section-head{flex-direction:column; align-items:flex-start; gap:4px;}
-    h2{font-size:23px;}
-    .formula{font-size:13px; padding:10px 12px;}
-    .ruler-track-wrap{padding:26px 0 40px;}
-    .readouts{gap:8px;}
-    .readout{flex:1 1 100px; font-size:12.5px;}
-    .midpoint-tool{gap:10px;}
-    .midpoint-tool input{width:100px; font-size:16px;}
-    .problem{padding:16px;}
-    .solution{font-size:13px;}
-    table{font-size:12.5px;}
-    th, td{padding:10px 10px;}
+    header.hero{ padding-top:26px; padding-bottom:6px; }
+    .hero p.lead{ font-size:15px; }
+    section{ padding:34px 16px 0; }
+    .part-divider{ padding:0 16px; }
+    .card, .widget{ padding:15px; }
+    .section-head{ flex-direction:column; align-items:flex-start; gap:4px; }
+    h2{ font-size:21px; }
+    .formula{ font-size:12.5px; padding:10px 12px; }
+    .readouts{ gap:7px; } .readout{ flex:1 1 44%; font-size:12px; }
+    .midpoint-tool{ gap:10px; } .midpoint-tool input{ width:100px; font-size:16px; }
+    .problem{ padding:14px; }
+    table.summary{ font-size:12px; }
+    table.summary th, table.summary td{ padding:9px 9px; }
+    nav a{ font-size:11.5px; padding:8px 8px; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#betweenness">Betweenness</a>
-  <a href="#ruler">Ruler Postulate</a>
-  <a href="#addition">Segment Addition</a>
-  <a href="#congruent">Congruent Segments</a>
-  <a href="#midpoint">Midpoint</a>
-  <a href="#practice">Practice</a>
-  <a href="#summary">Summary</a>
+<nav aria-label="Section navigation">
+  <div class="nav-links">
+    <div class="nav-group">
+      <a href="#points">Point·Line·Plane</a>
+      <a href="#subsets">Segments &amp; Rays</a>
+      <a href="#betweenness">Betweenness</a>
+      <a href="#addition">Seg. Addition</a>
+      <a href="#congruent">Congruent Seg.</a>
+      <a href="#midpoint">Midpoint</a>
+      <a href="#practice1">Practice</a>
+    </div>
+    <div class="nav-group">
+      <a href="#anglebasics">Angle Parts</a>
+      <a href="#anglepairs">Angle Pairs</a>
+      <a href="#practice2">Practice</a>
+      <a href="#summary">Summary</a>
+    </div>
+  </div>
+  <button id="themeToggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+    <span id="themeIcon">&#9789;</span>
+  </button>
 </nav>
 
 <header class="hero">
   <p class="eyebrow">Math 9 · Plane Geometry</p>
-  <h1>Segments, Betweenness &amp; Midpoints</h1>
-  <p class="lead">Drag the points on the ruler below. Watch the distances update live, and see exactly when the Segment Addition Postulate holds — that's the whole idea of this unit, in one moving picture.</p>
+  <h1>Basic Geometry &amp; Angles</h1>
+  <p class="lead">Everything from points and planes through vertical angles and linear pairs — with draggable diagrams so you can see each rule happen instead of just reading about it.</p>
+  <div class="part-chips">
+    <a class="part-chip" href="#points">→ Part 1: Basic Geometry</a>
+    <a class="part-chip" href="#anglebasics">→ Part 2: Angles</a>
+  </div>
 </header>
 
-<section id="hero-tool" style="padding-top:20px;">
-  <div class="ruler-widget">
-    <h3>Live number line</h3>
-    <p class="hint">Use the buttons below to Move <b>A</b>, <b>B</b> and <b>C</b>. AB, BC, and AC recalculate instantly using the Ruler Postulate: distance = |x₁ − x₂|.</p>
-    <div class="ruler-track-wrap">
-      <svg class="ruler" viewBox="0 0 640 130" xmlns="http://www.w3.org/2000/svg" id="rulerSvg" aria-label="Interactive number line with three draggable points A, B, and C">
-        <!-- ticks drawn by JS -->
+<!-- ============================================================ PART 1 ============================================================ -->
+<div class="part-divider">
+  <div class="line"><span class="label">Part 1</span></div>
+  <h2 class="part-title">Basic Geometry</h2>
+  <p class="part-sub">The undefined terms, the pieces you can cut a line into, and the rules for measuring and splitting a segment.</p>
+</div>
+
+<section id="points">
+  <div class="section-head"><span class="tag">1.1</span><h2>Point, Line &amp; Plane</h2></div>
+  <p class="deck">These three ideas are Geometry's <b>undefined terms</b> — they're described using everyday language rather than formally defined, because every other definition in Geometry is eventually built out of them.</p>
+
+  <div class="card">
+    <div class="two-col">
+      <div class="mini-card">
+        <div class="k">Point</div>
+        <p class="v">An exact <b>location</b> with no size — no length, width, or thickness. Represented by a dot and named with a single capital letter.</p>
+        <div class="formula" style="margin-bottom:0;">Notation: point <i>P</i></div>
+      </div>
+      <div class="mini-card">
+        <div class="k">Line</div>
+        <p class="v">A straight path of points with <b>infinite length</b> but no width, extending forever in two directions.</p>
+        <div class="formula" style="margin-bottom:0;">Notation: <i>AB</i> with a double-arrow over it, or a lowercase script letter like line <i>m</i></div>
+      </div>
+      <div class="mini-card">
+        <div class="k">Plane</div>
+        <p class="v">A perfectly flat surface with <b>infinite length and width</b> but no thickness — think of it extending forever in every direction.</p>
+        <div class="formula" style="margin-bottom:0;">Notation: plane <i>ABC</i> (3 points), or plane <i>M</i></div>
+      </div>
+      <div class="mini-card">
+        <div class="k">Real-world stand-ins</div>
+        <p class="v">A pinpoint of light is close to a point. A tightly stretched wire suggests a line. A calm lake's surface suggests a plane. None are perfect — real objects always have some size — but they're useful mental pictures.</p>
+      </div>
+    </div>
+    <div class="note">A plane needs <b>three noncollinear points</b> (points not all on one line) to be named and pinned down — two points could sit on infinitely many different planes, but three points that aren't in a row determine exactly one flat surface through them.</div>
+  </div>
+
+  <div class="widget">
+    <h3>Point, line, and plane — side by side</h3>
+    <p class="hint">A static reference diagram: notice how dimensionality increases from left to right.</p>
+    <div class="track-wrap">
+      <svg class="diagram" viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg" aria-label="Diagram comparing a point, a line, and a plane">
+        <!-- point -->
+        <circle cx="80" cy="90" r="6" style="fill:var(--navy)"/>
+        <text x="80" y="60" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" style="fill:var(--navy-2)">P</text>
+        <text x="80" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" style="fill:var(--ink-soft)">point P</text>
+        <!-- line -->
+        <line x1="220" y1="90" x2="400" y2="90" stroke-width="2.5" style="stroke:var(--orange)"/>
+        <polygon points="216,84 216,96 204,90" style="fill:var(--orange)"/>
+        <polygon points="404,84 404,96 416,90" style="fill:var(--orange)"/>
+        <circle cx="260" cy="90" r="4" style="fill:var(--navy-2)"/>
+        <circle cx="340" cy="90" r="4" style="fill:var(--navy-2)"/>
+        <text x="260" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--navy-2)">A</text>
+        <text x="340" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--navy-2)">B</text>
+        <text x="310" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" style="fill:var(--ink-soft)">line AB</text>
+        <!-- plane -->
+        <polygon points="470,60 610,45 630,110 490,125" style="fill:var(--sage); opacity:0.22; stroke:var(--sage); stroke-width:2"/>
+        <text x="500" y="90" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--navy-2)">M</text>
+        <text x="550" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" style="fill:var(--ink-soft)">plane M</text>
       </svg>
+    </div>
+  </div>
+</section>
+
+<section id="subsets">
+  <div class="section-head"><span class="tag">1.2</span><h2>Subsets of a Line</h2></div>
+  <p class="deck">A line can be cut down into two smaller pieces: a <b>segment</b> (finite on both ends) and a <b>ray</b> (finite on one end, infinite on the other). Toggle between them below — same three points, three different objects.</p>
+
+  <div class="widget">
+    <h3>Line vs. segment vs. ray</h3>
+    <p class="hint">Pick a shape. Notice how the arrowheads (infinite direction) appear or disappear at each end.</p>
+    <div class="toggle-row" id="subsetToggles">
+      <button data-mode="line" class="active">Line</button>
+      <button data-mode="segment">Segment</button>
+      <button data-mode="ray">Ray</button>
+      <button data-mode="opposite">Opposite Rays</button>
+    </div>
+    <div class="track-wrap">
+      <svg class="diagram" viewBox="0 0 640 130" xmlns="http://www.w3.org/2000/svg" id="subsetSvg" aria-label="Diagram of a line, segment, ray or opposite rays through points A and B"></svg>
+    </div>
+    <div class="readout" id="subsetLabel" style="max-width:100%;">Notation: —</div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <div class="table-scroll">
+      <table class="term-table">
+        <thead><tr><th>Object</th><th>Description</th><th>Notation</th></tr></thead>
+        <tbody>
+          <tr><td>Line</td><td>Extends infinitely in <b>both</b> directions</td><td class="notn">line AB</td></tr>
+          <tr><td>Segment</td><td>Two endpoints; includes every point <b>between</b> them. Order doesn't matter.</td><td class="notn">seg. AB = seg. BA</td></tr>
+          <tr><td>Ray</td><td>One endpoint, extends infinitely in <b>one</b> direction. Order matters — the endpoint is named first.</td><td class="notn">ray AB ≠ ray BA</td></tr>
+          <tr><td>Opposite rays</td><td>Two rays sharing an endpoint, pointing in exactly opposite directions — together they form a straight line.</td><td class="notn">ray BA &amp; ray BC</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="hero-tool" style="padding-top:16px;">
+  <div class="widget">
+    <h3>Live number line</h3>
+    <p class="hint">Drag A, B, and C (or use the buttons). AB, BC, and AC recalculate instantly using the Ruler Postulate: distance = |x₁ − x₂|.</p>
+    <div class="track-wrap" style="padding:34px 10px 46px;">
+      <svg class="diagram ruler" viewBox="0 0 640 130" xmlns="http://www.w3.org/2000/svg" id="rulerSvg" aria-label="Interactive number line with three draggable points A, B, and C"></svg>
     </div>
     <div class="readouts" id="readouts"></div>
     <div class="verdict" id="verdict"></div>
@@ -415,50 +461,46 @@
 </section>
 
 <section id="betweenness">
-  <div class="section-head"><span class="tag">01</span><h2>Betweenness of Points</h2></div>
+  <div class="section-head"><span class="tag">1.3</span><h2>Betweenness &amp; Collinearity</h2></div>
   <p class="deck">Before you can say a point "lies between" two others, two conditions have to hold at once — not just that it looks like it's in the middle.</p>
   <div class="card">
+    <h3 class="sub-h">Collinear points</h3>
+    <p>Points that lie on the <b>same line</b> are <span class="def-term">collinear</span>. Points that don't all fit on one line are <b>noncollinear</b>. Any two points are automatically collinear (a line can always be drawn through two points) — collinearity only becomes a meaningful question once you have three or more points.</p>
+    <h3 class="sub-h" style="margin-top:18px;">Betweenness</h3>
     <p>Point <span class="def-term">B</span> is <b>between</b> points A and C if and only if:</p>
     <ol>
-      <li>A, B, and C are <b>distinct points on the same line</b> (they're collinear).</li>
+      <li>A, B, and C are <b>distinct, collinear points</b>, and</li>
       <li>The distances satisfy <span class="def-term">AB + BC = AC</span>.</li>
     </ol>
-    <div class="formula">B is between A and C  ⟺  AB + BC = AC</div>
-    <p>This means B sits somewhere on segment AC, and the two smaller pieces add up exactly to the whole. Try dragging point B outside segment AC in the ruler above — you'll see the verdict flip to "not between," because the addition no longer works.</p>
-  </div>
-</section>
-
-<section id="ruler">
-  <div class="section-head"><span class="tag">02</span><h2>The Ruler Postulate</h2></div>
-  <p class="deck">This is the postulate that lets you turn a line into a set of numbers you can actually calculate with.</p>
-  <div class="card">
-    <p>Every point on a line corresponds to exactly one real number, and every real number corresponds to exactly one point — a <b>one-to-one correspondence</b>. The distance between two points is just the absolute value of the difference between their numbers:</p>
-    <div class="formula">Distance between P and Q = | x<sub>P</sub> − x<sub>Q</sub> |</div>
-    <p>That's literally what the ruler widget above is computing every time you drag a point. The absolute value matters because distance can't be negative — |3 − 7| and |7 − 3| both give 4.</p>
+    <div class="formula">B is between A and C  ⟺  A, B, C collinear  and  AB + BC = AC</div>
+    <p>This means B sits somewhere on segment AC, and the two smaller pieces add up exactly to the whole. Try dragging point B outside segment AC in the ruler above — the verdict flips to "not between," because the addition no longer works, even though the three points are still collinear.</p>
+    <div class="note"><b>Ruler Postulate:</b> every point on a line matches exactly one real number (its coordinate), and distance between two points is the absolute value of the difference of their coordinates: <span class="def-term">d(P, Q) = |x<sub>P</sub> − x<sub>Q</sub>|</span>. That's the rule the ruler widget is running every time you drag a point.</div>
   </div>
 </section>
 
 <section id="addition">
-  <div class="section-head"><span class="tag">03</span><h2>Segment Addition Postulate</h2></div>
+  <div class="section-head"><span class="tag">1.4</span><h2>Segment Addition Postulate</h2></div>
   <p class="deck">The same rule as betweenness, but used in the other direction — to build up an unknown length instead of testing one.</p>
   <div class="card">
-    <p>If B is between A and C, then AB + BC = AC. And the postulate also works backward: <b>if the equation holds, B must be between A and C</b>. That two-way property is what makes it a postulate you can use for proofs, not just an observation.</p>
+    <p>If B is between A and C, then AB + BC = AC. The postulate also works backward: <b>if the equation holds, B must be between A and C</b>. That two-way property is what makes it usable in proofs, not just an observation.</p>
     <div class="formula">B between A and C  ⟺  AB + BC = AC</div>
     <p><b>Worked example:</b> if AB = 9 and BC = 14, and B is between A and C, then AC = 9 + 14 = 23. Flip it around: if AC = 23 and AB = 9, then BC = 23 − 9 = 14.</p>
+    <p><b>Algebra example:</b> B is between A and C. AB = 2x + 1, BC = x + 5, AC = 30. Since AB + BC = AC: (2x + 1) + (x + 5) = 30 → 3x + 6 = 30 → x = 8. So AB = 17 and BC = 13 (and 17 + 13 = 30 ✓).</p>
   </div>
 </section>
 
 <section id="congruent">
-  <div class="section-head"><span class="tag">04</span><h2>Congruent Segments</h2></div>
+  <div class="section-head"><span class="tag">1.5</span><h2>Congruent Segments</h2></div>
   <p class="deck">Congruent just means "same length" — position and direction don't matter at all.</p>
   <div class="card">
     <div class="formula">AB ≅ CD  ⟺  AB = CD</div>
-    <p>The tick marks (like one small hash mark on both segments in a diagram) are how a figure tells you two segments are congruent without stating the numbers. If two segments both measure 6 cm, they're congruent even if one is horizontal and the other is vertical, or one is on the left side of the page and the other is on the right.</p>
+    <p>Note the symbols: <span class="def-term">AB</span> (no bar, or written "AB") refers to the <i>length</i>, a number — so you can write AB = CD. <span class="def-term">seg. AB</span> refers to the actual <i>figure</i> — so you write seg. AB ≅ seg. CD, using the congruence symbol, not the equals sign, since a figure can't literally equal another figure.</p>
+    <p>Tick marks (identical small hash marks drawn across two segments in a diagram) are how a figure shows two segments are congruent without stating numbers. If two segments both measure 6 cm, they're congruent even if one is horizontal and the other is vertical, or they're on opposite sides of the page.</p>
   </div>
 </section>
 
 <section id="midpoint">
-  <div class="section-head"><span class="tag">05</span><h2>Midpoint of a Segment</h2></div>
+  <div class="section-head"><span class="tag">1.6</span><h2>Midpoint of a Segment</h2></div>
   <p class="deck">A midpoint has to satisfy both betweenness <i>and</i> equal distance — it's a special case built from ideas you already have.</p>
   <div class="card">
     <p>M is the <b>midpoint</b> of segment AB if and only if:</p>
@@ -467,29 +509,32 @@
       <li>AM = MB.</li>
     </ol>
     <div class="formula">M is the midpoint of AB  ⟺  M is between A and B, and AM = MB</div>
-    <p>M splits AB into two congruent segments: AM ≅ MB. On a number line, the midpoint's coordinate is just the average of the two endpoint coordinates.</p>
+    <p>M splits AB into two congruent segments: seg. AM ≅ seg. MB. On a number line, the midpoint's coordinate is the average of the two endpoint coordinates.</p>
     <div class="formula">x<sub>M</sub> = (x<sub>A</sub> + x<sub>B</sub>) / 2</div>
-
     <div class="midpoint-tool">
-      <div>
-        <label for="ptA">Coordinate of A</label>
-        <input type="number" id="ptA" value="2">
-      </div>
-      <div>
-        <label for="ptB">Coordinate of B</label>
-        <input type="number" id="ptB" value="14">
-      </div>
+      <div><label for="ptA">Coordinate of A</label><input type="number" id="ptA" value="2"></div>
+      <div><label for="ptB">Coordinate of B</label><input type="number" id="ptB" value="14"></div>
     </div>
     <div class="midpoint-result" id="midpointResult"></div>
   </div>
 </section>
 
-<section id="practice">
-  <div class="section-head"><span class="tag">06</span><h2>Practice</h2></div>
+<section id="practice1">
+  <div class="section-head"><span class="tag">1.7</span><h2>Practice</h2></div>
   <p class="deck">Try each one before revealing the solution. Full working shown, step by step.</p>
 
   <div class="problem">
-    <p class="q">1. On a number line, A is at −3 and C is at 10. B is between A and C, and AB = 6. Find BC and confirm the Segment Addition Postulate.</p>
+    <p class="q">1. Points X, Y, Z are collinear, in that order (Y is between X and Z). Name: (a) the segment with endpoints X and Z, (b) the ray that starts at Y and passes through Z, (c) a pair of opposite rays with endpoint Y.</p>
+    <button class="reveal-btn" onclick="toggleSolution(this)">Show solution</button>
+    <div class="solution">(a) segment XZ — order doesn't matter for a segment, so "segment ZX" is also correct.
+
+(b) ray YZ — the endpoint (Y) is always named first for a ray.
+
+(c) ray YX and ray YZ — they share endpoint Y and point in exactly opposite directions along the same line, since Y is between X and Z.</div>
+  </div>
+
+  <div class="problem">
+    <p class="q">2. On a number line, A is at −3 and C is at 10. B is between A and C, and AB = 6. Find BC and confirm the Segment Addition Postulate.</p>
     <button class="reveal-btn" onclick="toggleSolution(this)">Show solution</button>
     <div class="solution">Step 1 — Find AC using the Ruler Postulate:
 AC = |x_A − x_C| = |−3 − 10| = 13
@@ -504,7 +549,7 @@ AB + BC = 6 + 7 = 13 = AC ✓</div>
   </div>
 
   <div class="problem">
-    <p class="q">2. M is the midpoint of segment PQ. PM = 3x + 2 and MQ = 5x − 8. Find x, then find PM.</p>
+    <p class="q">3. M is the midpoint of segment PQ. PM = 3x + 2 and MQ = 5x − 8. Find x, then find PM.</p>
     <button class="reveal-btn" onclick="toggleSolution(this)">Show solution</button>
     <div class="solution">Step 1 — Midpoint means PM = MQ:
 3x + 2 = 5x − 8
@@ -521,10 +566,10 @@ Check MQ = 5(5) − 8 = 17 — matches PM ✓</div>
   </div>
 
   <div class="problem">
-    <p class="q">3. Points D, E, F lie on a line with coordinates 4, 9, and 17. Is E between D and F? Justify using the definition of betweenness.</p>
+    <p class="q">4. Points D, E, F lie on a line with coordinates 4, 9, and 17. Is E between D and F? Justify using the definition of betweenness.</p>
     <button class="reveal-btn" onclick="toggleSolution(this)">Show solution</button>
     <div class="solution">Step 1 — Check collinearity:
-All three points are given as being on the same line ✓
+All three points are given as lying on the same line ✓
 
 Step 2 — Compute distances:
 DE = |4 − 9| = 5
@@ -538,125 +583,358 @@ Conclusion: Since both conditions of betweenness are satisfied, E is between D a
   </div>
 </section>
 
-<section id="summary" style="padding-bottom:20px;">
-  <div class="section-head"><span class="tag">07</span><h2>Summary Table</h2></div>
-  <p class="deck">Everything above, condensed to one reference.</p>
+<section id="summary1" style="padding-bottom:8px;">
+  <div class="section-head"><span class="tag">1.8</span><h2>Part 1 Summary</h2></div>
   <div class="table-scroll">
-  <table>
-    <thead>
-      <tr><th>Concept</th><th>Definition</th><th>Expression</th></tr>
-    </thead>
+  <table class="summary">
+    <thead><tr><th>Concept</th><th>Definition</th><th>Expression</th></tr></thead>
     <tbody>
+      <tr><td>Collinear points</td><td>Points that all lie on the same line</td><td class="expr">—</td></tr>
       <tr><td>Betweenness</td><td>B is between A and C if they're collinear and AB + BC = AC</td><td class="expr">AB + BC = AC</td></tr>
-      <tr><td>Ruler Postulate</td><td>Distance between two points equals the absolute difference of their coordinates</td><td class="expr">d(P,Q) = |x_P − x_Q|</td></tr>
-      <tr><td>Segment Addition</td><td>If B is between A and C, then AB + BC = AC — and the reverse also holds</td><td class="expr">B between A,C ⟺ AB+BC=AC</td></tr>
-      <tr><td>Congruent Segments</td><td>Segments with equal length</td><td class="expr">AB ≅ CD ⟺ AB = CD</td></tr>
+      <tr><td>Segment</td><td>Part of a line with two endpoints; finite length</td><td class="expr">seg. AB</td></tr>
+      <tr><td>Ray</td><td>Part of a line with one endpoint, infinite the other way</td><td class="expr">ray AB</td></tr>
+      <tr><td>Segment Addition</td><td>If B is between A and C, AB + BC = AC (and the reverse holds too)</td><td class="expr">B between A,C ⟺ AB+BC=AC</td></tr>
+      <tr><td>Congruent segments</td><td>Segments with equal length</td><td class="expr">seg. AB ≅ seg. CD ⟺ AB = CD</td></tr>
       <tr><td>Midpoint</td><td>Point M between A and B where AM = MB</td><td class="expr">AM = MB</td></tr>
     </tbody>
   </table>
   </div>
 </section>
 
-<footer>Segments &amp; Midpoints — Math 9 Study Guide</footer>
+<!-- ============================================================ PART 2 ============================================================ -->
+<div class="part-divider">
+  <div class="line"><span class="label">Part 2</span></div>
+  <h2 class="part-title">Angles</h2>
+  <p class="part-sub">What an angle is made of, how to classify one, and the six relationships that connect two angles to each other.</p>
+</div>
+
+<section id="anglebasics">
+  <div class="section-head"><span class="tag">2.1</span><h2>Parts of an Angle</h2></div>
+  <p class="deck">An angle is formed by two rays sharing an endpoint. Drag the arm below to see the vertex, sides, and interior — plus how the classification name changes as the measure changes.</p>
+
+  <div class="card">
+    <div class="two-col">
+      <div class="mini-card"><div class="k">Vertex</div><p class="v">The common endpoint shared by the two rays — where the angle "hinges."</p></div>
+      <div class="mini-card"><div class="k">Sides</div><p class="v">The two rays themselves, e.g. ray BA and ray BC form ∠ABC.</p></div>
+      <div class="mini-card"><div class="k">Interior</div><p class="v">The region "inside" the opening between the two sides.</p></div>
+      <div class="mini-card"><div class="k">Naming</div><p class="v">∠ABC or ∠CBA (vertex letter always in the middle), or just ∠B if there's no ambiguity, or ∠1 if labeled with a number in a diagram.</p></div>
+    </div>
+  </div>
+
+  <div class="widget">
+    <h3>Angle explorer</h3>
+    <p class="hint">Drag the orange handle (or use the arrow keys once it's focused) to rotate ray BC. Watch the measure and classification update live.</p>
+    <div class="track-wrap">
+      <svg class="diagram" viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" id="angleSvg" aria-label="Interactive angle with a draggable ray to explore angle measure and classification"></svg>
+    </div>
+    <div class="readouts">
+      <div class="readout">Measure = <b id="angleMeasure">45°</b></div>
+      <div class="readout">Vertex = <b>B</b></div>
+      <div class="readout">Classification: <span class="badge" id="angleClass" style="background:var(--sage); color:var(--on-accent);">Acute</span></div>
+    </div>
+    <div class="nudge-row" id="angleNudge"></div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <h3 class="sub-h">Classifying by measure</h3>
+    <div class="table-scroll">
+      <table class="term-table">
+        <thead><tr><th>Name</th><th>Measure</th><th>Looks like</th></tr></thead>
+        <tbody>
+          <tr><td>Acute</td><td class="notn">0° &lt; m∠ &lt; 90°</td><td>Sharper than a right angle</td></tr>
+          <tr><td>Right</td><td class="notn">m∠ = 90°</td><td>Marked with a small square symbol</td></tr>
+          <tr><td>Obtuse</td><td class="notn">90° &lt; m∠ &lt; 180°</td><td>Wider than a right angle</td></tr>
+          <tr><td>Straight</td><td class="notn">m∠ = 180°</td><td>The two sides form a single straight line</td></tr>
+          <tr><td>Reflex</td><td class="notn">180° &lt; m∠ &lt; 360°</td><td>Measured "the long way around"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="anglepairs">
+  <div class="section-head"><span class="tag">2.2</span><h2>Classifying Angle Pairs</h2></div>
+  <p class="deck">Six relationships show up constantly in Geometry proofs. Three of them (complementary, supplementary, congruent) are only about the <i>measures</i> — the angles don't even need to touch. The other three (adjacent, vertical, linear pair) are about <i>position</i>.</p>
+
+  <div class="card">
+    <div class="two-col">
+      <div class="mini-card">
+        <div class="k">Complementary</div>
+        <p class="v">Two angles whose measures sum to <b>90°</b>. Don't need to be adjacent.</p>
+        <div class="formula" style="margin-bottom:0;">m∠A + m∠B = 90°</div>
+      </div>
+      <div class="mini-card">
+        <div class="k">Supplementary</div>
+        <p class="v">Two angles whose measures sum to <b>180°</b>. Don't need to be adjacent.</p>
+        <div class="formula" style="margin-bottom:0;">m∠A + m∠B = 180°</div>
+      </div>
+      <div class="mini-card">
+        <div class="k">Congruent angles</div>
+        <p class="v">Two angles with the <b>same measure</b>, marked with matching arcs in a diagram.</p>
+        <div class="formula" style="margin-bottom:0;">∠A ≅ ∠B ⟺ m∠A = m∠B</div>
+      </div>
+      <div class="mini-card">
+        <div class="k">Adjacent angles</div>
+        <p class="v">Two angles that share a <b>vertex</b> and a <b>side</b>, with no overlapping interior.</p>
+        <div class="formula" style="margin-bottom:0;">e.g. ∠ABC &amp; ∠CBD share vertex B, side BC</div>
+      </div>
+      <div class="mini-card">
+        <div class="k">Vertical angles</div>
+        <p class="v">The pair of <b>non-adjacent</b> angles opposite each other where two lines cross. Always congruent.</p>
+        <div class="formula" style="margin-bottom:0;">Vertical Angles Theorem: always ≅</div>
+      </div>
+      <div class="mini-card">
+        <div class="k">Linear pair</div>
+        <p class="v">Two <b>adjacent</b> angles whose outer sides form a straight line. Always supplementary.</p>
+        <div class="formula" style="margin-bottom:0;">m∠1 + m∠2 = 180°, and adjacent</div>
+      </div>
+    </div>
+    <div class="note"><b>Two common mix-ups:</b> every linear pair is supplementary, but not every supplementary pair is a linear pair (they might not even touch). Likewise, every pair of vertical angles is congruent, but congruent angles don't have to be vertical angles.</div>
+  </div>
+
+  <div class="widget">
+    <h3>Two intersecting lines</h3>
+    <p class="hint">Drag the handle to rotate one line through the fixed one. Watch which angles stay vertical (always equal) and which pairs are linear (always add to 180°).</p>
+    <div class="track-wrap">
+      <svg class="diagram" viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg" id="crossSvg" aria-label="Two intersecting lines forming four angles, draggable to explore vertical angles and linear pairs"></svg>
+    </div>
+    <div class="readouts" id="crossReadouts"></div>
+    <div class="verdict yes" id="crossVerdict">∠1 ≅ ∠3 and ∠2 ≅ ∠4 (vertical angles) · ∠1 + ∠2 = 180° (linear pair)</div>
+    <div class="nudge-row" id="crossNudge"></div>
+  </div>
+
+  <div class="widget">
+    <h3>Complement &amp; supplement calculator</h3>
+    <p class="hint">Slide to set an angle's measure and see its complement and supplement update instantly.</p>
+    <div class="slider-tool">
+      <label for="compSlider">Angle measure</label>
+      <input type="range" id="compSlider" min="0" max="180" value="35" step="1">
+      <div class="slider-value" id="compValue">35°</div>
+    </div>
+    <div class="readouts" style="margin-top:14px;">
+      <div class="readout" id="compReadout"></div>
+      <div class="readout" id="supReadout"></div>
+    </div>
+  </div>
+</section>
+
+<section id="practice2">
+  <div class="section-head"><span class="tag">2.3</span><h2>Practice</h2></div>
+  <p class="deck">Same drill as Part 1 — work it out first, then reveal.</p>
+
+  <div class="problem">
+    <p class="q">1. ∠A and ∠B are complementary. m∠A = 3x + 5 and m∠B = 2x. Find x, then find each angle's measure.</p>
+    <button class="reveal-btn" onclick="toggleSolution(this)">Show solution</button>
+    <div class="solution">Step 1 — Complementary means the measures sum to 90°:
+(3x + 5) + 2x = 90
+
+Step 2 — Solve for x:
+5x + 5 = 90
+5x = 85
+x = 17
+
+Step 3 — Substitute back:
+m∠A = 3(17) + 5 = 56°
+m∠B = 2(17) = 34°
+
+Check: 56 + 34 = 90 ✓</div>
+  </div>
+
+  <div class="problem">
+    <p class="q">2. Two angles form a linear pair. One measures (4x − 10)° and the other measures (2x + 40)°. Find x and both measures.</p>
+    <button class="reveal-btn" onclick="toggleSolution(this)">Show solution</button>
+    <div class="solution">Step 1 — A linear pair is always supplementary:
+(4x − 10) + (2x + 40) = 180
+
+Step 2 — Solve for x:
+6x + 30 = 180
+6x = 150
+x = 25
+
+Step 3 — Substitute back:
+Angle 1 = 4(25) − 10 = 90°
+Angle 2 = 2(25) + 40 = 90°
+
+Check: 90 + 90 = 180 ✓ — interesting: a linear pair can be two right angles at once (that's exactly what happens when the two lines are perpendicular).</div>
+  </div>
+
+  <div class="problem">
+    <p class="q">3. Two lines intersect, forming vertical angles ∠1 and ∠3. m∠1 = (5x + 12)° and m∠3 = (7x − 8)°. Find x, then find the measures of all four angles formed.</p>
+    <button class="reveal-btn" onclick="toggleSolution(this)">Show solution</button>
+    <div class="solution">Step 1 — Vertical angles are congruent:
+5x + 12 = 7x − 8
+
+Step 2 — Solve for x:
+12 + 8 = 7x − 5x
+20 = 2x
+x = 10
+
+Step 3 — Find ∠1 and ∠3:
+m∠1 = 5(10) + 12 = 62°
+m∠3 = 7(10) − 8 = 62° ✓ matches ∠1
+
+Step 4 — ∠2 and ∠4 form linear pairs with ∠1 and ∠3, so they're supplementary to 62°:
+m∠2 = 180 − 62 = 118°
+m∠4 = 118° (vertical to ∠2)
+
+All four angles: 62°, 118°, 62°, 118° — going around the intersection.</div>
+  </div>
+</section>
+
+<section id="summary" style="padding-bottom:20px;">
+  <div class="section-head"><span class="tag">2.4</span><h2>Part 2 Summary</h2></div>
+  <div class="table-scroll">
+  <table class="summary">
+    <thead><tr><th>Concept</th><th>Definition</th><th>Expression</th></tr></thead>
+    <tbody>
+      <tr><td>Complementary</td><td>Two angle measures that sum to 90°</td><td class="expr">m∠A + m∠B = 90°</td></tr>
+      <tr><td>Supplementary</td><td>Two angle measures that sum to 180°</td><td class="expr">m∠A + m∠B = 180°</td></tr>
+      <tr><td>Congruent angles</td><td>Angles with equal measure</td><td class="expr">∠A ≅ ∠B ⟺ m∠A = m∠B</td></tr>
+      <tr><td>Adjacent angles</td><td>Share a vertex and a side; interiors don't overlap</td><td class="expr">—</td></tr>
+      <tr><td>Vertical angles</td><td>Non-adjacent angles opposite each other at an intersection — always congruent</td><td class="expr">∠1 ≅ ∠3</td></tr>
+      <tr><td>Linear pair</td><td>Adjacent angles whose outer sides form a line — always supplementary</td><td class="expr">m∠1 + m∠2 = 180°</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<footer>Basic Geometry &amp; Angles — Math 9 Study Guide</footer>
 
 <script>
-// ---------------- Interactive ruler ----------------
-const svg = document.getElementById('rulerSvg');
-const NS = "http://www.w3.org/2000/svg";
-const MIN_X = 0, MAX_X = 20;          // coordinate range shown
-const PAD = 40, TRACK_W = 560;        // px
-const Y = 60;                          // track y position
+/* ============================= THEME TOGGLE ============================= */
+const root = document.documentElement;
+const themeBtn = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+function applyTheme(t){
+  root.setAttribute('data-theme', t);
+  themeBtn.setAttribute('aria-pressed', t === 'dark');
+  themeIcon.innerHTML = t === 'dark' ? '&#9788;' : '&#9789;';
+}
+applyTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+themeBtn.addEventListener('click', ()=>{
+  applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
 
+/* ============================= SUBSETS OF A LINE WIDGET ============================= */
+const subsetSvg = document.getElementById('subsetSvg');
+const subsetLabel = document.getElementById('subsetLabel');
+const PADs = 60, Ax = 220, Bx = 420, Ysub = 65;
+function drawSubset(mode){
+  let html = '';
+  const strokeMain = `stroke:var(--orange)`;
+  const mkArrow = (x, dir) => `<polygon points="${x},${Ysub-6} ${x},${Ysub+6} ${x+dir*14},${Ysub}" style="fill:var(--orange)"/>`;
+
+  if(mode === 'line'){
+    html += `<line x1="${PADs}" y1="${Ysub}" x2="${640-PADs}" y2="${Ysub}" stroke-width="2.5" style="${strokeMain}"/>`;
+    html += mkArrow(PADs, -1) + mkArrow(640-PADs, 1);
+    subsetLabel.innerHTML = 'Notation: <b>line AB</b> (or line <i>m</i>) — infinite both ways';
+  } else if(mode === 'segment'){
+    html += `<line x1="${Ax}" y1="${Ysub}" x2="${Bx}" y2="${Ysub}" stroke-width="2.5" style="${strokeMain}"/>`;
+    subsetLabel.innerHTML = 'Notation: <b>seg. AB</b> — two endpoints, finite length';
+  } else if(mode === 'ray'){
+    html += `<line x1="${Ax}" y1="${Ysub}" x2="${640-PADs}" y2="${Ysub}" stroke-width="2.5" style="${strokeMain}"/>`;
+    html += mkArrow(640-PADs, 1);
+    subsetLabel.innerHTML = 'Notation: <b>ray AB</b> — starts at A, infinite through and past B';
+  } else if(mode === 'opposite'){
+    html += `<line x1="${PADs}" y1="${Ysub}" x2="${640-PADs}" y2="${Ysub}" stroke-width="2.5" style="${strokeMain}"/>`;
+    html += mkArrow(PADs, -1) + mkArrow(640-PADs, 1);
+    subsetLabel.innerHTML = 'Notation: <b>ray BA</b> and <b>ray BC</b> — same endpoint B, opposite directions';
+  }
+  // points + labels
+  if(mode === 'opposite'){
+    const Cx = 520;
+    html += `<circle cx="${Ax}" cy="${Ysub}" r="5" style="fill:var(--navy-2)"/><text x="${Ax}" y="${Ysub-16}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--navy-2)">A</text>`;
+    html += `<circle cx="${Bx}" cy="${Ysub}" r="5" style="fill:var(--navy-2)"/><text x="${Bx}" y="${Ysub-16}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--navy-2)">B</text>`;
+    html += `<circle cx="${Cx}" cy="${Ysub}" r="5" style="fill:var(--navy-2)"/><text x="${Cx}" y="${Ysub-16}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--navy-2)">C</text>`;
+  } else {
+    html += `<circle cx="${Ax}" cy="${Ysub}" r="5" style="fill:var(--navy-2)"/><text x="${Ax}" y="${Ysub-16}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--navy-2)">A</text>`;
+    html += `<circle cx="${Bx}" cy="${Ysub}" r="5" style="fill:var(--navy-2)"/><text x="${Bx}" y="${Ysub-16}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--navy-2)">B</text>`;
+  }
+  subsetSvg.innerHTML = html;
+}
+document.getElementById('subsetToggles').addEventListener('click', (e)=>{
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  document.querySelectorAll('#subsetToggles button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  drawSubset(btn.dataset.mode);
+});
+drawSubset('line');
+
+/* ============================= RULER WIDGET ============================= */
+const svgR = document.getElementById('rulerSvg');
+const MIN_X = 0, MAX_X = 20, PAD = 40, TRACK_W = 560, YR = 60;
 let coords = { A: 2, B: 8, C: 15 };
-const colors = { A: '#1f3a5f', B: '#e2622a', C: '#4f7942' };
-
 function coordToX(c){ return PAD + (c - MIN_X) / (MAX_X - MIN_X) * TRACK_W; }
 function xToCoord(x){
   let c = MIN_X + (x - PAD) / TRACK_W * (MAX_X - MIN_X);
   c = Math.max(MIN_X, Math.min(MAX_X, c));
-  return Math.round(c * 2) / 2; // snap to 0.5
+  return Math.round(c * 2) / 2;
 }
-
 function buildStaticTicks(){
   let ticks = '';
   for(let i = MIN_X; i <= MAX_X; i++){
     const x = coordToX(i);
     const tall = i % 5 === 0;
-    ticks += `<line x1="${x}" y1="${Y-8}" x2="${x}" y2="${tall? Y+8 : Y+4}" stroke="#5c574c" stroke-width="${tall?1.5:1}"/>`;
-    if(tall){
-      ticks += `<text x="${x}" y="${Y+24}" font-family="JetBrains Mono, monospace" font-size="10" fill="#5c574c" text-anchor="middle">${i}</text>`;
-    }
+    ticks += `<line x1="${x}" y1="${YR-8}" x2="${x}" y2="${tall? YR+8 : YR+4}" style="stroke:var(--ink-soft)" stroke-width="${tall?1.5:1}"/>`;
+    if(tall) ticks += `<text x="${x}" y="${YR+24}" font-family="JetBrains Mono, monospace" font-size="10" style="fill:var(--ink-soft)" text-anchor="middle">${i}</text>`;
   }
-  return `<line x1="${PAD}" y1="${Y}" x2="${PAD+TRACK_W}" y2="${Y}" stroke="#232320" stroke-width="2"/>` + ticks;
+  return `<line x1="${PAD}" y1="${YR}" x2="${PAD+TRACK_W}" y2="${YR}" style="stroke:var(--ink)" stroke-width="2"/>` + ticks;
 }
-
-function render(){
+function renderRuler(){
   const order = Object.keys(coords).sort((a,b) => coords[a]-coords[b]);
   let html = buildStaticTicks();
-
-  // connecting braces between consecutive points (in coordinate order)
+  const colorVar = { A:'--navy', B:'--orange', C:'--sage' };
   for(let i=0;i<order.length-1;i++){
     const p1 = order[i], p2 = order[i+1];
     const x1 = coordToX(coords[p1]), x2 = coordToX(coords[p2]);
-    html += `<line x1="${x1}" y1="${Y-22}" x2="${x2}" y2="${Y-22}" stroke="#d9cfba" stroke-width="4" stroke-linecap="round"/>`;
+    html += `<line x1="${x1}" y1="${YR-22}" x2="${x2}" y2="${YR-22}" style="stroke:var(--grid)" stroke-width="4" stroke-linecap="round"/>`;
   }
-
-  // points
   Object.keys(coords).forEach(key=>{
     const x = coordToX(coords[key]);
     html += `<g class="point-handle" data-point="${key}" tabindex="0" role="slider" aria-label="Point ${key}, value ${coords[key]}" aria-valuenow="${coords[key]}">
-      <line x1="${x}" y1="${Y-14}" x2="${x}" y2="${Y+14}" stroke="${colors[key]}" stroke-width="2"/>
-      <circle cx="${x}" cy="${Y-30}" r="26" fill="transparent"/>
-      <circle cx="${x}" cy="${Y-30}" r="14" fill="${colors[key]}"/>
-      <text x="${x}" y="${Y-30}" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" fill="#fffdf8" text-anchor="middle" dominant-baseline="central">${key}</text>
+      <line x1="${x}" y1="${YR-14}" x2="${x}" y2="${YR+14}" style="stroke:var(${colorVar[key]})" stroke-width="2"/>
+      <circle cx="${x}" cy="${YR-30}" r="26" fill="transparent"/>
+      <circle cx="${x}" cy="${YR-30}" r="14" style="fill:var(${colorVar[key]})"/>
+      <text x="${x}" y="${YR-30}" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--on-accent)" text-anchor="middle" dominant-baseline="central">${key}</text>
     </g>`;
   });
-
-  svg.innerHTML = html;
-  attachDrag();
+  svgR.innerHTML = html;
+  attachDragRuler();
   updateReadouts();
 }
-
-function attachDrag(){
-  const handles = svg.querySelectorAll('.point-handle');
-  handles.forEach(h=>{
+function attachDragRuler(){
+  svgR.querySelectorAll('.point-handle').forEach(h=>{
     const key = h.getAttribute('data-point');
     let dragging = false;
-
     const move = (clientX) => {
-      const rect = svg.getBoundingClientRect();
-      const scale = 640 / rect.width; // viewBox width / rendered width
+      const rect = svgR.getBoundingClientRect();
+      const scale = 640 / rect.width;
       const localX = (clientX - rect.left) * scale;
       coords[key] = xToCoord(localX);
-      render();
+      renderRuler();
     };
-
     h.addEventListener('pointerdown', (e)=>{ dragging = true; h.setPointerCapture(e.pointerId); });
     h.addEventListener('pointermove', (e)=>{ if(dragging) move(e.clientX); });
     h.addEventListener('pointerup', ()=>{ dragging = false; });
     h.addEventListener('pointercancel', ()=>{ dragging = false; });
-
     h.addEventListener('keydown', (e)=>{
-      if(e.key === 'ArrowRight'){ coords[key] = Math.min(MAX_X, coords[key]+0.5); render(); e.preventDefault(); }
-      if(e.key === 'ArrowLeft'){ coords[key] = Math.max(MIN_X, coords[key]-0.5); render(); e.preventDefault(); }
+      if(e.key === 'ArrowRight'){ coords[key] = Math.min(MAX_X, coords[key]+0.5); renderRuler(); e.preventDefault(); }
+      if(e.key === 'ArrowLeft'){ coords[key] = Math.max(MIN_X, coords[key]-0.5); renderRuler(); e.preventDefault(); }
     });
   });
 }
-
 function updateReadouts(){
   const AB = Math.abs(coords.A - coords.B);
   const BC = Math.abs(coords.B - coords.C);
   const AC = Math.abs(coords.A - coords.C);
-
   document.getElementById('readouts').innerHTML = `
     <div class="readout">A = <b>${coords.A}</b></div>
     <div class="readout">B = <b>${coords.B}</b></div>
     <div class="readout">C = <b>${coords.C}</b></div>
     <div class="readout">AB = <b>${AB}</b></div>
     <div class="readout">BC = <b>${BC}</b></div>
-    <div class="readout">AC = <b>${AC}</b></div>
-  `;
-
+    <div class="readout">AC = <b>${AC}</b></div>`;
   const verdict = document.getElementById('verdict');
   const between = Math.abs((AB + BC) - AC) < 0.001;
   if(between){
@@ -667,20 +945,16 @@ function updateReadouts(){
     verdict.textContent = `✗ AB + BC ≠ AC  (${AB} + ${BC} ≠ ${AC})  →  B is NOT between A and C`;
   }
 }
-
-// nudge buttons
 document.getElementById('nudgeRow').innerHTML = ['A','B','C'].map(k=>`
-  <button onclick="nudge('${k}',-1)">${k} −1</button>
-  <button onclick="nudge('${k}',1)">${k} +1</button>
-`).join('');
-function nudge(key, dir){
+  <button onclick="nudgeRuler('${k}',-1)">${k} −1</button>
+  <button onclick="nudgeRuler('${k}',1)">${k} +1</button>`).join('');
+function nudgeRuler(key, dir){
   coords[key] = Math.max(MIN_X, Math.min(MAX_X, coords[key] + dir));
-  render();
+  renderRuler();
 }
+renderRuler();
 
-render();
-
-// ---------------- Midpoint tool ----------------
+/* ============================= MIDPOINT TOOL ============================= */
 const ptA = document.getElementById('ptA');
 const ptB = document.getElementById('ptB');
 function updateMidpoint(){
@@ -700,12 +974,188 @@ ptA.addEventListener('input', updateMidpoint);
 ptB.addEventListener('input', updateMidpoint);
 updateMidpoint();
 
-// ---------------- Practice reveal ----------------
+/* ============================= PRACTICE REVEAL ============================= */
 function toggleSolution(btn){
   const sol = btn.nextElementSibling;
   sol.classList.toggle('open');
   btn.textContent = sol.classList.contains('open') ? 'Hide solution' : 'Show solution';
 }
+
+/* ============================= ANGLE EXPLORER WIDGET ============================= */
+const angleSvg = document.getElementById('angleSvg');
+const Vx = 160, Vy = 190, R = 130;
+let angleTheta = 45; // degrees, 0-360
+function classify(t){
+  if(t <= 0.5 || t >= 359.5) return {name:'No angle', color:'--ink-soft'};
+  if(t < 90) return {name:'Acute', color:'--sage'};
+  if(Math.abs(t-90) < 0.5) return {name:'Right', color:'--navy'};
+  if(t < 180) return {name:'Obtuse', color:'--orange'};
+  if(Math.abs(t-180) < 0.5) return {name:'Straight', color:'--ink-soft'};
+  return {name:'Reflex', color:'--orange'};
+}
+function renderAngle(){
+  const rad = angleTheta * Math.PI / 180;
+  const hx = Vx + R * Math.cos(rad);
+  const hy = Vy - R * Math.sin(rad);
+  const fixedX = Vx + R;
+  const fixedY = Vy;
+
+  // arc path
+  const arcR = 42;
+  const largeArc = angleTheta > 180 ? 1 : 0;
+  const sweep = 0; // counter-clockwise sweep in screen coords given our y flip
+  const ax = Vx + arcR * Math.cos(0);
+  const ay = Vy - arcR * Math.sin(0);
+  const bx = Vx + arcR * Math.cos(rad);
+  const by = Vy - arcR * Math.sin(rad);
+
+  let html = '';
+  // fixed side (ray BA)
+  html += `<line x1="${Vx}" y1="${Vy}" x2="${fixedX}" y2="${fixedY}" stroke-width="2.5" style="stroke:var(--navy-2)"/>`;
+  html += `<polygon points="${fixedX-10},${fixedY-6} ${fixedX-10},${fixedY+6} ${fixedX+4},${fixedY}" style="fill:var(--navy-2)"/>`;
+  // interior arc
+  html += `<path d="M ${ax} ${ay} A ${arcR} ${arcR} 0 ${largeArc} ${sweep} ${bx} ${by}" fill="none" style="stroke:var(--ink-soft)" stroke-width="1.5"/>`;
+  // draggable side (ray BC)
+  html += `<line x1="${Vx}" y1="${Vy}" x2="${hx}" y2="${hy}" stroke-width="2.5" style="stroke:var(--orange)"/>`;
+  html += `<g class="point-handle" tabindex="0" role="slider" aria-label="Angle side, ${Math.round(angleTheta)} degrees" aria-valuenow="${Math.round(angleTheta)}" id="angleHandle">
+    <circle cx="${hx}" cy="${hy}" r="24" fill="transparent"/>
+    <circle cx="${hx}" cy="${hy}" r="11" style="fill:var(--orange)"/>
+  </g>`;
+  // vertex
+  html += `<circle cx="${Vx}" cy="${Vy}" r="6" style="fill:var(--navy)"/>`;
+  html += `<text x="${Vx-14}" y="${Vy+22}" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--navy-2)">B</text>`;
+  html += `<text x="${fixedX+14}" y="${fixedY+5}" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--navy-2)">A</text>`;
+  html += `<text x="${hx + (hx>Vx?14:-24)}" y="${hy + (hy>Vy?18:-10)}" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" style="fill:var(--orange)">C</text>`;
+
+  angleSvg.innerHTML = html;
+  document.getElementById('angleMeasure').textContent = Math.round(angleTheta*10)/10 + '°';
+  const c = classify(angleTheta);
+  const badge = document.getElementById('angleClass');
+  badge.textContent = c.name;
+  badge.style.background = `var(${c.color})`;
+  badge.style.color = 'var(--on-accent)';
+  attachAngleDrag();
+}
+function attachAngleDrag(){
+  const h = document.getElementById('angleHandle');
+  let dragging = false;
+  const move = (clientX, clientY) => {
+    const rect = angleSvg.getBoundingClientRect();
+    const scaleX = 640 / rect.width, scaleY = 260 / rect.height;
+    const localX = (clientX - rect.left) * scaleX;
+    const localY = (clientY - rect.top) * scaleY;
+    let t = Math.atan2(-(localY - Vy), localX - Vx) * 180 / Math.PI;
+    if(t < 0) t += 360;
+    angleTheta = Math.round(t*2)/2;
+    if(angleTheta < 1) angleTheta = 1;
+    if(angleTheta > 359) angleTheta = 359;
+    renderAngle();
+  };
+  h.addEventListener('pointerdown', (e)=>{ dragging = true; h.setPointerCapture(e.pointerId); });
+  h.addEventListener('pointermove', (e)=>{ if(dragging) move(e.clientX, e.clientY); });
+  h.addEventListener('pointerup', ()=>{ dragging = false; });
+  h.addEventListener('pointercancel', ()=>{ dragging = false; });
+  h.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowUp' || e.key === 'ArrowRight'){ angleTheta = Math.min(359, angleTheta+1); renderAngle(); e.preventDefault(); }
+    if(e.key === 'ArrowDown' || e.key === 'ArrowLeft'){ angleTheta = Math.max(1, angleTheta-1); renderAngle(); e.preventDefault(); }
+  });
+}
+document.getElementById('angleNudge').innerHTML = [-10,-1,1,10].map(d=>`<button onclick="nudgeAngle(${d})">${d>0?'+':''}${d}°</button>`).join('');
+function nudgeAngle(d){ angleTheta = Math.max(1, Math.min(359, angleTheta + d)); renderAngle(); }
+renderAngle();
+
+/* ============================= TWO INTERSECTING LINES WIDGET ============================= */
+const crossSvg = document.getElementById('crossSvg');
+const Cx0 = 320, Cy0 = 160, CR = 130;
+let crossTheta = 55; // degrees, angle 1 measured from the fixed horizontal line
+function renderCross(){
+  const rad = crossTheta * Math.PI / 180;
+  // draggable line endpoints (through vertex, both directions)
+  const p1x = Cx0 + CR * Math.cos(rad), p1y = Cy0 - CR * Math.sin(rad);
+  const p2x = Cx0 - CR * Math.cos(rad), p2y = Cy0 + CR * Math.sin(rad);
+  // fixed horizontal line
+  const f1x = Cx0 + CR, f1y = Cy0;
+  const f2x = Cx0 - CR, f2y = Cy0;
+
+  let html = '';
+  html += `<line x1="${f1x}" y1="${f1y}" x2="${f2x}" y2="${f2y}" stroke-width="2.5" style="stroke:var(--navy-2)"/>`;
+  html += `<line x1="${p1x}" y1="${p1y}" x2="${p2x}" y2="${p2y}" stroke-width="2.5" style="stroke:var(--orange)"/>`;
+
+  // angle labels placed at bisector of each of the 4 regions
+  const labelR = 55;
+  const angs = [ crossTheta/2, 180 - crossTheta/2, 180 + crossTheta/2, 360 - crossTheta/2 ];
+  const names = ['1','2','3','4'];
+  const cols = ['--navy','--sage','--navy','--sage'];
+  angs.forEach((a, i)=>{
+    const r = a * Math.PI/180;
+    const lx = Cx0 + labelR * Math.cos(r);
+    const ly = Cy0 - labelR * Math.sin(r);
+    html += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="central" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" style="fill:var(${cols[i]})">${names[i]}</text>`;
+  });
+
+  html += `<circle cx="${Cx0}" cy="${Cy0}" r="6" style="fill:var(--ink)"/>`;
+  html += `<g class="point-handle" tabindex="0" role="slider" aria-label="Rotate intersecting line, angle 1 is ${Math.round(crossTheta)} degrees" aria-valuenow="${Math.round(crossTheta)}" id="crossHandle">
+    <circle cx="${p1x}" cy="${p1y}" r="24" fill="transparent"/>
+    <circle cx="${p1x}" cy="${p1y}" r="11" style="fill:var(--orange)"/>
+  </g>`;
+
+  crossSvg.innerHTML = html;
+
+  const a1 = crossTheta, a2 = 180 - crossTheta, a3 = crossTheta, a4 = 180 - crossTheta;
+  document.getElementById('crossReadouts').innerHTML = `
+    <div class="readout">∠1 = <b>${Math.round(a1*10)/10}°</b></div>
+    <div class="readout">∠2 = <b>${Math.round(a2*10)/10}°</b></div>
+    <div class="readout">∠3 = <b>${Math.round(a3*10)/10}°</b></div>
+    <div class="readout">∠4 = <b>${Math.round(a4*10)/10}°</b></div>`;
+  document.getElementById('crossVerdict').textContent =
+    `✓ ∠1 ≅ ∠3 (${Math.round(a1*10)/10}° each) and ∠2 ≅ ∠4 (${Math.round(a2*10)/10}° each) — vertical angles. ∠1 + ∠2 = ${Math.round((a1+a2)*10)/10}° — linear pair.`;
+  attachCrossDrag();
+}
+function attachCrossDrag(){
+  const h = document.getElementById('crossHandle');
+  let dragging = false;
+  const move = (clientX, clientY) => {
+    const rect = crossSvg.getBoundingClientRect();
+    const scaleX = 640 / rect.width, scaleY = 320 / rect.height;
+    const localX = (clientX - rect.left) * scaleX;
+    const localY = (clientY - rect.top) * scaleY;
+    let t = Math.atan2(-(localY - Cy0), localX - Cx0) * 180 / Math.PI;
+    if(t < 0) t += 180;
+    if(t > 180) t -= 180;
+    if(t < 3) t = 3;
+    if(t > 177) t = 177;
+    crossTheta = Math.round(t*2)/2;
+    renderCross();
+  };
+  h.addEventListener('pointerdown', (e)=>{ dragging = true; h.setPointerCapture(e.pointerId); });
+  h.addEventListener('pointermove', (e)=>{ if(dragging) move(e.clientX, e.clientY); });
+  h.addEventListener('pointerup', ()=>{ dragging = false; });
+  h.addEventListener('pointercancel', ()=>{ dragging = false; });
+  h.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowRight' || e.key === 'ArrowUp'){ crossTheta = Math.min(177, crossTheta+1); renderCross(); e.preventDefault(); }
+    if(e.key === 'ArrowLeft' || e.key === 'ArrowDown'){ crossTheta = Math.max(3, crossTheta-1); renderCross(); e.preventDefault(); }
+  });
+}
+document.getElementById('crossNudge').innerHTML = [-10,-1,1,10].map(d=>`<button onclick="nudgeCross(${d})">${d>0?'+':''}${d}°</button>`).join('');
+function nudgeCross(d){ crossTheta = Math.max(3, Math.min(177, crossTheta + d)); renderCross(); }
+renderCross();
+
+/* ============================= COMPLEMENT / SUPPLEMENT CALCULATOR ============================= */
+const compSlider = document.getElementById('compSlider');
+function updateComp(){
+  const x = parseFloat(compSlider.value);
+  document.getElementById('compValue').textContent = x + '°';
+  const compEl = document.getElementById('compReadout');
+  const supEl = document.getElementById('supReadout');
+  if(x <= 90){
+    compEl.innerHTML = `Complement = 90 − ${x} = <b>${90-x}°</b>`;
+  } else {
+    compEl.innerHTML = `Complement: <b>none</b> — must be &lt; 90°`;
+  }
+  supEl.innerHTML = `Supplement = 180 − ${x} = <b>${180-x}°</b>`;
+}
+compSlider.addEventListener('input', updateComp);
+updateComp();
 </script>
 
 </body>
