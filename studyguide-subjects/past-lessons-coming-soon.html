@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Lessons — Coming Soon</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    background: #FFFFFF; color: #222;
+    font-family: Georgia, 'Source Serif 4', serif;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 24px;
+  }
+  .box { max-width: 420px; }
+  .eyebrow {
+    font-family: monospace; font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #999; margin-bottom: 14px;
+  }
+  h1 { font-size: 24px; margin: 0 0 10px; }
+  p { color: #555; font-size: 15px; line-height: 1.6; margin: 0 0 22px; }
+  a.back {
+    display: inline-block; font-family: monospace; font-size: 13px;
+    color: #333; border: 1px solid #ccc; border-radius: 999px;
+    padding: 8px 16px; text-decoration: none;
+  }
+  a.back:hover { border-color: #333; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="eyebrow" id="subjectLabel">Past Lessons</div>
+    <h1>Coming soon</h1>
+    <p>This subject's past lessons archive hasn't been added yet. Check back later, or head back to the hub.</p>
+    <a class="back" href="../index.html">← Back to Study Hub</a>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const subject = params.get('subject');
+    if (subject) {
+      document.getElementById('subjectLabel').textContent = subject + ' · Past Lessons';
+      document.title = subject + ' — Past Lessons — Coming Soon';
+    }
+  </script>
+</body>
+</html>
