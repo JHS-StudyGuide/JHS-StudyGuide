@@ -35,26 +35,15 @@ Add your authentication approach here. This may be a client-side solution or int
 
 ---
 
-## 🌐 Deployment (GitHub Pages)
-
-1. Push this repo to GitHub.
-2. Configure GitHub Pages in your repository settings:
-   - Go to **Settings → Pages**
-   - Set **Source** to your deployment branch (typically `main` or `gh-pages`)
-   - Set **folder** to `/ (root)` if deploying from the repo root
-3. Your site will be available at `https://<username>.github.io/<repo-name>/`
-
-### Linking subject pages
-Pages are linked with plain relative paths — no routing config needed:
-```html
-<a href="studyguide-subjects/Economics__AP_.html">Economics Reviewer</a>
-```
-As long as all files are deployed together in the same folder structure, these links resolve correctly.
-
----
-
 ## 📚 Subjects covered
 
-- **Economics (AP)** — Allocation, the three fundamental economic questions, types of products, economic systems, and the historical theories (feudalism, mercantilism, physiocrats, classical, neoclassical, Keynesian) that shaped them.
-- **Geometry (Math)** — Segments, betweenness, midpoints, and the Segment Addition Postulate.
-- **Philippine Literature (FIL)** — A timeline of Philippine literary periods.
+- **AP**
+- **FILIPINO**
+- **MATHEMATICS**
+- **ENGLISH**
+- **TLE**
+- **COMPUTER**
+- **CLF**
+- **PE/H**
+- **SCIENCE**
+- **MUSIC/ARTS**
