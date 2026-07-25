@@ -81,7 +81,7 @@
   /* ---------- Two-column layout: Past Lessons (left) + Subjects (right) ---------- */
   .layout {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 300px minmax(0, 1fr);
     gap: 32px;
     align-items: start;
   }
@@ -226,3 +226,5 @@
   border-left: 2px solid var(--group-accent, var(--steel-bright));
   margin-bottom: 4px;
   }
+
+  .grid { align-content: start; }
