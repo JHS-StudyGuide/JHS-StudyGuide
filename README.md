@@ -104,7 +104,6 @@ When credits run out, **all projects on the account pause** until the next billi
 - **"Page Not Found" after an edit that looks fine on GitHub** → usually a stale browser cache, not a real deploy issue. Hard refresh (`Ctrl+Shift+R` / `Cmd+Shift+R`) or test in an incognito window before assuming something broke.
 - **"Site is not yet configured" message** → `SITE_PASSWORD` isn't set, isn't scoped to Functions, or hasn't been picked up by a redeploy yet.
 - **"Edge function has crashed"** → check **Site → Logs → Edge functions** in the dashboard for the actual stack trace; the generic error message on-screen doesn't show the real cause.
-- **Basic-Auth via `_headers` doing nothing** → this feature now requires a Pro plan; Netlify still reports "header rules processed" even when it can't apply them on Free.
 
 ---
 
