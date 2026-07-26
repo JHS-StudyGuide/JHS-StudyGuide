@@ -11,6 +11,14 @@
     --radius: 6px;
     --metal-grad: linear-gradient(120deg, #151B24 0%, #10141B 100%);
     --metal-line: linear-gradient(90deg, transparent, var(--steel-bright), transparent);
+
+    /* Archive-specific contrast */
+    --archive-text: #DDE5EF;
+    --archive-muted: #A4B0C2;
+    --archive-surface: rgba(255, 255, 255, 0.03);
+    --archive-hover: rgba(127, 168, 204, 0.10);
+    --archive-border: #2A3342;
+    --archive-title-surface: rgba(255, 255, 255, 0.02);
   }
   /* Light mode kept for parity, still cool-toned */
   html.light {
@@ -24,6 +32,14 @@
     --steel-bright: #2C6E9E;
     --shadow: rgba(20,30,45,0.10);
     --metal-grad: linear-gradient(135deg, #FFFFFF 0%, #EEF1F5 45%, #E4E9EF 75%, #FFFFFF 100%);
+
+    /* Archive-specific contrast */
+    --archive-text: #202734;
+    --archive-muted: #5A6678;
+    --archive-surface: rgba(44, 110, 158, 0.05);
+    --archive-hover: rgba(44, 110, 158, 0.10);
+    --archive-border: #CFD6DF;
+    --archive-title-surface: rgba(44, 110, 158, 0.04);
   }
   * { box-sizing: border-box; }
   body {
@@ -121,25 +137,30 @@
     list-style: none;
     display: flex; align-items: center; justify-content: space-between;
     font-family: 'IBM Plex Mono', monospace; font-size: 12.5px;
+    font-weight: 600;
     letter-spacing: 0.03em; text-transform: uppercase;
-    color: var(--group-accent, var(--steel-bright));
+    color: var(--archive-text);
     padding: 8px 10px;
     border-radius: 5px;
-    background: rgba(127,168,204,0.06);
-    border: 1px solid var(--rule);
+    background: var(--archive-surface);
+    border: 1px solid var(--archive-border);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset;
   }
   .lesson-group summary::-webkit-details-marker { display: none; }
   .lesson-group summary::after {
-    content: "+"; font-size: 14px; color: var(--ink-soft); transition: transform 0.15s ease;
+    content: "+"; font-size: 14px; color: var(--archive-muted); transition: transform 0.15s ease;
   }
   .lesson-group[open] summary::after { content: "–"; }
-  .lesson-group summary:hover { border-color: var(--group-accent, var(--steel-bright)); }
+  .lesson-group summary:hover {
+    border-color: var(--group-accent, var(--steel-bright));
+    background: var(--archive-hover);
+  }
 
   .lesson-list { list-style: none; margin: 8px 2px 0; padding: 0; }
   .lesson-list li { margin-bottom: 2px; }
   .lesson-list a {
     display: flex; align-items: baseline; gap: 8px;
-    text-decoration: none; color: var(--ink-soft);
+    text-decoration: none; color: var(--archive-muted);
     font-size: 13.5px; padding: 7px 10px; border-radius: 5px;
     border-left: 2px solid transparent;
     transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
@@ -147,23 +168,27 @@
   .lesson-list a .n {
     font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--group-accent, var(--steel-bright));
     flex: 0 0 auto;
+    font-weight: 600;
   }
   .lesson-list a:hover, .lesson-list a:focus-visible {
-    background: var(--bg-panel); color: var(--ink);
+    background: var(--archive-hover); color: var(--archive-text);
     border-left-color: var(--group-accent, var(--steel-bright));
     outline: none;
   }
   .view-all {
     display: block; margin: 8px 2px 0; padding: 7px 10px;
     font-family: 'IBM Plex Mono', monospace; font-size: 12px;
-    color: var(--group-accent, var(--steel-bright)); text-decoration: none;
-    border-top: 1px dashed var(--rule); padding-top: 10px;
+    color: var(--archive-text); text-decoration: none;
+    border-top: 1px dashed var(--archive-border); padding-top: 10px;
   }
-  .view-all:hover, .view-all:focus-visible { color: var(--ink); outline: none; }
+  .view-all:hover, .view-all:focus-visible {
+    color: var(--group-accent, var(--steel-bright));
+    outline: none;
+  }
 
   .sidebar-note {
-    margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--rule);
-    font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-soft);
+    margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--archive-border);
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--archive-muted);
     line-height: 1.5;
   }
 
@@ -217,13 +242,15 @@
   .module-title {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--ink);
-  opacity: 0.8;
-  padding: 4px 6px;
+  color: var(--archive-text);
+  opacity: 1;
+  padding: 6px 8px;
+  background: var(--archive-title-surface);
   border-left: 2px solid var(--group-accent, var(--steel-bright));
+  border-radius: 4px;
   margin-bottom: 4px;
   }
 
