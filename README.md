@@ -1,4 +1,4 @@
-              
+![Views](https://komarev.com/ghpvc/?username=YOUR-GITHUB-USERNAME&repo=StudyGuide&color=blue&style=flat-square)              
 
 # Study Hub
 
