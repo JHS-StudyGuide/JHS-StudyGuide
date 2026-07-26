@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Services — TLE Study Guide</title>
+<link rel="stylesheet" href="Hotel-Services.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="top-bar">
+  <a class="back" href="../index.html">← Back to Main Hub</a>
+  <span class="label">TLE · Hotel Services Reviewer</span>
+  <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+</header>
+
+<div class="container">
+
+  <nav class="sidebar" aria-label="Section navigation">
+    <h3>Subject Archive</h3>
+    <div class="module-title">TLE: Hotel Services</div>
+    <ul class="module-section">
+      <li><a href="#departments">1. Hotel Departments</a></li>
+      <li><a href="#front-office">— Front Office</a></li>
+      <li><a href="#housekeeping">— Housekeeping</a></li>
+      <li><a href="#fnb">— Food &amp; Beverage</a></li>
+      <li><a href="#sales">— Sales &amp; Marketing</a></li>
+      <li><a href="#engineering">— Engineering &amp; Maintenance</a></li>
+      <li><a href="#hr">— Human Resources</a></li>
+      <li><a href="#security">— Security &amp; Safety</a></li>
+      <li><a href="#types">2. Types of Hotels</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <header class="hero">
+      <div class="eyebrow">TLE · Hotel Services</div>
+      <h1>Hotel Departments &amp; Types</h1>
+      <p class="subtitle">How a hotel is organized behind the scenes, and the five common ownership models you'll see in the industry.</p>
+    </header>
+
+    <section id="departments">
+      <div class="part-head">
+        <h2>1. Hotel Departments</h2>
+        <p>Every hotel splits its work across departments so guests get a seamless stay. Tap a department below to see what it's responsible for.</p>
+      </div>
+
+      <div class="directory">
+        <div class="directory-tabs" id="deptTabs" role="tablist" aria-label="Hotel departments"></div>
+        <div class="directory-panel" id="deptPanel"></div>
+      </div>
+    </section>
+
+    <section id="departments-reference">
+      <div class="part-head">
+        <h2>Full reference</h2>
+        <p>Same content as the directory above, laid out for a quick scan or a final review pass.</p>
+      </div>
+      <div class="dept-grid" id="deptGrid"></div>
+    </section>
+
+    <section id="types">
+      <div class="part-head">
+        <h2>2. Types of Hotels</h2>
+        <p>Hotels are usually classified by who owns them and how they're run.</p>
+      </div>
+      <div class="type-grid">
+        <div class="type-card">
+          <span class="letter">a</span>
+          <h4>Independent Hotels</h4>
+          <p>Privately owned and managed hotels that are not part of a group or brand.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">b</span>
+          <h4>Chain Hotels</h4>
+          <p>Part of a group of hotels under one brand name, often with the same look, feel, and standards.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">c</span>
+          <h4>Franchise Hotels</h4>
+          <p>Owned by an individual or group but operated under a well-known brand name, by paying fees to the brand owner.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">d</span>
+          <h4>Boutique Hotels</h4>
+          <p>Small, stylish, and unique properties known for personalized service and creative design.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">e</span>
+          <h4>Resort Hotels</h4>
+          <p>Usually located in tourist destinations, offering complete vacation experiences.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</div>
+
+<footer class="page-footer">Hotel Services Reviewer · TLE · Study Hub</footer>
+
+<script>
+  /* ---------- Theme toggle ---------- */
+  const body = document.body;
+  const themeBtn = document.getElementById('themeToggle');
+  function applyTheme(t) {
+    if (t === 'light') { body.setAttribute('data-theme', 'light'); }
+    else { body.removeAttribute('data-theme'); }
+  }
+  applyTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  themeBtn.addEventListener('click', () => {
+    applyTheme(body.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  });
+
+  /* ---------- Department data ---------- */
+  const departments = [
+    {
+      id: 'front-office',
+      name: 'Front Office',
+      tag: 'The heart of the hotel',
+      items: [
+        'Welcoming and checking in guests',
+        'Guest assistance during the stay',
+        'Handling reservations',
+        'Maintaining guest records',
+        'Billing and check-out',
+        'Coordinates with the other departments'
+      ]
+    },
+    {
+      id: 'housekeeping',
+      name: 'Housekeeping',
+      tag: 'Keeps the property guest-ready',
+      items: [
+        'Cleaning and preparing guest rooms',
+        'Maintaining public areas',
+        'Managing linens and laundry',
+        'Handling lost and found items',
+        'Stocking and maintaining supplies',
+        'Reporting repairs and safety hazards'
+      ]
+    },
+    {
+      id: 'fnb',
+      name: 'Food & Beverage',
+      tag: 'Runs dining, events, and kitchens',
+      items: [
+        'Planning and preparing menus',
+        'Cooking and food production',
+        'Serving food and beverage',
+        'Managing restaurant and dining areas',
+        'Handling events and banquets',
+        'Monitoring inventory and quality',
+        'Managing food waste'
+      ]
+    },
+    {
+      id: 'sales',
+      name: 'Sales & Marketing',
+      tag: 'Fills the rooms and builds the brand',
+      items: [
+        'Promoting the hotel',
+        'Attracting corporate and group bookings',
+        'Maintaining hotel branding',
+        'Conducting market research',
+        'Working with Online Travel Agencies',
+        'Creating guest packages and promotions'
+      ]
+    },
+    {
+      id: 'engineering',
+      name: 'Engineering & Maintenance',
+      tag: 'Keeps the building running',
+      items: [
+        'Repairing and maintaining hotel facilities',
+        'Managing utilities',
+        'Conducting preventive maintenance',
+        'Assisting guests with technical concerns',
+        'Responding to emergencies',
+        'Supporting facility improvements and renovations'
+      ]
+    },
+    {
+      id: 'hr',
+      name: 'Human Resources',
+      tag: 'Manages the people behind the service',
+      items: [
+        'Managing recruitment',
+        'Organizing training and development',
+        'Keeping employee records and payroll',
+        'Promoting health, safety, and wellness',
+        'Handling conflicts and disciplinary concerns',
+        'Conducting performance evaluations'
+      ]
+    },
+    {
+      id: 'security',
+      name: 'Security & Safety',
+      tag: 'Protects guests, staff, and property',
+      items: [
+        'Maintaining security',
+        'Responding to emergencies',
+        'Managing access and keys',
+        'Protecting guests',
+        'Training staff on safety procedures',
+        'Coordinating with local authorities'
+      ]
+    }
+  ];
+
+  const tabsEl = document.getElementById('deptTabs');
+  const panelEl = document.getElementById('deptPanel');
+  const gridEl = document.getElementById('deptGrid');
+
+  function renderPanel(dept) {
+    panelEl.innerHTML = `
+      <span class="dept-tag">${dept.tag}</span>
+      <h3>${dept.name}</h3>
+      <ul>${dept.items.map(i => `<li>${i}</li>`).join('')}</ul>
+    `;
+  }
+
+  departments.forEach((dept, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = dept.name;
+    btn.setAttribute('role', 'tab');
+    btn.id = 'tab-' + dept.id;
+    if (i === 0) btn.classList.add('active');
+    btn.addEventListener('click', () => {
+      tabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPanel(dept);
+    });
+    tabsEl.appendChild(btn);
+
+    const card = document.createElement('div');
+    card.className = 'dept-card';
+    card.id = dept.id;
+    card.innerHTML = `<h4>${dept.name}</h4><ul>${dept.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+    gridEl.appendChild(card);
+  });
+
+  renderPanel(departments[0]);
+</script>
+
+</body>
+</html>
