@@ -1,8 +1,10 @@
-<html lang="en"><head>
-  <link rel="stylesheet" href="Polygon-Angles.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MATH: Polygons - Study Hub Reviewer</title>
+  <link rel="stylesheet" href="Polygon-Angles.css">
 </head>
 <body>
 
@@ -13,7 +15,6 @@
   </header>
 
   <div class="container">
-    
     <nav class="sidebar">
       <h3>Subject Archive</h3>
       <div class="module-title">MATH: Geometry</div>
@@ -140,7 +141,7 @@
       <div id="interactive" class="interactive-card">
         <h2>Interactive Polygon Explorer</h2>
         <p>Adjust the slider below to change the number of sides (s) and see how polygon properties scale dynamically in real time!</p>
-        
+
         <div class="slider-container">
           <label for="sideSlider"><strong>Number of Sides (s): <span id="sideDisplay">8</span> (<span id="polygonName">Octagon</span>)</strong></label>
           <input type="range" id="sideSlider" min="3" max="20" value="8" oninput="updatePolygon(this.value)">
@@ -165,12 +166,10 @@
           </div>
         </div>
       </div>
-
     </main>
   </div>
 
   <script>
-    // Theme Toggle Logic
     function toggleTheme() {
       const body = document.body;
       const currentTheme = body.getAttribute("data-theme");
@@ -181,7 +180,6 @@
       }
     }
 
-    // Polygon Names Dictionary
     const polygonNames = {
       3: "Triangle", 4: "Quadrilateral", 5: "Pentagon", 6: "Hexagon",
       7: "Heptagon", 8: "Octagon", 9: "Nonagon", 10: "Decagon",
@@ -190,19 +188,16 @@
       19: "Enneadecagon or 19-gon", 20: "Icosagon or 20-gon"
     };
 
-    // Interactive Slider Logic
     function updatePolygon(sides) {
       const s = parseInt(sides);
       document.getElementById("sideDisplay").innerText = s;
       document.getElementById("polygonName").innerText = polygonNames[s] || `${s}-gon`;
 
-      // Calculations
       const diagonals = (s * (s - 3)) / 2;
       const intSum = (s - 2) * 180;
       const intSingle = (intSum / s).toFixed(1);
       const extSingle = (360 / s).toFixed(1);
 
-      // DOM Updates
       document.getElementById("valDiagonals").innerText = diagonals;
       document.getElementById("valIntSum").innerText = `${intSum}°`;
       document.getElementById("valIntSingle").innerText = `${intSingle.replace('.0', '')}°`;
@@ -210,4 +205,5 @@
     }
   </script>
 
-</body></html>
+</body>
+</html>
