@@ -1,5 +1,4 @@
-![Views](https://komarev.com/ghpvc/?username=YOUR-GITHUB-USERNAME&repo=StudyGuide&color=blue&style=flat-square)              
-
+           
 # Study Hub
 
 A private, multi-subject study reviewer site — Math, AP, Filipino, Science, TLE, English, CLF, PE/H, M/A, Computer — served as static HTML pages from a single hub, deployed on GitHub Pages, **AND** *(soon to be gated behind a password so only people you share the password with can access it)*
