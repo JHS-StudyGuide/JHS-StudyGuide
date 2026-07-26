@@ -242,3 +242,85 @@
         position: static;
       }
     }
+  html {
+  scroll-behavior: smooth;
+}
+section,
+.interactive-card {
+  scroll-margin-top: 90px;
+}
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--bg-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 20px;
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+}
+
+.sidebar h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--steel);
+  margin-bottom: 12px;
+}
+
+.module-title {
+  font-weight: 700;
+  margin: 18px 0 10px;
+  color: var(--ink);
+}
+
+.module-section {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.module-section li {
+  margin: 4px 0;
+}
+
+.module-section a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--ink-secondary);
+  border-left: 3px solid transparent;
+  transition:
+    color .25s ease,
+    background-color .25s ease,
+    border-color .25s ease,
+    padding-left .25s ease;
+}
+
+.module-section a:hover {
+  color: var(--card-accent);
+  background: rgba(96, 165, 250, 0.08);
+  border-left-color: var(--card-accent);
+  padding-left: 18px;
+}
+.module-section a {
+  position: relative;
+  overflow: hidden;
+}
+
+.module-section a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--card-accent);
+  transform: scaleY(0);
+  transition: transform .25s ease;
+}
+
+.module-section a:hover::before {
+  transform: scaleY(1);
+}

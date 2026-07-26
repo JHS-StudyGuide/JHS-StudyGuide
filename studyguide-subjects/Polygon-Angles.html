@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
   <link rel="stylesheet" href="Polygon-Angles.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +9,7 @@
   <header class="top-bar">
     <a href="../index.html">← Back to Main Hub</a>
     <span>MATH: Geometry Reviewer</span>
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Light Mode</button>
+    <button class="theme-toggle" onclick="toggleTheme()">☀</button>
   </header>
 
   <div class="container">
@@ -23,8 +21,9 @@
         <li><a href="#classification">1. Classification</a></li>
         <li><a href="#diagonals">2. Diagonals Formula</a></li>
         <li><a href="#angles">3. Angle Relationships</a></li>
-        <li><a href="#area">4. Area & Apothem</a></li>
+        <li><a href="#area">4. Area &amp; Apothem</a></li>
         <li><a href="#applications">5. Real-Life Applications</a></li>
+        <li><a href="#formulasall">6. Formula Table</a></li>
         <li><a href="#interactive">Interactive Explorer</a></li>
       </ul>
     </nav>
@@ -34,11 +33,19 @@
       <div class="subtitle">Comprehensive overview of polygon properties, diagonals, angle relationships, and biological applications.</div>
 
       <section id="classification">
-        <h2>1. Definition & Classification</h2>
+        <h2>1. Definitions &amp; Classifications</h2>
         <p>A polygon is a closed two-dimensional geometric figure formed by a finite number of straight line segments connected end-to-end. Polygons can be broadly classified by their angle configurations:</p>
         <ul>
           <li><strong>Convex Polygons:</strong> No interior angle is greater than 180°, and all diagonals lie entirely inside the figure.</li>
           <li><strong>Concave Polygons:</strong> At least one interior angle is strictly greater than 180°, causing at least one diagonal or line segment between internal points to pass outside the figure's boundary.</li>
+          <li><strong>Equilateral Polygon:</strong> All sides of the polygon are congruent or equal.</li>
+          <li><strong>Equiangular Polygon:</strong> All angles of the polygon are congruent or equal.</li>
+          <li><strong>Regular Polygon:</strong> The polygon is convex, equilateral, and equiangular.</li>
+          <li><strong>Irregular Polygon:</strong> The polygon is missing one or more properties of a regular polygon.</li>
+          <li><strong>Vertex:</strong> The intersection of two adjacent sides/lines of a polygon.</li>
+          <li><strong>Interior Angles:</strong> The adjacent lines of a polygon forming an angle which reside inside the lines of said polygon.</li>
+          <li><strong>Exterior Angles:</strong> The adjacent lines of a polygon forming an angle which reside inside the lines of said polygon.</li>
+          <li><strong>Diagonals:</strong> A line within the walls of a polygon touching two non-consecutive vertexes.</li>
         </ul>
       </section>
 
@@ -49,17 +56,17 @@
         <p>To find the total number of unique diagonals (d) across the entire s-sided polygon without exhaustive drawing, we account for every vertex and divide by 2 (to prevent double-counting):</p>
         <div class="formula-box">d = [s(s - 3)] / 2</div>
         <p><strong>Example (Octagon, s = 8):</strong> d = [8(8 - 3)] / 2 = (8 × 5) / 2 = 20 total diagonals.</p>
-        <p><strong>Algebraic Decoding:</strong> If a polygon has d = 54 diagonals, solve for s using quadratic equations: 54 = [s(s - 3)] / 2 &Rightarrow; 108 = s² - 3s &Rightarrow; s² - 3s - 108 = 0. Factoring yields (s - 12)(s + 9) = 0, meaning the polygon has 12 sides.</p>
+        <p><strong>Algebraic Decoding:</strong> If a polygon has d = 54 diagonals, solve for s using quadratic equations: 54 = [s(s - 3)] / 2 ⇒ 108 = s² - 3s ⇒ s² - 3s - 108 = 0. Factoring yields (s - 12)(s + 9) = 0, meaning the polygon has 12 sides.</p>
       </section>
 
       <section id="angles">
-        <h2>3. Interior & Exterior Angle Relationships</h2>
+        <h2>3. Interior &amp; Exterior Angle Relationships</h2>
         <p><strong>Interior Angles Sum Theorem:</strong> Any s-sided polygon can be partitioned into exactly (s - 2) internal triangles from a single vertex. Since each triangle contributes 180°, the total interior angle sum (S<sub>i</sub>) depends solely on side count:</p>
         <div class="formula-box">S<sub>i</sub> = (s - 2) × 180°</div>
-        <p>In a <strong>regular polygon</strong> (where all sides and angles are equal), each individual interior angle is divided equally among all vertices: <code>m&angle;<sub>i</sub> = [(s - 2) × 180°] / s</code>.</p>
+        <p>In a <strong>regular polygon</strong> (where all sides and angles are equal), each individual interior angle is divided equally among all vertices: <code>m∠<sub>i</sub> = [(s - 2) × 180°] / s</code>.</p>
         <p><strong>Sum of Exterior Angles Invariance:</strong> Regardless of how complex, large, or concave a polygon is, the sum of its exterior angles (one per vertex) is strictly invariant and always completes a full rotation:</p>
         <div class="formula-box">Sum of Exterior Angles = 360°</div>
-        <p>In a regular polygon, each exterior angle is simply: <code>m&angle;<sub>e</sub> = 360° / s</code>. Furthermore, at any given vertex, the interior and exterior angles are supplementary: <code>m&angle;<sub>i</sub> + m&angle;<sub>e</sub> = 180°</code>.</p>
+        <p>In a regular polygon, each exterior angle is simply: <code>m∠<sub>e</sub> = 360° / s</code>. Furthermore, at any given vertex, the interior and exterior angles are supplementary: <code>m∠<sub>i</sub> + m∠<sub>e</sub> = 180°</code>.</p>
       </section>
 
       <section id="area">
@@ -71,14 +78,14 @@
       </section>
 
       <section id="applications">
-        <h2>5. Real-Life Applications: Nature & Biology</h2>
+        <h2>5. Real-Life Applications: Nature &amp; Biology</h2>
         <p>Abstract geometric properties frequently manifest as structural adaptations in biology and natural architecture. A primary example is the compound eye of a housefly, which is packed with microscopic corneal lenses called facets.</p>
         <p>Each facet is shaped as a regular hexagon (s = 6). Applying our interior angle formula demonstrates why this shape tiles so efficiently without wasted interstitial space:</p>
-        <div class="formula-box">m&angle;<sub>i</sub> = [(6 - 2) × 180°] / 6 = (4 × 180°) / 6 = 120°</div>
+        <div class="formula-box">m∠<sub>i</sub> = [(6 - 2) × 180°] / 6 = (4 × 180°) / 6 = 120°</div>
         <p>Because three hexagonal vertices meet perfectly at a point (120° × 3 = 360°), hexagons provide optimal mechanical stability and surface area maximization in biological structures.</p>
       </section>
 
-      <section>
+      <section id="formulasall">
         <h2>6. Comprehensive Formulas Reference Table</h2>
         <div class="table-wrapper">
           <table>
@@ -107,7 +114,7 @@
               </tr>
               <tr>
                 <td>Each Interior Angle (Regular)</td>
-                <td><code>m&angle;<sub>i</sub> = [(s - 2) × 180°] / s</code></td>
+                <td><code>m∠<sub>i</sub> = [(s - 2) × 180°] / s</code></td>
                 <td>Equal division of total interior angle sum over all sides.</td>
               </tr>
               <tr>
@@ -117,7 +124,7 @@
               </tr>
               <tr>
                 <td>Each Exterior Angle (Regular)</td>
-                <td><code>m&angle;<sub>e</sub> = 360° / s</code></td>
+                <td><code>m∠<sub>e</sub> = 360° / s</code></td>
                 <td>Equal division of full 360° rotation by number of sides.</td>
               </tr>
               <tr>
@@ -149,11 +156,11 @@
             <div id="valIntSum" class="stat-value">1080°</div>
           </div>
           <div class="stat-box">
-            <div>Each Interior &angle; (Regular)</div>
+            <div>Each Interior ∠ (Regular)</div>
             <div id="valIntSingle" class="stat-value">135°</div>
           </div>
           <div class="stat-box">
-            <div>Each Exterior &angle; (Regular)</div>
+            <div>Each Exterior ∠ (Regular)</div>
             <div id="valExtSingle" class="stat-value">45°</div>
           </div>
         </div>
@@ -178,9 +185,9 @@
     const polygonNames = {
       3: "Triangle", 4: "Quadrilateral", 5: "Pentagon", 6: "Hexagon",
       7: "Heptagon", 8: "Octagon", 9: "Nonagon", 10: "Decagon",
-      11: "Hendecagon", 12: "Dodecagon", 13: "Tridecagon", 14: "Tetradecagon",
-      15: "Pentadecagon", 16: "Hexadecagon", 17: "Heptadecagon", 18: "Octadecagon",
-      19: "Enneadecagon", 20: "Icosagon"
+      11: "Hendecagon", 12: "Dodecagon", 13: "Tridecagon or 13-gon", 14: "Tetradecagon or 14-gon",
+      15: "Pentadecagon or 15-gon", 16: "Hexadecagon or 16-gon", 17: "Heptadecagon or 17-gon", 18: "Octadecagon or 18-gon",
+      19: "Enneadecagon or 19-gon", 20: "Icosagon or 20-gon"
     };
 
     // Interactive Slider Logic
@@ -201,7 +208,6 @@
       document.getElementById("valIntSingle").innerText = `${intSingle.replace('.0', '')}°`;
       document.getElementById("valExtSingle").innerText = `${extSingle.replace('.0', '')}°`;
     }
-    
   </script>
-</body>
-</html>
+
+</body></html>
