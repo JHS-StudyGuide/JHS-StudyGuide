@@ -368,3 +368,107 @@
         font-size: 0.98rem;
       }
     }
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+}
+
+* {
+    max-width: 100%;
+}
+.container,
+.content,
+.sidebar,
+section,
+.directory,
+.dept-card,
+.type-card {
+    min-width: 0;
+}
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column;
+        padding: 14px;
+        gap: 16px;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: static;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+    }
+
+    .directory {
+        padding: 14px;
+    }
+
+    .dept-grid,
+    .type-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .directory-tabs {
+        justify-content: center;
+    }
+
+    .directory-tabs button {
+        flex: 1 1 45%;
+        text-align: center;
+    }
+
+    .top-bar {
+        padding: 10px 14px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .theme-toggle {
+        width: 100%;
+    }
+
+}
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    min-width: 600px;
+}
+body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+h1,
+h2,
+h3,
+p,
+li,
+td,
+th {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
