@@ -28,11 +28,23 @@
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    background: var(--bg);
+    background-color: var(--bg);
+    background-image: url("assets/bg-dark.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: cover;
+    background-attachment: fixed;
     color: var(--ink);
     font-family: 'Source Serif 4', Georgia, serif;
     line-height: 1.6;
-    transition: background 0.25s ease, color 0.25s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  html.light body {
+    background-image: url("assets/bg-light.png");
+  }
+  /* Fixed backgrounds can be janky/heavy on mobile browsers — let it scroll with the page instead */
+  @media (max-width: 860px) {
+    body { background-attachment: scroll; }
   }
   h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
 
@@ -228,23 +240,3 @@
   }
 
   .grid { align-content: start; }
-
-  /* ---------------------------------------------------------------------
-     THEME-AWARE ACCENT FIXES — Math (yellow) & Filipino (blue)
-     Neither base brand color is changed. Each keeps its original hex in
-     the mode where it already reads fine; only the OTHER mode gets an
-     override so the label/border is never invisible.
-     --------------------------------------------------------------------- */
-
-  /* MATH — #FDFF00 is fine on the dark background (default), but nearly
-     invisible on the light background, so light mode gets a deeper gold
-     that still reads as "yellow," not a random new hue. */
-  .subj-math { --group-accent: #FDFF00; --card-accent: #FDFF00; }
-  html.light .subj-math { --group-accent: #8A6D00; --card-accent: #8A6D00; }
-
-  /* FILIPINO — #0000FF is fine on the light background (default light-mode
-     override below just restates it for clarity), but pure blue on the
-     near-black dark background loses almost all contrast, so dark mode
-     (the default, unswitched state) gets a lighter blue instead. */
-  .subj-fil { --group-accent: #5B7CFA; --card-accent: #5B7CFA; }
-  html.light .subj-fil { --group-accent: #0000FF; --card-accent: #0000FF; }
