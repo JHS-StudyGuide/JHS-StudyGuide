@@ -1,4 +1,4 @@
-:root {
+    :root {
       --bg: #0f172a;
       --bg-raised: #1e293b;
       --ink: #f8fafc;
@@ -29,6 +29,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 96px;
     }
 
     body {
@@ -174,6 +175,10 @@
       padding: 24px;
       margin-bottom: 24px;
       box-shadow: 0 1px 2px var(--shadow);
+    }
+
+    [id] {
+      scroll-margin-top: 96px;
     }
 
     h1 {
