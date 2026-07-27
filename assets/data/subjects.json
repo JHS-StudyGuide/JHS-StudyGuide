@@ -239,10 +239,12 @@
         {
           "title": "Books of the Bible",
           "lessons": [
-            { "label": "Categories of the Bible", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "How to read during readings", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Old Testament divisions", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "New Testament divisions", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+            { "label": "The Bible", "href": "studyguide-subjects/CLF/CLFBooksofthebible.html#overview" },
+            { "label": "Categories of the Bible", "href": "studyguide-subjects/CLF/CLFBooksofthebible.html#categories" },
+            { "label": "How to read during readings", "href": "studyguide-subjects/CLF/CLFBooksofthebible.html#reading" },
+            { "label": "The 2 Major Divisions", "href": "studyguide-subjects/CLF/CLFBooksofthebible.html#division" },
+            { "label": "Old Testament", "href": "studyguide-subjects/CLF/CLFBooksofthebible.html#oldtest" },
+            { "label": "New Testament", "href": "studyguide-subjects/CLF/CLFBooksofthebible.html#newtest" }
           ]
         },
         {
