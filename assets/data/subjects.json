@@ -61,6 +61,20 @@
             { "label": "Types of products", "href": "studyguide-subjects/AP/Economics__AP_.html" },
             { "label": "Economic systems & theories", "href": "studyguide-subjects/AP/Economics__AP_.html" }
           ]
+        },
+
+        {
+          "title": "Produksyon",
+          "lessons": [
+            { "label": "Overview", "href": "studyguide-subjects/AP/Produksyon.htm#overview" },
+            { "label": "Production", "href": "studyguide-subjects/AP/Produksyon.html#production" },
+            { "label": "Entrepreneurship", "href": "studyguide-subjects/AP/Produksyon.html#entrepreneurship" },
+            { "label": "Characteristics of Successful Entrepreneurs", "href": "studyguide-subjects/AP/Produksyon.html#traits" },
+            { "label": "Types of Business Organizations", "href": "studyguide-subjects/AP/Produksyon.html#organizations" },
+            { "label": "Cooperatives", "href": "studyguide-subjects/AP/Produksyon.html#cooperatives" },
+            { "label": "CDA", "href": "studyguide-subjects/AP/Produksyon.html#cda" },
+            { "label": "Lesson Insights", "href": "studyguide-subjects/AP/Produksyon.html#lessons-insights" }
+          ]
         }
       ],
       "viewAllLabel": "View all AP lessons →",
@@ -160,6 +174,7 @@
             { "label": "Film Genres", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
           ]
         }
+
       ],
       "viewAllLabel": "View all Computer lessons →",
       "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
@@ -246,6 +261,23 @@
       ],
       "viewAllLabel": "View all CLF lessons →",
       "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    },
+       {
+      "id": "test",
+      "label": "TESTING PLEASE IGNORE",
+      "accentColor": "#FF001B",
+      "modules": [
+        {
+          "title": "Testing Branch",
+          "lessons": [
+            { "label": "Test 1", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Test 2", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Test 3", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Test 4", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Test 5", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+          ]
+        }
+      ]
     }
   ]
 }
