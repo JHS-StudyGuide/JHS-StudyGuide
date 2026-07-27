@@ -32,30 +32,32 @@
         <h2>1. Labratory Apparatuses/Equipment</h2>
         <p>These are equipment, usually glassware or plastic, which are used for experiments and testing while inside the labratory.</p>
         <ol>
-        <li> <strong><i>Test Tube Brush: </strong></i>Apparatus used to clean out test tubes easily without breaking them.</li>
-        <li> <strong><i>Erlenmyer Flask: </strong></i>Used to hold liquids to be easily heated. Usually used for liquids that release gas/spatter</li>
-        <li> <strong><i>Forceps/Tweezers: </strong></i>Handheld instrument used to grip, hold, and manipulate objects. There are two types of tweezers, being bent lips and straight lips.</li>
-        <li> <strong><i>Beakers: </strong></i>Used to mix, pour, heat, and cool liquids. Not used for measuring liquids.</li>
-        <li> <strong><i>Ring Stand: </strong></i>Used to hold other apparatus in place, especially useful when heating.</li>
-        <li> <strong><i>Extension Clamp: </strong></i>Used to secure and extend certain apparatus like the ring stand.</li>
-        <li> <strong><i>Graduated Cylinder: </strong></i>Like a test tube, used to measure amounts of liquids.</li>
-        <li> <strong><i>Test Tube: </strong></i>A small cylinder glass apparatus used to hold and observe small liquids.</li>
-        <li> <strong><i>Medicine Dropper: </strong></i>Used to drop very small amounts of liquid.</li>
-        <li> <strong><i>Spatula: </strong></i>Used to transfer, mix, and handle small amounts of solid/paste like chemicals.</li>
-        <li> <strong><i>Stirring Rod: </strong></i>Glass, cylindrical rod used to mix liquids.</li>
-        <li> <strong><i>Funnel: </strong></i>Conical-shaped, usually plastic material used to channel liquids/powder into other apparatus.</li>
-        <li> <strong><i>Thermometer: </strong></i>Used to measure the temperature of liquids and solids.</li>
-        <li> <strong><i>Mortar and Pestle: </strong></i>Apparatus used to grind, crush, and mix chemicals.</li>
-        <li> <strong><i>Watch Glass: </strong></i>Covers beakers to stop gasses from releasing. Has a small dip in the middle.</li>
-        <li> <strong><i>pH Meter: </strong></i>Small strip when dipped in liquids shows the alkalinity/acidity of the liquid.</li>
-        <li> <strong><i>Bunsen Burner: </strong></i>An open glass flame used to heat chemicals and apparatus.</li>
-        <li> <strong><i>Wire Gauze: </strong></i>Supports glass in heating to slow down the heating proccess.</li>
-        <li> <strong><i>Tripod Stand: </strong></i>Three legged stand to support apparatus.</li>
-        <li> <strong><i>Burette: </strong></i>Glassware used for measuring and dropping small amounts of liquid.</li>
+        <li> <strong><i>Test Tube Brush: </i></strong>Apparatus used to clean out test tubes easily without breaking them.</li>
+        <li> <strong><i>Erlenmyer Flask: </i></strong>Used to hold liquids to be easily heated. Usually used for liquids that release gas/spatter</li>
+        <li> <strong><i>Forceps/Tweezers: </i></strong>Handheld instrument used to grip, hold, and manipulate objects. There are two types of tweezers, being bent lips and straight lips.</li>
+        <li> <strong><i>Beakers: </i></strong>Used to mix, pour, heat, and cool liquids. Not used for measuring liquids.</li>
+        <li> <strong><i>Ring Stand: </i></strong>Used to hold other apparatus in place, especially useful when heating.</li>
+        <li> <strong><i>Extension Clamp: </i></strong>Used to secure and extend certain apparatus like the ring stand.</li>
+        <li> <strong><i>Graduated Cylinder: </i></strong>Like a test tube, used to measure amounts of liquids.</li>
+        <li> <strong><i>Test Tube: </i></strong>A small cylinder glass apparatus used to hold and observe small liquids.</li>
+        <li> <strong><i>Medicine Dropper: </i></strong>Used to drop very small amounts of liquid.</li>
+        <li> <strong><i>Spatula: </i></strong>Used to transfer, mix, and handle small amounts of solid/paste like chemicals.</li>
+        <li> <strong><i>Stirring Rod: </i></strong>Glass, cylindrical rod used to mix liquids.</li>
+        <li> <strong><i>Funnel: </i></strong>Conical-shaped, usually plastic material used to channel liquids/powder into other apparatus.</li>
+        <li> <strong><i>Thermometer: </i></strong>Used to measure the temperature of liquids and solids.</li>
+        <li> <strong><i>Mortar and Pestle: </i></strong>Apparatus used to grind, crush, and mix chemicals.</li>
+        <li> <strong><i>Watch Glass: </i></strong>Covers beakers to stop gasses from releasing. Has a small dip in the middle.</li>
+        <li> <strong><i>pH Meter: </i></strong>Small strip when dipped in liquids shows the alkalinity/acidity of the liquid.</li>
+        <li> <strong><i>Bunsen Burner: </i></strong>An open glass flame used to heat chemicals and apparatus.</li>
+        <li> <strong><i>Wire Gauze: </i></strong>Supports glass in heating to slow down the heating proccess.</li>
+        <li> <strong><i>Tripod Stand: </i></strong>Three legged stand to support apparatus.</li>
+        <li> <strong><i>Burette: </i></strong>Glassware used for measuring and dropping small amounts of liquid.</li>
+        </ol>
       </section>
 
       <section id="labrules">
         <h2>2. Labratory Rules</h2>
+        <ul>
         <li> Wear proper personal equipment. (Lab coat, gloves, face mask, and goggles.) </li>
         <li> Use chemicals properly and carefully. </li>
         <li> For waste disposal, dispose all trash (Solids and liquids) in the proper bins. </li>
@@ -66,6 +68,7 @@
         <li> Once a chemical of any kind spills, avoid the chemicals and wrap it or wait for personnel to clean it. </li>
         <li> Strictly no foods or drinks in the labratory unless apart of the experiment. </li>
         <li> Know proper ethical behaviour <i>ESPECIALLY</i> during experiments. </li>
+        </ul>
       </section>
 
       <section id="scientist">
@@ -90,9 +93,22 @@
         <p>Dmitri wrote the periodic table in 1869 while writing a textbook, writing all 63 elements on a card and arranged them until a reoccurring pattern had emerged, arranging elements by Atomic mass and chemical behaviors in vertical columns, and repeating patterns in horizontal rows. Because of gaps in the grid, he accurately predicted the existence, atomic weights, and chemical properties of three undiscovered elements: gallium, scandium, and germanium.</p>
       </section>
 
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.getAttribute("data-theme");
+      if (currentTheme === "light") {
+        body.removeAttribute("data-theme");
+      } else {
+        body.setAttribute("data-theme", "light");
+      }
+    }
+  </script>
+
+  <script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+
 </body>
-
-<script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-
 </html>
