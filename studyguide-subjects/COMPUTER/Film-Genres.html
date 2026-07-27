@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Film Genres — Study Guide Reviewer</title>
+<link rel="stylesheet" href="Film-Genres.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="top-bar">
+  <a class="back" href="../../index.html">← Back to Main Hub</a>
+  <span class="label">Computer · Film Genres Reviewer</span>
+  <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+</header>
+
+<div class="container">
+
+  <nav class="sidebar" aria-label="Section navigation">
+    <h3>Subject Archive</h3>
+    <div class="module-title">Computer: Film Genres</div>
+    <ul class="module-section">
+      <li><a href="#overview">1. Overview</a></li>
+      <li><a href="#why-matters" onclick="selectGroup('creators')">— For Creators</a></li>
+      <li><a href="#why-matters" onclick="selectGroup('viewers')">— For Viewers</a></li>
+      <li><a href="#why-matters" onclick="selectGroup('tech')">— For Technology</a></li>
+      <li><a href="#types">2. Types of Genres</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <header class="hero">
+      <div class="eyebrow">Computer · Film Genres</div>
+      <h1>Film Genres &amp; Types</h1>
+      <p class="subtitle">What a film genre is, why genres matter, and a quick-reference guide to the ten most common types.</p>
+    </header>
+
+    <section id="overview">
+      <div class="part-head">
+        <h2>1. What Is a Film Genre?</h2>
+        <p>A category or type of movie built around a specific style, theme, or set of characteristics — it tells you upfront what kind of story or emotion to expect.</p>
+      </div>
+      <div class="definition-box">
+        A film genre groups movies that share similar storytelling patterns, tone, or subject matter (think: chases and explosions for Action, or jump-scares for Horror). Genres exist because they're useful — for the people making films, the people watching them, and the systems that sort them.
+      </div>
+    </section>
+
+    <section id="why-matters">
+      <div class="part-head">
+        <h2>Why Genres Matter</h2>
+        <p>Genres are important because they help everyone involved in making, watching, and organizing movies. Tap a group below to see how each one relies on genre.</p>
+      </div>
+
+      <div class="directory">
+        <div class="directory-tabs" id="deptTabs" role="tablist" aria-label="Who genres matter for"></div>
+        <div class="directory-panel" id="deptPanel"></div>
+      </div>
+    </section>
+
+    <section id="departments-reference">
+      <div class="part-head">
+        <h2>Full reference</h2>
+        <p>Same content as above, laid out for a quick scan or a final review pass.</p>
+      </div>
+      <div class="dept-grid" id="deptGrid" style="display:grid; grid-template-columns:1fr 1fr; gap:14px;"></div>
+    </section>
+
+    <section id="types">
+      <div class="part-head">
+        <h2>2. Types of Genres</h2>
+        <p>Ten genres you'll see referenced most often, with the one-line giveaway that identifies each.</p>
+      </div>
+      <div class="type-grid">
+        <div class="type-card">
+          <h4>Action</h4>
+          <p>Fast-paced, with stunts, chases, and explosions.</p>
+        </div>
+        <div class="type-card">
+          <h4>Comedy</h4>
+          <p>Built to make the audience laugh through jokes or silly situations.</p>
+        </div>
+        <div class="type-card">
+          <h4>Drama</h4>
+          <p>Realistic, character-driven emotional stories.</p>
+        </div>
+        <div class="type-card">
+          <h4>Horror</h4>
+          <p>Designed to scare or shock with suspense, monsters, or ghosts.</p>
+        </div>
+        <div class="type-card">
+          <h4>Sci-Fi</h4>
+          <p>Futuristic tech, space, aliens, or time travel.</p>
+        </div>
+        <div class="type-card">
+          <h4>Fantasy</h4>
+          <p>Magical worlds, mythical creatures, imaginary settings.</p>
+        </div>
+        <div class="type-card">
+          <h4>Romance</h4>
+          <p>Centers on love stories and relationships.</p>
+        </div>
+        <div class="type-card">
+          <h4>Adventure</h4>
+          <p>Exciting journeys or quests, often in exotic locations.</p>
+        </div>
+        <div class="type-card">
+          <h4>Documentary</h4>
+          <p>Non-fiction — real events, people, or facts.</p>
+        </div>
+        <div class="type-card">
+          <h4>Musical</h4>
+          <p>Characters express emotion through songs and dance.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</div>
+
+<footer class="page-footer">Film Genres Reviewer · Computer · Study Hub</footer>
+
+<script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<script>
+  /* ---------- Theme toggle ---------- */
+  const body = document.body;
+  const themeBtn = document.getElementById('themeToggle');
+  function applyTheme(t) {
+    if (t === 'light') { body.setAttribute('data-theme', 'light'); }
+    else { body.removeAttribute('data-theme'); }
+  }
+  applyTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  themeBtn.addEventListener('click', () => {
+    applyTheme(body.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  });
+
+  /* ---------- "Why genres matter" data ---------- */
+  const groups = [
+    {
+      id: 'creators',
+      name: 'Creators',
+      tag: 'Directors, writers, editors',
+      items: [
+        'Decide the style, tone, and mood of a film',
+        'Guide what kind of camera shots to use',
+        'Guide the choice of music and score',
+        'Guide what special effects fit the story'
+      ]
+    },
+    {
+      id: 'viewers',
+      name: 'Viewers',
+      tag: 'The audience',
+      items: [
+        'Help you choose what kind of movie you feel like watching',
+        'Set expectations for the emotions ahead',
+        'Set expectations for the kind of story ahead'
+      ]
+    },
+    {
+      id: 'tech',
+      name: 'Technology',
+      tag: 'Streaming platforms',
+      items: [
+        'Netflix, YouTube, and Disney+ use genres to sort content',
+        'Genres and metadata power AI recommendations',
+        'Suggests movies you\u2019re likely to enjoy next'
+      ]
+    }
+  ];
+
+  const tabsEl = document.getElementById('deptTabs');
+  const panelEl = document.getElementById('deptPanel');
+  const gridEl = document.getElementById('deptGrid');
+
+  function renderPanel(group) {
+    panelEl.innerHTML = `
+      <span class="dept-tag">${group.tag}</span>
+      <h3>${group.name}</h3>
+      <ul>${group.items.map(i => `<li>${i}</li>`).join('')}</ul>
+    `;
+  }
+
+  groups.forEach((group, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = group.name;
+    btn.setAttribute('role', 'tab');
+    btn.id = 'tab-' + group.id;
+    if (i === 0) btn.classList.add('active');
+    btn.addEventListener('click', () => {
+      tabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPanel(group);
+    });
+    tabsEl.appendChild(btn);
+
+    const card = document.createElement('div');
+    card.className = 'dept-card';
+    card.id = group.id;
+    card.innerHTML = `<h4>${group.name}</h4><ul>${group.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+    gridEl.appendChild(card);
+  });
+
+  renderPanel(groups[0]);
+
+  /* ---------- Jump-to-tab helper for sidebar links ---------- */
+  function selectGroup(id) {
+    const btn = document.getElementById('tab-' + id);
+    const group = groups.find(g => g.id === id);
+    if (!btn || !group) return;
+    tabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPanel(group);
+  }
+</script>
+
+</body>
+</html>

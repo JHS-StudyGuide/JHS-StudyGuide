@@ -170,8 +170,17 @@
         {
           "title": "Films & Film Genres",
           "lessons": [
-            { "label": "History of Films", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Film Genres", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+            { "label": "Overview", "href": "studyguide-subjects/COMPUTER/Film-Genres.html#overview" },
+            { "label": "Types of Genres", "href": "studyguide-subjects/COMPUTER/Film-Genres.html#types" }
+          ]
+        },
+
+        {
+          "title": "Resolutions, FPS, and Video Quality",
+          "lessons": [
+            { "label": "Resolution", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "FPS", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Video Quality", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
           ]
         }
 
