@@ -247,7 +247,7 @@
       ],
       "viewAllLabel": "View all CLF lessons →",
       "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
-    }
+    },
        {
       "id": "test",
       "label": "TESTING PLEASE IGNORE",
@@ -262,7 +262,7 @@
             { "label": "Test 4", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
             { "label": "Test 5", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
           ]
-        },
+        }
       ]
     }
   ]
