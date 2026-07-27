@@ -61,6 +61,20 @@
             { "label": "Types of products", "href": "studyguide-subjects/AP/Economics__AP_.html" },
             { "label": "Economic systems & theories", "href": "studyguide-subjects/AP/Economics__AP_.html" }
           ]
+        },
+
+        {
+          "title": "Produksyon",
+          "lessons": [
+            { "label": "Overview", "href": "studyguide-subjects/AP/Produksyon.htm#overview" },
+            { "label": "Production", "href": "studyguide-subjects/AP/Produksyon.html#production" },
+            { "label": "Entrepreneurship", "href": "studyguide-subjects/AP/Produksyon.html#entrepreneurship" },
+            { "label": "Characteristics of Successful Entrepreneurs", "href": "studyguide-subjects/AP/Produksyon.html#traits" },
+            { "label": "Types of Business Organizations", "href": "studyguide-subjects/AP/Produksyon.html#organizations" },
+            { "label": "Cooperatives", "href": "studyguide-subjects/AP/Produksyon.html#cooperatives" },
+            { "label": "CDA", "href": "studyguide-subjects/AP/Produksyon.html#cda" },
+            { "label": "Lesson Insights", "href": "studyguide-subjects/AP/Produksyon.html#lessons-insights" }
+          ]
         }
       ],
       "viewAllLabel": "View all AP lessons →",
