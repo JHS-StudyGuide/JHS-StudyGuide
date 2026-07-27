@@ -1,0 +1,251 @@
+{
+  "subjects": [
+    {
+      "id": "math",
+      "label": "MATH",
+      "accentClass": "subj-math",
+      "modules": [
+        {
+          "title": "Geometry",
+          "lessons": [
+            { "label": "Point, line & plane", "href": "studyguide-subjects/MATH/Geometry__Math_.html#points" },
+            { "label": "Segments & betweenness", "href": "studyguide-subjects/MATH/Geometry__Math_.html#subsets" },
+            { "label": "Segment Addition & midpoints", "href": "studyguide-subjects/MATH/Geometry__Math_.html#addition" },
+            { "label": "Angles & angle pairs", "href": "studyguide-subjects/MATH/Geometry__Math_.html#anglebasics" }
+          ]
+        },
+        {
+          "title": "Polygons",
+          "lessons": [
+            { "label": "Classifying polygons", "href": "studyguide-subjects/MATH/Polygon-Angles.html#classification" },
+            { "label": "Diagonals Equation", "href": "studyguide-subjects/MATH/Polygon-Angles.html#diagonals" },
+            { "label": "Interior & exterior angles", "href": "studyguide-subjects/MATH/Polygon-Angles.html#angles" },
+            { "label": "Area of a Polygon", "href": "studyguide-subjects/MATH/Polygon-Angles.html#area" },
+            { "label": "Applications in Life", "href": "studyguide-subjects/MATH/Polygon-Angles.html#applications" }
+          ]
+        }
+      ],
+      "viewAllLabel": "View all Math lessons →",
+      "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    },
+    {
+      "id": "english",
+      "label": "English",
+      "accentColor": "#00A8FF",
+      "modules": [
+        {
+          "title": "English",
+          "lessons": [
+            { "label": "Plot", "href": "studyguide-subjects/ENG/Rhyme-Characterization-English.html#Plot" },
+            { "label": "Spectacle", "href": "studyguide-subjects/ENG/Rhyme-Characterization-English.html#Spectacle" },
+            { "label": "Dialogue", "href": "studyguide-subjects/ENG/Rhyme-Characterization-English.html#dialogue" },
+            { "label": "Music", "href": "studyguide-subjects/ENG/Rhyme-Characterization-English.html#music" },
+            { "label": "Characterization", "href": "studyguide-subjects/ENG/Rhyme-Characterization-English.html#characterization" },
+            { "label": "Rhyme & Meter", "href": "studyguide-subjects/ENG/Rhyme-Characterization-English.html#rhyme-meter" }
+          ]
+        }
+      ],
+      "viewAllLabel": "View all English lessons →",
+      "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    },
+    {
+      "id": "ap",
+      "label": "AP",
+      "accentColor": "#FF7500",
+      "modules": [
+        {
+          "title": "Economics",
+          "lessons": [
+            { "label": "Allocation basics", "href": "studyguide-subjects/AP/Economics__AP_.html" },
+            { "label": "The 3 fundamental questions", "href": "studyguide-subjects/AP/Economics__AP_.html" },
+            { "label": "Types of products", "href": "studyguide-subjects/AP/Economics__AP_.html" },
+            { "label": "Economic systems & theories", "href": "studyguide-subjects/AP/Economics__AP_.html" }
+          ]
+        }
+      ],
+      "viewAllLabel": "View all AP lessons →",
+      "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    },
+    {
+      "id": "science",
+      "label": "SCIENCE",
+      "accentColor": "#07B500",
+      "modules": [
+        {
+          "title": "Lab Apparatus and Scientists",
+          "lessons": [
+            { "label": "Lab Apparatuses", "href": "studyguide-subjects/SCI/Lab-apparatus-sci.html#labequip" },
+            { "label": "Labratory Rules", "href": "studyguide-subjects/SCI/Lab-apparatus-sci.html#labrules" },
+            { "label": "Important Scientists", "href": "studyguide-subjects/SCI/Lab-apparatus-sci.html#scientist" }
+          ]
+        },
+        {
+          "title": "Significant Figures",
+          "lessons": [
+            { "label": "Significant Figures", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Scientific Notation", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Conversions", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+          ]
+        },
+        {
+          "title": "Properties of Matter",
+          "lessons": [
+            { "label": "States of Matter", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Particle Model of Matter", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Physical & Chemical Changes", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Mixtures & Solutions", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+          ]
+        }
+      ],
+      "viewAllLabel": "View all Science lessons →",
+      "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    },
+    {
+      "id": "filipino",
+      "label": "FILIPINO",
+      "accentClass": "subj-fil",
+      "modules": [
+        {
+          "title": "Literature through time",
+          "lessons": [
+            { "label": "Spanish Colonial period", "href": "studyguide-subjects/FIL/Philippine_Literature__FIL_.html" },
+            { "label": "Revolutionary period", "href": "studyguide-subjects/FIL/Philippine_Literature__FIL_.html" },
+            { "label": "American & Japanese periods", "href": "studyguide-subjects/FIL/Philippine_Literature__FIL_.html" },
+            { "label": "Post-Independence period", "href": "studyguide-subjects/FIL/Philippine_Literature__FIL_.html" }
+          ]
+        }
+      ],
+      "viewAllLabel": "View all Filipino lessons →",
+      "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    },
+    {
+      "id": "tle",
+      "label": "TLE",
+      "accentColor": "#993303",
+      "modules": [
+        {
+          "title": "Hotel Services",
+          "lessons": [
+            { "label": "Hotel Departments", "href": "studyguide-subjects/TLE/Hotel-Services.html#departments" },
+            { "label": "Hotel Types", "href": "studyguide-subjects/TLE/Hotel-Services.html#types" }
+          ]
+        },
+        {
+          "title": "Front Desk Department",
+          "lessons": [
+            { "label": "Overview", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#overview" },
+            { "label": "Core Functions", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#core-functions" },
+            { "label": "Guest Privacy & Confidentiality", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#privacy" },
+            { "label": "The Front Desk", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#front-desk" },
+            { "label": "Uniformed Services", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#uniformed-services" },
+            { "label": "Concierge", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#concierge" },
+            { "label": "Front Office Accounting", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#accounting" },
+            { "label": "Private Branch Exchange (PBX)", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#pbx" },
+            { "label": "Lesson Insights", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#lesson-insights" }
+          ]
+        }
+      ],
+      "viewAllLabel": "View all TLE lessons →",
+      "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    },
+    {
+      "id": "computer",
+      "label": "COMPUTER",
+      "accentColor": "#993303",
+      "modules": [
+        {
+          "title": "Films & Film Genres",
+          "lessons": [
+            { "label": "History of Films", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Film Genres", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+          ]
+        }
+      ],
+      "viewAllLabel": "View all Computer lessons →",
+      "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    },
+    {
+      "id": "peh",
+      "label": "PE/H",
+      "accentColor": "#f728dc",
+      "modules": [
+        {
+          "title": "Intentional Injuries",
+          "lessons": [
+            { "label": "Types of Intentional Injuries", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Protective Measures", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Coping Techniques", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+          ]
+        }
+      ],
+      "viewAllLabel": "View all PE/H lessons →",
+      "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    },
+    {
+      "id": "music",
+      "label": "Music",
+      "accentColor": "#f728dc",
+      "modules": [
+        {
+          "title": "DAW's",
+          "lessons": [
+            { "label": "Digital Audio Workstations", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Example of Digital Audio Workstations", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Common Features of DAW's", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Sampling", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+          ]
+        }
+      ],
+      "viewAllLabel": "View all Music lessons →",
+      "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    },
+    {
+      "id": "arts",
+      "label": "ARTS",
+      "accentColor": "#f728dc",
+      "modules": [
+        {
+          "title": "Photography & Videography",
+          "lessons": [
+            { "label": "Types of Cameras", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Photography", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Videography", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+          ]
+        }
+      ],
+      "viewAllLabel": "View all Arts lessons →",
+      "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    },
+    {
+      "id": "clf",
+      "label": "CLF",
+      "accentColor": "#980cf5",
+      "modules": [
+        {
+          "title": "Books of the Bible",
+          "lessons": [
+            { "label": "Categories of the Bible", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "How to read during readings", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Old Testament divisions", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "New Testament divisions", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Categories of the Bible", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+          ]
+        },
+        {
+          "title": "Gospels",
+          "lessons": [
+            { "label": "Evangelists", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "The Four Gospels", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "St. Matthew", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "St. Mark", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "St. Luke", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "St. John", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
+            { "label": "Parable of The Sower", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+          ]
+        }
+      ],
+      "viewAllLabel": "View all CLF lessons →",
+      "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
+    }
+  ]
+}
