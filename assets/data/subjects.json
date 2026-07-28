@@ -243,9 +243,13 @@
         {
           "title": "Photography & Videography",
           "lessons": [
-            { "label": "Types of Cameras", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Photography", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Videography", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+            { "label": "Overview", "href": "studyguide-subjects/ARTS/PHOTOGRAPHY-ARTS.html#overview" },
+            { "label": "DSLR Camera Functions", "href": "studyguide-subjects/ARTS/PHOTOGRAPHY-ARTS.html#dslr" },
+            { "label": "Mobile Phone Camera Settings", "href": "studyguide-subjects/ARTS/PHOTOGRAPHY-ARTS.html#mobile" },
+            { "label": "What is Photography", "href": "studyguide-subjects/ARTS/PHOTOGRAPHY-ARTS.html#photography" },
+            { "label": "Mirrorless Cameras", "href": "studyguide-subjects/ARTS/PHOTOGRAPHY-ARTS.html#mirrorless" },
+            { "label": "Mirror Cameras", "href": "studyguide-subjects/ARTS/PHOTOGRAPHY-ARTS.html#mirror" },
+            { "label": "Lesson Insights", "href": "studyguide-subjects/ARTS/PHOTOGRAPHY-ARTS.html#lesson-insights" }
           ]
         }
       ],
