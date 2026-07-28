@@ -211,12 +211,15 @@
       "accentColor": "#f728dc",
       "modules": [
         {
-          "title": "DAW's",
+          "title": "Western Popular Music",
           "lessons": [
-            { "label": "Digital Audio Workstations", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Example of Digital Audio Workstations", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Common Features of DAW's", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Sampling", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+            { "label": "Overview", "href": "studyguide-subjects/MUSIC/Western-Music.html#overview" },
+            { "label": "Singing Styles & Techniques", "href": "studyguide-subjects/MUSIC/Western-Music.html#styles" },
+            { "label": "Common Instruments", "href": "studyguide-subjects/MUSIC/Western-Music.html#instruments" },
+            { "label": "Music Notation Technology", "href": "studyguide-subjects/MUSIC/Western-Music.html#notation-tech" },
+            { "label": "Sampling", "href": "studyguide-subjects/MUSIC/Western-Music.html#sampling" },
+            { "label": "Lesson Insights", "href": "studyguide-subjects/MUSIC/Western-Music.html#lesson-insights" },
+            { "label": "Quick References", "href": "studyguide-subjects/MUSIC/Western-Music.html#reference" }
           ]
         }
       ],
