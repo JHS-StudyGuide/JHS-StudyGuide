@@ -192,8 +192,17 @@ footer.page-footer {
 
 /* ---------- Mobile hardening ---------- */
 html, body { width: 100%; max-width: 100%; overflow-x: hidden; overscroll-behavior-x: none; }
-* { max-width: 100%; }
+
+/* Exclude table elements from global max-width to protect column layout */
+*:not(table):not(tr):not(td):not(th) { max-width: 100%; }
+
 .container, .content, .sidebar, section, .directory, .dept-card, .type-card { min-width: 0; }
+.table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Use overflow-wrap for typography without forcing mid-word letter breaks on tables */
+h1, h2, h3, p, li { overflow-wrap: break-word; }
+td, th { overflow-wrap: normal; word-break: normal; }
 
 @media (max-width: 768px) {
   .container { flex-direction: column; padding: 14px; gap: 16px; }
