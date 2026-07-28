@@ -127,6 +127,16 @@
             { "label": "American & Japanese periods", "href": "studyguide-subjects/FIL/Philippine_Literature__FIL_.html" },
             { "label": "Post-Independence period", "href": "studyguide-subjects/FIL/Philippine_Literature__FIL_.html" }
           ]
+        },
+        {
+          "title": "Panitikan at Tekstong Argumentatibo",
+          "lessons": [
+            { "label": "Pangkalahatang Tanaw", "href": "studyguide-subjects/FIL/Filipino-Panitikian-Reviewer.html#overview" },
+            { "label": "Ang Tula at mga Elemento", "href": "studyguide-subjects/FIL/Filipino-Panitikian-Reviewer.html#tula" },
+            { "label": "Tekstong ArgumentatiboAng Tuluyan (Prosa)", "href": "studyguide-subjects/FIL/Filipino-Panitikian-Reviewer.html#argumentatibo" },
+            { "label": "Ang Tuluyan (Prosa)", "href": "studyguide-subjects/FIL/Filipino-Panitikian-Reviewer.html#tuluyan" },
+            { "label": "Quick Reference Table", "href": "studyguide-subjects/FIL/Filipino-Panitikian-Reviewer.html#reference-table"}
+          ]
         }
       ],
       "viewAllLabel": "View all Filipino lessons →",
