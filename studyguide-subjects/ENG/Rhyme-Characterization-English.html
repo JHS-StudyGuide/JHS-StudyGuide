@@ -8,13 +8,13 @@
 </head>
 <body>
   <header class="top-bar">
-    <a href="../../index.html">← Back to Main Hub</a>
-    <span class="title">ENGLISH: Literary Terms Reviewer</span>
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Light Mode</button>
+    <a href="../index.html">← Back to Main Hub</a>
+    <span class="title">ENGLISH · Literary Terms Reviewer</span>
+    <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
   </header>
 
   <div class="container">
-    <aside class="sidebar">
+    <nav class="sidebar" aria-label="Section navigation">
       <h3>Subject Archive</h3>
       <div class="module-title">English: Literary Terms</div>
       <ul class="module-section">
@@ -24,18 +24,16 @@
         <li><a href="#dialogue">4. Dialogue</a></li>
         <li><a href="#music">5. Music</a></li>
         <li><a href="#characterization">6. Characterization</a></li>
-        <li><a href="#rhyme-meter">7. Rhyme & Meter</a></li>
-        <li><a href="#reference-table">8. Quick Reference</a></li>
+        <li><a href="#rhyme-meter">7. Rhyme &amp; Meter</a></li>
+        <li><a href="#reference-table">Quick Reference</a></li>
       </ul>
-    </aside>
+    </nav>
 
     <main class="content">
       <header class="hero" id="overview">
+        <div class="eyebrow">English · Literary Terms</div>
         <h1>Plot, Characterization, Rhyme, Meter, and More</h1>
-        <div class="subtitle">
-          A clear study page for key literary and drama terms, written in simple language with examples that make each
-          idea easier to remember.
-        </div>
+        <p class="subtitle">A clear study page for key literary and drama terms, written in simple language with examples that make each idea easier to remember.</p>
 
         <div class="hero-grid">
           <div class="hero-card">
@@ -54,99 +52,98 @@
       </header>
 
       <section id="plot">
-        <h2>1. Plot</h2>
-        <p>Plot is the sequence of events in a story. It is the backbone of the story and shows how the action develops
-          from beginning to end.</p>
-
-        <div class="cards">
-          <div class="card"><span class="tag">Basic Structure</span><h3>Exposition</h3><p>The beginning of the story. It introduces the characters, setting, and situation.</p></div>
-          <div class="card"><span class="tag">Basic Structure</span><h3>Rising Action</h3><p>The conflict starts to build here. Events become more tense and lead toward the climax.</p></div>
-          <div class="card"><span class="tag">Basic Structure</span><h3>Climax</h3><p>The most exciting or important part of the story. It is the turning point where the main conflict reaches its peak.</p></div>
-          <div class="card"><span class="tag">Basic Structure</span><h3>Falling Action</h3><p>This happens after the climax. The story starts to slow down as the conflict begins to resolve.</p></div>
-          <div class="card"><span class="tag">Basic Structure</span><h3>Resolution</h3><p>The ending of the story. It shows how the conflict is solved or how the story closes.</p></div>
-          <div class="card"><span class="tag">Plot Structure</span><h3>Parallel Plot</h3><p>Two storylines happen at the same time. The plots may connect or affect each other.</p></div>
-          <div class="card"><span class="tag">Plot Structure</span><h3>Episodic Plot</h3><p>The story is made of separate events or episodes. Each part can stand on its own, but they still belong to one story.</p></div>
+        <div class="part-head">
+          <h2>2. Plot</h2>
+          <p>Plot is the sequence of events in a story. It is the backbone of the story and shows how the action develops from beginning to end.</p>
+        </div>
+        <div class="type-grid">
+          <div class="type-card"><span class="letter">a</span><h4>Exposition</h4><p>The beginning of the story. It introduces the characters, setting, and situation.</p></div>
+          <div class="type-card"><span class="letter">b</span><h4>Rising Action</h4><p>The conflict starts to build here. Events become more tense and lead toward the climax.</p></div>
+          <div class="type-card"><span class="letter">c</span><h4>Climax</h4><p>The most exciting or important part of the story. It is the turning point where the main conflict reaches its peak.</p></div>
+          <div class="type-card"><span class="letter">d</span><h4>Falling Action</h4><p>This happens after the climax. The story starts to slow down as the conflict begins to resolve.</p></div>
+          <div class="type-card"><span class="letter">e</span><h4>Resolution</h4><p>The ending of the story. It shows how the conflict is solved or how the story closes.</p></div>
+          <div class="type-card"><span class="letter">f</span><h4>Parallel Plot</h4><p>Two storylines happen at the same time. The plots may connect or affect each other.</p></div>
+          <div class="type-card"><span class="letter">g</span><h4>Episodic Plot</h4><p>The story is made of separate events or episodes. Each part can stand on its own, but they still belong to one story.</p></div>
         </div>
       </section>
 
       <section id="spectacle">
-        <h2>2. Spectacle</h2>
-        <p>Spectacle is everything the audience sees in a performance. It is visual only and helps create the mood and
-          style of the story.</p>
-
-        <div class="cards">
-          <div class="card"><span class="tag">Visual Element</span><h3>Costumes</h3><p>These show a character’s role, personality, or time period. They help the audience understand the story visually.</p></div>
-          <div class="card"><span class="tag">Visual Element</span><h3>Facial Expression</h3><p>These are the emotions shown on a character’s face. They help express feelings without words.</p></div>
-          <div class="card"><span class="tag">Visual Element</span><h3>Gestures</h3><p>These are movements made by the hands, arms, or body. They help show emotion and meaning.</p></div>
-          <div class="card"><span class="tag">Visual Element</span><h3>Props</h3><p>Props are objects used by actors in a performance. They make the scene more realistic and support the action.</p></div>
+        <div class="part-head">
+          <h2>3. Spectacle</h2>
+          <p>Spectacle is everything the audience sees in a performance. It is visual only and helps create the mood and style of the story.</p>
+        </div>
+        <div class="type-grid">
+          <div class="type-card"><span class="letter">a</span><h4>Costumes</h4><p>These show a character's role, personality, or time period. They help the audience understand the story visually.</p></div>
+          <div class="type-card"><span class="letter">b</span><h4>Facial Expression</h4><p>These are the emotions shown on a character's face. They help express feelings without words.</p></div>
+          <div class="type-card"><span class="letter">c</span><h4>Gestures</h4><p>These are movements made by the hands, arms, or body. They help show emotion and meaning.</p></div>
+          <div class="type-card"><span class="letter">d</span><h4>Props</h4><p>Props are objects used by actors in a performance. They make the scene more realistic and support the action.</p></div>
         </div>
       </section>
 
       <section id="dialogue">
-        <h2>3. Dialogue</h2>
-        <p>Dialogue is the conversation between characters. It moves the story forward and helps the audience understand
-          what is happening.</p>
-
-        <div class="cards">
-          <div class="card"><span class="tag">Reveals</span><h3>Character Traits</h3><p>Dialogue shows what kind of person a character is. It can reveal personality, attitude, or values.</p></div>
-          <div class="card"><span class="tag">Reveals</span><h3>Conflict</h3><p>Dialogue can show disagreements or tension between characters. This helps build drama in the story.</p></div>
-          <div class="card"><span class="tag">Reveals</span><h3>Feelings</h3><p>Characters often express emotions through dialogue. This helps the audience understand how they feel.</p></div>
-          <div class="card"><span class="tag">Reveals</span><h3>Plot Development</h3><p>Dialogue can give important information or create new events. It helps the story move from one scene to the next.</p></div>
+        <div class="part-head">
+          <h2>4. Dialogue</h2>
+          <p>Dialogue is the conversation between characters. It moves the story forward and helps the audience understand what is happening.</p>
+        </div>
+        <div class="type-grid">
+          <div class="type-card"><span class="letter">a</span><h4>Character Traits</h4><p>Dialogue shows what kind of person a character is. It can reveal personality, attitude, or values.</p></div>
+          <div class="type-card"><span class="letter">b</span><h4>Conflict</h4><p>Dialogue can show disagreements or tension between characters. This helps build drama in the story.</p></div>
+          <div class="type-card"><span class="letter">c</span><h4>Feelings</h4><p>Characters often express emotions through dialogue. This helps the audience understand how they feel.</p></div>
+          <div class="type-card"><span class="letter">d</span><h4>Plot Development</h4><p>Dialogue can give important information or create new events. It helps the story move from one scene to the next.</p></div>
         </div>
       </section>
 
       <section id="music">
-        <h2>4. Music</h2>
-        <p>Music creates emotion and sets the mood of a scene. It helps the audience feel the atmosphere of the story.</p>
-
-        <div class="cards">
-          <div class="card"><span class="tag">Includes</span><h3>Background Music</h3><p>This is music played quietly in the background. It supports the scene without taking attention away from the action.</p></div>
-          <div class="card"><span class="tag">Includes</span><h3>Instrumental Music</h3><p>This is music without singing or lyrics. It is often used to build mood and emotion.</p></div>
-          <div class="card"><span class="tag">Includes</span><h3>Sound Effects</h3><p>These are added sounds that make a scene more realistic. They can also make moments feel more dramatic or exciting.</p></div>
+        <div class="part-head">
+          <h2>5. Music</h2>
+          <p>Music creates emotion and sets the mood of a scene. It helps the audience feel the atmosphere of the story.</p>
+        </div>
+        <div class="type-grid">
+          <div class="type-card"><span class="letter">a</span><h4>Background Music</h4><p>This is music played quietly in the background. It supports the scene without taking attention away from the action.</p></div>
+          <div class="type-card"><span class="letter">b</span><h4>Instrumental Music</h4><p>This is music without singing or lyrics. It is often used to build mood and emotion.</p></div>
+          <div class="type-card"><span class="letter">c</span><h4>Sound Effects</h4><p>These are added sounds that make a scene more realistic. They can also make moments feel more dramatic or exciting.</p></div>
         </div>
       </section>
 
       <section id="characterization">
-        <h2>5. Characterization</h2>
-        <p>Characterization is how an author describes or develops a character in a story. It helps the reader understand
-          what the character is like.</p>
-
-        <div class="cards">
-          <div class="card"><span class="tag">Type</span><h3>Direct Characterization</h3><p>The author clearly tells the reader what a character is like. The traits are stated openly.</p></div>
-          <div class="card"><span class="tag">Type</span><h3>Indirect Characterization</h3><p>The author shows the character’s traits through behavior, speech, and actions. The reader infers what the character is like.</p></div>
+        <div class="part-head">
+          <h2>6. Characterization</h2>
+          <p>Characterization is how an author describes or develops a character in a story. It helps the reader understand what the character is like.</p>
         </div>
-
-        <div class="note">
-          <strong>Techniques of indirect characterization:</strong> dialogue, actions and behavior, physical appearance,
-          thoughts and inner monologue, reactions and interactions, and backstory and background.
+        <div class="type-grid">
+          <div class="type-card"><span class="letter">a</span><h4>Direct Characterization</h4><p>The author clearly tells the reader what a character is like. The traits are stated openly.</p></div>
+          <div class="type-card"><span class="letter">b</span><h4>Indirect Characterization</h4><p>The author shows the character's traits through behavior, speech, and actions. The reader infers what the character is like.</p></div>
+        </div>
+        <div class="callout">
+          <strong>Techniques of indirect characterization:</strong> dialogue, actions and behavior, physical appearance, thoughts and inner monologue, reactions and interactions, and backstory and background.
         </div>
       </section>
 
       <section id="rhyme-meter">
-        <h2>6. Rhyme & Meter</h2>
-        <p>Rhyme and meter help give poetry its sound, rhythm, and musical quality. They are important in understanding
-          how poems are built.</p>
+        <div class="part-head">
+          <h2>7. Rhyme &amp; Meter</h2>
+          <p>Rhyme and meter help give poetry its sound, rhythm, and musical quality. Tap a group below to see what it covers.</p>
+        </div>
 
-        <div class="cards">
-          <div class="card"><span class="tag">Rhyme</span><h3>Meaning</h3><p>Rhyme is the repetition of similar ending sounds in words. It is often used to make poems sound musical and memorable.</p></div>
-          <div class="card"><span class="tag">Rhyme Types</span><h3>End Rhyme</h3><p>This happens when the last words in lines sound alike. It is the most common type of rhyme in poetry.</p></div>
-          <div class="card"><span class="tag">Rhyme Types</span><h3>Internal Rhyme</h3><p>This happens when words rhyme within the same line of poetry. It creates a faster, more musical sound.</p></div>
-          <div class="card"><span class="tag">Rhyme Types</span><h3>Slant Rhyme</h3><p>This is when words almost rhyme, but not exactly. The sounds are similar, but they do not fully match.</p></div>
-          <div class="card"><span class="tag">Rhyme Scheme</span><h3>Pattern of Rhymes</h3><p>Rhyme scheme is the pattern of rhyming words in a poem. It is shown using letters such as AABB, ABAB, or ABCC.</p></div>
-          <div class="card"><span class="tag">Rhyme Scheme</span><h3>Couplets</h3><p>Couplets follow an AABB pattern. Two lines rhyme in a row, then the next two lines rhyme with each other.</p></div>
-          <div class="card"><span class="tag">Rhyme Scheme</span><h3>Alternating</h3><p>Alternating rhyme follows an ABAB pattern. Every other line rhymes, creating a back-and-forth sound.</p></div>
-          <div class="card"><span class="tag">Rhyme Scheme</span><h3>Other Patterns</h3><p>Some poems use other rhyme patterns, such as ABCC. The letters simply show which lines rhyme with each other.</p></div>
-          <div class="card"><span class="tag">Meter</span><h3>Meaning</h3><p>Meter is the rhythm of a poem. It is created by the pattern of stressed and unstressed syllables.</p></div>
-          <div class="card"><span class="tag">Meter</span><h3>Feet</h3><p>A foot is the smallest unit of meter in poetry. It usually contains two or three syllables arranged in a repeated pattern.</p></div>
-          <div class="card"><span class="tag">Meter</span><h3>Common Feet</h3><p>Iamb: da-DUM, Trochee: DUM-da, Anapest: da-da-DUM, Dactyl: DUM-da-da, Spondee: DUM-DUM, Pyrrhic: da-da.</p></div>
-          <div class="card"><span class="tag">Poetry Forms</span><h3>Traditional Poetry and Free Verse</h3><p>Traditional poetry usually follows a strict rhyme scheme and meter, such as iambic pentameter. Free verse does not follow a consistent meter and gives the poet more freedom.</p></div>
+        <div class="directory">
+          <div class="directory-tabs" id="rhymeTabs" role="tablist" aria-label="Rhyme and meter groups"></div>
+          <div class="directory-panel" id="rhymePanel"></div>
         </div>
       </section>
 
-      <section id="reference-table">
-        <h2>7. Quick Reference</h2>
-        <p>Use this table when you need a fast recap of the main literary terms on the page.</p>
+      <section id="rhyme-meter-reference">
+        <div class="part-head">
+          <h2>Full reference</h2>
+          <p>Same content as the directory above, laid out for a quick scan or a final review pass.</p>
+        </div>
+        <div class="dept-grid" id="rhymeGrid"></div>
+      </section>
 
+      <section id="reference-table">
+        <div class="part-head">
+          <h2>Quick Reference</h2>
+          <p>Use this table when you need a fast recap of the main literary terms on the page.</p>
+        </div>
         <div class="table-wrapper">
           <table>
             <thead>
@@ -172,19 +169,97 @@
     </main>
   </div>
 
-  <script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-
   <script>
-    function toggleTheme() {
-      const body = document.body;
-      const currentTheme = body.getAttribute("data-theme");
-      if (currentTheme === "light") {
-        body.removeAttribute("data-theme");
-      } else {
-        body.setAttribute("data-theme", "light");
-      }
+    /* ---------- Theme toggle ---------- */
+    const body = document.body;
+    const themeBtn = document.getElementById('themeToggle');
+    function applyTheme(t) {
+      if (t === 'light') { body.setAttribute('data-theme', 'light'); }
+      else { body.removeAttribute('data-theme'); }
     }
+    applyTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    themeBtn.addEventListener('click', () => {
+      applyTheme(body.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+    });
+
+    /* ---------- Rhyme & Meter data ---------- */
+    const groups = [
+      {
+        id: 'rhyme',
+        name: 'Rhyme',
+        tag: 'What rhyme means',
+        items: [
+          'Rhyme is the repetition of similar ending sounds in words',
+          'Often used to make poems sound musical and memorable'
+        ]
+      },
+      {
+        id: 'rhyme-types',
+        name: 'Rhyme Types',
+        tag: 'End, internal, and slant rhyme',
+        items: [
+          'End Rhyme — the last words in lines sound alike; the most common type',
+          'Internal Rhyme — words rhyme within the same line, creating a faster sound',
+          'Slant Rhyme — words almost rhyme, but not exactly; sounds are similar but don\'t fully match'
+        ]
+      },
+      {
+        id: 'rhyme-scheme',
+        name: 'Rhyme Scheme',
+        tag: 'Patterns of rhymes',
+        items: [
+          'Pattern of Rhymes — shown using letters such as AABB, ABAB, or ABCC',
+          'Couplets — an AABB pattern; two lines rhyme in a row, then the next two rhyme together',
+          'Alternating — an ABAB pattern; every other line rhymes',
+          'Other Patterns — such as ABCC; letters simply show which lines rhyme with each other'
+        ]
+      },
+      {
+        id: 'meter',
+        name: 'Meter',
+        tag: 'Rhythm of a poem',
+        items: [
+          'Meaning — the rhythm of a poem, created by stressed and unstressed syllables',
+          'Feet — the smallest unit of meter, usually 2–3 syllables in a repeated pattern',
+          'Common Feet — Iamb: da-DUM, Trochee: DUM-da, Anapest: da-da-DUM, Dactyl: DUM-da-da, Spondee: DUM-DUM, Pyrrhic: da-da',
+          'Traditional Poetry & Free Verse — traditional poetry follows a strict rhyme scheme and meter (e.g. iambic pentameter); free verse gives the poet more freedom'
+        ]
+      }
+    ];
+
+    const tabsEl = document.getElementById('rhymeTabs');
+    const panelEl = document.getElementById('rhymePanel');
+    const gridEl = document.getElementById('rhymeGrid');
+
+    function renderPanel(group) {
+      panelEl.innerHTML = `
+        <span class="dept-tag">${group.tag}</span>
+        <h3>${group.name}</h3>
+        <ul>${group.items.map(i => `<li>${i}</li>`).join('')}</ul>
+      `;
+    }
+
+    groups.forEach((group, i) => {
+      const btn = document.createElement('button');
+      btn.textContent = group.name;
+      btn.setAttribute('role', 'tab');
+      btn.id = 'tab-' + group.id;
+      if (i === 0) btn.classList.add('active');
+      btn.addEventListener('click', () => {
+        tabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderPanel(group);
+      });
+      tabsEl.appendChild(btn);
+
+      const card = document.createElement('div');
+      card.className = 'dept-card';
+      card.id = group.id;
+      card.innerHTML = `<h4>${group.name}</h4><ul>${group.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+      gridEl.appendChild(card);
+    });
+
+    renderPanel(groups[0]);
   </script>
 </body>
 </html>
