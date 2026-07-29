@@ -137,6 +137,17 @@
             { "label": "Ang Tuluyan (Prosa)", "href": "studyguide-subjects/FIL/Filipino-Panitikian-Reviewer.html#tuluyan" },
             { "label": "Quick Reference Table", "href": "studyguide-subjects/FIL/Filipino-Panitikian-Reviewer.html#reference-table"}
           ]
+        },
+        {
+          "title": "Filipino ST 2 Coverage",
+          "lessons": [
+            { "label": "Akda", "href": "studyguide-subjects/FIL/Filipino-ST2-Coverage.html#akda" },
+            { "label": "- Isang Dipang Langit", "href": "studyguide-subjects/FIL/Filipino-ST2-Coverage.html#dipang-langit" },
+            { "label": "- Impeng Negro", "href": "studyguide-subjects/FIL/Filipino-ST2-Coverage.html#impeng-negro" },
+            { "label": "- Makapaghihintay ang Amerika", "href": "studyguide-subjects/FIL/Filipino-ST2-Coverage.html#amerika" },
+            { "label": "Tekstong Argumentatibo", "href": "studyguide-subjects/FIL/Filipino-ST2-Coverage.html#argumentatibo"},
+            { "label": "Kulturang Elemento (Bagong Aralin)", "href": "studyguide-subjects/FIL/Filipino-ST2-Coverage.html#kulturang-elemento"}
+          ]
         }
       ],
       "viewAllLabel": "View all Filipino lessons →",
