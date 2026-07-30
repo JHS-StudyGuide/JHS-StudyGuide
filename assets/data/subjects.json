@@ -78,6 +78,20 @@
             { "label": "CDA", "href": "studyguide-subjects/AP/Produksyon.html#cda" },
             { "label": "Lesson Insights", "href": "studyguide-subjects/AP/Produksyon.html#lessons-insights" }
           ]
+        },
+
+        {
+          "title": "AP Removal Reviewer",
+          "lessons": [
+            { "label": "Overview", "href": "studyguide-subjects/AP/Development-Economics-Reviewer.html#overview" },
+            { "label": "Economic Branches", "href": "studyguide-subjects/AP/Development-Economics-Reviewer.html#econ-branches" },
+            { "label": "Fathers of Economics", "href": "studyguide-subjects/AP/Development-Economics-Reviewer.html#economists" },
+            { "label": "Maslow's Hierachy of Needs", "href": "studyguide-subjects/AP/Development-Economics-Reviewer.html#maslow" },
+            { "label": "Likas-Kayang Pag-unlad", "href": "studyguide-subjects/AP/Development-Economics-Reviewer.html#sustainable" },
+            { "label": "The 17 SDGs", "href": "studyguide-subjects/AP/Development-Economics-Reviewer.html#sdgs" },
+            { "label": "8-Point Agenda", "href": "studyguide-subjects/AP/Development-Economics-Reviewer.html#agenda" },
+            { "label": "Quick Reference", "href": "studyguide-subjects/AP/Development-Economics-Reviewer.html#reference-table" }
+          ]
         }
       ],
       "viewAllLabel": "View all AP lessons →",
