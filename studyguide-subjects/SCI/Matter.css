@@ -25,7 +25,7 @@
   --green-gradient: linear-gradient(135deg, rgba(209, 250, 229, 0.8), rgba(167, 243, 208, 0.5));
 }
 
-/* ---------- Reset & Global Base ---------- */
+/* ---------- Core Reset & Base Styles ---------- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
@@ -51,7 +51,7 @@ h1, h2, h3 { letter-spacing: -0.01em; }
 h1, h2, h3, p, li { overflow-wrap: break-word; }
 *:not(table):not(tr):not(td):not(th) { max-width: 100%; }
 
-/* ---------- Top Navigation Bar ---------- */
+/* ---------- Top Bar ---------- */
 .top-bar {
   display: flex; justify-content: space-between; align-items: center;
   gap: 12px;
@@ -69,7 +69,7 @@ h1, h2, h3, p, li { overflow-wrap: break-word; }
 }
 .theme-toggle:hover { border-color: var(--card-accent); color: var(--card-accent); }
 
-/* ---------- Main Layout & Containers ---------- */
+/* ---------- Main Layout ---------- */
 .container { display: flex; max-width: 1200px; margin: 0 auto; padding: 24px; gap: 28px; align-items: flex-start; }
 .container, .content, .sidebar, section, .directory, .dept-card, .type-card { min-width: 0; }
 
@@ -155,13 +155,13 @@ section { margin-bottom: 36px; scroll-margin-top: 90px; }
 .type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
 .type-card {
   background: var(--bg-raised); border: 1px solid var(--rule); border-radius: var(--radius);
-  padding: 18px; position: relative; overflow: hidden; min-width: 0;
+  padding: 18px; position: relative; overflow: hidden;
 }
 .type-card .letter { font-size: 1.6rem; color: var(--card-accent); font-weight: 700; display: block; margin-bottom: 6px; }
 .type-card h4 { font-size: 1.05rem; margin-bottom: 8px; }
 .type-card p { font-size: 0.9rem; color: var(--ink-secondary); }
 
-/* Card Helpers & Callouts */
+/* Card Utilities */
 .card-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .unit-badge {
   background: var(--rule); color: var(--card-accent); padding: 3px 8px;
@@ -191,52 +191,31 @@ section { margin-bottom: 36px; scroll-margin-top: 90px; }
 .conversion-list .right-val { text-align: left; padding-left: 8px; }
 .two-col-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-/* ---------- Math & Formula Display ---------- */
-.formulas-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;
-}
-.concentration-stack { display: flex; flex-direction: column; gap: 16px; width: 100%; }
-.formula-card {
-  width: 100%; padding: 20px 24px; background: var(--bg-raised);
-  border: 1px solid var(--rule); border-radius: var(--radius);
-}
-.formula-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding: 8px 0; }
-.formula-display {
-  width: 100%; overflow-x: auto; overflow-y: hidden;
-  text-align: center; padding: 8px 0; font-size: 0.95rem;
-}
-.formula-display .MathJax { font-size: 100% !important; }
-
-/* ---------- Step Lists ---------- */
-.step-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.step-item {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
-  background: var(--bg); padding: 12px 16px; border-radius: 6px; border: 1px solid var(--rule);
-}
-.step-tag {
-  font-weight: 700; font-size: 0.85rem; color: var(--ink-secondary);
-  background: var(--rule); padding: 4px 8px; border-radius: 4px; flex-shrink: 0;
-}
-.step-math { flex: 1; min-width: 200px; overflow-x: auto; }
-.final-tag { background: var(--card-accent); color: #fff; }
-
-/* ---------- Tables ---------- */
+/* ---------- Reference Tables ---------- */
 .table-wrapper {
   width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
   margin-top: 16px; border: 1px solid var(--rule); border-radius: var(--radius);
 }
-table { width: 100%; min-width: 640px; border-collapse: collapse; background: var(--bg-raised); }
-th, td {
-  text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--rule);
-  font-size: 0.9rem; vertical-align: top;
+.table-wrapper table {
+  width: 100%; min-width: 0; table-layout: fixed;
+  border-collapse: collapse; background: var(--bg-raised);
 }
-th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-secondary); }
-tr:last-child td { border-bottom: none; }
+.table-wrapper th, .table-wrapper td {
+  text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule);
+  font-size: 0.88rem; vertical-align: top; word-wrap: break-word;
+}
+.table-wrapper th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-secondary); }
+.table-wrapper tr:last-child td { border-bottom: none; }
 td, th { overflow-wrap: normal; word-break: normal; }
+
+.table-wrapper th:nth-child(1) { width: 22%; }
+.table-wrapper th:nth-child(2) { width: 22%; }
+.table-wrapper th:nth-child(3) { width: 20%; }
+.table-wrapper th:nth-child(4) { width: 36%; }
 
 /* ---------- Dedication Card & Footer ---------- */
 .dedication-card {
-  width: 100%; margin: 32px 0 16px 0; background: var(--green-gradient);
+  width: 100%; margin: 32px 0 16px; background: var(--green-gradient);
   border: 2px solid var(--card-accent); border-radius: var(--radius);
   padding: 24px 28px; text-align: center; box-shadow: 0 4px 15px var(--shadow);
 }
@@ -255,10 +234,6 @@ footer.page-footer {
   .hero-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 900px) {
-  .formula-display .MathJax { font-size: 88% !important; }
-}
-
 @media (max-width: 768px) {
   .top-bar { padding: 12px 16px; }
   .container { flex-direction: column; padding: 16px; gap: 16px; }
@@ -274,6 +249,36 @@ footer.page-footer {
 @media (max-width: 640px) {
   .dept-card[style*="grid-column"] { grid-column: span 1 !important; }
   .two-col-list { grid-template-columns: 1fr; }
+
+  /* Section 3 List Mobile Optimization */
+  .conversion-list li {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 8px; padding: 10px 12px; font-size: 0.88rem;
+  }
+  .conversion-list .left-val { text-align: left; padding-right: 0; font-weight: 600; flex: 1; }
+  .conversion-list .eq-sign { transform: none; font-size: 1rem; padding: 0 4px; flex-shrink: 0; }
+  .conversion-list .right-val { text-align: right; padding-left: 0; flex: 1.2; }
+
+  /* Section 4 Mobile Card Transformation */
+  .table-wrapper { border: none; background: transparent; }
+  .table-wrapper table, .table-wrapper thead, .table-wrapper tbody, 
+  .table-wrapper th, .table-wrapper td, .table-wrapper tr {
+    display: block; width: 100% !important;
+  }
+  .table-wrapper thead { display: none; }
+  .table-wrapper tr {
+    background: var(--bg-raised); border: 1px solid var(--rule);
+    border-radius: var(--radius); margin-bottom: 12px; padding: 12px 16px;
+  }
+  .table-wrapper td {
+    border-bottom: 1px dashed var(--rule); padding: 8px 0; text-align: left;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;
+  }
+  .table-wrapper td:last-child { border-bottom: none; flex-direction: column; gap: 4px; }
+  .table-wrapper td:nth-child(1)::before { content: "Transition"; font-weight: 700; color: var(--card-accent); }
+  .table-wrapper td:nth-child(2)::before { content: "States"; color: var(--ink-secondary); font-size: 0.85rem; }
+  .table-wrapper td:nth-child(3)::before { content: "Thermal Type"; color: var(--ink-secondary); font-size: 0.85rem; }
+  .table-wrapper td:nth-child(4)::before { content: "Particle Dynamics"; font-weight: 700; color: var(--steel); margin-bottom: 2px; }
 }
 
 @media (max-width: 560px) {
@@ -283,5 +288,4 @@ footer.page-footer {
   h1 { font-size: 1.75rem; }
   .subtitle { font-size: 0.98rem; }
   .table-wrapper { margin-top: 12px; }
-  table { min-width: 560px; }
 }
