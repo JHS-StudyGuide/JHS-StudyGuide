@@ -25,7 +25,15 @@
   --green-gradient: linear-gradient(135deg, rgba(209, 250, 229, 0.8), rgba(167, 243, 208, 0.5));
 }
 
+/* ---------- Core Reset & Base Styles ---------- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
 
 html { scroll-behavior: smooth; }
 
@@ -35,12 +43,15 @@ body {
   color: var(--ink);
   line-height: 1.65;
   transition: background-color 0.2s ease, color 0.2s ease;
-  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 h1, h2, h3 { letter-spacing: -0.01em; }
+h1, h2, h3, p, li { overflow-wrap: break-word; }
+*:not(table):not(tr):not(td):not(th) { max-width: 100%; }
 
-/* ---------- Top Bar ---------- */
+/* ---------- Navigation & Header ---------- */
 .top-bar {
   display: flex; justify-content: space-between; align-items: center;
   gap: 12px;
@@ -58,8 +69,9 @@ h1, h2, h3 { letter-spacing: -0.01em; }
 }
 .theme-toggle:hover { border-color: var(--card-accent); color: var(--card-accent); }
 
-/* ---------- Layout ---------- */
+/* ---------- Layout & Sidebar ---------- */
 .container { display: flex; max-width: 1200px; margin: 0 auto; padding: 24px; gap: 28px; align-items: flex-start; }
+.container, .content, .sidebar, section, .directory, .dept-card, .type-card { min-width: 0; }
 
 .sidebar {
   width: 250px; flex-shrink: 0;
@@ -101,7 +113,7 @@ section { margin-bottom: 36px; scroll-margin-top: 90px; }
 .part-head h2 { font-size: 1.5rem; margin-bottom: 6px; }
 .part-head p { color: var(--ink-secondary); max-width: 65ch; margin-bottom: 4px; }
 
-/* ---------- Interactive Directory / Tab Board ---------- */
+/* ---------- Directory & Tabs ---------- */
 .directory {
   background: var(--bg-raised); border: 1px solid var(--rule); border-radius: var(--radius);
   padding: 18px; box-shadow: 0 1px 2px var(--shadow);
@@ -128,9 +140,8 @@ section { margin-bottom: 36px; scroll-margin-top: 90px; }
 .directory-panel li { position: relative; padding-left: 20px; font-size: 0.95rem; color: var(--ink); }
 .directory-panel li::before { content: "—"; position: absolute; left: 0; color: var(--card-accent); }
 
-/* ---------- Reference Cards & Grids ---------- */
+/* ---------- Cards & Grids ---------- */
 .dept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
-@media (max-width: 640px) { .dept-grid { grid-template-columns: 1fr; } }
 .dept-card {
   background: var(--bg-raised); border: 1px solid var(--rule);
   border-left: 4px solid var(--card-accent); border-radius: var(--radius);
@@ -150,22 +161,33 @@ section { margin-bottom: 36px; scroll-margin-top: 90px; }
 .type-card h4 { font-size: 1.05rem; margin-bottom: 8px; }
 .type-card p { font-size: 0.9rem; color: var(--ink-secondary); }
 
-/* ---------- Callout Box ---------- */
 .callout {
   background: var(--green-gradient); border: 1px solid var(--card-accent);
   border-left: 4px solid var(--card-accent); border-radius: var(--radius);
   padding: 16px 18px; margin-top: 16px; color: var(--ink); font-size: 0.94rem;
 }
 
-/* ---------- Reference Table ---------- */
+/* ---------- Table Styles ---------- */
 .table-wrapper {
-  overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 16px;
-  border: 1px solid var(--rule); border-radius: var(--radius);
+  width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  margin-top: 16px; border: 1px solid var(--rule); border-radius: var(--radius);
 }
 table { width: 100%; min-width: 640px; border-collapse: collapse; background: var(--bg-raised); }
-th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--rule); font-size: 0.9rem; vertical-align: top; }
+th, td {
+  text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--rule);
+  font-size: 0.9rem; vertical-align: top;
+}
 th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-secondary); }
 tr:last-child td { border-bottom: none; }
+td, th { overflow-wrap: normal; word-break: normal; }
+
+/* ---------- Dedication Card & Footer ---------- */
+.dedication-card {
+  width: 100%; margin: 32px 0 16px 0; background: var(--green-gradient);
+  border: 2px solid var(--card-accent); border-radius: var(--radius);
+  padding: 24px 28px; text-align: center; box-shadow: 0 4px 15px var(--shadow);
+}
+.dedication-card p { font-size: 1.15rem; font-weight: 700; color: var(--ink); letter-spacing: 0.01em; }
 
 .footer-note { color: var(--ink-secondary); text-align: center; padding: 8px 0 24px; font-size: 0.92rem; }
 footer.page-footer {
@@ -173,34 +195,7 @@ footer.page-footer {
   border-top: 1px solid var(--rule); margin-top: 20px;
 }
 
-/* ---------- Dedication Card ---------- */
-.dedication-card {
-  width: 100%;
-  margin: 32px 0 16px 0;
-  background: var(--green-gradient);
-  border: 2px solid var(--card-accent);
-  border-radius: var(--radius);
-  padding: 24px 28px;
-  text-align: center;
-  box-shadow: 0 4px 15px var(--shadow);
-}
-
-.dedication-card p {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: 0.01em;
-}
-
-/* ---------- Mobile Hardening ---------- */
-html, body { width: 100%; max-width: 100%; overflow-x: hidden; overscroll-behavior-x: none; }
-*:not(table):not(tr):not(td):not(th) { max-width: 100%; }
-.container, .content, .sidebar, section, .directory, .dept-card, .type-card { min-width: 0; }
-.table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-h1, h2, h3, p, li { overflow-wrap: break-word; }
-td, th { overflow-wrap: normal; word-break: normal; }
-
+/* ---------- Responsive Breakpoints ---------- */
 @media (max-width: 1024px) {
   .container { padding: 20px; gap: 20px; }
   .sidebar { width: 240px; }
@@ -213,8 +208,7 @@ td, th { overflow-wrap: normal; word-break: normal; }
   .sidebar { width: 100%; position: static; top: auto; margin-bottom: 10px; }
   .content { max-width: 100%; width: 100%; }
   .hero, section, .sidebar, .directory { padding: 18px; }
-  .hero-grid { grid-template-columns: 1fr; }
-  .dept-grid, .type-grid { grid-template-columns: 1fr; }
+  .hero-grid, .dept-grid, .type-grid { grid-template-columns: 1fr; }
   .directory-tabs { justify-content: center; }
   .directory-tabs button { flex: 1 1 45%; text-align: center; }
   h1 { font-size: 1.95rem; }
