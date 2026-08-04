@@ -253,19 +253,18 @@ footer.page-footer {
 
 /* ---------- Dedication Card ---------- */
 .dedication-card {
-  width: 90%;               /* Expands nicely on mobile */
-  max-width: 650px;         /* Creates a bold, substantial block on desktop */
-  margin: 40px auto 20px;   /* Centers the block horizontally */
+  width: 100%;
+  margin: 32px 0 16px;
   background: var(--green-gradient);
   border: 2px solid var(--card-accent);
   border-radius: var(--radius);
-  padding: 28px 36px;       /* Generous padding for visual impact */
+  padding: 24px 28px;
   text-align: center;
   box-shadow: 0 4px 15px var(--shadow);
 }
 
 .dedication-card p {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--ink);
   letter-spacing: 0.01em;
