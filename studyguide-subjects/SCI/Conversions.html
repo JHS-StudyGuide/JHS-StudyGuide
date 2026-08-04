@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHEM · Conversion of Units & Physical Quantities - Study Hub</title>
+    <link rel="stylesheet" href="Conversions.css" />
+    <script
+      data-goatcounter="https://stc-studyguide.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+    <!-- Add MathJax to your <head> section -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <header class="top-bar">
+      <a href="../../index.html">← Back to Main Hub</a>
+      <span class="title"
+        >CHEM · Conversion of Units & Physical Quantities</span
+      >
+      <button class="theme-toggle" id="themeToggle" type="button">
+        Toggle Light Mode
+      </button>
+    </header>
+
+    <div class="container">
+      <nav class="sidebar" aria-label="Section navigation">
+        <h3>Subject Archive</h3>
+        <div class="module-title">CHEM: Units & Measurements</div>
+        <ul class="module-section">
+          <li><a href="#quantities">1. Physical Quantities</a></li>
+          <li><a href="#si-conversions">2. SI Unit Equations</a></li>
+          <li><a href="#english-conversions">3. English Unit Equations</a></li>
+          <li><a href="#reference-table">4. Quick Reference Table</a></li>
+        </ul>
+      </nav>
+
+      <main class="content">
+        <header class="hero" id="overview">
+          <div>
+            <span class="dept-tag">Chemistry & Measurement</span>
+            <h1>Conversion of Units & Physical Quantities</h1>
+            <p class="subtitle">
+              Comprehensive breakdown of fundamental quantities, SI/Metric
+              conversions, English system equivalents, and measurement
+              definitions.
+            </p>
+          </div>
+        </header>
+
+        <section id="quantities">
+          <div class="part-head">
+            <h2>1. Physical Quantities</h2>
+            <p>
+              Core measurements, definitions, and standard units in chemical
+              science.
+            </p>
+          </div>
+
+          <div class="type-grid">
+            <div class="type-card">
+              <div class="card-header-row">
+                <span class="letter">01</span>
+                <span class="unit-badge">$\text{kg}$</span>
+              </div>
+              <h4>Mass</h4>
+              <p><strong>Definition:</strong> Amount of matter in an object.</p>
+              <div class="metric-note">
+                <strong>Behavior:</strong> Does <em>not</em> change with
+                location.
+              </div>
+            </div>
+
+            <div class="type-card">
+              <div class="card-header-row">
+                <span class="letter">02</span>
+                <span class="unit-badge">$\text{N}$</span>
+              </div>
+              <h4>Weight</h4>
+              <p>
+                <strong>Definition:</strong> Pull exerted by gravity on an
+                object.
+              </p>
+              <div class="metric-note">
+                <strong>Behavior:</strong> Depends on mass & distance from the
+                center of the planet (changes).
+              </div>
+            </div>
+
+            <div class="type-card">
+              <div class="card-header-row">
+                <span class="letter">03</span>
+                <span class="unit-badge">$\text{m}$</span>
+              </div>
+              <h4>Length</h4>
+              <p>
+                <strong>Definition:</strong> Measurement of the extent of
+                something along its greatest dimension.
+              </p>
+            </div>
+
+            <div class="type-card">
+              <div class="card-header-row">
+                <span class="letter">04</span>
+                <span class="unit-badge">$\text{km}$</span>
+              </div>
+              <h4>Distance</h4>
+              <p>
+                <strong>Definition:</strong> Length of the path an object takes
+                without regard for starting/ending place or direction.
+              </p>
+            </div>
+
+            <div class="type-card">
+              <div class="card-header-row">
+                <span class="letter">05</span>
+                <span class="unit-badge">$\text{m}^3$</span>
+              </div>
+              <h4>Volume</h4>
+              <p>
+                <strong>Definition:</strong> How much space an object occupies.
+              </p>
+            </div>
+
+            <div class="type-card">
+              <div class="card-header-row">
+                <span class="letter">06</span>
+                <span class="unit-badge">$\text{atm / Pa}$</span>
+              </div>
+              <h4>Pressure</h4>
+              <p>
+                <strong>Definition:</strong> Force applied perpendicular to the
+                surface per unit area.
+              </p>
+            </div>
+
+            <div class="type-card">
+              <div class="card-header-row">
+                <span class="letter">07</span>
+                <span class="unit-badge">$\text{K / °C / °F}$</span>
+              </div>
+              <h4>Temperature</h4>
+              <p>
+                <strong>Definition:</strong> Measure of average kinetic energy
+                of the particles in an object.
+              </p>
+            </div>
+
+            <div class="type-card">
+              <div class="card-header-row">
+                <span class="letter">08</span>
+                <span class="unit-badge">$\text{g/cm}^3$</span>
+              </div>
+              <h4>Density</h4>
+              <p>
+                <strong>Definition:</strong> Ratio of the space taken up
+                (volume) relative to the amount of matter (mass).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="si-conversions">
+          <div class="part-head">
+            <h2>2. Common Equations (SI System)</h2>
+            <p>
+              Standard metric system conversion factors categorized by
+              dimensional type.
+            </p>
+          </div>
+
+          <div class="dept-grid">
+            <div class="dept-card">
+              <h4>Length Equivalents</h4>
+              <ul class="conversion-list">
+                <li>
+                  <span class="left-val">$1\text{ km}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$1,000\text{ m}$</span>
+                </li>
+                <li>
+                  <span class="left-val">$1\text{ m}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$100\text{ cm}$</span>
+                </li>
+                <li>
+                  <span class="left-val">$1\text{ m}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$1,000\text{ mm}$</span>
+                </li>
+                <li>
+                  <span class="left-val">$1\text{ cm}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$10\text{ mm}$</span>
+                </li>
+                <li>
+                  <span class="left-val">$1\text{ m}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$3.281\text{ ft}$</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="dept-card">
+              <h4>Mass Equivalents</h4>
+              <ul class="conversion-list">
+                <li>
+                  <span class="left-val">$1\text{ kg}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$1,000\text{ g}$</span>
+                </li>
+                <li>
+                  <span class="left-val">$1\text{ g}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$1,000\text{ mg}$</span>
+                </li>
+                <li>
+                  <span class="left-val">$1\text{ mg}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val"
+                    >$1,000\text{ µg}$ <small>(microgram)</small></span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="dept-card" style="grid-column: span 2">
+              <h4>Volume Equivalents</h4>
+              <div class="two-col-list">
+                <ul class="conversion-list">
+                  <li>
+                    <span class="left-val">$1\text{ L}$</span>
+                    <span class="eq-sign">=</span>
+                    <span class="right-val">$10\text{ dL}$</span>
+                  </li>
+                  <li>
+                    <span class="left-val">$1\text{ L}$</span>
+                    <span class="eq-sign">=</span>
+                    <span class="right-val">$1,000\text{ mL}$</span>
+                  </li>
+                  <li>
+                    <span class="left-val">$1\text{ L}$</span>
+                    <span class="eq-sign">=</span>
+                    <span class="right-val">$1,000,000\text{ µL}$</span>
+                  </li>
+                </ul>
+                <ul class="conversion-list">
+                  <li>
+                    <span class="left-val">$1\text{ dL}$</span>
+                    <span class="eq-sign">=</span>
+                    <span class="right-val">$100\text{ mL}$</span>
+                  </li>
+                  <li>
+                    <span class="left-val">$1\text{ mL}$</span>
+                    <span class="eq-sign">=</span>
+                    <span class="right-val">$1\text{ cm}^3 = 1\text{ cc}$</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="english-conversions">
+          <div class="part-head">
+            <h2>3. Common Equations (English System)</h2>
+            <p>
+              Standard Imperial/English conversion factors categorized by
+              dimensional type.
+            </p>
+          </div>
+
+          <div class="dept-grid">
+            <div class="dept-card">
+              <h4>Length Equivalents</h4>
+              <ul class="conversion-list">
+                <li>
+                  <span class="left-val">$1\text{ ft}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$12\text{ in}$</span>
+                </li>
+                <li>
+                  <span class="left-val">$1\text{ yd}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$3\text{ ft}$</span>
+                </li>
+                <li>
+                  <span class="left-val">$1\text{ mi}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$5,280\text{ ft}$</span>
+                </li>
+                <li>
+                  <span class="left-val">$1\text{ mi}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$1.61\text{ km}$</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="dept-card">
+              <h4>Mass Equivalents</h4>
+              <ul class="conversion-list">
+                <li>
+                  <span class="left-val">$1\text{ lb}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$16\text{ oz}$</span>
+                </li>
+                <li>
+                  <span class="left-val">$1\text{ ton}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$2,000\text{ lb}$</span>
+                </li>
+                <li>
+                  <span class="left-val">$1\text{ oz}$</span>
+                  <span class="eq-sign">=</span>
+                  <span class="right-val">$28.35\text{ g}$</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="dept-card" style="grid-column: span 2">
+              <h4>Volume Equivalents</h4>
+              <div class="two-col-list">
+                <ul class="conversion-list">
+                  <li>
+                    <span class="left-val">$1\text{ qt}$</span>
+                    <span class="eq-sign">=</span>
+                    <span class="right-val">$4\text{ cups}$</span>
+                  </li>
+                  <li>
+                    <span class="left-val">$1\text{ qt}$</span>
+                    <span class="eq-sign">=</span>
+                    <span class="right-val">$2\text{ pints}$</span>
+                  </li>
+                </ul>
+                <ul class="conversion-list">
+                  <li>
+                    <span class="left-val">$1\text{ qt}$</span>
+                    <span class="eq-sign">=</span>
+                    <span class="right-val">$32\text{ fl oz}$</span>
+                  </li>
+                  <li>
+                    <span class="left-val">$1\text{ gal}$</span>
+                    <span class="eq-sign">=</span>
+                    <span class="right-val">$4\text{ qt}$</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="reference-table">
+          <h2>4. Quick Reference Summary Table</h2>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Quantity</th>
+                  <th>Description / Behavior</th>
+                  <th>Standard Unit(s)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Mass</strong></td>
+                  <td>Constant amount of matter in a body</td>
+                  <td>$\text{kg, g, mg, lb, oz}$</td>
+                </tr>
+                <tr>
+                  <td><strong>Weight</strong></td>
+                  <td>Variable force due to gravitational pull</td>
+                  <td>$\text{N}$ (Newton)</td>
+                </tr>
+                <tr>
+                  <td><strong>Length / Distance</strong></td>
+                  <td>Spatial extent or continuous path traveled</td>
+                  <td>$\text{m, km, cm, mm, ft, in, yd, mi}$</td>
+                </tr>
+                <tr>
+                  <td><strong>Volume</strong></td>
+                  <td>Three-dimensional space occupied</td>
+                  <td>$\text{m}^3\text{, L, dL, mL, cc, qt, gal}$</td>
+                </tr>
+                <tr>
+                  <td><strong>Pressure</strong></td>
+                  <td>Perpendicular force per surface area</td>
+                  <td>$\text{atm, Pa}$</td>
+                </tr>
+                <tr>
+                  <td><strong>Temperature</strong></td>
+                  <td>Average kinetic energy of particles</td>
+                  <td>$\text{K, °C, °F}$</td>
+                </tr>
+                <tr>
+                  <td><strong>Density</strong></td>
+                  <td>
+                    Ratio of mass to volume
+                    ($\frac{\text{mass}}{\text{volume}}$)
+                  </td>
+                  <td>$\text{g/cm}^3$</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="dedication-card"><p>Thank you to Dani and Mia! 💚</p></div>
+
+    <script>
+      // Dark / Light Theme Toggle Script
+      const themeToggleBtn = document.getElementById("themeToggle");
+      themeToggleBtn.addEventListener("click", () => {
+        const currentTheme =
+          document.documentElement.getAttribute("data-theme");
+        if (currentTheme === "light") {
+          document.documentElement.removeAttribute("data-theme");
+          themeToggleBtn.textContent = "Toggle Light Mode";
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+          themeToggleBtn.textContent = "Toggle Dark Mode";
+        }
+      });
+    </script>
+  </body>
+</html>

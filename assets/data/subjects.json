@@ -131,12 +131,12 @@
           ]
         },
         {
-          "title": "Properties of Matter",
+          "title": "Conversion of Units",
           "lessons": [
-            { "label": "States of Matter", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Particle Model of Matter", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Physical & Chemical Changes", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Mixtures & Solutions", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+            { "label": "Physical Quantities", "href": "studyguide-subjects/SCI/Conversions.html#quantities" },
+            { "label": "SI Unit Equations", "href": "studyguide-subjects/SCI/Conversions.html#si-cojnversions" },
+            { "label": "English Unit Equations", "href": "studyguide-subjects/SCI/Conversions.html#english-conversions" },
+            { "label": "Reference Table", "href": "studyguide-subjects/SCI/Conversions.html#reference-table" }
           ]
         }
       ],
