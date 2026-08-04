@@ -149,6 +149,15 @@
             { "label": "Properties of Matter", "href": "studyguide-subjects/SCI/Mixtures.html#properties-matter" },
             { "label": "Reference Table", "href": "studyguide-subjects/SCI/Mixtures.html#comparisons" }
           ]
+        },
+                {
+          "title": "Matter, States & Phase Changes",
+          "lessons": [
+            { "label": "Particle Model of Matter", "href": "studyguide-subjects/SCI/Matter.html#particle-model" },
+            { "label": "States of Matter", "href": "studyguide-subjects/SCI/Matter.html#states-of-matter" },
+            { "label": "Phase Changes", "href": "studyguide-subjects/SCI/Matter.html#phase-changes" },
+            { "label": "Quick Reference Table", "href": "studyguide-subjects/SCI/Matter.html#reference-table" }
+          ]
         }
       ],
       "viewAllLabel": "View all Science lessons →",
