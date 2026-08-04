@@ -134,7 +134,7 @@ section { margin-bottom: 36px; scroll-margin-top: 90px; }
 .dept-card {
   background: var(--bg-raised); border: 1px solid var(--rule);
   border-left: 4px solid var(--card-accent); border-radius: var(--radius);
-  padding: 16px 18px;
+  padding: 20px 24px;
 }
 .dept-card h4 { font-size: 1rem; margin-bottom: 8px; }
 .dept-card ul { list-style: none; padding: 0; display: grid; gap: 5px; }
@@ -171,6 +171,84 @@ tr:last-child td { border-bottom: none; }
 footer.page-footer {
   text-align: center; padding: 30px; color: var(--ink-secondary); font-size: 12px;
   border-top: 1px solid var(--rule); margin-top: 20px;
+}
+
+/* Custom Header & Layout Helpers */
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.unit-badge {
+  background: var(--rule);
+  color: var(--card-accent);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid var(--rule);
+}
+
+.metric-note {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--rule);
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+}
+
+/* Styled Lists for Metric Conversions */
+.conversion-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.conversion-list li {
+  display: grid;
+  /* Fixed width for left value, fixed center column for '=', rest for right value */
+  grid-template-columns: 80px 30px 1fr; 
+  align-items: center;
+  background: var(--bg);
+  padding: 10px 16px 10px 24px; /* Increased left padding (24px) to detach text from box edge */
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+
+.conversion-list .left-val {
+  text-align: right; /* Align left values toward the equal sign */
+  padding-right: 8px;
+}
+
+.conversion-list .eq-sign {
+  text-align: center;
+  color: var(--card-accent);
+  font-weight: bold;
+}
+
+.conversion-list .right-val {
+  text-align: left;
+  padding-left: 8px;
+}
+.two-col-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .dept-card[style*="grid-column"] {
+    grid-column: span 1 !important;
+  }
+  .two-col-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- Dedication Card ---------- */
