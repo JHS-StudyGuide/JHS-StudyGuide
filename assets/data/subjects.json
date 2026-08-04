@@ -46,6 +46,16 @@
             { "label": "Characterization", "href": "studyguide-subjects/ENG/Rhyme-Characterization-English.html#characterization" },
             { "label": "Rhyme & Meter", "href": "studyguide-subjects/ENG/Rhyme-Characterization-English.html#rhyme-meter" }
           ]
+        },
+        {
+          "title": "Point of View",
+          "lessons": [
+            { "label": "Overview", "href": "studyguide-subjects/ENG/Point-of-view.html#overview" },
+            { "label": "Types of Point of View", "href": "studyguide-subjects/ENG/Point-of-view.html#pov-types" },
+            { "label": "Impact & Perspective", "href": "studyguide-subjects/ENG/Point-of-view.html#pov-impact" },
+            { "label": "Narrative Techniques", "href": "studyguide-subjects/ENG/Point-of-view.html#narrative-techniques" },
+            { "label": "Quick Refrence Table", "href": "studyguide-subjects/ENG/Point-of-view.html#reference-table" }
+          ]
         }
       ],
       "viewAllLabel": "View all English lessons →",
@@ -111,11 +121,13 @@
           ]
         },
         {
-          "title": "Significant Figures",
+          "title": "Math in Chemistry",
           "lessons": [
-            { "label": "Significant Figures", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Scientific Notation", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Conversions", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+            { "label": "Overview", "href": "studyguide-subjects/Math-in-chemistry.html#overview" },
+            { "label": "Significant Figure Rules", "href": "studyguide-subjects/Math-in-chemistry.html#sigfig-rules" },
+            { "label": "Addition, Subtraction, Mult & Div", "href": "studyguide-subjects/Math-in-chemistry.html#operations" },
+            { "label": "Scientific Notation", "href": "studyguide-subjects/Math-in-chemistry.html#scientific-notation" },
+            { "label": "Reference Table", "href": "studyguide-subjects/Math-in-chemistry.html#reference-table" }
           ]
         },
         {
