@@ -138,6 +138,17 @@
             { "label": "English Unit Equations", "href": "studyguide-subjects/SCI/Conversions.html#english-conversions" },
             { "label": "Reference Table", "href": "studyguide-subjects/SCI/Conversions.html#reference-table" }
           ]
+        },
+        {
+          "title": "Mixtures & Solutions",
+          "lessons": [
+            { "label": "Mixtures & Types", "href": "studyguide-subjects/SCI/Mixtures.html#mixtures-overview" },
+            { "label": "Solutions & Saturation", "href": "studyguide-subjects/SCI/Mixtures.html#solutions-saturation" },
+            { "label": "Concentration Forumulas", "href": "studyguide-subjects/SCI/Mixtures.html#concentration-formulas" },
+            { "label": "Sample Problem", "href": "studyguide-subjects/SCI/Mixtures.html#sample-problem" },
+            { "label": "Properties of Matter", "href": "studyguide-subjects/SCI/Mixtures.html#properties-matter" },
+            { "label": "Reference Table", "href": "studyguide-subjects/SCI/Mixtures.html#comparisons" }
+          ]
         }
       ],
       "viewAllLabel": "View all Science lessons →",

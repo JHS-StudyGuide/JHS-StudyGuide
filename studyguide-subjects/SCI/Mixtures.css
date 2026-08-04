@@ -134,7 +134,7 @@ section { margin-bottom: 36px; scroll-margin-top: 90px; }
 .dept-card {
   background: var(--bg-raised); border: 1px solid var(--rule);
   border-left: 4px solid var(--card-accent); border-radius: var(--radius);
-  padding: 16px 18px;
+  padding: 20px 24px;
 }
 .dept-card h4 { font-size: 1rem; margin-bottom: 8px; }
 .dept-card ul { list-style: none; padding: 0; display: grid; gap: 5px; }
@@ -145,6 +145,7 @@ section { margin-bottom: 36px; scroll-margin-top: 90px; }
 .type-card {
   background: var(--bg-raised); border: 1px solid var(--rule); border-radius: var(--radius);
   padding: 18px; position: relative; overflow: hidden;
+  min-width: 0;
 }
 .type-card .letter { font-size: 1.6rem; color: var(--card-accent); font-weight: 700; display: block; margin-bottom: 6px; }
 .type-card h4 { font-size: 1.05rem; margin-bottom: 8px; }
@@ -173,6 +174,84 @@ footer.page-footer {
   border-top: 1px solid var(--rule); margin-top: 20px;
 }
 
+/* Custom Header & Layout Helpers */
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.unit-badge {
+  background: var(--rule);
+  color: var(--card-accent);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid var(--rule);
+}
+
+.metric-note {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--rule);
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+}
+
+/* Styled Lists for Metric Conversions */
+.conversion-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.conversion-list li {
+  display: grid;
+  /* Fixed width for left value, fixed center column for '=', rest for right value */
+  grid-template-columns: 80px 30px 1fr; 
+  align-items: center;
+  background: var(--bg);
+  padding: 10px 16px 10px 24px; /* Increased left padding (24px) to detach text from box edge */
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+
+.conversion-list .left-val {
+  text-align: right; /* Align left values toward the equal sign */
+  padding-right: 8px;
+}
+
+.conversion-list .eq-sign {
+  text-align: center;
+  color: var(--card-accent);
+  font-weight: bold;
+}
+
+.conversion-list .right-val {
+  text-align: left;
+  padding-left: 8px;
+}
+.two-col-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .dept-card[style*="grid-column"] {
+    grid-column: span 1 !important;
+  }
+  .two-col-list {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Dedication Card ---------- */
 .dedication-card {
   width: 100%;
@@ -192,6 +271,105 @@ footer.page-footer {
   letter-spacing: 0.01em;
 }
 
+
+/* Keeps display math full-sized while enabling smooth scrolling on smaller screens */
+.formula-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 0;
+}
+
+/* SECTION 3 FIX: Responsive card sizing for wide formulas */
+.formulas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.formula-card {
+  width: 100%;
+  padding: 24px;
+}
+
+.formula-display {
+  width: 100%;
+  overflow-x: auto;
+  font-size: 0.95rem; /* Slightly scales down display math to fit comfortably on desktop */
+}
+
+/* SECTION 4 FIX: Mobile-hardened step list layout */
+.step-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.step-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg);
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+}
+
+.step-tag {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  background: var(--rule);
+  padding: 4px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.step-math {
+  flex: 1;
+  min-width: 200px; /* Allows math to wrap under tag cleanly on small mobile devices */
+  overflow-x: auto;
+}
+
+.final-tag {
+  background: var(--card-accent);
+  color: #fff;
+}
+
+/* Stacked container ensuring full horizontal width for math formulas */
+.concentration-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.formula-card {
+  width: 100%;
+  padding: 20px 24px;
+}
+
+.formula-display {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+  padding: 8px 0;
+}
+
+/* Dynamically scales down MathJax SVG/HTML output on smaller desktop breakpoints */
+.formula-display .MathJax {
+  font-size: 100% !important;
+}
+
+@media (max-width: 900px) {
+  .formula-display .MathJax {
+    font-size: 88% !important;
+  }
+}
 /* ---------- Mobile Hardening ---------- */
 html, body { width: 100%; max-width: 100%; overflow-x: hidden; overscroll-behavior-x: none; }
 *:not(table):not(tr):not(td):not(th) { max-width: 100%; }
