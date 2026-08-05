@@ -101,3 +101,25 @@ function updateStreakDisplay(streak) {
     badge.style.opacity = '1';
   }
 }
+
+// ==========================================================================
+// Time-Based Streak (5 Continuous Minutes)
+// ==========================================================================
+
+setTimeout(() => {
+  if (typeof StreakManager !== 'undefined') {
+    const streak = StreakManager.getStreak();
+    const today = new Date().toDateString();
+    
+    // Only fire if they haven't already earned a streak today
+    const testedToday = streak.completedTests.some(t => t.date === today);
+    
+    if (!testedToday) {
+      // Re-use the existing logic! Treats 5 mins of reading as a 100% test.
+      StreakManager.recordTestCompletion('5-Min Study Session', 100);
+      
+      // Optional: Give them a little popup so they know they hit the goal
+      alert('🔥 5 minutes of studying completed! Your daily streak has been updated.');
+    }
+  }
+}, 300000); // 300,000 milliseconds = exactly 5 minutes
