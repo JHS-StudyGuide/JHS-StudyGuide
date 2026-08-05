@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test: Point of View & Narrative Techniques</title>
+  <style>
+    :root {
+      --bg: #06121a;
+      --bg-raised: #0d202d;
+      --ink: #ecfeff;
+      --ink-secondary: #94a3b8;
+      --rule: #16384c;
+      --card-accent: #22d3ee;
+      --card-accent-strong: #0891b2;
+      --steel: #67e8f9;
+      --shadow: rgba(0, 0, 0, 0.5);
+      --radius: 8px;
+      --cyan-gradient: linear-gradient(135deg, rgba(6, 182, 212, 0.18), rgba(8, 145, 178, 0.35));
+    }
+
+    [data-theme="light"] {
+      --bg: #f0fdfa;
+      --bg-raised: #ffffff;
+      --ink: #0f172a;
+      --ink-secondary: #475569;
+      --rule: #cff4fc;
+      --card-accent: #0891b2;
+      --card-accent-strong: #0e7490;
+      --steel: #0891b2;
+      --shadow: rgba(15, 23, 42, 0.08);
+      --cyan-gradient: linear-gradient(135deg, rgba(207, 244, 252, 0.8), rgba(165, 243, 252, 0.5));
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      padding-bottom: 40px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px; padding: 12px 24px;
+      background: var(--bg-raised);
+      border-bottom: 1px solid var(--rule);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .top-bar a { text-decoration: none; color: var(--card-accent); font-weight: 600; font-size: 0.9rem; }
+    .top-bar a:hover { color: var(--steel); }
+    .top-bar .title { font-size: 0.95rem; letter-spacing: 0.02em; color: var(--steel); }
+    .theme-toggle {
+      background: none; border: 1px solid var(--rule); color: var(--ink);
+      padding: 8px 12px; border-radius: 999px; cursor: pointer; font-size: 0.85rem;
+    }
+    .theme-toggle:hover { border-color: var(--card-accent); color: var(--card-accent); }
+
+    /* Test Layout */
+    .test-container {
+      max-width: 720px;
+      margin: 32px auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+    .eyebrow {
+      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--card-accent); margin-bottom: 8px;
+    }
+    .hero h1 { font-size: 1.8rem; margin-bottom: 8px; }
+    .hero p { color: var(--ink-secondary); font-size: 0.95rem; }
+
+    .question {
+      margin-bottom: 20px;
+      padding: 20px;
+      background: var(--bg-raised);
+      border: 1px solid var(--rule);
+      border-left: 4px solid var(--card-accent);
+      border-radius: var(--radius);
+      box-shadow: 0 1px 2px var(--shadow);
+    }
+
+    .question h4 {
+      font-size: 1.02rem;
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+
+    .options label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      margin: 8px 0;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      cursor: pointer;
+      color: var(--ink-secondary);
+      font-size: 0.92rem;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .options label:hover {
+      border-color: var(--card-accent);
+      color: var(--ink);
+    }
+
+    .options input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--card-accent-strong);
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-top: 24px;
+      background: var(--card-accent-strong);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+    }
+
+    .submit-btn:hover { opacity: 0.9; }
+
+    /* Results */
+    .results {
+      display: none;
+      margin-top: 28px;
+      padding: 24px;
+      border-radius: var(--radius);
+      text-align: center;
+      background: var(--cyan-gradient);
+      border: 2px solid var(--card-accent);
+      box-shadow: 0 4px 15px var(--shadow);
+    }
+    .results.show { display: block; }
+
+    .results h3 { font-size: 1.4rem; color: var(--ink); margin-bottom: 8px; }
+    .results p { color: var(--ink-secondary); font-size: 0.95rem; margin-bottom: 16px; }
+
+    .btn-back {
+      display: inline-block;
+      padding: 10px 20px;
+      background: var(--card-accent-strong);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      .top-bar { padding: 12px 16px; }
+      .test-container { padding: 0 16px; margin: 20px auto; }
+      .hero h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <a href="../../studyguide-subjects/ENG/Point-of-view.html">← Back to Reviewer</a>
+    <span class="title">ENG · Knowledge Check</span>
+    <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+  </header>
+
+  <main class="test-container">
+    <div class="hero">
+      <div class="eyebrow">English Literature Quiz</div>
+      <h1>Point of View & Narrative Techniques</h1>
+      <p>Answer all 5 questions. Score 60% (3/5) or higher to extend your streak!</p>
+    </div>
+
+    <form id="test-form">
+      <div class="question">
+        <h4>1. Which point of view features a "God-like" narrator who knows the thoughts and feelings of ALL characters?</h4>
+        <div class="options">
+          <label><input type="radio" name="q1" value="wrong1" required> First Person POV</label>
+          <label><input type="radio" name="q1" value="wrong2"> Third Person Limited</label>
+          <label><input type="radio" name="q1" value="correct"> Third Person Omniscient</label>
+          <label><input type="radio" name="q1" value="wrong3"> Second Person POV</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h4>2. What narrative technique pauses current events to show something that happened in the past?</h4>
+        <div class="options">
+          <label><input type="radio" name="q2" value="wrong1" required> Foreshadowing</label>
+          <label><input type="radio" name="q2" value="correct"> Flashback</label>
+          <label><input type="radio" name="q2" value="wrong2"> Dialogue</label>
+          <label><input type="radio" name="q2" value="wrong3"> Stream of Consciousness</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h4>3. Why is First Person POV considered limited or biased?</h4>
+        <div class="options">
+          <label><input type="radio" name="q3" value="correct" required> The story is filtered solely through one character's personal thoughts and perspective.</label>
+          <label><input type="radio" name="q3" value="wrong1"> The narrator knows everyone's secret motivations.</label>
+          <label><input type="radio" name="q3" value="wrong2"> It only uses pronouns like "he," "she," and "they."</label>
+          <label><input type="radio" name="q3" value="wrong3"> It does not allow any conversation between characters.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h4>4. Which technique gives a subtle hint about an important event that will happen later?</h4>
+        <div class="options">
+          <label><input type="radio" name="q4" value="wrong1" required> Suspense & Cliffhanger</label>
+          <label><input type="radio" name="q4" value="wrong2"> Flashback</label>
+          <label><input type="radio" name="q4" value="correct"> Foreshadowing</label>
+          <label><input type="radio" name="q4" value="wrong3"> Dialogue</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h4>5. How does telling a story from the Antagonist's Point of View affect the reader?</h4>
+        <div class="options">
+          <label><input type="radio" name="q5" value="wrong1" required> It makes the plot impossible to follow.</label>
+          <label><input type="radio" name="q5" value="correct"> It challenges biases and forces readers to consider another perspective.</label>
+          <label><input type="radio" name="q5" value="wrong2"> It automatically turns the villain into a hero.</label>
+          <label><input type="radio" name="q5" value="wrong3"> It removes all tension from the story.</label>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Test</button>
+    </form>
+
+    <div id="results" class="results">
+      <h3 id="results-title"></h3>
+      <p id="results-text"></p>
+      <a href="../../studyguide-subjects/ENG/Point-of-view.html" class="btn-back">← Back to Reviewer</a>
+    </div>
+  </main>
+
+  <script src="../../assets/js/streak.js" defer></script>
+  <script>
+    /* Theme Toggle Handler */
+    const body = document.body;
+    const themeBtn = document.getElementById('themeToggle');
+    function applyTheme(t) {
+      if (t === 'light') { body.setAttribute('data-theme', 'light'); }
+      else { body.removeAttribute('data-theme'); }
+    }
+    applyTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    themeBtn.addEventListener('click', () => {
+      applyTheme(body.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+    });
+
+    /* Quiz Logic */
+    document.getElementById('test-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const totalQuestions = 5;
+      let correct = 0;
+
+      for (let i = 1; i <= totalQuestions; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && selected.value === 'correct') correct++;
+      }
+
+      const score = Math.round((correct / totalQuestions) * 100);
+      const passed = score >= 60;
+
+      if (typeof StreakManager !== 'undefined' && passed) {
+        StreakManager.recordTestCompletion('Point of View', score);
+      }
+
+      const formEl = document.getElementById('test-form');
+      const resultsDiv = document.getElementById('results');
+      const title = document.getElementById('results-title');
+      const text = document.getElementById('results-text');
+
+      formEl.style.display = 'none';
+      resultsDiv.classList.add('show');
+
+      if (passed) {
+        title.textContent = `🎉 Test Passed! (${score}%)`;
+        text.textContent = `Great job! You answered ${correct} of ${totalQuestions} questions correctly. Your daily streak has been updated!`;
+      } else {
+        title.textContent = `❌ Keep Practicing (${score}%)`;
+        text.textContent = `You got ${correct} of ${totalQuestions} correct. Review the lesson materials and try again to continue your streak.`;
+      }
+    });
+  </script>
+</body>
+</html>
