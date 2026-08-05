@@ -175,3 +175,13 @@ footer.page-footer {
   .container { flex-direction: column; }
   .sidebar { width: 100%; position: static; }
 }
+
+.streak-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 0.85rem; background: var(--bg-raised);
+  border: 1px solid var(--rule); border-left: 3px solid #ff6b35;
+  border-radius: var(--radius, 8px); color: var(--ink);
+  font-size: 0.875rem; font-weight: 600;
+  box-shadow: 0 1px 3px var(--shadow);
+}
+#streak-count { color: #ff6b35; font-weight: 700; }
