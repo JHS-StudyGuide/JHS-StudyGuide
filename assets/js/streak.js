@@ -67,8 +67,37 @@ const StreakManager = (() => {
   return { getStreak, recordTestCompletion };
 })();
 
+// Auto-inject adaptive CSS styles so you don't need to manually paste CSS in every stylesheet
+function injectStreakStyles() {
+  if (document.getElementById('streak-styles')) return;
+  const style = document.createElement('style');
+  style.id = 'streak-styles';
+  style.textContent = `
+    .streak-badge {
+      display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px;
+      background: var(--bg-raised, rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--rule, rgba(255, 255, 255, 0.15));
+      border-radius: var(--radius, 99px);
+      font-size: 0.85rem; font-weight: 600; color: var(--ink, #ffffff);
+      box-shadow: 0 1px 3px var(--shadow, rgba(0, 0, 0, 0.2));
+      transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+      user-select: none; cursor: default; white-space: nowrap;
+    }
+    .streak-badge:hover { border-color: var(--card-accent, #22d3ee); transform: translateY(-1px); }
+    .streak-emoji { font-size: 1rem; line-height: 1; filter: drop-shadow(0 0 2px rgba(255, 165, 0, 0.4)); }
+    .streak-count { font-weight: 700; color: var(--steel, var(--card-accent, #67e8f9)); font-variant-numeric: tabular-nums; }
+    .streak-label { font-size: 0.78rem; color: var(--ink-secondary, #94a3b8); font-weight: 500; }
+    @media (max-width: 640px) {
+      .streak-badge { padding: 4px 8px; gap: 4px; font-size: 0.8rem; }
+      .streak-label { display: none; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 // Update DOM elements when the page finishes loading
 document.addEventListener('DOMContentLoaded', () => {
+  injectStreakStyles();
   if (typeof StreakManager !== 'undefined') {
     const streak = StreakManager.getStreak();
     updateStreakDisplay(streak);
@@ -115,11 +144,9 @@ setTimeout(() => {
     const testedToday = streak.completedTests.some(t => t.date === today);
     
     if (!testedToday) {
-      // Re-use the existing logic! Treats 5 mins of reading as a 100% test.
+      // Re-use existing logic: treats 5 mins of reading as a 100% test.
       StreakManager.recordTestCompletion('5-Min Study Session', 100);
-      
-      // Optional: Give them a little popup so they know they hit the goal
       alert('🔥 5 minutes of studying completed! Your daily streak has been updated.');
     }
   }
-}, 300000); // 300,000 milliseconds = exactly 5 minutes
+}, 300000); // 300,000 milliseconds = 5 minutes
