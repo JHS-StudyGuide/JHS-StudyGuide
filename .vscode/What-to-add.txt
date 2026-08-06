@@ -1,11 +1,15 @@
 
-HTML: In header after <span></span>
+HTML: IN HEADER AFTER <span></span>
 
 <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
   <span class="streak-emoji" id="streak-emoji">🔥</span>
   <span class="streak-count" id="streak-count">0</span>
   <span class="streak-label">Streak</span>
 </div>
+
+AT THE BOTTOM BEFORE </body>
+
+<script src="../../assets/js/streak.js" defer></script>
 
 CSS: At the very bottom (just paste this)
 
