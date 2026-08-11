@@ -266,18 +266,19 @@
         {
           "title": "Intentional Injuries",
           "lessons": [
-            { "label": "Types of Intentional Injuries", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Protective Measures", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Coping Techniques", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+            { "label": "Types of Intentional Injuries", "href": "studyguide-subjects/PEH/IH-Coping.html#intentional-harm" },
+            { "label": "Coping Styles", "href": "studyguide-subjects/PEH/IH-Coping.html#coping-styles" },
+            { "label": "Coping Skills", "href": "studyguide-subjects/PEH/IH-Coping.html#coping-skills" },
+            { "label": "Reference Table", "href": "studyguide-subjects/PEH/IH-Coping.html#reference-table" }
           ]
         },
 
         {
-          "title": "Prevention and Protective Strategies for Intentional Injuries",
+          "title": "Target Games",
           "lessons": [
-            { "label": "Mental Health and Well-Being", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Healthy Connections", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
-            { "label": "Psychosocial Support", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+            { "label": "Target Games", "href": "studyguide-subjects/PEH/targetgames.html#target-games" },
+            { "label": "Invasion Games", "href": "studyguide-subjects/PEH/targetgames.html#invasion-games" },
+            { "label": "Reference Table", "href": "studyguide-subjects/PEH/targetgames.html#reference-table" }
           ]
         }
       ],

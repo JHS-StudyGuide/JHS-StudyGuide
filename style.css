@@ -103,15 +103,13 @@
 
   /* ---------- Past Lessons sidebar ---------- */
   .sidebar {
-    position: sticky;
-    top: 20px;
+    position: static;
     background: var(--bg-raised);
     border: 1px solid var(--rule);
     border-radius: 10px;
     padding: 18px 16px 20px;
     box-shadow: 0 2px 10px var(--shadow);
   }
-  @media (max-width: 860px) { .sidebar { position: static; } }
 
   .sidebar-head {
     display: flex; align-items: baseline; justify-content: space-between;
@@ -308,4 +306,68 @@
   #streak-label {
     display: none; /* Hide 'day streak' text on tiny screens to save space */
   }
+}
+/* ---------------------------------------------------------------------
+   WHAT'S NEW — wide standalone section below the subject grid, driven
+   by assets/data/whats-new.json (manually maintained list, unrelated
+   to subjects.json). Hides itself automatically when the list is empty.
+   --------------------------------------------------------------------- */
+.whats-new-wide {
+  max-width: 1180px;
+  margin: 44px auto 0;
+  padding: 0 28px;
+}
+.whats-new-wide .whats-new-inner {
+  background: var(--bg-raised);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 22px 26px 24px;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+.whats-new-wide h3 {
+  font-size: 13px;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel-bright);
+  margin: 0 0 16px;
+}
+.whats-new-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+.whats-new-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg-panel);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.whats-new-text {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+}
+a.whats-new-text:hover, a.whats-new-text:focus-visible {
+  color: var(--steel-bright);
+  outline: none;
+}
+.whats-new-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .whats-new-wide { padding: 0 16px; margin-top: 32px; }
+  .whats-new-wide .whats-new-inner { padding: 18px 16px; }
+  .whats-new-items { grid-template-columns: 1fr; }
 }
