@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHOTOGRAPHY · Practice Test</title>
+  
+  <link rel="stylesheet" href="../../studyguide-subjects/ARTS/PHOTOGRAPHY-ARTS.css">
+  <link rel="stylesheet" href="../../assets/streak-counter.css">
+  
+<style>
+  /* ==========================================================================
+     Centering Fixes for PC
+     ========================================================================== */
+  * { box-sizing: border-box; } 
+
+  .content {
+    width: 100%;
+    max-width: 1000px; 
+    margin: 0 auto;   
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: left;    
+    padding: 0 15px;     
+  }
+
+  .quiz-container {
+    width: 100%;
+    max-width: 700px; 
+    margin-top: 10px;
+    counter-reset: question-counter; 
+  }
+
+  /* ==========================================================================
+     Question & Option Formatting (Numbered & Bulleted)
+     ========================================================================== */
+  .quiz-item {
+    counter-increment: question-counter; 
+    background: var(--bg-raised, #1a1016);
+    border: 1px solid var(--rule, #4c1d37);
+    border-radius: var(--radius, 8px);
+    padding: 20px 20px 20px 50px; 
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px var(--shadow, rgba(0,0,0,0.5));
+    position: relative;
+    width: 100%;
+  }
+
+  .question {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--ink, #fce7f3);
+    display: block;
+  }
+
+  .question::before {
+    content: counter(question-counter) ".) ";
+    position: absolute;
+    left: 15px;
+    font-weight: 800;
+    color: var(--card-accent, #f472b6);
+  }
+
+  .options {
+    list-style-type: upper-alpha; 
+    padding-left: 25px; 
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .options li {
+    color: var(--ink, #fce7f3);
+    border-radius: 6px;
+    transition: all 0.15s ease;
+    cursor: pointer;
+  }
+
+  .options li:hover {
+    background-color: var(--bg, #0f0a0d);
+    color: var(--card-accent, #f472b6);
+  }
+
+  .options li.selected {
+    background: var(--card-accent-strong, #db2777) !important;
+    color: #ffffff !important;
+  }
+
+  .option-btn {
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 8px 5px; 
+    border-radius: inherit;
+    cursor: inherit;
+    font-size: 0.95rem;
+    text-align: left;
+    width: 100%;
+    transition: none;
+  }
+  
+  /* Result Panel Styling */
+  .result-panel {
+    text-align: center;
+    margin: 30px auto;
+    max-width: 700px;
+    width: 100%;
+    display: none;
+    background: var(--bg-raised, #1a1016);
+    border: 2px solid var(--card-accent, #f472b6);
+    border-radius: var(--radius, 8px);
+    padding: 25px;
+    box-shadow: 0 4px 10px var(--shadow, rgba(0,0,0,0.5));
+  }
+  
+  .score-text { font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+  
+  .action-btn {
+      margin-top: 15px;
+      background-color: var(--card-accent, #f472b6);
+      border: none;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+  }
+  .action-btn:hover { background-color: var(--card-accent-strong, #db2777); }
+</style>
+</head>
+<body data-theme="dark">
+
+<header class="top-bar">
+  <a href="../../index.html">← Back to Main Hub</a>
+  <span class="title">PHOTOGRAPHY · Practice Test</span>
+  <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+    <span class="streak-emoji" id="streak-emoji">🔥</span>
+    <span class="streak-count" id="streak-count">0</span>
+    <span class="streak-label">Streak</span>
+  </div>
+  <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()">Toggle Light Mode</button>
+</header>
+
+<main class="container">
+  <div class="content">
+    <header class="hero">
+      <div class="eyebrow">Practice Quiz</div>
+      <h1>Test Your Knowledge</h1>
+      <p class="subtitle">Select the correct answer for each question based on Photography & Camera Arts covered in the study notes. Questions and numbering automatically randomize.</p>
+    </header>
+
+    <div class="quiz-container" id="quizContainer">
+
+      <div class="quiz-item" data-correct="definition">
+        <span class="question">According to the lesson, what is the main definition of photography?</span>
+        <ul class="options">
+          <li><button class="option-btn">The process of developing film in a darkroom.</button></li>
+          <li><button class="option-btn">The act of creating pictures through light.</button></li>
+          <li><button class="option-btn">The digital manipulation of pixels on a screen.</button></li>
+          <li><button class="option-btn">The art of capturing motion using expensive lenses.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="power">
+        <span class="question">Which DSLR function is responsible for turning the camera on and off?</span>
+        <ul class="options">
+          <li><button class="option-btn">Mode Dial.</button></li>
+          <li><button class="option-btn">Shutter.</button></li>
+          <li><button class="option-btn">Power Switch.</button></li>
+          <li><button class="option-btn">Exposure.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="shutter">
+        <span class="question">Which part of the camera takes a picture or starts recording?</span>
+        <ul class="options">
+          <li><button class="option-btn">Shutter.</button></li>
+          <li><button class="option-btn">Focus.</button></li>
+          <li><button class="option-btn">Lens.</button></li>
+          <li><button class="option-btn">Viewfinder.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="lens">
+        <span class="question">What part lets light enter the camera and is responsible for forming the image?</span>
+        <ul class="options">
+          <li><button class="option-btn">Flash.</button></li>
+          <li><button class="option-btn">Lens.</button></li>
+          <li><button class="option-btn">Mode Dial.</button></li>
+          <li><button class="option-btn">LCD Screen.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="modedial">
+        <span class="question">Which feature allows users to change camera settings depending on the type of shot, such as portrait or landscape?</span>
+        <ul class="options">
+          <li><button class="option-btn">Shutter Speed.</button></li>
+          <li><button class="option-btn">Mode Dial.</button></li>
+          <li><button class="option-btn">Power Switch.</button></li>
+          <li><button class="option-btn">Aperture.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="focus">
+        <span class="question">Which setting ensures the subject in the image is clear and sharp rather than blurry?</span>
+        <ul class="options">
+          <li><button class="option-btn">Exposure.</button></li>
+          <li><button class="option-btn">Flash.</button></li>
+          <li><button class="option-btn">Focus.</button></li>
+          <li><button class="option-btn">Shutter Speed.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="exposure">
+        <span class="question">Which setting controls the overall balance of light, determining how light or dark the image will be?</span>
+        <ul class="options">
+          <li><button class="option-btn">Exposure.</button></li>
+          <li><button class="option-btn">Focus.</button></li>
+          <li><button class="option-btn">Panorama.</button></li>
+          <li><button class="option-btn">Viewfinder.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="shutterspeed">
+        <span class="question">What determines how long light enters the camera, where a fast setting freezes motion and a slow one creates motion blur?</span>
+        <ul class="options">
+          <li><button class="option-btn">Aperture.</button></li>
+          <li><button class="option-btn">Shutter Speed.</button></li>
+          <li><button class="option-btn">Night Mode.</button></li>
+          <li><button class="option-btn">Exposure.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="aperture">
+        <span class="question">Which physical control dictates how much light enters through the lens and directly affects background blur?</span>
+        <ul class="options">
+          <li><button class="option-btn">Shutter Speed.</button></li>
+          <li><button class="option-btn">Focus.</button></li>
+          <li><button class="option-btn">Aperture.</button></li>
+          <li><button class="option-btn">Mode Dial.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="panorama">
+        <span class="question">Which mobile camera setting is ideal for wide-angle group photos or landscapes by moving the camera across a scene?</span>
+        <ul class="options">
+          <li><button class="option-btn">Time-Lapse.</button></li>
+          <li><button class="option-btn">Panorama.</button></li>
+          <li><button class="option-btn">Long Exposure.</button></li>
+          <li><button class="option-btn">Slow Motion.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="slowmotion">
+        <span class="question">Which mobile feature records at a high frame rate so fast actions appear smoother when played back?</span>
+        <ul class="options">
+          <li><button class="option-btn">Time-Lapse.</button></li>
+          <li><button class="option-btn">Slow Motion.</button></li>
+          <li><button class="option-btn">Night Mode.</button></li>
+          <li><button class="option-btn">Document Mode.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="timelapse">
+        <span class="question">What setting compresses long hours of recording into a short video, showing changes over time?</span>
+        <ul class="options">
+          <li><button class="option-btn">Slow Motion.</button></li>
+          <li><button class="option-btn">Long Exposure.</button></li>
+          <li><button class="option-btn">Panorama.</button></li>
+          <li><button class="option-btn">Time-Lapse.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="longexp">
+        <span class="question">Which mobile setting is best used to capture light trails or create smooth effects for moving water?</span>
+        <ul class="options">
+          <li><button class="option-btn">Portrait Mode.</button></li>
+          <li><button class="option-btn">Time-Lapse.</button></li>
+          <li><button class="option-btn">Long Exposure.</button></li>
+          <li><button class="option-btn">Document Mode.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="portrait">
+        <span class="question">Which mobile mode keeps the subject sharp while deliberately blurring the background?</span>
+        <ul class="options">
+          <li><button class="option-btn">Night Mode.</button></li>
+          <li><button class="option-btn">Portrait Mode.</button></li>
+          <li><button class="option-btn">Panorama.</button></li>
+          <li><button class="option-btn">Macro Mode.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="mirrorless">
+        <span class="question">What is the primary defining characteristic of a mirrorless camera?</span>
+        <ul class="options">
+          <li><button class="option-btn">It has no internal physical mirror and feeds a live digital preview to the screen.</button></li>
+          <li><button class="option-btn">It relies solely on an optical viewfinder to compose the shot.</button></li>
+          <li><button class="option-btn">It cannot adjust aperture or shutter speed.</button></li>
+          <li><button class="option-btn">It has a permanently fixed lens that cannot be detached.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="mirror">
+        <span class="question">In mirror cameras (commonly known as DSLRs), what is the main purpose of the internal physical mirror?</span>
+        <ul class="options">
+          <li><button class="option-btn">It compresses the image files to save storage space.</button></li>
+          <li><button class="option-btn">It provides the extra light needed for the flash.</button></li>
+          <li><button class="option-btn">It bounces light from the lens up into an optical viewfinder.</button></li>
+          <li><button class="option-btn">It protects the image sensor from dust.</button></li>
+        </ul>
+      </div>
+<div class="quiz-item" data-correct="controls">
+        <span class="question">According to the notes, what helps a photographer shape exposure, motion, and focus intentionally?</span>
+        <ul class="options">
+          <li><button class="option-btn">Using the most expensive lens available.</button></li>
+          <li><button class="option-btn">Relying purely on natural light.</button></li>
+          <li><button class="option-btn">Understanding a camera's controls.</button></li>
+          <li><button class="option-btn">Digital manipulation after taking the photo.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="goal">
+        <span class="question">What is the fundamental goal of all camera types, including DSLRs, mobile phones, and mirrorless bodies?</span>
+        <ul class="options">
+          <li><button class="option-btn">Capturing light well.</button></li>
+          <li><button class="option-btn">Recording audio clearly.</button></li>
+          <li><button class="option-btn">Providing a digital preview.</button></li>
+          <li><button class="option-btn">Freezing fast action.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="flash">
+        <span class="question">Which part of the camera provides extra light in dark environments?</span>
+        <ul class="options">
+          <li><button class="option-btn">Lens.</button></li>
+          <li><button class="option-btn">Aperture.</button></li>
+          <li><button class="option-btn">Flash.</button></li>
+          <li><button class="option-btn">Exposure.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="framing">
+        <span class="question">Which features help the user see and frame the subject before and after taking a photo?</span>
+        <ul class="options">
+          <li><button class="option-btn">Power Switch and Mode Dial.</button></li>
+          <li><button class="option-btn">Shutter and Focus.</button></li>
+          <li><button class="option-btn">Aperture and Exposure.</button></li>
+          <li><button class="option-btn">Viewfinder and LCD Screen.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="foundation">
+        <span class="question">Together, which three settings form the foundation of how a photographer controls light in a shot?</span>
+        <ul class="options">
+          <li><button class="option-btn">Shutter speed, aperture, and exposure.</button></li>
+          <li><button class="option-btn">Flash, Lens, and Viewfinder.</button></li>
+          <li><button class="option-btn">Focus, Mode Dial, and Power Switch.</button></li>
+          <li><button class="option-btn">Night Mode, Portrait Mode, and Panorama.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="software">
+        <span class="question">How do smartphone cameras primarily recreate effects that once required specialized DSLR technique and gear?</span>
+        <ul class="options">
+          <li><button class="option-btn">By attaching large physical lenses to the phone.</button></li>
+          <li><button class="option-btn">Through software-driven modes.</button></li>
+          <li><button class="option-btn">By relying entirely on optical viewfinders.</button></li>
+          <li><button class="option-btn">By using physical mirror mechanisms.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="document">
+        <span class="question">Which mobile camera setting is often used to capture clear, flat images of papers to read text cleanly?</span>
+        <ul class="options">
+          <li><button class="option-btn">Portrait Mode.</button></li>
+          <li><button class="option-btn">Time-Lapse.</button></li>
+          <li><button class="option-btn">Document Mode.</button></li>
+          <li><button class="option-btn">Slow Motion.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="mirrorless_preview">
+        <span class="question">Because there is no optical viewfinder mirror in a mirrorless camera, how does the photographer preview the image?</span>
+        <ul class="options">
+          <li><button class="option-btn">The sensor feeds a live digital preview directly to the screen.</button></li>
+          <li><button class="option-btn">By looking through a secondary glass lens.</button></li>
+          <li><button class="option-btn">They must take the photo first and view it later.</button></li>
+          <li><button class="option-btn">By bouncing light off an external flash.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-correct="insights">
+        <span class="question">According to the Lesson Insights, what are the strongest ideas to take away regarding cameras?</span>
+        <ul class="options">
+          <li><button class="option-btn">Light, control, exposure, and the trade-off between optical and digital viewing.</button></li>
+          <li><button class="option-btn">File compression, battery life, and storage limits.</button></li>
+          <li><button class="option-btn">Flash intensity, lens weight, and brand differences.</button></li>
+          <li><button class="option-btn">Panorama, Time-Lapse, and Slow Motion.</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button class="action-btn" id="submitBtn">Submit Answers</button>
+    </div>
+
+    <div class="result-panel" id="resultPanel">
+      <div class="score-text" id="scoreText">Your Score: 0/16</div>
+      <p style="color: var(--ink);">You've tested your knowledge on Photography & Camera Arts covered in your notes!</p>
+      <button class="action-btn" id="retakeBtn">Retake Quiz</button>
+    </div>
+
+    <div class="footer-note">Ensure you click 'Submit Answers' to see your score and log your study streak.</div>
+  </div>
+</main>
+
+<script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="../../assets/js/streak.js" defer></script>
+
+<script>
+  /* ==========================================================================
+     Theme Toggle Logic
+     ========================================================================== */
+  function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.getAttribute("data-theme");
+    const toggleBtn = document.getElementById("themeToggle");
+    
+    if (currentTheme === "light") {
+      body.removeAttribute("data-theme");
+      toggleBtn.textContent = "Toggle Light Mode";
+    } else {
+      body.setAttribute("data-theme", "light");
+      toggleBtn.textContent = "Toggle Dark Mode";
+    }
+  }
+
+  /* ==========================================================================
+     Quiz Randomization & Interaction Logic
+     ========================================================================== */
+  const quizContainer = document.getElementById('quizContainer');
+  const resultPanel = document.getElementById('resultPanel');
+  const scoreText = document.getElementById('scoreText');
+  const submitBtn = document.getElementById('submitBtn');
+  const retakeBtn = document.getElementById('retakeBtn');
+
+  // Randomize question order on load
+  function shuffleQuestions() {
+      const questions = Array.from(quizContainer.children);
+      // Fisher-Yates shuffle algorithm
+      for (let i = questions.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          quizContainer.appendChild(questions[j]); 
+      }
+  }
+
+  // Handle option selection
+  quizContainer.addEventListener('click', e => {
+      const li = e.target.closest('li'); 
+      if (li && li.parentElement.classList.contains('options')) {
+          const quizItem = li.closest('.quiz-item');
+          quizItem.querySelectorAll('.options li').forEach(el => el.classList.remove('selected'));
+          li.classList.add('selected');
+          quizItem.style.borderColor = 'var(--rule)'; // Reset warning border
+      }
+  });
+
+  // Calculate score and log streak
+  function calculateScore() {
+    const quizItems = document.querySelectorAll('.quiz-item');
+    let score = 0;
+    const totalQuestions = quizItems.length;
+    let allAnswered = true;
+
+    quizItems.forEach(item => {
+      const correctTextKey = item.getAttribute('data-correct');
+      const selectedLi = item.querySelector('.options li.selected'); 
+      
+      if (!selectedLi) {
+        allAnswered = false;
+        item.style.borderColor = 'red'; // Highlight unanswered questions
+      } else {
+          item.style.borderColor = 'var(--rule)'; 
+          const selectedText = selectedLi.querySelector('.option-btn').innerText;
+          
+          if(isCorrect(selectedText, correctTextKey)) {
+              score++;
+          }
+      }
+    });
+
+    if(!allAnswered) {
+        alert("Please answer all questions before submitting.");
+        const firstUnanswered = document.querySelector('.quiz-item[style*="border-color: red"]');
+        if(firstUnanswered) firstUnanswered.scrollIntoView({behavior: "smooth", block: "center"});
+        return;
+    }
+
+    // Display result
+    scoreText.innerText = `Your Score: ${score}/${totalQuestions}`;
+    resultPanel.style.display = 'block';
+    resultPanel.scrollIntoView({behavior: "smooth", block: "center"});
+
+    // Log the streak using external StreakManager
+    if (typeof StreakManager !== 'undefined') {
+        StreakManager.recordTestCompletion('Photography Arts Test', score / totalQuestions);
+    }
+  }
+
+  // Check correctness based on hardcoded keys
+  function isCorrect(selectedText, correctKey) {
+      if(correctKey === "definition" && selectedText.includes("pictures through light")) return true;
+      if(correctKey === "power" && selectedText === "Power Switch.") return true;
+      if(correctKey === "shutter" && selectedText === "Shutter.") return true;
+      if(correctKey === "lens" && selectedText === "Lens.") return true;
+      if(correctKey === "modedial" && selectedText === "Mode Dial.") return true;
+      if(correctKey === "focus" && selectedText === "Focus.") return true;
+      if(correctKey === "exposure" && selectedText === "Exposure.") return true;
+      if(correctKey === "shutterspeed" && selectedText === "Shutter Speed.") return true;
+      if(correctKey === "aperture" && selectedText === "Aperture.") return true;
+      if(correctKey === "panorama" && selectedText === "Panorama.") return true;
+      if(correctKey === "slowmotion" && selectedText === "Slow Motion.") return true;
+      if(correctKey === "timelapse" && selectedText === "Time-Lapse.") return true;
+      if(correctKey === "longexp" && selectedText === "Long Exposure.") return true;
+      if(correctKey === "portrait" && selectedText === "Portrait Mode.") return true;
+      if(correctKey === "mirrorless" && selectedText.includes("No internal physical mirror")) return true;
+      if(correctKey === "mirror" && selectedText.includes("bounces light from the lens up into an optical viewfinder")) return true;
+      if(correctKey === "controls" && selectedText.includes("Understanding a camera's controls")) return true;
+      if(correctKey === "goal" && selectedText.includes("Capturing light well")) return true;
+      if(correctKey === "flash" && selectedText === "Flash.") return true;
+      if(correctKey === "framing" && selectedText === "Viewfinder and LCD Screen.") return true;
+      if(correctKey === "foundation" && selectedText.includes("Shutter speed, aperture, and exposure")) return true;
+      if(correctKey === "software" && selectedText.includes("Through software-driven modes")) return true;
+      if(correctKey === "document" && selectedText === "Document Mode.") return true;
+      if(correctKey === "mirrorless_preview" && selectedText.includes("live digital preview directly to the screen")) return true;
+      if(correctKey === "insights" && selectedText.includes("Light, control, exposure, and the trade-off")) return true;
+      return false;
+  }
+
+  // Retake quiz
+  function retakeQuiz() {
+      document.querySelectorAll('.options li.selected').forEach(btn => btn.classList.remove('selected'));
+      resultPanel.style.display = 'none';
+      document.querySelectorAll('.quiz-item').forEach(item => item.style.borderColor = 'var(--rule)');
+      shuffleQuestions();
+      window.scrollTo(0,0);
+  }
+
+  // Event Listeners
+  submitBtn.addEventListener('click', calculateScore);
+  retakeBtn.addEventListener('click', retakeQuiz);
+
+  // Initialize on load
+  document.addEventListener('DOMContentLoaded', () => {
+      shuffleQuestions();
+  });
+</script>
+
+</body>
+</html>
