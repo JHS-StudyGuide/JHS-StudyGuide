@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Target & Invasion Games - Study Hub Reviewer</title>
+  <link rel="stylesheet" href="targetgames.css">
+</head>
+<body>
+  <header class="top-bar">
+    <a href="../../index.html">← Back to Main Hub</a>
+    <span class="title">HEALTH · Target & Invasion Games</span>
+    
+    <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+      <span class="streak-emoji" id="streak-emoji">🔥</span>
+      <span class="streak-count" id="streak-count">0</span>
+      <span class="streak-label">Streak</span>
+    </div>
+    <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+  </header>
+
+  <div class="container">
+    <nav class="sidebar" aria-label="Section navigation">
+      <h3>Subject Archive</h3>
+      <div class="module-title">Sports & Games</div>
+      <ul class="module-section">
+        <li><a href="#target-games">1. Target Games</a></li>
+        <li><a href="#invasion-games">2. Invasion Games</a></li>
+        <li><a href="#reference-table">3. Quick Reference Table</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <header class="hero" id="overview">
+        <div class="eyebrow">HEALTH · Physical Education</div>
+        <h1>Target & Invasion Games</h1>
+        <p class="subtitle">A comprehensive guide covering the different styles, examples, and playing methods for target and invasion games.</p>
+
+        <div class="hero-grid">
+          <div class="hero-card">
+            <strong>Target Games</strong>
+            <span>Throwing, sliding, or rolling objects to hit or get close to a target.</span>
+          </div>
+          <div class="hero-card">
+            <strong>Invasion Games</strong>
+            <span>Invading opponents' space to score goals by throwing, sliding, or rolling objects.</span>
+          </div>
+          <div class="hero-card">
+            <strong>Styles of Play</strong>
+            <span>Methods for defending area and actively invading opposite side.</span>
+          </div>
+        </div>
+      </header>
+
+      <section id="target-games">
+        <div class="part-head">
+          <h2>1. Target Games</h2>
+          <p>Explore the styles and examples of target games. Click through the tabs below to inspect each category.</p>
+        </div>
+
+        <div class="directory">
+          <div class="directory-tabs" id="gameTabs" role="tablist" aria-label="Game Categories"></div>
+          <div class="directory-panel" id="gamePanel"></div>
+        </div>
+      </section>
+
+      <section id="invasion-games">
+        <div class="part-head">
+          <h2>2. Invasion Games</h2>
+          <p>Different styles, player interactions, and methods for playing invasion games.</p>
+        </div>
+
+        <div class="dept-grid">
+          <div class="dept-card">
+            <h4>1. Invasion Games Overview</h4>
+            <ul>
+              <li><strong>Objective:</strong> Score goals by throwing, sliding, or rolling an object.</li>
+              <li><strong>Opponent Interaction:</strong> Opponents are allowed to invade space or area.</li>
+              <li><strong>Timing:</strong> Both teams play at the same time.</li>
+              <li><strong>Examples:</strong> Football, Soccer, Basketball.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="part-head" style="margin-top: 18px;">
+          <h2>Styles of Play</h2>
+        </div>
+        <div class="dept-grid">
+          <div class="dept-card">
+            <h4>Defensive</h4>
+            <ul>
+              <li><strong>Approach:</strong> Opponent stays on their side, not invading opposite side.</li>
+              <li><strong>Purpose:</strong> Defending to disallow enemy entry into theirs.</li>
+            </ul>
+          </div>
+
+          <div class="dept-card">
+            <h4>Offensive</h4>
+            <ul>
+              <li><strong>Approach:</strong> Opponent actively tries to invade opponents' side.</li>
+              <li><strong>Purpose:</strong> Intending to steal goal from their opponents' side.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="reference-table">
+        <div class="part-head">
+          <h2>3. Quick Reference Table</h2>
+          <p>A fast revision guide for all concepts covered in this module.</p>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Category</th>
+                <th>Key Definition / Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Target Games</strong></td><td>Games overview</td><td>Score by throwing/sliding/rolling object to hit/get close to target. Opponent area and playing at the same time not allowed.</td></tr>
+              <tr><td><strong>Opposed Target Games</strong></td><td>Games style</td><td>Involve direct interference where actions affect placement for next move.</td></tr>
+              <tr><td><strong>Unopposed Target Games</strong></td><td>Games style</td><td>Played independently; relying only on accuracy, unable to block shot.</td></tr>
+              <tr><td><strong>Target Games Examples</strong></td><td>Examples</td><td>Archery, Darts, Bocce.</td></tr>
+              <tr><td><strong>Invasion Games</strong></td><td>Games overview</td><td>Score goal by throwing/sliding/rolling object. Invasion of opponent area allowed. Teams play at the same time.</td></tr>
+              <tr><td><strong>Invasion Games Examples</strong></td><td>Examples</td><td>Football, Soccer, Basketball.</td></tr>
+              <tr><td><strong>Defensive Style</strong></td><td>Styles of play</td><td>Remaining on your side to defend, disallowing entry without trying to invade.</td></tr>
+              <tr><td><strong>Offensive Style</strong></td><td>Styles of play</td><td>Actively trying to invade opposite side to steal goal.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
+    </main>
+  </div>
+
+  <footer class="page-footer">Thank you to Mendez for compiling the notes.</footer>
+
+  <script src="../../assets/js/streak.js" defer></script>
+
+  <script>
+    /* ---------- Theme Toggle ---------- */
+    const body = document.body;
+    const themeBtn = document.getElementById('themeToggle');
+    function applyTheme(t) {
+      if (t === 'light') { body.setAttribute('data-theme', 'light'); }
+      else { body.removeAttribute('data-theme'); }
+    }
+    applyTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    themeBtn.addEventListener('click', () => {
+      applyTheme(body.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+    });
+
+    /* ---------- Directory Data: Game Categories ---------- */
+    const gameElements = [
+      {
+        id: 'overview',
+        name: 'Target Games Overview',
+        tag: 'Games Overview',
+        items: [
+          'Style of game to score points by throwing, sliding, or rolling an object to hit, knock down, or get close to target.',
+          'Does not allow opponent to enter others area/space.',
+          'In some cases, cannot play at the same time.'
+        ]
+      },
+      {
+        id: 'opposed-target',
+        name: 'Opposed Target Games',
+        tag: 'Games style',
+        items: [
+          'Involve direct interference where an opponent\'s action or placement affects your next move.'
+        ]
+      },
+      {
+        id: 'unopposed-target',
+        name: 'Unopposed Target Games',
+        tag: 'Games style',
+        items: [
+          'Played independently where your score relies only on your own accuracy.',
+          'Opponents cannot block your shot.'
+        ]
+      },
+      {
+        id: 'target-examples',
+        name: 'Target Games Examples',
+        tag: 'Examples',
+        items: [
+          'Archery, Darts, Bocce.'
+        ]
+      }
+    ];
+
+    const gameTabsEl = document.getElementById('gameTabs');
+    const gamePanelEl = document.getElementById('gamePanel');
+
+    function renderGamePanel(item) {
+      gamePanelEl.innerHTML = `
+        <span class="dept-tag">${item.tag}</span>
+        <h3>${item.name}</h3>
+        <ul>${item.items.map(i => `<li>${i}</li>`).join('')}</ul>
+      `;
+    }
+
+    gameElements.forEach((item, i) => {
+      const btn = document.createElement('button');
+      btn.textContent = item.name;
+      btn.setAttribute('role', 'tab');
+      btn.id = 'tab-' + item.id;
+      if (i === 0) btn.classList.add('active');
+      btn.addEventListener('click', () => {
+        gameTabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderGamePanel(item);
+      });
+      gameTabsEl.appendChild(btn);
+    });
+
+    renderGamePanel(gameElements[0]);
+  </script>
+</body>
+</html>
