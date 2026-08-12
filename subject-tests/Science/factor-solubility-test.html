@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHEM · Solutions & Solubility Practice Test</title>
+
+  <link rel="stylesheet" href="../../studyguide-subjects/SCI/factor-affecting-solubility.css">
+  <link rel="stylesheet" href="../../assets/streak-counter.css">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    .content {
+      width: 100%;
+      max-width: 900px;
+      min-width: 0;
+      margin: 0 auto;
+    }
+
+    .container {
+      display: block;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .quiz-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 10px auto 0;
+      counter-reset: question-counter;
+    }
+
+    .quiz-item {
+      counter-increment: question-counter;
+      background: var(--bg-raised);
+      border: 1px solid var(--rule);
+      border-left: 4px solid var(--card-accent);
+      border-radius: var(--radius);
+      padding: 20px 20px 20px 52px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 2px var(--shadow);
+      position: relative;
+      width: 100%;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .quiz-item:hover {
+      border-color: var(--card-accent);
+    }
+
+    .question {
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--ink);
+      display: block;
+    }
+
+    .question::before {
+      content: counter(question-counter) ".)";
+      position: absolute;
+      left: 17px;
+      top: 20px;
+      font-weight: 800;
+      color: var(--card-accent);
+    }
+
+    .options {
+      list-style-type: upper-alpha;
+      padding-left: 25px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .options li {
+      color: var(--ink);
+      border-radius: 6px;
+      transition: background 0.15s ease, color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .options li:hover {
+      background: var(--bg);
+      color: var(--card-accent);
+    }
+
+    .options li.selected {
+      background: var(--card-accent-strong) !important;
+      color: #ffffff !important;
+    }
+
+    .option-btn {
+      background: transparent;
+      border: none;
+      color: inherit;
+      padding: 9px 6px;
+      border-radius: inherit;
+      cursor: inherit;
+      font-size: 0.94rem;
+      text-align: left;
+      width: 100%;
+      line-height: 1.45;
+    }
+
+    .quiz-actions {
+      text-align: center;
+      margin-top: 22px;
+    }
+
+    .action-btn {
+      background-color: var(--card-accent);
+      border: none;
+      color: #ffffff;
+      padding: 11px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .action-btn:hover {
+      background-color: var(--card-accent-strong);
+      transform: translateY(-1px);
+    }
+
+    .result-panel {
+      text-align: center;
+      margin: 28px auto;
+      width: 100%;
+      display: none;
+      background: var(--green-gradient);
+      border: 2px solid var(--card-accent);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 4px 10px var(--shadow);
+    }
+
+    .score-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .score-message {
+      color: var(--ink-secondary);
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .quiz-item {
+        padding: 18px 16px 18px 45px;
+      }
+
+      .question::before {
+        left: 13px;
+        top: 18px;
+      }
+
+      .option-btn {
+        font-size: 0.95rem;
+        padding: 10px 5px;
+      }
+
+      .quiz-actions {
+        width: 100%;
+      }
+
+      .action-btn {
+        width: 100%;
+        min-height: 46px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .quiz-item {
+        padding: 16px 13px 16px 40px;
+        margin-bottom: 12px;
+      }
+
+      .question {
+        font-size: 0.98rem;
+      }
+
+      .question::before {
+        left: 11px;
+        top: 16px;
+      }
+
+      .options {
+        padding-left: 21px;
+      }
+
+      .option-btn {
+        font-size: 0.93rem;
+      }
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+
+<header class="top-bar">
+  <a href="../../index.html">← Back to Main Hub</a>
+  <span class="title">CHEM · Solutions & Solubility Practice Test</span>
+
+  <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+    <span class="streak-emoji" id="streak-emoji">🔥</span>
+    <span class="streak-count" id="streak-count">0</span>
+    <span class="streak-label">Streak</span>
+  </div>
+
+  <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+</header>
+
+<div class="container">
+
+
+  <main class="content" id="quiz-start">
+
+    <header class="hero">
+      <div class="eyebrow">Chemistry · Practice Quiz</div>
+      <h1>Test Your Knowledge</h1>
+      <p class="subtitle">
+        Test yourself on solutions, solubility, miscibility, polarity, temperature,
+        pressure, Henry's Law, and solubility-graph analysis from the lesson.
+      </p>
+
+    </header>
+
+    <div class="quiz-container" id="quizContainer">
+
+      <div class="quiz-item" data-answer="The maximum amount of solute that can dissolve in a given amount of solvent at a specific temperature.">
+        <span class="question">What is solubility?</span>
+        <ul class="options">
+          <li><button class="option-btn">The maximum amount of solute that can dissolve in a given amount of solvent at a specific temperature.</button></li>
+          <li><button class="option-btn">The process of separating a mixture into two visible layers.</button></li>
+          <li><button class="option-btn">The amount of solvent needed to dissolve every substance at any temperature.</button></li>
+          <li><button class="option-btn">The speed at which a solid changes into a gas.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Alcohol + Water">
+        <span class="question">Which pair is an example of miscible liquids?</span>
+        <ul class="options">
+          <li><button class="option-btn">Oil + Water</button></li>
+          <li><button class="option-btn">Alcohol + Water</button></li>
+          <li><button class="option-btn">Grease + Water</button></li>
+          <li><button class="option-btn">Gasoline + Water</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Oil + Water">
+        <span class="question">Which pair is an example of immiscible liquids?</span>
+        <ul class="options">
+          <li><button class="option-btn">Alcohol + Water</button></li>
+          <li><button class="option-btn">Sugar + Water</button></li>
+          <li><button class="option-btn">Oil + Water</button></li>
+          <li><button class="option-btn">Salt + Water</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Solute & Solvent Nature, Temperature, and Pressure">
+        <span class="question">What are the three main factors affecting solubility discussed in the lesson?</span>
+        <ul class="options">
+          <li><button class="option-btn">Color, volume, and density</button></li>
+          <li><button class="option-btn">Solute & Solvent Nature, Temperature, and Pressure</button></li>
+          <li><button class="option-btn">Mass, shape, and boiling point</button></li>
+          <li><button class="option-btn">Time, color, and pressure</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Like dissolves like.">
+        <span class="question">What principle describes how substances with similar molecular polarities tend to dissolve in one another?</span>
+        <ul class="options">
+          <li><button class="option-btn">Opposites always dissolve.</button></li>
+          <li><button class="option-btn">Like dissolves like.</button></li>
+          <li><button class="option-btn">Pressure dissolves everything.</button></li>
+          <li><button class="option-btn">Heat prevents dissolution.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Sugar dissolves in water because both are polar.">
+        <span class="question">Which example demonstrates a polar solute dissolving in a polar solvent?</span>
+        <ul class="options">
+          <li><button class="option-btn">Oil does not dissolve in water.</button></li>
+          <li><button class="option-btn">Grease dissolves in gasoline.</button></li>
+          <li><button class="option-btn">Sugar dissolves in water because both are polar.</button></li>
+          <li><button class="option-btn">Oil forms a separate layer over water.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Oil (nonpolar) does not dissolve in water (polar).">
+        <span class="question">Which statement correctly describes a nonpolar solute in a polar solvent?</span>
+        <ul class="options">
+          <li><button class="option-btn">Oil (nonpolar) does not dissolve in water (polar).</button></li>
+          <li><button class="option-btn">Sugar always separates from water.</button></li>
+          <li><button class="option-btn">Grease dissolves readily in water.</button></li>
+          <li><button class="option-btn">NaCl remains completely undissolved in water.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Grease (nonpolar) dissolves in gasoline (nonpolar).">
+        <span class="question">Which example demonstrates a nonpolar solute dissolving in a nonpolar solvent?</span>
+        <ul class="options">
+          <li><button class="option-btn">Sugar dissolves in water.</button></li>
+          <li><button class="option-btn">Grease (nonpolar) dissolves in gasoline (nonpolar).</button></li>
+          <li><button class="option-btn">Oil does not dissolve in water.</button></li>
+          <li><button class="option-btn">Salt forms separate layers in water.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Dissolves into individual ions">
+        <span class="question">According to the table, what happens when an ionic solute is placed in a polar solvent?</span>
+        <ul class="options">
+          <li><button class="option-btn">It always forms a separate layer.</button></li>
+          <li><button class="option-btn">It dissolves into individual ions.</button></li>
+          <li><button class="option-btn">It becomes nonpolar.</button></li>
+          <li><button class="option-btn">It cannot dissolve at any temperature.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Increases">
+        <span class="question">For most solid solutes in liquids, what happens to solubility as temperature increases?</span>
+        <ul class="options">
+          <li><button class="option-btn">Increases</button></li>
+          <li><button class="option-btn">Decreases</button></li>
+          <li><button class="option-btn">Always becomes zero</button></li>
+          <li><button class="option-btn">Never changes</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Decreases">
+        <span class="question">What generally happens to the solubility of gases in liquids as temperature increases?</span>
+        <ul class="options">
+          <li><button class="option-btn">Increases</button></li>
+          <li><button class="option-btn">Decreases</button></li>
+          <li><button class="option-btn">Becomes unlimited</button></li>
+          <li><button class="option-btn">Remains exactly the same</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Heating gives gas particles more kinetic energy, allowing them to escape from the solution.">
+        <span class="question">Why does gas solubility decrease as temperature increases?</span>
+        <ul class="options">
+          <li><button class="option-btn">Heating gives gas particles more kinetic energy, allowing them to escape from the solution.</button></li>
+          <li><button class="option-btn">Heating removes all solvent particles.</button></li>
+          <li><button class="option-btn">Heating makes gases become solids.</button></li>
+          <li><button class="option-btn">Heating changes every gas into a polar substance.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="NaCl">
+        <span class="question">Which substance in the individual compound trends changes very little as temperature increases?</span>
+        <ul class="options">
+          <li><button class="option-btn">KNO₃</button></li>
+          <li><button class="option-btn">KBr</button></li>
+          <li><button class="option-btn">NaCl</button></li>
+          <li><button class="option-btn">Li₂SO₄</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Li₂SO₄">
+        <span class="question">Which compound decreases in solubility as temperature increases?</span>
+        <ul class="options">
+          <li><button class="option-btn">KNO₃</button></li>
+          <li><button class="option-btn">KBr</button></li>
+          <li><button class="option-btn">NaCl</button></li>
+          <li><button class="option-btn">Li₂SO₄</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="KNO₃">
+        <span class="question">Which compound increases greatly in solubility as temperature increases?</span>
+        <ul class="options">
+          <li><button class="option-btn">NaCl</button></li>
+          <li><button class="option-btn">Li₂SO₄</button></li>
+          <li><button class="option-btn">KNO₃</button></li>
+          <li><button class="option-btn">KBr</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="Pressure has minimal effect on solids and liquids but strongly influences gas solubility.">
+        <span class="question">How does pressure affect solubility according to the lesson?</span>
+        <ul class="options">
+          <li><button class="option-btn">Pressure has minimal effect on solids and liquids but strongly influences gas solubility.</button></li>
+          <li><button class="option-btn">Pressure only affects solid solubility.</button></li>
+          <li><button class="option-btn">Pressure has exactly the same effect on every solute.</button></li>
+          <li><button class="option-btn">Pressure has no effect on gases.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="The solubility of a gas in a liquid is directly proportional to the pressure of the gas above the liquid.">
+        <span class="question">Which statement describes Henry's Law?</span>
+        <ul class="options">
+          <li><button class="option-btn">The solubility of a gas in a liquid is directly proportional to the pressure of the gas above the liquid.</button></li>
+          <li><button class="option-btn">Solid solubility is directly proportional to pressure at all temperatures.</button></li>
+          <li><button class="option-btn">Gas solubility decreases whenever pressure increases.</button></li>
+          <li><button class="option-btn">Temperature has no effect on any gas.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="More Gas Dissolves">
+        <span class="question">According to Henry's Law, what happens when the pressure above a liquid increases?</span>
+        <ul class="options">
+          <li><button class="option-btn">Less Gas Dissolves</button></li>
+          <li><button class="option-btn">More Gas Dissolves</button></li>
+          <li><button class="option-btn">No gas can dissolve</button></li>
+          <li><button class="option-btn">All dissolved gas escapes</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="CO₂ becomes less soluble and escapes from the liquid.">
+        <span class="question">Why does soda fizz when its bottle cap is opened?</span>
+        <ul class="options">
+          <li><button class="option-btn">CO₂ becomes less soluble and escapes from the liquid.</button></li>
+          <li><button class="option-btn">Water becomes completely immiscible with CO₂.</button></li>
+          <li><button class="option-btn">Pressure inside the bottle increases sharply.</button></li>
+          <li><button class="option-btn">CO₂ changes into a solid.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="The mass of solute dissolved in 100g of water against temperature.">
+        <span class="question">What do solubility curves plot?</span>
+        <ul class="options">
+          <li><button class="option-btn">The mass of solute dissolved in 100g of water against temperature.</button></li>
+          <li><button class="option-btn">Pressure against the mass of the solvent only.</button></li>
+          <li><button class="option-btn">Time against the volume of a gas only.</button></li>
+          <li><button class="option-btn">Density against the color of a solution.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="About 80°C">
+        <span class="question">At what temperature can 100mL of water first dissolve 50g of KCl according to the graph practice in the lesson?</span>
+        <ul class="options">
+          <li><button class="option-btn">About 20°C</button></li>
+          <li><button class="option-btn">About 50°C</button></li>
+          <li><button class="option-btn">About 80°C</button></li>
+          <li><button class="option-btn">About 100°C</button></li>
+        </ul>
+      </div>
+      <div class="quiz-item" data-answer="The amount of solute that can dissolve in a specific amount of solvent at a given temperature.">
+        <span class="question">Which statement best defines solubility?</span>
+        <ul class="options">
+          <li><button class="option-btn">The amount of solute that can dissolve in a specific amount of solvent at a given temperature.</button></li>
+          <li><button class="option-btn">The amount of solvent that evaporates from a solution.</button></li>
+          <li><button class="option-btn">The speed at which a substance changes its state.</button></li>
+          <li><button class="option-btn">The total mass of a container and its contents.</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="About 140g / 100g H₂O">
+        <span class="question">What is the solubility of KNO₃ at 70°C according to the lesson's graph practice?</span>
+        <ul class="options">
+          <li><button class="option-btn">About 40g / 100g H₂O</button></li>
+          <li><button class="option-btn">About 80g / 100g H₂O</button></li>
+          <li><button class="option-btn">About 140g / 100g H₂O</button></li>
+          <li><button class="option-btn">About 200g / 100g H₂O</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="NaCl">
+        <span class="question">Which compound is identified as most soluble at 20°C in the graph practice questions?</span>
+        <ul class="options">
+          <li><button class="option-btn">KNO₃</button></li>
+          <li><button class="option-btn">NaCl</button></li>
+          <li><button class="option-btn">KCl</button></li>
+          <li><button class="option-btn">Ce₂(SO₄)₃</button></li>
+        </ul>
+      </div>
+
+      <div class="quiz-item" data-answer="KNO₃">
+        <span class="question">Which compound is identified as most soluble at 28°C in the graph practice questions?</span>
+        <ul class="options">
+          <li><button class="option-btn">NaCl</button></li>
+          <li><button class="option-btn">KCl</button></li>
+          <li><button class="option-btn">KNO₃</button></li>
+          <li><button class="option-btn">Ce₂(SO₄)₃</button></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="quiz-actions" id="quiz-end">
+      <button class="action-btn" id="submitBtn" type="button">Submit Answers</button>
+    </div>
+
+    <div class="result-panel" id="resultPanel">
+      <div class="score-text" id="scoreText">Your Score: 0/25</div>
+      <p class="score-message">You've tested your knowledge on Solutions & Factors Affecting Solubility.</p>
+      <button class="action-btn" id="retakeBtn" type="button">Retake Quiz</button>
+    </div>
+
+    <div class="footer-note">
+      Ensure you click “Submit Answers” to see your score and log your study streak.
+    </div>
+  </main>
+</div>
+
+<script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="../../assets/js/streak.js" defer></script>
+
+<script>
+  const quizContainer = document.getElementById("quizContainer");
+  const resultPanel = document.getElementById("resultPanel");
+  const scoreText = document.getElementById("scoreText");
+  const submitBtn = document.getElementById("submitBtn");
+  const retakeBtn = document.getElementById("retakeBtn");
+  const themeToggle = document.getElementById("themeToggle");
+
+  function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.getAttribute("data-theme");
+
+    if (currentTheme === "light") {
+      body.removeAttribute("data-theme");
+      themeToggle.textContent = "Toggle Light Mode";
+    } else {
+      body.setAttribute("data-theme", "light");
+      themeToggle.textContent = "Toggle Dark Mode";
+    }
+  }
+
+  themeToggle.addEventListener("click", toggleTheme);
+
+  function shuffleArray(items) {
+    const array = Array.from(items);
+
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+
+    return array;
+  }
+
+  function shuffleQuestions() {
+    shuffleArray(quizContainer.querySelectorAll(".quiz-item"))
+      .forEach(item => quizContainer.appendChild(item));
+  }
+
+  function shuffleOptions() {
+    quizContainer.querySelectorAll(".quiz-item").forEach(item => {
+      const options = item.querySelector(".options");
+      shuffleArray(options.querySelectorAll("li"))
+        .forEach(option => options.appendChild(option));
+    });
+  }
+
+  quizContainer.addEventListener("click", event => {
+    const li = event.target.closest("li");
+
+    if (!li || !li.parentElement.classList.contains("options")) return;
+
+    const quizItem = li.closest(".quiz-item");
+
+    quizItem.querySelectorAll(".options li").forEach(option => {
+      option.classList.remove("selected");
+    });
+
+    li.classList.add("selected");
+    quizItem.style.borderColor = "var(--rule)";
+  });
+
+  function calculateScore() {
+    const quizItems = document.querySelectorAll(".quiz-item");
+    let score = 0;
+    let allAnswered = true;
+
+    quizItems.forEach(item => {
+      const selected = item.querySelector(".options li.selected");
+
+      if (!selected) {
+        allAnswered = false;
+        item.style.borderColor = "#ef4444";
+        return;
+      }
+
+      item.style.borderColor = "var(--rule)";
+
+      const selectedText = selected.querySelector(".option-btn").textContent.trim();
+      const correctAnswer = item.getAttribute("data-answer");
+
+      if (selectedText === correctAnswer) {
+        score++;
+      }
+    });
+
+    if (!allAnswered) {
+      alert("Please answer all questions before submitting.");
+
+      const firstUnanswered = Array.from(quizItems)
+        .find(item => !item.querySelector(".options li.selected"));
+
+      if (firstUnanswered) {
+        firstUnanswered.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }
+
+      return;
+    }
+
+    const totalQuestions = quizItems.length;
+    scoreText.textContent = `Your Score: ${score}/${totalQuestions}`;
+    resultPanel.style.display = "block";
+
+    resultPanel.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    if (typeof StreakManager !== "undefined") {
+      StreakManager.recordTestCompletion(
+        "Chemistry Solutions & Solubility Test",
+        score / totalQuestions
+      );
+    }
+  }
+
+  function retakeQuiz() {
+    quizContainer.querySelectorAll(".options li.selected")
+      .forEach(option => option.classList.remove("selected"));
+
+    quizContainer.querySelectorAll(".quiz-item")
+      .forEach(item => item.style.borderColor = "var(--rule)");
+
+    resultPanel.style.display = "none";
+
+    shuffleQuestions();
+    shuffleOptions();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  submitBtn.addEventListener("click", calculateScore);
+  retakeBtn.addEventListener("click", retakeQuiz);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    shuffleQuestions();
+    shuffleOptions();
+  });
+</script>
+
+</body>
+</html>
