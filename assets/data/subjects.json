@@ -214,6 +214,7 @@
             { "label": "Hotel Types", "href": "studyguide-subjects/TLE/Hotel-Services.html#types" }
           ]
         },
+
         {
           "title": "Front Desk Department",
           "lessons": [
@@ -226,6 +227,16 @@
             { "label": "Front Office Accounting", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#accounting" },
             { "label": "Private Branch Exchange (PBX)", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#pbx" },
             { "label": "Lesson Insights", "href": "studyguide-subjects/TLE/Front-Desk-Department.html#lesson-insights" }
+          ]
+        },
+
+        {
+          "title": "FOH & BOH",
+          "lessons": [
+            { "label": "Overview", "href": "studyguide-subjects/TLE/FOHBOH.html#overview" },
+            { "label": "FOH", "href": "studyguide-subjects/TLE/FOHBOH.html#foh" },
+            { "label": "BOH", "href": "studyguide-subjects/TLE/FOHBOH.html#boh" },
+            { "label": "Department Explorer", "href": "studyguide-subjects/TLE/FOHBOH.html#interactive-explorer" }
           ]
         }
       ],
@@ -251,6 +262,15 @@
             { "label": "Resolution", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
             { "label": "FPS", "href": "studyguide-subjects/past-lessons-coming-soon.html" },
             { "label": "Video Quality", "href": "studyguide-subjects/past-lessons-coming-soon.html" }
+          ]
+        },
+
+        {
+          "title": "Photography & Lighting",
+          "lessons": [
+            { "label": "Picture Composition", "href": "studyguide-subjects/COMPUTER/photographycomp.html#picture-composition" },
+            { "label": "Lighting Techniques", "href": "studyguide-subjects/COMPUTER/photographycomp.html#lighting" },
+            { "label": "Video Controls", "href": "studyguide-subjects/COMPUTER/photographycomp.html#video-controls" }
           ]
         }
 

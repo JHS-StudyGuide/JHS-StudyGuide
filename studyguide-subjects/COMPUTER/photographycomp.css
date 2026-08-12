@@ -1,0 +1,116 @@
+:root {
+  --bg: #140d09;
+  --bg-raised: #211610;
+  --ink: #f7ede8;
+  --ink-secondary: #c4b1a5;
+  --rule: #4a3324;
+  --card-accent: #d97736;
+  --card-accent-strong: #b45309;
+  --steel: #e3a87c;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --radius: 8px;
+  --brown-gradient: linear-gradient(135deg, rgba(217, 119, 54, 0.18), rgba(180, 83, 9, 0.35));
+}
+
+[data-theme="light"] {
+  --bg: #fdf8f5;
+  --bg-raised: #ffffff;
+  --ink: #1c120c;
+  --ink-secondary: #5c473a;
+  --rule: #ebdcd0;
+  --card-accent: #b45309;
+  --card-accent-strong: #782e16;
+  --steel: #b45309;
+  --shadow: rgba(28, 18, 12, 0.08);
+  --brown-gradient: linear-gradient(135deg, rgba(254, 243, 199, 0.8), rgba(251, 211, 141, 0.4));
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--ink); line-height: 1.65;
+  transition: background-color 0.2s ease, color 0.2s ease; overflow-x: hidden;
+}
+
+h1, h2, h3 { letter-spacing: -0.01em; }
+
+/* ---------- Top Bar ---------- */
+.top-bar {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 12px 24px; background: var(--bg-raised); border-bottom: 1px solid var(--rule);
+  position: sticky; top: 0; z-index: 100; flex-wrap: wrap;
+}
+.top-bar a { text-decoration: none; color: var(--card-accent); font-weight: 600; }
+.top-bar .title { font-size: 0.95rem; letter-spacing: 0.02em; color: var(--steel); font-weight: 600; }
+.theme-toggle {
+  background: transparent; border: 1px solid var(--rule); color: var(--ink);
+  padding: 6px 14px; border-radius: var(--radius); cursor: pointer; font-size: 0.85rem;
+  transition: background 0.15s ease;
+}
+.theme-toggle:hover { background: var(--rule); }
+
+/* ---------- Layout ---------- */
+.container { display: flex; max-width: 1300px; margin: 0 auto; padding: 32px 24px; gap: 32px; }
+
+/* ---------- Sidebar ---------- */
+.sidebar { width: 260px; flex-shrink: 0; }
+.sidebar h3 { font-size: 0.8rem; text-transform: uppercase; color: var(--ink-secondary); margin-bottom: 12px; letter-spacing: 0.05em; }
+.module-title { font-weight: 700; color: var(--card-accent); margin-bottom: 8px; font-size: 1.05rem; }
+.module-section { list-style: none; padding-left: 10px; border-left: 2px solid var(--rule); margin-bottom: 20px; }
+.module-section li { margin-bottom: 8px; }
+.module-section a { color: var(--ink-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.15s ease; }
+.module-section a:hover { color: var(--card-accent); }
+
+/* ---------- Main Content ---------- */
+.content { flex-grow: 1; min-width: 0; }
+.hero { background: var(--brown-gradient); border: 1px solid var(--rule); border-radius: var(--radius); padding: 28px; margin-bottom: 32px; }
+.eyebrow { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--card-accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.hero h1 { font-size: 2rem; margin-bottom: 8px; }
+.subtitle { color: var(--ink-secondary); margin-bottom: 20px; font-size: 1rem; }
+
+.hero-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.hero-card { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: var(--radius); padding: 16px; font-size: 0.85rem; }
+.hero-card strong { display: block; color: var(--card-accent); margin-bottom: 4px; }
+.hero-card span { color: var(--ink-secondary); }
+
+/* ---------- Sections & Cards ---------- */
+section { margin-bottom: 40px; }
+.part-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; background: var(--rule); color: var(--steel); padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
+section h2 { font-size: 1.5rem; margin-bottom: 16px; border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.card { background: var(--bg-raised); border: 1px solid var(--rule); border-left: 4px solid var(--card-accent); border-radius: var(--radius); padding: 20px; box-shadow: 0 1px 3px var(--shadow); }
+.card .tag { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--steel); margin-bottom: 4px; display: block; }
+.card h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--ink); }
+.card p { color: var(--ink-secondary); font-size: 0.92rem; }
+.card ul { margin-top: 8px; padding-left: 18px; color: var(--ink-secondary); font-size: 0.9rem; }
+.card li { margin-bottom: 4px; }
+
+/* ---------- Interactive Tabs ---------- */
+.interactive-section { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: var(--radius); padding: 24px; margin-bottom: 32px; }
+.tab-buttons { display: flex; gap: 8px; border-bottom: 1px solid var(--rule); padding-bottom: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.tab-btn { background: transparent; border: 1px solid var(--rule); color: var(--ink-secondary); padding: 8px 16px; border-radius: var(--radius); cursor: pointer; font-size: 0.88rem; font-weight: 600; transition: all 0.15s ease; }
+.tab-btn.active, .tab-btn:hover { background: var(--card-accent); color: #fff; border-color: var(--card-accent); }
+.tab-panel { background: var(--bg); border: 1px solid var(--rule); border-radius: var(--radius); padding: 20px; }
+.dept-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; background: var(--rule); color: var(--steel); padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
+.tab-panel h3 { margin-bottom: 8px; font-size: 1.2rem; }
+.tab-panel ul { padding-left: 20px; color: var(--ink-secondary); }
+
+/* ---------- Mobile Hardening ---------- */
+html, body { width: 100%; max-width: 100%; overflow-x: hidden; overscroll-behavior-x: none; }
+*:not(table):not(tr):not(td):not(th) { max-width: 100%; }
+.container, .content, .sidebar, section, .cards, .card { min-width: 0; }
+body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+h1, h2, h3, p, li { overflow-wrap: break-word; }
+
+@media (max-width: 1024px) {
+  .container { padding: 20px; gap: 20px; }
+  .sidebar { width: 220px; }
+  .hero-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .top-bar { padding: 12px 16px; }
+  .container { flex-direction: column; padding: 16px; gap: 16px; }
+  .sidebar { width: 100%; }
+}
