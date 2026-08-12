@@ -158,6 +158,18 @@
             { "label": "Phase Changes", "href": "studyguide-subjects/SCI/Matter.html#phase-changes" },
             { "label": "Quick Reference Table", "href": "studyguide-subjects/SCI/Matter.html#reference-table" }
           ]
+        },
+        {
+          "title": "Factors affecting solubility",
+          "lessons": [
+            { "label": "Solubility & Miscibility", "href": "studyguide-subjects/SCI/factor-affecting-solubility.html#solubility-def" },
+            { "label": "Main Factors", "href": "studyguide-subjects/SCI/factor-affecting-solubility.html#factors" },
+            { "label": "Nature of Solute & Solvent", "href": "studyguide-subjects/SCI/factor-affecting-solubility.html#polarity" },
+            { "label": "Temperature Effects", "href": "studyguide-subjects/SCI/factor-affecting-solubility.html#temperature" },
+            { "label": "Pressure & Henry's Law", "href": "studyguide-subjects/SCI/factor-affecting-solubility.html#pressure" },
+            { "label": "Solubility Graph & Analysis", "href": "studyguide-subjects/SCI/factor-affecting-solubility.html#solubility-graph" },
+            { "label": "Summary & Key Points", "href": "studyguide-subjects/SCI/factor-affecting-solubility.html#key-points" }
+          ]
         }
       ],
       "viewAllLabel": "View all Science lessons →",

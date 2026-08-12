@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHEM · Solutions & Factors That Affect Solubility</title>
+  <link rel="stylesheet" href="factor-affecting-solubility.css" />
+  <link rel="stylesheet" href="../../assets/streak-counter.css">
+  
+  <style>
+    /* Protect SVG internal elements from the global max-width: 100% rule in Matter.css */
+    svg, svg * {
+      max-width: none !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <a href="../../index.html">← Back to Main Hub</a>
+    <span class="title">CHEM · Solutions & Factors Affecting Solubility</span>
+    <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+      <span class="streak-emoji" id="streak-emoji">🔥</span>
+      <span class="streak-count" id="streak-count">0</span>
+      <span class="streak-label">Streak</span>
+    </div>
+    <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+  </header>
+
+  <div class="container">
+    <nav class="sidebar" aria-label="Section navigation">
+      <h3>Subject Archive</h3>
+      <div class="module-title">Solutions & Solubility</div>
+      <ul class="module-section">
+        <li><a href="#solubility-def">1. Solubility & Miscibility</a></li>
+        <li><a href="#factors">2. Main Factors</a></li>
+        <li><a href="#polarity">3. Nature of Solute & Solvent</a></li>
+        <li><a href="#temperature">4. Temperature Effects</a></li>
+        <li><a href="#pressure">5. Pressure & Henry's Law</a></li>
+        <li><a href="#solubility-graph">6. Solubility Graph & Analysis</a></li>
+        <li><a href="#key-points">7. Summary & Key Points</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      
+      <section class="hero" id="solubility-def">
+        <div class="eyebrow">Chemistry & Fundamental Principles</div>
+        <h1>Solutions &amp; Solubility</h1>
+        <p class="subtitle">
+          Understanding how temperature, pressure, and chemical polarity determine how substances dissolve in liquids.
+        </p>
+
+        <div class="hero-grid">
+          <div class="hero-card">
+            <strong>Solubility Definition</strong>
+            <span>The maximum amount of solute that can dissolve in a given amount of solvent at a specific temperature.</span>
+          </div>
+          <div class="hero-card">
+            <strong>Solubility Limit Example</strong>
+            <span>At 60&deg;C, the solubility of NaCl is about 37g per 100g of water. Any amount beyond this limit remains undissolved.</span>
+          </div>
+          <div class="hero-card">
+            <strong>Core Principle</strong>
+            <span>"Like Dissolves Like" — Substances with similar molecular polarities mix and dissolve into one another.</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="miscibility">
+        <div class="part-head">
+          <h2>Miscible vs. Immiscible Liquids</h2>
+          <p>When mixing two liquids together, their chemical properties determine whether they blend into a single uniform mixture or separate into distinct layers.</p>
+        </div>
+
+        <div class="type-grid">
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="unit-badge">Complete Mixing</span>
+            </div>
+            <h4>Miscible Liquids</h4>
+            <p>Liquids that mix completely in all proportions, forming a homogeneous mixture without separating.</p>
+            <div class="metric-note">
+              <strong>Example:</strong> Alcohol + Water
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="unit-badge">Layer Separation</span>
+            </div>
+            <h4>Immiscible Liquids</h4>
+            <p>Liquids that do not mix uniformly and spontaneously form separate layers when combined.</p>
+            <div class="metric-note">
+              <strong>Example:</strong> Oil + Water
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="factors">
+        <div class="part-head">
+          <h2>Main Factors Affecting Solubility</h2>
+          <p>Three primary physical and chemical variables control how much solute can be dissolved in a given solvent.</p>
+        </div>
+
+        <div class="dept-grid">
+          <div class="dept-card">
+            <h4>1. Solute &amp; Solvent Nature</h4>
+            <p style="font-size: 0.88rem; color: var(--ink-secondary);">Determined by molecular polarity ("Like Dissolves Like") and intermolecular forces.</p>
+          </div>
+          <div class="dept-card">
+            <h4>2. Temperature</h4>
+            <p style="font-size: 0.88rem; color: var(--ink-secondary);">Affects kinetic energy. Generally increases solid solubility but decreases gas solubility.</p>
+          </div>
+          <div class="dept-card" style="grid-column: 1 / -1;">
+            <h4>3. Pressure</h4>
+            <p style="font-size: 0.88rem; color: var(--ink-secondary);">Has minimal effect on solids and liquids, but drastically affects gas solubility in liquids.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="polarity">
+        <div class="part-head">
+          <h2>Nature of Solute and Solvent: "Like Dissolves Like"</h2>
+          <p>Substances with similar polarity tend to dissolve in each other due to compatible molecular forces.</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Solute Type</th>
+                <th>Solvent Type</th>
+                <th>Dissolution Behavior</th>
+                <th>Real-World Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Polar</strong></td>
+                <td>Polar</td>
+                <td>Dissolves readily</td>
+                <td>Sugar dissolves in water (both are polar)</td>
+              </tr>
+              <tr>
+                <td><strong>Nonpolar</strong></td>
+                <td>Polar</td>
+                <td>Does NOT dissolve</td>
+                <td>Oil (nonpolar) does not dissolve in water (polar)</td>
+              </tr>
+              <tr>
+                <td><strong>Nonpolar</strong></td>
+                <td>Nonpolar</td>
+                <td>Dissolves readily</td>
+                <td>Grease (nonpolar) dissolves in gasoline (nonpolar)</td>
+              </tr>
+              <tr>
+                <td><strong>Ionic</strong></td>
+                <td>Polar</td>
+                <td>Dissolves into individual ions</td>
+                <td>NaCl and NaHCO<sub>3</sub> dissolve in water into independent ions.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="temperature">
+        <div class="part-head">
+          <h2>Temperature Effects on Solubility</h2>
+        </div>
+        
+        <div class="dept-grid">
+          <div class="dept-card">
+            <h4>Solid Solutes in Liquids</h4>
+            <ul>
+              <li>For most solid solutes, solubility <strong>increases</strong> as temperature increases.</li>
+              <li>Some substances (like NaCl) remain relatively constant.</li>
+              <li>A few rare solid substances (like Li<sub>2</sub>SO<sub>4</sub>) decrease in solubility as temperature rises.</li>
+            </ul>
+          </div>
+
+          <div class="dept-card">
+            <h4>Gas Solutes in Liquids</h4>
+            <ul>
+              <li>Gas solubility <strong>decreases</strong> as temperature increases.</li>
+              <li>Heating gives gas particles more kinetic energy, allowing them to escape from the solution into the vapor phase.</li>
+              <li><em>Example:</em> Bubbles appear when heating water before it boils because dissolved gases become less soluble.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="module-title" style="margin-top: 24px;">Individual Compound Trends</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Compound Formula</th>
+                <th>Chemical Name</th>
+                <th>Solubility Trend with Increasing Temperature</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>KNO<sub>3</sub></td>
+                <td>Potassium Nitrate</td>
+                <td>Increases <strong>greatly</strong> as temperature increases.</td>
+              </tr>
+              <tr>
+                <td>KBr</td>
+                <td>Potassium Bromide</td>
+                <td>Increases <strong>gradually</strong> as temperature increases.</td>
+              </tr>
+              <tr>
+                <td>KCl</td>
+                <td>Potassium Chloride</td>
+                <td>Increases <strong>gradually</strong> as temperature increases.</td>
+              </tr>
+              <tr>
+                <td>NaCl</td>
+                <td>Sodium Chloride</td>
+                <td>Changes <strong>very little</strong> as temperature increases.</td>
+              </tr>
+              <tr>
+                <td>Li<sub>2</sub>SO<sub>4</sub></td>
+                <td>Lithium Sulfate</td>
+                <td><strong>Decreases</strong> as temperature increases.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="pressure">
+        <div class="part-head">
+          <h2>Pressure Effects &amp; Henry's Law</h2>
+          <p>Pressure has almost no noticeable effect on solid and liquid solutes because they are nearly incompressible. However, it strongly influences gas solubility.</p>
+        </div>
+
+        <div class="callout">
+          <h4>Henry's Law</h4>
+          <p style="margin-top: 8px;">The solubility of a gas in a liquid is <strong>directly proportional</strong> to the pressure of the gas above the liquid.</p>
+          <ul class="conversion-list" style="margin-top: 12px;">
+              <li>
+                <span class="left-val">Higher Pressure</span>
+                <span class="eq-sign">&rarr;</span>
+                <span class="right-val">More Gas Dissolves</span>
+              </li>
+              <li>
+                <span class="left-val">Lower Pressure</span>
+                <span class="eq-sign">&rarr;</span>
+                <span class="right-val">Less Gas Dissolves</span>
+              </li>
+            </ul>
+        </div>
+
+        <div class="dept-card" style="margin-top: 16px;">
+          <h4>Real-World Application: Carbonated Beverages</h4>
+          <ul>
+            <li>Carbon dioxide (CO<sub>2</sub>) is dissolved in soda under high factory pressure.</li>
+            <li>When the bottle cap is opened, the pressure above the liquid drops rapidly to ambient atmospheric pressure.</li>
+            <li>As pressure drops, CO<sub>2</sub> becomes less soluble and escapes from the liquid, producing effervescent fizzing and bubbles.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="solubility-graph">
+        <div class="part-head">
+          <h2>Solubility Graphs &amp; Interactive Visualizers</h2>
+          <p>Solubility curves plot the mass of solute dissolved in 100g of water (H<sub>2</sub>O) against temperature (&deg;C).</p>
+        </div>
+
+<section id="solubility-graph" class="section-card">
+  <h2>Solubility Curves (Solids in Water)</h2>
+  <p class="section-subtitle">
+    Interactive graph displaying how temperature affects the maximum dissolved amount of various solutes in 100 g of H₂O.
+  </p>
+
+  <div class="substance-controls" id="substanceControls">
+    <span class="control-label">Toggle Solutes:</span>
+    <label class="pill-btn active" style="--pill-color: #f59e0b;">
+      <input type="checkbox" checked value="kno3" onchange="toggleSubstance('kno3')"> KNO₃
+    </label>
+    <label class="pill-btn active" style="--pill-color: #ef4444;">
+      <input type="checkbox" checked value="nano3" onchange="toggleSubstance('nano3')"> NaNO₃
+    </label>
+    <label class="pill-btn active" style="--pill-color: #3b82f6;">
+      <input type="checkbox" checked value="kcl" onchange="toggleSubstance('kcl')"> KCl
+    </label>
+    <label class="pill-btn active" style="--pill-color: #10b981;">
+      <input type="checkbox" checked value="nacl" onchange="toggleSubstance('nacl')"> NaCl
+    </label>
+    <label class="pill-btn active" style="--pill-color: #a855f7;">
+      <input type="checkbox" checked value="ce2so43" onchange="toggleSubstance('ce2so43')"> Ce₂(SO₄)₃
+    </label>
+  </div>
+
+  <div class="graph-wrapper">
+    <svg id="solubilitySvg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+      <g class="grid-lines" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 4">
+        <line x1="70" y1="430" x2="760" y2="430" />
+        <line x1="70" y1="350" x2="760" y2="350" />
+        <line x1="70" y1="270" x2="760" y2="270" />
+        <line x1="70" y1="190" x2="760" y2="190" />
+        <line x1="70" y1="110" x2="760" y2="110" />
+        <line x1="70" y1="30"  x2="760" y2="30" />
+
+        <line x1="70"  y1="30" x2="70"  y2="430" />
+        <line x1="208" y1="30" x2="208" y2="430" />
+        <line x1="346" y1="30" x2="346" y2="430" />
+        <line x1="484" y1="30" x2="484" y2="430" />
+        <line x1="622" y1="30" x2="622" y2="430" />
+        <line x1="760" y1="30" x2="760" y2="430" />
+      </g>
+
+      <g class="graph-axes" stroke="var(--ink)" stroke-width="2">
+        <line x1="70" y1="430" x2="760" y2="430" /> <line x1="70" y1="30"  x2="70"  y2="430" /> </g>
+
+      <g class="axis-labels" fill="var(--ink-secondary)" font-size="12" text-anchor="end">
+        <text x="62" y="434">0</text>
+        <text x="62" y="354">30</text>
+        <text x="62" y="274">60</text>
+        <text x="62" y="194">90</text>
+        <text x="62" y="114">120</text>
+        <text x="62" y="34">150</text>
+      </g>
+
+      <g class="axis-labels" fill="var(--ink-secondary)" font-size="12" text-anchor="middle">
+        <text x="70"  y="455">0</text>
+        <text x="208" y="455">20</text>
+        <text x="346" y="455">40</text>
+        <text x="484" y="455">60</text>
+        <text x="622" y="455">80</text>
+        <text x="760" y="455">100</text>
+      </g>
+
+      <text x="415" y="490" fill="var(--ink)" font-size="14" font-weight="600" text-anchor="middle">
+        Temperature (°C)
+      </text>
+      <text x="-230" y="22" fill="var(--ink)" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90)">
+        Solubility (g / 100 g H₂O)
+      </text>
+
+      <g class="graph-curves">
+        <path id="curve-kno3" fill="none" stroke="#f59e0b" stroke-width="3.5"
+              d="M 70 395 C 139 373, 277 312, 346 259 C 415 200, 455 155, 484 136 C 522 90, 545 48, 564 30" />
+        
+        <path id="curve-nano3" fill="none" stroke="#ef4444" stroke-width="3.5"
+              d="M 70 235 C 139 216, 277 173, 346 152 C 415 130, 553 73, 622 35" />
+
+        <path id="curve-kcl" fill="none" stroke="#3b82f6" stroke-width="3.5"
+              d="M 70 355 L 208 339 L 346 323 L 484 310 L 622 294 L 760 280" />
+
+        <path id="curve-nacl" fill="none" stroke="#10b981" stroke-width="3.5"
+              d="M 70 334 L 760 325" />
+
+        <path id="curve-ce2so43" fill="none" stroke="#a855f7" stroke-width="3.5"
+              d="M 70 376 C 139 398, 277 416, 346 422 C 415 425, 622 428, 760 429" />
+      </g>
+
+      <line id="hoverLine" x1="0" y1="30" x2="0" y2="430" stroke="var(--steel)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0" />
+      <circle id="hoverPoint" r="5" fill="var(--card-accent)" opacity="0" />
+    </svg>
+
+    <div id="graphTooltip" class="graph-tooltip"></div>
+  </div>
+
+  <div class="comparative-card">
+    <h3>Comparative Solubility Query Tool</h3>
+    <p>Select a temperature and compare the solubility limits between two solutes:</p>
+
+    <div class="query-form">
+      <div class="form-group">
+        <label for="tempInput">Temperature (°C):</label>
+        <input type="range" id="tempInput" min="0" max="100" value="60" oninput="updateComparativeQuery()">
+        <span id="tempValue" class="temp-badge">60 °C</span>
+      </div>
+
+      <div class="form-group">
+        <label for="soluteA">Substance A:</label>
+        <select id="soluteA" onchange="updateComparativeQuery()">
+          <option value="kno3" selected>KNO₃ (Potassium Nitrate)</option>
+          <option value="nano3">NaNO₃ (Sodium Nitrate)</option>
+          <option value="kcl">KCl (Potassium Chloride)</option>
+          <option value="nacl">NaCl (Sodium Chloride)</option>
+          <option value="ce2so43">Ce₂(SO₄)₃ (Cerium Sulfate)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="soluteB">Substance B:</label>
+        <select id="soluteB" onchange="updateComparativeQuery()">
+          <option value="kno3">KNO₃ (Potassium Nitrate)</option>
+          <option value="nano3">NaNO₃ (Sodium Nitrate)</option>
+          <option value="kcl">KCl (Potassium Chloride)</option>
+          <option value="nacl" selected>NaCl (Sodium Chloride)</option>
+          <option value="ce2so43">Ce₂(SO₄)₃ (Cerium Sulfate)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="query-result" id="queryResult">
+      </div>
+  </div>
+
+        <h3 class="module-title">Solubility Graph Practice Questions</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Correct Answer</th>
+                <th>Explanation &amp; Reading Strategy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>At what temperature can 100mL of water first dissolve 50g of KCl?</td>
+                <td><strong>About 80&deg;C</strong></td>
+                <td>Find 50g on the Y-axis, move horizontally to the blue KCl curve, then trace down to the X-axis (80&deg;C).</td>
+              </tr>
+              <tr>
+                <td>Which compound is least soluble at 50&deg;C?</td>
+                <td><strong>NaCl</strong></td>
+                <td>At 50&deg;C on the X-axis, look at the lowest curve line on the graph (or relative trend line at 50&deg;C).</td>
+              </tr>
+              <tr>
+                <td>What is the solubility of KNO<sub>3</sub> at 70&deg;C?</td>
+                <td><strong>About 140g / 100g H<sub>2</sub>O</strong></td>
+                <td>Find 70&deg;C on the X-axis, trace vertically up to the red KNO<sub>3</sub> line, then move left to read 140g on the Y-axis.</td>
+              </tr>
+              <tr>
+                <td>Which compound is most soluble at 20&deg;C?</td>
+                <td><strong>NaCl</strong></td>
+                <td>At 20&deg;C, NaCl sits above the KNO<sub>3</sub> curve before KNO<sub>3</sub> accelerates sharply upwards.</td>
+              </tr>
+              <tr>
+                <td>Which compound is most soluble at 28&deg;C?</td>
+                <td><strong>KNO<sub>3</sub></strong></td>
+                <td>At 28&deg;C, the steep KNO<sub>3</sub> curve crosses above NaCl and becomes the highest curve on the graph.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="key-points">
+        <div class="part-head">
+          <h2>Summary &amp; Key Takeaways</h2>
+        </div>
+
+        <div class="callout" style="background: var(--green-gradient);">
+          <span class="dept-tag">Quick Review</span>
+          <h3 style="margin-bottom: 12px; font-size: 1.15rem;">Key Points Checklist</h3>
+          <ul class="dept-card" style="border: none; background: transparent; padding: 0;">
+            <li><strong>Solid Solubility:</strong> Generally increases as temperature increases.</li>
+            <li><strong>Gas Solubility:</strong> Decreases as temperature increases (heat causes gas to escape).</li>
+            <li><strong>Pressure Effect:</strong> Increasing pressure increases gas solubility in liquids (Henry's Law), but has negligible effect on solids and liquids.</li>
+            <li><strong>Polarity Rule:</strong> "Like dissolves like" — substances with matching polarities dissolve in one another.</li>
+            <li><strong>Temperature Dual Effect:</strong> Higher temperature helps solids dissolve faster and in greater amounts, but forces dissolved gases out of liquid solutions.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="dept-card" style="margin-top: 36px; padding: 24px; text-align: center; border-left: 4px solid var(--card-accent); background: var(--bg-raised);">
+  <h3 style="font-size: 1.25rem; margin-bottom: 6px; color: var(--ink);">Done learning?</h3>
+  <p style="color: var(--ink-secondary); font-size: 0.95rem; margin-bottom: 16px;">
+    Test your knowledge on factor affecting solubility!
+  </p>
+  <a href="../../subject-tests/Science/factor-solubility-test.html" style="display: inline-block; padding: 10px 22px; background: var(--card-accent-strong); color: #ffffff; text-decoration: none; border-radius: var(--radius); font-weight: 600; font-size: 0.95rem; transition: background 0.15s ease;">
+    Take the Test →
+  </a>
+</div>
+
+  <footer class="page-footer">Chemistry Study Guide Reviewer · Solutions &amp; Factors Affecting Solubility</footer>
+
+  <script src="../../assets/js/streak.js" defer></script>
+
+  <script>
+    /* ---------- Theme Toggle Script ---------- */
+    const themeToggleBtn = document.getElementById("themeToggle");
+    themeToggleBtn.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      if (currentTheme === "light") {
+        document.documentElement.removeAttribute("data-theme");
+        themeToggleBtn.textContent = "Toggle Light Mode";
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+        themeToggleBtn.textContent = "Toggle Dark Mode";
+      }
+    });
+  </script>
+  <script>
+  // Solute Dataset Interpolation Functions (g / 100g H2O at Temperature T °C)
+  const soluteData = {
+    kno3: { name: "KNO₃", color: "#f59e0b", calc: (t) => 13.3 + 0.57*t + 0.018*(t**2) },
+    nano3: { name: "NaNO₃", color: "#ef4444", calc: (t) => 73 + 0.9*t },
+    kcl: { name: "KCl", color: "#3b82f6", calc: (t) => 28 + 0.28*t },
+    nacl: { name: "NaCl", color: "#10b981", calc: (t) => 35.7 + 0.035*t },
+    ce2so43: { name: "Ce₂(SO₄)₃", color: "#a855f7", calc: (t) => Math.max(1, 20 * Math.exp(-0.035 * t)) }
+  };
+
+  // Toggle Curves Visibility
+  function toggleSubstance(id) {
+    const path = document.getElementById(`curve-${id}`);
+    const pill = path.parentElement;
+    if (path) {
+      const current = path.style.display;
+      path.style.display = (current === 'none') ? 'block' : 'none';
+    }
+  }
+
+  // Hover Tooltip & Crosshair Logic
+  const svg = document.getElementById('solubilitySvg');
+  const hoverLine = document.getElementById('hoverLine');
+  const hoverPoint = document.getElementById('hoverPoint');
+  const tooltip = document.getElementById('graphTooltip');
+
+  svg.addEventListener('mousemove', (e) => {
+    const rect = svg.getBoundingClientRect();
+    const xSvg = (e.clientX - rect.left) * (800 / rect.width);
+    
+    // Check bounds inside graph plot area (X: 70 to 760)
+    if (xSvg >= 70 && xSvg <= 760) {
+      const temp = Math.round(((xSvg - 70) / 690) * 100);
+      
+      hoverLine.setAttribute('x1', xSvg);
+      hoverLine.setAttribute('x2', xSvg);
+      hoverLine.setAttribute('opacity', '1');
+
+      let tooltipHTML = `<strong style="color:var(--ink);">At ${temp} °C:</strong><br/>`;
+      
+      Object.keys(soluteData).forEach((key) => {
+        const path = document.getElementById(`curve-${key}`);
+        if (path && path.style.display !== 'none') {
+          const val = soluteData[key].calc(temp).toFixed(1);
+          tooltipHTML += `<span style="color:${soluteData[key].color};">● ${soluteData[key].name}:</span> <strong>${val} g</strong>/100g H₂O<br/>`;
+        }
+      });
+
+      tooltip.innerHTML = tooltipHTML;
+      tooltip.style.display = 'block';
+      tooltip.style.left = `${e.clientX - rect.left + 15}px`;
+      tooltip.style.top = `${e.clientY - rect.top - 10}px`;
+    } else {
+      hoverLine.setAttribute('opacity', '0');
+      tooltip.style.display = 'none';
+    }
+  });
+
+  svg.addEventListener('mouseleave', () => {
+    hoverLine.setAttribute('opacity', '0');
+    tooltip.style.display = 'none';
+  });
+
+  // Comparative Query Logic
+  function updateComparativeQuery() {
+    const temp = parseFloat(document.getElementById('tempInput').value);
+    document.getElementById('tempValue').textContent = `${temp} °C`;
+
+    const keyA = document.getElementById('soluteA').value;
+    const keyB = document.getElementById('soluteB').value;
+
+    const solA = soluteData[keyA].calc(temp);
+    const solB = soluteData[keyB].calc(temp);
+
+    const nameA = soluteData[keyA].name;
+    const nameB = soluteData[keyB].name;
+
+    const resDiv = document.getElementById('queryResult');
+
+    if (keyA === keyB) {
+      resDiv.innerHTML = `Please select two different solutes to compare.`;
+      return;
+    }
+
+    const diff = Math.abs(solA - solB).toFixed(1);
+    const moreSoluble = solA > solB ? nameA : nameB;
+
+    resDiv.innerHTML = `
+      At <strong>${temp} °C</strong>, <span style="color:${soluteData[keyA].color}; font-weight:700;">${nameA}</span> has a solubility of <strong>${solA.toFixed(1)} g</strong> and 
+      <span style="color:${soluteData[keyB].color}; font-weight:700;">${nameB}</span> has a solubility of <strong>${solB.toFixed(1)} g</strong> per 100g H₂O.<br/>
+      👉 <strong>${moreSoluble}</strong> is more soluble by <strong>${diff} g / 100 g H₂O</strong>.
+    `;
+  }
+
+  // Initialize query result on load
+  document.addEventListener('DOMContentLoaded', updateComparativeQuery);
+</script>
+</body>
+</html>
