@@ -170,6 +170,18 @@
             { "label": "Solubility Graph & Analysis", "href": "studyguide-subjects/SCI/factor-affecting-solubility.html#solubility-graph" },
             { "label": "Summary & Key Points", "href": "studyguide-subjects/SCI/factor-affecting-solubility.html#key-points" }
           ]
+        },
+        {
+          "title": "Acids & Bases",
+          "lessons": [
+            { "label": "Key Terms", "href": "studyguide-subjects/SCI/Acids-and-Bases.html#key-terms" },
+            { "label": "Litmus Paper Test", "href": "studyguide-subjects/SCI/Acids-and-Bases.html#litmus-test" },
+            { "label": "Identifying Acids or Alkalis", "href": "studyguide-subjects/SCI/Acids-and-Bases.html#method" },
+            { "label": "The pH Scale", "href": "studyguide-subjects/SCI/Acids-and-Bases.html#ph-scale" },
+            { "label": "Strong & Weak Acids/Bases", "href": "studyguide-subjects/SCI/Acids-and-Bases.html#strong-weak" },
+            { "label": "Neutralization", "href": "studyguide-subjects/SCI/Acids-and-Bases.html#neutralization" },
+            { "label": "Reference Table", "href": "studyguide-subjects/SCI/Acids-and-Bases.html#reference-table" }
+          ]
         }
       ],
       "viewAllLabel": "View all Science lessons →",
