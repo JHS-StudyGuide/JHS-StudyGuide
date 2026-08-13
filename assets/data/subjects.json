@@ -26,7 +26,18 @@
             { "label": "Formula Table", "href": "studyguide-subjects/MATH/Polygon-Angles.html#formulasall" },
             { "label": "Interactive Explorer", "href": "studyguide-subjects/MATH/Polygon-Angles.html#interactive" }
           ]
-        }
+        },
+        {
+         "title": "Conditional Statements",
+          "lessons": [
+            { "label": "Conditional Statements", "href": "studyguide-subjects/MATH/COND_STATEMENTS_MATH.html#conditional-statements" },
+            { "label": "Logical & Analytical Reasoning", "href": "studyguide-subjects/MATH/COND_STATEMENTS_MATH.html#conditional-statements" },
+            { "label": "The S.M.A.R.T.", "href": "studyguide-subjects/MATH/COND_STATEMENTS_MATH.html#conditional-statements" },
+            { "label": "Primary & Secondary Data", "href": "studyguide-subjects/MATH/COND_STATEMENTS_MATH.html#conditional-statements" },
+            { "label": "Inductive vs. Deductive Reasoning", "href": "studyguide-subjects/MATH/COND_STATEMENTS_MATH.html#conditional-statements" },
+            { "label": "Overall Lesson", "href": "studyguide-subjects/MATH/COND_STATEMENTS_MATH.html#conditional-statements" }
+          ]
+         }
       ],
       "viewAllLabel": "View all Math lessons →",
       "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"
