@@ -242,3 +242,4 @@ No server-side processing is required for the core Study Hub.
 **JHS Study Guide Team**
 
 Copyright © 2026 JHS Study Guide Team
+License: All Rights Reserved
