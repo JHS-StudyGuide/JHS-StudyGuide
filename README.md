@@ -1,84 +1,244 @@
-# Study Hub
+# JHS Study Guide
 
-A private, multi-subject study reviewer site — Math, AP, Filipino, Science, TLE, English, CLF, PE/H, M/A, Computer — served as static HTML pages from a single hub, deployed on GitHub Pages, **AND** *(soon to be gated behind a password so only people you share the password with can access it)*
+A static, multi-subject study reviewer hub for Junior High School students. The project brings subject reviewers, lesson navigation, study streak tracking, and a What's New section together in one website.
 
----
+## 📚 Subjects
 
-## 📁 Project structure
+The repository currently contains reviewer material for:
 
-```
-StudyGuide/
-├── index.html                          # Hub homepage — links to all subject reviewers
-├── style.css                           # Hub-only styles
-├── README.md
-├── assets/
-│   ├── bg-dark.png
-│   ├── bg-light.png
-│   ├── data/
-│   │   └── subjects.json               # Sidebar content — edit this to add/change lessons
-│   └── js/
-│       └── sidebar.js                  # Renders the sidebar from subjects.json
-└── studyguide-subjects/
-    ├── past-lessons-coming-soon.html   # Placeholder for topics without notes yet
-    ├── AP/
-    │   ├── Economics__AP_.html
-    │   └── Economics_AP.css
-    ├── ENG/
-    │   ├── Rhyme-Characterization-English.html
-    │   └── Rhyme-Characterization-English.css
-    ├── FIL/
-    │   ├── Philippine_Literature__FIL_.html
-    │   └── Philippine_Literature_FIL.css
-    ├── MATH/
-    │   ├── Geometry__Math_.html
-    │   ├── Geometry_Math.css
-    │   ├── Polygon-Angles.html
-    │   └── Polygon-Angles.css
-    ├── SCI/
-    │   ├── Lab-apparatus-sci.html
-    │   └── Lab-apparatus-sci.css
-    └── TLE/
-        ├── Front-Desk-Department.html
-        ├── Front-Desk-Department.css
-        ├── Hotel-Services.html
-        └── Hotel-Services.css
-```
+- **AP** - Araling Panlipunan
+- **Arts**
+- **CLF**
+- **Computer**
+- **English**
+- **Filipino**
+- **Mathematics**
+- **Music**
+- **PE/H**
+- **Science**
+- **TLE**
 
-Each subject page is a standalone HTML reviewer with its own CSS file, grouped by subject folder. The hub (`index.html`) links to all of them and also renders the "Past Lessons" sidebar dynamically.
-
-**Adding a new lesson link:** don't edit `index.html`. Add an entry to `assets/data/subjects.json` (under the relevant subject → module → lessons array) and the sidebar picks it up automatically — numbering, structure, and accent colors are generated for you.
-
----
+The available lessons are continuously being expanded and updated. Some reviewers are marked as outdated or semi-dated directly on the hub.
 
 ## ✨ Features
 
-- **Mobile Support** — Mobile Support for most phones so you can access notes on the go.
-- **Responsive layout** — nav becomes a horizontally scrollable strip on narrow screens, tables scroll independently instead of squeezing the page, and the demo/interactive elements stack vertically on mobile.
-- **Interactive elements** — e.g. the Economics page includes a slider-based demo of the classroom "allocation problem."
-- **Central hub** — one entry point (`index.html`) instead of separate bookmarks per subject.
+- **Central Study Hub** - `index.html` provides one starting point for all reviewers.
+- **Subject Archive** - Lesson and module links are generated from `assets/data/subjects.json`, allowing the sidebar to be updated without manually editing the hub navigation.
+- **Responsive Design** - The hub and reviewer pages support desktop and mobile screen sizes.
+- **Light/Dark Mode** - The main hub supports switching between light and dark themes.
+- **Study Streak** - `assets/js/streak.js` tracks study activity and displays the user's current streak.
+- **What's New** - `assets/js/whats-new.js` displays recent updates from `assets/data/whats-new.json`.
+- **Interactive Reviewers** - Individual pages can contain interactive elements, reference tables, examples, and other study tools.
+- **Standalone Subject Pages** - Reviewers are organized by subject and generally use their own HTML and CSS files.
+- **GitHub Pages Friendly** - The project is built as a static website using HTML, CSS, JavaScript, JSON, and image assets.
 
----
+## 📁 Project Structure
 
-## 📚 Subjects covered
+```text
+JHS-StudyGuide/
+├── index.html                    # Main Study Hub
+├── style.css                     # Main hub styles
+├── README.md
+│
+├── assets/
+│   ├── bg-dark.png               # Dark mode background
+│   ├── bg-light.png              # Light mode background
+│   ├── streak-counter.css        # Study streak styles
+│   ├── data/
+│   │   ├── subjects.json         # Subject/module/lesson navigation data
+│   │   └── whats-new.json        # What's New entries
+│   └── js/
+│       ├── sidebar.js             # Builds the subject archive
+│       ├── streak.js              # Study streak tracking
+│       └── whats-new.js           # What's New rendering
+│
+└── studyguide-subjects/
+    ├── AP/
+    ├── ARTS/
+    ├── CLF/
+    ├── COMPUTER/
+    ├── ENG/
+    ├── FIL/
+    ├── MATH/
+    ├── MUSIC/
+    ├── PEH/
+    ├── SCI/
+    ├── TLE/
+    ├── past-lessons-coming-soon.html
+    └── streak-style.css
+```
 
-- **AP**
-- **FILIPINO**
-- **MATHEMATICS**
-- **ENGLISH**
-- **TLE**
-- **COMPUTER**
-- **CLF**
-- **PE/H**
-- **SCIENCE**
-- **MUSIC/ARTS**
+Each subject directory contains its reviewer pages and supporting stylesheets. The exact files and lesson coverage may change as new reviewers are added.
 
----
+## 🧭 Adding a New Lesson
 
-## 🛠️ COMING SOON
+To add a lesson to the Study Hub archive:
 
+1. Create the reviewer HTML page and its CSS file in the appropriate subject directory.
+2. Add the reviewer/module and lesson links to `assets/data/subjects.json`.
+3. Use the correct relative path from `index.html` for the `href`.
+4. If linking to a specific section, add the appropriate HTML anchor.
+5. Test the link and section on both desktop and mobile layouts.
 
-**🔒 Access control (password gate)**
+The sidebar is generated by `assets/js/sidebar.js`, so lesson links should normally be managed through `subjects.json` instead of being manually added to `index.html`.
 
-Add your authentication approach here. This may be a client-side solution or integrated with your GitHub Pages deployment method.
+## 📝 Current Reviewer Coverage
 
----
+The project currently includes topics such as:
+
+### Mathematics
+- Geometry
+- Points, lines, and planes
+- Segments and betweenness
+- Segment addition and midpoints
+- Angles and angle pairs
+- Polygon classification
+- Diagonals
+- Interior and exterior angles
+- Polygon area
+- Polygon applications
+- Truth values and conditional statements
+- Formula references
+- Interactive polygon exploration
+
+### English
+- Elements of a Story
+- Plot
+- Spectacle
+- Dialogue
+- Music
+- Characterization
+- Rhyme & Meter
+- Point of View
+- First Person POV
+- Third Person Limited
+- Third Person Omniscient
+- Narrative techniques
+- POV reference tables
+
+### Science
+- Lab Apparatus and Scientists
+- Laboratory Rules
+- Important Scientists
+- Math in Chemistry
+- Significant Figures
+- Scientific Notation
+- Unit Conversions
+- Mixtures and Solutions
+- Concentration
+- Matter and States of Matter
+- Phase Changes
+- Factors Affecting Solubility
+- Solubility Graphs
+- Acids and Bases
+- pH Scale
+- Strong and Weak Acids/Bases
+- Neutralization
+
+### AP
+- Economics
+- Economic allocation
+- Fundamental economic questions
+- Types of products
+- Economic systems and theories
+- Production
+- Entrepreneurship
+- Business organizations
+- Cooperatives
+- Development economics
+- Economic branches
+- Major economists
+- Maslow's Hierarchy of Needs
+- Sustainable Development
+- The 17 SDGs
+- 8-Point Agenda
+
+### Filipino
+- Philippine Literature through different periods
+- Spanish Colonial Period
+- Revolutionary Period
+- American and Japanese Periods
+- Post-Independence Period
+- Panitikan
+- Tula
+- Tekstong Argumentatibo
+- Tuluyan / Prosa
+- Additional Filipino coverage
+
+### Computer
+- Photography
+- Photo composition
+- Lighting
+- Film genres
+- Additional computer-related topics
+
+### Arts
+- Photography
+- Videography
+- Camera parts
+- Frame grids
+- Image composition
+
+### Music
+- Western Popular Music
+- Singing styles
+- Instruments
+- Music notation and technology
+- Sampling
+
+### PE/H
+- Invasion Games
+- Target Games
+- Game creation and concepts
+
+### CLF
+- Books of the Bible
+- Gospels
+- Gospel portrayals of Jesus
+- Related Bible and New Testament topics
+
+### TLE
+- Front of House
+- Back of House
+- Hotel services
+- Hospitality-related topics
+
+This is a general overview rather than a complete lesson index. For the current archive structure and exact links, see `assets/data/subjects.json`.
+
+## 🔧 Development
+
+This is a client-side static website. The core project does not require a backend or build system.
+
+For basic testing, the project can be opened locally through a browser. Using a local static web server is recommended for more accurate testing of relative assets and JavaScript behavior.
+
+### Main Files
+
+| File | Purpose |
+| --- | --- |
+| `index.html` | Main hub, subject cards, theme toggle, streak badge, and What's New container |
+| `style.css` | Main hub layout and responsive styling |
+| `assets/data/subjects.json` | Subject, module, lesson, and navigation data |
+| `assets/data/whats-new.json` | What's New content |
+| `assets/js/sidebar.js` | Generates the archive sidebar |
+| `assets/js/streak.js` | Handles study streak activity |
+| `assets/js/whats-new.js` | Loads and displays What's New entries |
+
+## 📌 Project Status
+
+The JHS Study Guide is an actively maintained collection of study reviewers.
+
+New lessons, subjects, corrections, and improvements may be added over time. Older reviewers may also be reorganized or marked as outdated when the covered material changes.
+
+Because of this, the repository itself and `assets/data/subjects.json` should be treated as the most accurate source for the current available content.
+
+## 🌐 Deployment
+
+The project is designed to be hosted as a static website, including through GitHub Pages.
+
+No server-side processing is required for the core Study Hub.
+
+## 👥 Credits
+
+**JHS Study Guide Team**
+
+Copyright © 2026 JHS Study Guide Team
