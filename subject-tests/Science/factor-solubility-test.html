@@ -158,6 +158,47 @@
       color: var(--ink-secondary);
       margin-bottom: 0;
     }
+    .answer-review {
+      display: none;
+      margin-top: 10px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule);
+      color: var(--ink-secondary);
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+
+    .answer-review strong {
+      color: var(--ink);
+    }
+
+    .quiz-item.correct {
+      border-left-color: #22c55e;
+    }
+
+    .quiz-item.incorrect {
+      border-left-color: #ef4444;
+    }
+
+    .options li.correct-answer {
+      background: rgba(34, 197, 94, 0.16);
+      color: var(--ink) !important;
+      border: 1px solid rgba(34, 197, 94, 0.45);
+    }
+
+    .options li.incorrect-answer {
+      background: rgba(239, 68, 68, 0.14);
+      color: var(--ink) !important;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+    }
+
+    .answer-badge {
+      display: inline-block;
+      margin-left: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
 
     .retake-container {
       margin-top: 16px;
@@ -254,6 +295,7 @@
           <li><button class="option-btn">The salt has changed into a gas.</button></li>
           <li><button class="option-btn">The pressure has made the salt immiscible.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="Miscible">
@@ -264,6 +306,7 @@
           <li><button class="option-btn">Saturated</button></li>
           <li><button class="option-btn">Nonpolar</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="Compare the polarity of the solute and solvent because like dissolves like.">
@@ -274,6 +317,7 @@
           <li><button class="option-btn">Assume pressure determines all types of solubility.</button></li>
           <li><button class="option-btn">Assume every solid becomes more soluble at every temperature.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="Sugar and water are both polar, while oil is nonpolar and water is polar.">
@@ -284,6 +328,7 @@
           <li><button class="option-btn">Oil is ionic, while sugar is a gas.</button></li>
           <li><button class="option-btn">Water prevents all nonpolar substances from dissolving because it is a solid.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="The ionic substance dissolves into individual ions.">
@@ -294,6 +339,7 @@
           <li><button class="option-btn">The ionic substance must form a separate liquid layer.</button></li>
           <li><button class="option-btn">The ionic substance can dissolve only if the pressure is zero.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="The solid&#x27;s solubility will generally increase, while the gas&#x27;s solubility will decrease.">
@@ -304,6 +350,7 @@
           <li><button class="option-btn">Both solubilities will always increase.</button></li>
           <li><button class="option-btn">The solid will become a gas, while the gas becomes a solid.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="Gas particles gain kinetic energy and can escape from the solution into the vapor phase.">
@@ -314,6 +361,7 @@
           <li><button class="option-btn">Heating makes every gas become a polar solid.</button></li>
           <li><button class="option-btn">Gas particles lose all kinetic energy when heated.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="Bubbles appear as water is heated because dissolved gases become less soluble.">
@@ -324,6 +372,7 @@
           <li><button class="option-btn">Oil and water become miscible when heated.</button></li>
           <li><button class="option-btn">A solid solute automatically becomes undissolved when heated.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="The pressure above the liquid drops, making dissolved CO2 less soluble so it escapes.">
@@ -334,6 +383,7 @@
           <li><button class="option-btn">CO2 becomes a solid when the cap is opened.</button></li>
           <li><button class="option-btn">Opening the bottle changes CO2 into an ionic solute.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="Increase the pressure of the gas above the liquid.">
@@ -344,6 +394,7 @@
           <li><button class="option-btn">Increase pressure on a solid solute only.</button></li>
           <li><button class="option-btn">Remove all pressure from the system.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="KNO3 is much more affected by temperature than NaCl over the range shown.">
@@ -354,6 +405,7 @@
           <li><button class="option-btn">KNO3 has no relationship with temperature.</button></li>
           <li><button class="option-btn">The graph shows that gases become more soluble when heated.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="Find the temperature on the x-axis and compare the heights of the substances&#x27; curves.">
@@ -364,6 +416,7 @@
           <li><button class="option-btn">Use only the steepness of each curve without choosing a temperature.</button></li>
           <li><button class="option-btn">Compare the names of the substances instead of their positions on the graph.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="The general trend for solid solutes has exceptions.">
@@ -374,6 +427,7 @@
           <li><button class="option-btn">Temperature affects only gases.</button></li>
           <li><button class="option-btn">Li2SO4 must be a gas because its solubility decreases.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="The solution is acidic.">
@@ -384,6 +438,7 @@
           <li><button class="option-btn">The solution is definitely neutral.</button></li>
           <li><button class="option-btn">The litmus test cannot distinguish acids from alkalis.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="The solution is alkaline.">
@@ -394,6 +449,7 @@
           <li><button class="option-btn">The solution is neutral.</button></li>
           <li><button class="option-btn">The solution is necessarily a strong acid.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="Place 3–4 drops in a spotting tile, place red and blue litmus ends in the solution, then observe and record the results.">
@@ -404,6 +460,7 @@
           <li><button class="option-btn">Place dry litmus paper in the test tube rack, then add water directly to the paper.</button></li>
           <li><button class="option-btn">Mix all household solutions together first, then test the mixture with one strip of litmus.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="Their different color changes provide evidence for whether the solution is acidic or alkaline.">
@@ -414,6 +471,7 @@
           <li><button class="option-btn">One paper measures temperature while the other measures pressure.</button></li>
           <li><button class="option-btn">Using both papers makes every solution neutral.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="The solution is acidic and has a pH less than 7.">
@@ -424,6 +482,7 @@
           <li><button class="option-btn">The solution must be neutral.</button></li>
           <li><button class="option-btn">The solution must be a strong base.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="It is alkaline, or basic.">
@@ -434,6 +493,7 @@
           <li><button class="option-btn">It is necessarily neutral.</button></li>
           <li><button class="option-btn">It cannot contain a base.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="A strong acid dissociates 100% into ions, while a weak acid does not dissociate 100%.">
@@ -444,6 +504,7 @@
           <li><button class="option-btn">A weak acid cannot dissolve in water.</button></li>
           <li><button class="option-btn">A strong acid is defined only by its color on litmus paper.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="A strong base is 100% ionized in solution, while a weak base is less than 100% ionized.">
@@ -454,6 +515,7 @@
           <li><button class="option-btn">A weak base cannot react with an acid.</button></li>
           <li><button class="option-btn">A strong base is any substance with a pH exactly equal to 7.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="It is incorrect because strength refers to how completely the acid ionizes, not simply its concentration.">
@@ -464,6 +526,7 @@
           <li><button class="option-btn">It is correct because strong acids cannot be diluted.</button></li>
           <li><button class="option-btn">It is incorrect because acids do not ionize in solution.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="An acid reacts with a base to form salt and water.">
@@ -474,6 +537,7 @@
           <li><button class="option-btn">Oil separates from water into two layers.</button></li>
           <li><button class="option-btn">A solid becomes more soluble as temperature rises.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="The solubility ranking of substances can change as temperature changes.">
@@ -484,6 +548,7 @@
           <li><button class="option-btn">A graph can only show one substance at a time.</button></li>
           <li><button class="option-btn">Temperature has no effect on the curves.</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
       <div class="quiz-item" data-answer="Salt and water">
@@ -494,6 +559,7 @@
           <li><button class="option-btn">Only more acid</button></li>
           <li><button class="option-btn">Only more base</button></li>
         </ul>
+        <div class="answer-review"></div>
       </div>
 
     </div>
@@ -594,6 +660,12 @@
     quizItem.style.borderColor = "var(--rule)";
   });
 
+  function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
   function calculateScore() {
     const quizItems = document.querySelectorAll(".quiz-item");
     let score = 0;
@@ -607,24 +679,61 @@
 
       if (!selectedLi) {
         allAnswered = false;
-        // Apply dynamic error coloring (now explicitly set in :root vars above)
         item.style.borderColor = "var(--text-unanswered)";
         return;
       }
 
-      // Ensure error color cleared on scoring pass
       item.style.borderColor = "var(--rule)";
 
-      // Get text from button inside the selected li
       const selectedButton = selectedLi.querySelector(".option-btn");
       if (!selectedButton) return;
 
       const selectedText = selectedButton.textContent.trim();
       const correctAnswer = item.getAttribute("data-answer");
+      const review = item.querySelector(".answer-review");
+
+      // Clear any previous review markers.
+      item.classList.remove("correct", "incorrect");
+      item.querySelectorAll(".options li").forEach(option => {
+        option.classList.remove("correct-answer", "incorrect-answer");
+        const badge = option.querySelector(".answer-badge");
+        if (badge) badge.remove();
+      });
+
+      // Mark the correct option and, when needed, the user's incorrect choice.
+      item.querySelectorAll(".options li").forEach(option => {
+        const button = option.querySelector(".option-btn");
+        if (!button) return;
+
+        const optionText = button.textContent.trim();
+
+        if (optionText === correctAnswer) {
+          option.classList.add("correct-answer");
+          const badge = document.createElement("span");
+          badge.className = "answer-badge";
+          badge.textContent = "✓ Correct answer";
+          button.appendChild(badge);
+        }
+
+        if (option === selectedLi && selectedText !== correctAnswer) {
+          option.classList.add("incorrect-answer");
+          const badge = document.createElement("span");
+          badge.className = "answer-badge";
+          badge.textContent = "✗ Your answer";
+          button.appendChild(badge);
+        }
+      });
 
       if (selectedText === correctAnswer) {
         score++;
+        item.classList.add("correct");
+        review.innerHTML = "<strong>Correct.</strong> You selected the right answer.";
+      } else {
+        item.classList.add("incorrect");
+        review.innerHTML = `<strong>Correct answer:</strong> ${escapeHtml(correctAnswer)}`;
       }
+
+      review.style.display = "block";
     });
 
     if (!allAnswered) {
@@ -674,8 +783,22 @@
     quizContainer.querySelectorAll(".options li.selected")
       .forEach(option => option.classList.remove("selected"));
 
-    quizContainer.querySelectorAll(".quiz-item")
-      .forEach(item => item.style.borderColor = "var(--rule)");
+    quizContainer.querySelectorAll(".quiz-item").forEach(item => {
+      item.style.borderColor = "var(--rule)";
+      item.classList.remove("correct", "incorrect");
+
+      const review = item.querySelector(".answer-review");
+      if (review) {
+        review.style.display = "none";
+        review.innerHTML = "";
+      }
+
+      item.querySelectorAll(".options li").forEach(option => {
+        option.classList.remove("correct-answer", "incorrect-answer");
+        const badge = option.querySelector(".answer-badge");
+        if (badge) badge.remove();
+      });
+    });
 
     resultPanel.style.display = "none";
 
