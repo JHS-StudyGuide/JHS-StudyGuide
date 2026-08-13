@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOGIC · Conditional Statements & Reasoning - Study Hub</title>
+  <link rel="stylesheet" href="COND_STATEMENTS_MATH.css" />
+  <link rel="stylesheet" href="../../assets/streak-counter.css">
+
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="top-bar">
+    <a href="../../index.html">← Back to Main Hub</a>
+    <span class="title">LOGIC · Conditional Statements & Reasoning</span>
+    <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+  <span class="streak-emoji" id="streak-emoji">🔥</span>
+  <span class="streak-count" id="streak-count">0</span>
+  <span class="streak-label">Streak</span>
+</div>
+    <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+  </header>
+
+  <div class="container">
+    <nav class="sidebar" aria-label="Section navigation">
+      <h3>Subject Archive</h3>
+      <div class="module-title">LOGIC: Fundamentals</div>
+      <ul class="module-section">
+        <li><a href="#conditional-statements">1. Conditional Statements</a></li>
+        <li><a href="#reasoning-types">2. Logical & Analytical Reasoning</a></li>
+        <li><a href="#smart-framework">3. The S.M.A.R.T.</a></li>
+        <li><a href="#data-types">4. Primary & Secondary Data</a></li>
+        <li><a href="#inductive-deductive">5. Inductive vs. Deductive Reasoning</a></li>
+        <li><a href="#reference-table">6. Quick Reference Table</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <header class="hero" id="overview">
+        <div>
+          <span class="dept-tag">Logic & Reasoning</span>
+          <h1>Conditional Statements & Reasoning</h1>
+          <p class="subtitle">
+            A complete guide on transforming conditional statements, the two core modes of reasoning, the S.M.A.R.T. goal framework, and the two classical paths of inference.
+          </p>
+        </div>
+      </header>
+
+      <!-- Section 1: Conditional Statements -->
+      <section id="conditional-statements">
+        <div class="part-head">
+          <h2>1. Conditional Statements</h2>
+          <p>Given a conditional $p \rightarrow q$, three related statements can be formed by switching and/or negating the hypothesis ($p$) and conclusion ($q$).</p>
+        </div>
+
+        <div class="type-grid">
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="letter">01</span>
+              <span class="unit-badge">$q \rightarrow p$</span>
+            </div>
+            <h4>Converse</h4>
+            <p><strong>Rule:</strong> Switch the hypothesis and conclusion.</p>
+            <div class="metric-note">
+              Switching the hypothesis and conclusion does not preserve the original truth value.
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="letter">02</span>
+              <span class="unit-badge">$\sim p \rightarrow \sim q$</span>
+            </div>
+            <h4>Inverse</h4>
+            <p><strong>Rule:</strong> Negate both the hypothesis and conclusion.</p>
+            <div class="metric-note">
+              Formed by adding "not" (represented by "~") to each part of the original statement.
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="letter">03</span>
+              <span class="unit-badge">$\sim q \rightarrow \sim p$</span>
+            </div>
+            <h4>Contrapositive</h4>
+            <p><strong>Rule:</strong> Negate the statement, then switch the hypothesis and conclusion.</p>
+            <div class="metric-note">
+              Shares the same truth value as the Inverse.
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="letter">04</span>
+              <span class="unit-badge">Same Truth Value</span>
+            </div>
+            <h4>Equivalent Statement</h4>
+            <p><strong>Rule:</strong> Two statements that always share the same truth value.</p>
+            <div class="metric-note">
+              A conditional and its contrapositive are equivalent statements to one another.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Logical & Analytical Reasoning -->
+      <section id="reasoning-types">
+        <div class="part-head">
+          <h2>2. Logical & Analytical Reasoning</h2>
+          <p>Reasoning is thinking logically and analytically to work through a situation and reach a solution.</p>
+        </div>
+
+        <div class="dept-grid">
+          <div class="dept-card">
+            <h4>Logical Thinking</h4>
+            <p style="font-size: 0.88rem; color: var(--ink-secondary); margin-bottom: 12px;">
+              Analyzing situations using reasons to arrive at a solution.
+            </p>
+            <ul>
+              <li>Works step by step from known reasons</li>
+              <li>Builds toward a solution through justified steps</li>
+            </ul>
+          </div>
+
+          <div class="dept-card">
+            <h4>Analytical Thinking</h4>
+            <p style="font-size: 0.88rem; color: var(--ink-secondary); margin-bottom: 12px;">
+              Identifying and defining problems in order to reach a solution.
+            </p>
+            <ul>
+              <li>Starts by breaking down and defining the problem</li>
+              <li>Focuses on identifying the real issue before solving</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: S.M.A.R.T. Framework -->
+      <section id="smart-framework">
+        <div class="part-head">
+          <h2>3. The S.M.A.R.T. Framework</h2>
+          <p>A checklist used to evaluate the quality of goals, objectives, or data-gathering plans.</p>
+        </div>
+
+        <div class="directory">
+          <div class="directory-panel">
+            <span class="dept-tag">Goal-Setting Criteria</span>
+            <h3>S.M.A.R.T. Breakdown</h3>
+            <ul class="conversion-list" style="margin-top: 0;">
+              <li>
+                <span class="left-val">S</span>
+                <span class="eq-sign">&rarr;</span>
+                <span class="right-val">Specific</span>
+              </li>
+              <li>
+                <span class="left-val">M</span>
+                <span class="eq-sign">&rarr;</span>
+                <span class="right-val">Measurable</span>
+              </li>
+              <li>
+                <span class="left-val">A</span>
+                <span class="eq-sign">&rarr;</span>
+                <span class="right-val">Achievable</span>
+              </li>
+              <li>
+                <span class="left-val">R</span>
+                <span class="eq-sign">&rarr;</span>
+                <span class="right-val">Relevant</span>
+              </li>
+              <li>
+                <span class="left-val">T</span>
+                <span class="eq-sign">&rarr;</span>
+                <span class="right-val">Time-bounded</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Primary & Secondary Data -->
+      <section id="data-types">
+        <div class="part-head">
+          <h2>4. Primary & Secondary Data</h2>
+          <p>Data used in reasoning and research can be classified by where it originates.</p>
+        </div>
+
+        <div class="dept-grid">
+          <div class="dept-card">
+            <h4>Primary Data</h4>
+            <ul>
+              <li>Data that comes straight from the source</li>
+              <li>Collected firsthand for a specific purpose</li>
+            </ul>
+          </div>
+
+          <div class="dept-card">
+            <h4>Secondary Data</h4>
+            <ul>
+              <li>Based on others' research and data</li>
+              <li>Drawn from existing studies or records</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Inductive vs. Deductive Reasoning -->
+      <section id="inductive-deductive">
+        <div class="part-head">
+          <h2>5. Inductive vs. Deductive Reasoning</h2>
+          <p>The two classical paths for moving between specific observations and general conclusions.</p>
+        </div>
+
+        <div class="dept-grid">
+          <div class="dept-card">
+            <h4>Inductive Reasoning (Sir Francis Bacon)</h4>
+            <p style="font-size: 0.88rem; color: var(--ink-secondary); margin-bottom: 12px;">
+              Direction: <strong>Specific &rarr; General</strong>
+            </p>
+            <ul>
+              <li>Based on observed patterns</li>
+              <li>Conclusion is called a <strong>conjecture</strong> — an unproven statement based on observation</li>
+              <li>Proving a conjecture requires showing it holds true in all cases</li>
+            </ul>
+          </div>
+
+          <div class="dept-card">
+            <h4>Deductive Reasoning (Aristotle)</h4>
+            <p style="font-size: 0.88rem; color: var(--ink-secondary); margin-bottom: 12px;">
+              Direction: <strong>General &rarr; Specific</strong>
+            </p>
+            <ul>
+              <li>Based on fact and definition</li>
+              <li>Arrives at a conclusion based on generalization</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Reference Summary Table -->
+      <section id="reference-table">
+        <div class="part-head">
+          <h2>6. Quick Reference Summary Table</h2>
+          <p>A fast review matrix covering conditional statement forms and modes of reasoning.</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Form</th>
+                <th>Truth Value</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Converse</strong></td>
+                <td>$q \rightarrow p$</td>
+                <td>Independent</td>
+                <td>Switches hypothesis and conclusion; does not change truth value on its own.</td>
+              </tr>
+              <tr>
+                <td><strong>Inverse</strong></td>
+                <td>$\sim p \rightarrow \sim q$</td>
+                <td>Same as Contrapositive</td>
+                <td>Negates the original statement by adding "not" to each part.</td>
+              </tr>
+              <tr>
+                <td><strong>Contrapositive</strong></td>
+                <td>$\sim q \rightarrow \sim p$</td>
+                <td>Same as Inverse</td>
+                <td>Negates, then switches hypothesis and conclusion.</td>
+              </tr>
+              <tr>
+                <td><strong>Equivalent Statement</strong></td>
+                <td>Any matching pair</td>
+                <td>Identical</td>
+                <td>Two statements that always share the same truth value.</td>
+              </tr>
+              <tr>
+                <td><strong>Inductive Reasoning</strong></td>
+                <td>Specific &rarr; General</td>
+                <td>Conjecture (unproven)</td>
+                <td>Based on patterns; must hold in all cases to be proven true.</td>
+              </tr>
+              <tr>
+                <td><strong>Deductive Reasoning</strong></td>
+                <td>General &rarr; Specific</td>
+                <td>Proven from facts</td>
+                <td>Based on fact and definition; arrives at conclusions through generalization.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Dedication Card (Inside content block for full width alignment) -->
+      <div class="dedication-card">
+        <p>Study well.</p>
+      </div>
+    </main>
+  </div>
+
+  <footer class="page-footer">Logic & Reasoning Study Hub Reviewer · Conditional Statements & Modes of Reasoning</footer>
+
+<script src="../../assets/js/streak.js" defer></script>
+
+  <script>
+    /* ---------- Theme Toggle ---------- */
+    const themeToggleBtn = document.getElementById("themeToggle");
+    themeToggleBtn.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      if (currentTheme === "light") {
+        document.documentElement.removeAttribute("data-theme");
+        themeToggleBtn.textContent = "Toggle Light Mode";
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+        themeToggleBtn.textContent = "Toggle Dark Mode";
+      }
+    });
+  </script>
+</body>
+</html>
