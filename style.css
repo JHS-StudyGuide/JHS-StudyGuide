@@ -425,3 +425,15 @@ a.whats-new-text:hover, a.whats-new-text:focus-visible {
     padding: 6px 10px;
   }
 }
+
+/* ---------- Loren Signed Fix ---------- */
+
+.quick-fix{
+  margin-left: 24px;
+}
+
+@media (max-width: 640px) {
+.quick-fix{
+  margin-left: 5px;
+}
+}
