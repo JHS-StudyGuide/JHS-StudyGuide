@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Front Desk Operations & Communications — TLE Reviewer</title>
+  <link rel="stylesheet" href="PBX.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="top-bar">
+    <a class="back" href="../../index.html">← Back to Main Hub</a>
+    <span class="label">TLE · Front Office Operations</span>
+    
+    <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+      <span class="streak-emoji" id="streak-emoji">🔥</span>
+      <span class="streak-count" id="streak-count">0</span>
+      <span class="streak-label">Streak</span>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+  </header>
+
+  <div class="container">
+
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <h3>Directory</h3>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#positioning">1. Front Desk Positioning</a></li>
+          <li class="module-section">
+            <a href="#communications">2. Front Office Communications</a>
+            <ul class="sub-nav">
+              <li><a href="#communications" onclick="selectComm('internal')">↳ Internal Comm</a></li>
+              <li><a href="#communications" onclick="selectComm('external')">↳ External Comm</a></li>
+            </ul>
+          </li>
+          <li><a href="#pbx">3. PBX & Switchboard System</a></li>
+          <li><a href="#insights">4. Lesson Insights</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+
+      <header class="hero" id="overview">
+        <h1>Front Desk Operations & Communications</h1>
+        <div class="subtitle">
+          Strategic front desk placement, internal/external communication tools, switchboard responsibilities, and the essential role of the PBX system in hotel management.
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-card">
+            <strong>First Contact</strong>
+            <span>Strategic placement ensures visibility, security, and immediate guest assistance upon arrival.</span>
+          </div>
+          <div class="hero-card">
+            <strong>Control Tower</strong>
+            <span>Front Office coordinates all department operations via internal and external communication channels.</span>
+          </div>
+          <div class="hero-card">
+            <strong>Central Hub</strong>
+            <span>The PBX network routes all incoming, outgoing, and interdepartmental calls seamlessly.</span>
+          </div>
+        </div>
+      </header>
+
+      <section id="positioning">
+        <h2>1. Front Desk Positioning</h2>
+        <p>The front desk is intentionally placed in a hotel to serve as the first and most visible point of contact for guests. It is usually located near the entrance or at the center of the lobby so that guests can easily find it. This strategic placement also allows staff to efficiently monitor guest movement and respond quickly to inquiries or concerns. It supports smooth coordination between guests and hotel services from the moment of arrival.</p>
+        <p>This placement helps ensure that guests feel welcomed, guided, and secure upon arrival. The location of the front desk plays an important role in shaping the guest experience, making visibility, accessibility, and design essential considerations in hotel planning.</p>
+
+        <div class="type-grid">
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="letter">A</span>
+              <span class="unit-badge">Visibility</span>
+            </div>
+            <h4>Visibility and Accessibility</h4>
+            <p>It should be easy for the front desk staff to observe what is happening in the lobby, respond quickly to arriving guests, or assist with any sudden concerns. Hence, the front desk needs to be:</p>
+            <ul>
+              <li>Visible from the moment guests enter</li>
+              <li>Easy to access without confusion or long walks</li>
+              <li>Close to the main guest pathways, like elevators or lounges</li>
+            </ul>
+          </div>
+
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="letter">B</span>
+              <span class="unit-badge">Architecture</span>
+            </div>
+            <h4>Functional Design</h4>
+            <p>In addition to its positioning, the desk's design is also observed in a front-office operation. The front desk must also support:</p>
+            <ul>
+              <li>A clear line of sight to the doors, concierge, and bell service</li>
+              <li>Quick communication with security, engineering, or housekeeping</li>
+              <li>A design that allows multiple guests to be served at the same time (especially during check-in/checkout rush hours)</li>
+              <li>Semi-circle or island-shaped layouts to allow for smoother traffic and more friendly interactions</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="communications">
+        <h2>2. Front Office Communications</h2>
+        <p>Think of the Front Office as the hotel's control tower, guiding, coordinating, and overseeing the movement of guests and information to ensure that the entire operation flows smoothly and efficiently at all times.</p>
+        <p>To make that happen, communication is everything. There are two main types of communication in a front-office operation: internal and external. Effective communication ensures that information is accurately shared between departments and properly delivered to guests.</p>
+
+        <div class="directory">
+          <div class="directory-tabs" id="commTabs" role="tablist"></div>
+          <div class="directory-panel" id="commPanel"></div>
+        </div>
+
+        <h3 style="margin-top: 36px; margin-bottom: 16px;">Communication Channels Breakdown</h3>
+        <div class="dept-grid" id="commGrid"></div>
+      </section>
+
+      <section id="pbx">
+        <h2>3. PBX and the Switchboard Operator</h2>
+        <p>Seamless telephone interactions in a hotel are managed by a skilled switchboard operator utilizing the PBX system. This collaboration ensures that all calls, including guest inquiries and interdepartmental coordination, are directed promptly to the appropriate recipient.</p>
+        <p>For example, when a caller is transferred to a guest room, restaurant, or housekeeping within a single call, the PBX system and the switchboard operator facilitate this efficient process.</p>
+        <p>The PBX system functions as a private telephone network, directing each call to its intended destination without requiring a separate phone line for each device. Its effective operation depends on the switchboard operator's expertise.</p>
+
+        <div class="type-card" style="margin: 24px 0;">
+          <h4>A Switchboard Operator's Core Tasks</h4>
+          <ul>
+            <li>Answering calls that come into the hotel</li>
+            <li>Transferring calls to guest rooms or departments</li>
+            <li>Taking messages when guests or staff are unavailable</li>
+            <li>Scheduling and making wake-up calls</li>
+            <li>Handling emergency calls and alerting the right staff quickly</li>
+            <li>Logging all important communications for hotel records</li>
+          </ul>
+          <p style="margin-top: 12px; font-size: 0.95rem; color: var(--ink-secondary);">
+            <em>Operators wear headsets, work with digital screens (or traditional switchboards), and are trained to handle multiple calls simultaneously with calm professionalism.</em>
+          </p>
+        </div>
+
+        <h3>How Does the Switchboard Operate?</h3>
+        <div class="type-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+          <div class="type-card">
+            <span class="letter" style="color:var(--peso-bright); font-size: 1.5rem; font-weight:700;">01</span>
+            <h4>Guest Dials "0"</h4>
+            <p>Guest dials "0" from room telephone to connect directly to the front desk operator.</p>
+          </div>
+          <div class="type-card">
+            <span class="letter" style="color:var(--peso-bright); font-size: 1.5rem; font-weight:700;">02</span>
+            <h4>Operator Responds</h4>
+            <p>PBX operator answers calmly and inquires how they can assist the caller.</p>
+          </div>
+          <div class="type-card">
+            <span class="letter" style="color:var(--peso-bright); font-size: 1.5rem; font-weight:700;">03</span>
+            <h4>Call Routing</h4>
+            <p>Call is routed to Housekeeping, Engineering, Room Service, or appropriate department.</p>
+          </div>
+          <div class="type-card">
+            <span class="letter" style="color:var(--peso-bright); font-size: 1.5rem; font-weight:700;">04</span>
+            <h4>External Rules</h4>
+            <p>For external calls, pre-set hotel routing rules determine permissions and destinations.</p>
+          </div>
+        </div>
+
+        <h3>Why Is PBX So Important?</h3>
+        <p>Without PBX, the hotel would need hundreds of individual phone lines, one for every guest room and department. That would be expensive, messy, and hard to manage. PBX simplifies this system by centralizing all communication into a single control point.</p>
+
+        <div class="dept-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 18px;">
+          <div class="dept-card">
+            <span class="dept-tag">Pillar 1</span>
+            <h4>Efficient</h4>
+            <p>Calls get directly where they need to go in seconds.</p>
+          </div>
+          <div class="dept-card">
+            <span class="dept-tag">Pillar 2</span>
+            <h4>Organized</h4>
+            <p>All incoming messages and wake-up requests are logged and tracked.</p>
+          </div>
+          <div class="dept-card">
+            <span class="dept-tag">Pillar 3</span>
+            <h4>Private</h4>
+            <p>Calls stay within the secure hotel line unless specifically approved.</p>
+          </div>
+          <div class="dept-card">
+            <span class="dept-tag">Pillar 4</span>
+            <h4>Fast</h4>
+            <p>Calls are answered, routed, and resolved without delay.</p>
+          </div>
+        </div>
+
+        <div class="qr-box">
+          <div class="qr-icon">📱</div>
+          <div>
+            <strong>Interactive Note: Traditional Switchboards</strong>
+            <p>Some hotels still use traditional manual switchboards for internal communication. Scan the QR code in your reviewer materials to learn how older switchboard models work.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="insights">
+        <h2>4. Lesson Insights</h2>
+        <div class="type-card" style="border-left: 4px solid var(--gold-bright);">
+          <ul style="margin-bottom: 0;">
+            <li style="margin-bottom: 12px;"><strong>Visibility & Service:</strong> The front office is designed to ensure maximum visibility and provide efficient guest service from entry.</li>
+            <li style="margin-bottom: 12px;"><strong>Dual Communication:</strong> Internal communication allows smooth coordination among hotel departments, while external communication supports guest and partner interaction.</li>
+            <li><strong>PBX Network:</strong> The PBX system connects telephone lines across all departments, enabling switchboard operators to manage call flow effectively.</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        &copy; 2026 JHS Study Guide. All rights reserved.
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="../../assets/js/streak.js" defer></script>
+
+  <script>
+    /* ---------- Theme Toggle Handler ---------- */
+    const themeBtn = document.getElementById('themeToggle');
+    const rootEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      rootEl.classList.add('light');
+      rootEl.setAttribute('data-theme', 'light');
+      themeBtn.textContent = 'Toggle Dark Mode';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      const isLight = rootEl.classList.toggle('light');
+      if (isLight) {
+        rootEl.setAttribute('data-theme', 'light');
+        themeBtn.textContent = 'Toggle Dark Mode';
+        localStorage.setItem('theme', 'light');
+      } else {
+        rootEl.removeAttribute('data-theme');
+        themeBtn.textContent = 'Toggle Light Mode';
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    /* ---------- Interactive Tab Switcher Data & Logic ---------- */
+    const commData = [
+      {
+        id: 'internal',
+        name: 'Internal Communication',
+        tag: 'Within Hotel',
+        desc: 'Communication taking place within the hotel between team members and departments (Housekeeping, Engineering, Security, etc.) to solve problems and fulfill guest needs.',
+        tools: [
+          'Two-way radios (handheld walkie-talkies)',
+          'Internal telephones (PBX extensions)',
+          'Messaging apps for staff',
+          'Quick verbal updates or printed memos'
+        ]
+      },
+      {
+        id: 'external',
+        name: 'External Communication',
+        tag: 'Outside Hotel',
+        desc: 'Communication between the front office and anyone outside the hotel, such as guests, travel agents, suppliers, or delivery personnel.',
+        tools: [
+          'Landline or mobile phones',
+          'Email and online booking platforms',
+          'Live chat features on the hotel website',
+          'Social media (handled by front desk or marketing)'
+        ]
+      }
+    ];
+
+    const commTabsEl = document.getElementById('commTabs');
+    const commPanelEl = document.getElementById('commPanel');
+    const commGridEl = document.getElementById('commGrid');
+
+    function renderCommPanel(item) {
+      commPanelEl.innerHTML = `
+        <span class="dept-tag">${item.tag}</span>
+        <h3 style="margin: 8px 0; color: var(--ink);">${item.name}</h3>
+        <p style="margin-bottom: 14px;">${item.desc}</p>
+        <strong style="color: var(--peso-bright); display:block; margin-bottom:6px;">Tools & Channels Used:</strong>
+        <ul>${item.tools.map(t => `<li>${t}</li>`).join('')}</ul>
+      `;
+    }
+
+    commData.forEach((item, index) => {
+      // Create Tab Button
+      const btn = document.createElement('button');
+      btn.textContent = item.name;
+      btn.setAttribute('role', 'tab');
+      btn.id = 'tab-' + item.id;
+      if (index === 0) btn.classList.add('active');
+      btn.addEventListener('click', () => {
+        commTabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderCommPanel(item);
+      });
+      commTabsEl.appendChild(btn);
+
+      // Create Grid Card Display
+      const card = document.createElement('div');
+      card.className = 'dept-card';
+      card.id = 'card-' + item.id;
+      card.innerHTML = `
+        <span class="dept-tag">${item.tag}</span>
+        <h4>${item.name}</h4>
+        <p style="font-size: 0.95rem; margin-bottom: 10px;">${item.desc}</p>
+        <ul>${item.tools.map(t => `<li>${t}</li>`).join('')}</ul>
+      `;
+      commGridEl.appendChild(card);
+    });
+
+    // Render initial tab panel
+    renderCommPanel(commData[0]);
+
+    /* Sidebar quick jump function */
+    function selectComm(id) {
+      const btn = document.getElementById('tab-' + id);
+      const item = commData.find(c => c.id === id);
+      if (btn && item) {
+        commTabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderCommPanel(item);
+      }
+    }
+  </script>
+</body>
+</html>
