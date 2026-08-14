@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tone, Mood, & Literary Style — English Reviewer</title>
+  <link rel="stylesheet" href="Tone-Mood.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <script src="../../assets/js/universal-pdf.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="top-bar">
+    <a class="back" href="../../index.html">← Back to Main Hub</a>
+    <span class="label">ENGLISH · Literary Analysis</span>
+    
+    <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+      <span class="streak-emoji" id="streak-emoji">🔥</span>
+      <span class="streak-count" id="streak-count">0</span>
+      <span class="streak-label">Streak</span>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+  </header>
+
+  <div class="container">
+
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <h3>Directory</h3>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#diction">1. Diction & Word Categories</a></li>
+          <li><a href="#why-it-matters">2. Why Diction Matters</a></li>
+          <li class="module-section">
+            <a href="#style">3. Elements of Style</a>
+            <ul class="sub-nav">
+              <li><a href="#style" onclick="selectStyle('diction-style')">↳ Diction</a></li>
+              <li><a href="#style" onclick="selectStyle('sentence-structure')">↳ Sentence Structure</a></li>
+              <li><a href="#style" onclick="selectStyle('imagery')">↳ Imagery</a></li>
+              <li><a href="#style" onclick="selectStyle('figurative-lang')">↳ Figurative Language</a></li>
+              <li><a href="#style" onclick="selectStyle('dialogue-symbolism')">↳ Dialogue & Symbolism</a></li>
+            </ul>
+          </li>
+          <li><a href="#tone-and-mood">4. Tone vs. Mood</a></li>
+          <li><a href="#insights">5. Key Takeaways</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+
+      <header class="hero" id="overview">
+        <h1>Tone, Mood, & Literary Style</h1>
+        <div class="subtitle">
+          Mastering word choice (diction), concrete vs. abstract language, writer's style elements, and the distinct relationship between author tone and reader mood.
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-card">
+            <strong>Diction</strong>
+            <span>The specific word choice that builds clarity, tone, and emotional resonance.</span>
+          </div>
+          <div class="hero-card">
+            <strong>Literary Style</strong>
+            <span>The unique way a writer blends syntax, imagery, and devices to express ideas.</span>
+          </div>
+          <div class="hero-card">
+            <strong>Tone vs. Mood</strong>
+            <span>Tone is the author's attitude; Mood is the feeling experienced by the reader.</span>
+          </div>
+        </div>
+      </header>
+
+      <section id="diction">
+        <h2>1. Diction & Word Categories</h2>
+        <p><strong>Diction</strong> refers to an author's choice of words. Word choices are classified both by their level of formality and by the type of meaning they express.</p>
+
+        <h3>Levels of Diction</h3>
+        <div class="type-grid">
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="letter">01</span>
+              <span class="unit-badge">Academic</span>
+            </div>
+            <h4>Formal Diction</h4>
+            <p>Dignified, precise language used in academic papers, formal essays, business communications, or official presentations.</p>
+          </div>
+
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="letter">02</span>
+              <span class="unit-badge">Everyday</span>
+            </div>
+            <h4>Informal Diction</h4>
+            <p>Casual, relaxed, everyday language used in personal conversations, informal emails, and friendly correspondence.</p>
+          </div>
+
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="letter">03</span>
+              <span class="unit-badge">Regional</span>
+            </div>
+            <h4>Colloquial Diction</h4>
+            <p>Regional phrases, idioms, or conversational expressions unique to a specific geographic area or community.</p>
+          </div>
+
+          <div class="type-card">
+            <div class="card-header-row">
+              <span class="letter">04</span>
+              <span class="unit-badge">Subculture</span>
+            </div>
+            <h4>Slang Diction</h4>
+            <p>Highly informal, trendy, and culture-specific words that evolve quickly within specific demographic groups.</p>
+          </div>
+        </div>
+
+        <h3>Word Categories by Type of Meaning</h3>
+        <div class="type-grid">
+          <div class="type-card" style="border-left: 4px solid var(--card-accent-bright);">
+            <div class="card-header-row">
+              <span class="letter">A</span>
+              <span class="unit-badge">Sensory</span>
+            </div>
+            <h4>Concrete Words</h4>
+            <p>Refer to physical, tangible objects or things that can be perceived with the five senses.</p>
+            <ul>
+              <li><strong>Examples:</strong> <em>"Rose," "Thunder," "Iron," "Raindrop"</em></li>
+            </ul>
+          </div>
+
+          <div class="type-card" style="border-left: 4px solid var(--blue-bright);">
+            <div class="card-header-row">
+              <span class="letter">B</span>
+              <span class="unit-badge">Conceptual</span>
+            </div>
+            <h4>Abstract Words</h4>
+            <p>Refer to intangible concepts, theoretical ideas, emotions, or philosophical feelings.</p>
+            <ul>
+              <li><strong>Examples:</strong> <em>"Love," "Freedom," "Justice," "Courage"</em></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="why-it-matters">
+        <h2>2. Why Diction Matters</h2>
+        <p>Word choice directly reflects the author's intent and purpose. It shapes the overall meaning, tone, and emotional impact of a text on its audience.</p>
+
+        <div class="dept-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+          <div class="dept-card">
+            <span class="dept-tag">Impact 01</span>
+            <h4>Emotional Influence</h4>
+            <p>Word choice directly influences how a reader feels and interprets the deeper meaning of a passage.</p>
+          </div>
+
+          <div class="dept-card">
+            <span class="dept-tag">Impact 02</span>
+            <h4>Vivid Imagery & Clarity</h4>
+            <p>Precise diction paints vivid visual images in the reader's mind and brings sharpness to complex ideas.</p>
+          </div>
+
+          <div class="dept-card">
+            <span class="dept-tag">Impact 03</span>
+            <h4>Avoiding Confusion</h4>
+            <p>Poor, imprecise, or careless diction leads to ambiguous, muddy, and confusing text.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="style">
+        <h2>3. Elements of Literary Style</h2>
+        <p><strong>Style</strong> is the unique way a writer uses language to express ideas. It is composed of several key building blocks working in harmony.</p>
+
+        <div class="directory">
+          <div class="directory-tabs" id="styleTabs" role="tablist"></div>
+          <div class="directory-panel" id="stylePanel"></div>
+        </div>
+
+        <h3 style="margin-top: 36px; margin-bottom: 16px;">Style Components Grid</h3>
+        <div class="dept-grid" id="styleGrid"></div>
+      </section>
+
+      <section id="tone-and-mood">
+        <h2>4. Tone vs. Mood</h2>
+        <p>While often confused, <strong>Tone</strong> and <strong>Mood</strong> represent two distinct visual and emotional perspectives in literary analysis.</p>
+
+        <div class="type-grid">
+          <div class="type-card" style="border-left: 4px solid var(--blue-bright);">
+            <div class="card-header-row">
+              <span class="letter">TONE</span>
+              <span class="unit-badge">Author's Perspective</span>
+            </div>
+            <h4>Author's Attitude</h4>
+            <p>The author's specific attitude or stance toward the subject matter or audience, revealed directly through language and diction choices.</p>
+            <ul>
+              <li><em>Examples: Sarcastic, solemn, playful, critical, optimistic, objective.</em></li>
+            </ul>
+          </div>
+
+          <div class="type-card" style="border-left: 4px solid var(--card-accent);">
+            <div class="card-header-row">
+              <span class="letter">MOOD</span>
+              <span class="unit-badge">Reader's Experience</span>
+            </div>
+            <h4>Reader's Feeling</h4>
+            <p>The internal feeling or emotional atmosphere the reader receives from reading the text. Authors craft setting and imagery to evoke this response.</p>
+            <ul>
+              <li><em>Examples: Gloomy, mysterious, peaceful, tense, nostalgic, joyful.</em></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="insights">
+        <h2>5. Key Takeaways</h2>
+        <div class="type-card" style="border-left: 4px solid var(--blue-bright);">
+          <ul style="margin-bottom: 0;">
+            <li style="margin-bottom: 12px;"><strong>Diction Shapes Text:</strong> Word choice dictates whether writing is formal, informal, colloquial, or slang, and relies on concrete or abstract terms for effect.</li>
+            <li style="margin-bottom: 12px;"><strong>Style is Voice:</strong> A writer's style combines diction, sentence structure, imagery, figurative language, repetition, dialogue, and symbolism.</li>
+            <li><strong>Tone vs. Mood Distinction:</strong> Always remember: <em>Tone = Author's Attitude</em>; <em>Mood = Reader's Feeling</em>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        &copy; 2026 JHS Study Guide. All rights reserved.
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="../../assets/js/streak.js" defer></script>
+
+  <script>
+    /* ---------- Theme Toggle Handler ---------- */
+    const themeBtn = document.getElementById('themeToggle');
+    const rootEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      rootEl.classList.add('light');
+      rootEl.setAttribute('data-theme', 'light');
+      themeBtn.textContent = 'Toggle Dark Mode';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      const isLight = rootEl.classList.toggle('light');
+      if (isLight) {
+        rootEl.setAttribute('data-theme', 'light');
+        themeBtn.textContent = 'Toggle Dark Mode';
+        localStorage.setItem('theme', 'light');
+      } else {
+        rootEl.removeAttribute('data-theme');
+        themeBtn.textContent = 'Toggle Light Mode';
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    /* ---------- Interactive Style Components Data & JS Tabs ---------- */
+    const styleData = [
+      {
+        id: 'diction-style',
+        name: 'Diction',
+        tag: 'Word Choice',
+        desc: 'Shapes the tone, clarity, and overall feel of the text through intentional vocabulary selection.'
+      },
+      {
+        id: 'sentence-structure',
+        name: 'Sentence Structure',
+        tag: 'Syntax',
+        desc: 'The deliberate arrangement and variation of sentence lengths, clauses, and structural patterns.'
+      },
+      {
+        id: 'imagery',
+        name: 'Imagery',
+        tag: 'Sensory Language',
+        desc: 'Descriptive language that appeals directly to the five senses (sight, sound, smell, taste, touch).'
+      },
+      {
+        id: 'figurative-lang',
+        name: 'Figurative Language & Repetition',
+        tag: 'Literary Devices',
+        desc: 'Figures of speech such as similes, metaphors, and personification, alongside deliberate repeating of key phrases.'
+      },
+      {
+        id: 'dialogue-symbolism',
+        name: 'Dialogue & Symbolism',
+        tag: 'Voice & Meaning',
+        desc: 'Spoken exchanges reveal an authentic character voice, while symbols advance plot and deepen thematic meaning.'
+      }
+    ];
+
+    const styleTabsEl = document.getElementById('styleTabs');
+    const stylePanelEl = document.getElementById('stylePanel');
+    const styleGridEl = document.getElementById('styleGrid');
+
+    function renderStylePanel(item) {
+      stylePanelEl.innerHTML = `
+        <span class="dept-tag">${item.tag}</span>
+        <h3 style="margin: 8px 0; color: var(--ink);">${item.name}</h3>
+        <p style="margin-bottom: 0; font-size: 1.05rem;">${item.desc}</p>
+      `;
+    }
+
+    
+    styleData.forEach((item, index) => {
+      // Create Tab Button
+      const btn = document.createElement('button');
+      btn.textContent = item.name;
+      btn.setAttribute('role', 'tab');
+      btn.id = 'tab-' + item.id;
+      if (index === 0) btn.classList.add('active');
+      btn.addEventListener('click', () => {
+        styleTabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderStylePanel(item);
+      });
+      styleTabsEl.appendChild(btn);
+
+      // Create Grid Card
+      const card = document.createElement('div');
+      card.className = 'dept-card';
+      card.id = 'card-' + item.id;
+      card.innerHTML = `
+        <span class="dept-tag">${item.tag}</span>
+        <h4>${item.name}</h4>
+        <p style="font-size: 0.95rem; margin-bottom: 0;">${item.desc}</p>
+      `;
+      styleGridEl.appendChild(card);
+    });
+
+    // Render initial panel
+    renderStylePanel(styleData[0]);
+
+    /* Sidebar quick jump helper */
+    function selectStyle(id) {
+      const btn = document.getElementById('tab-' + id);
+      const item = styleData.find(s => s.id === id);
+      if (btn && item) {
+        styleTabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderStylePanel(item);
+      }
+    }
+  </script>
+</body>
+</html>

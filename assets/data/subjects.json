@@ -58,6 +58,7 @@
             { "label": "Rhyme & Meter", "href": "studyguide-subjects/ENG/Rhyme-Characterization-English.html#rhyme-meter" }
           ]
         },
+
         {
           "title": "Point of View",
           "lessons": [
@@ -67,7 +68,16 @@
             { "label": "Narrative Techniques", "href": "studyguide-subjects/ENG/Point-of-view.html#narrative-techniques" },
             { "label": "Quick Refrence Table", "href": "studyguide-subjects/ENG/Point-of-view.html#reference-table" }
           ]
-        }
+        },
+
+        {
+          "title": "Tone & Mood",
+          "lessons": [
+            { "label": "Diction & Word Categories", "href": "studyguide-subjects/ENG/Tone-Mood.html#diction" },
+            { "label": "Why Diction Matters", "href": "studyguide-subjects/ENG/Tone-Mood.html#why-it-matters" },
+            { "label": "Elements of Style", "href": "studyguide-subjects/ENG/Tone-Mood.html#style" }
+          ]
+          }
       ],
       "viewAllLabel": "View all English lessons →",
       "viewAllHref": "studyguide-subjects/past-lessons-coming-soon.html"

@@ -1,0 +1,50 @@
+/* =========================================================
+   Tone-Mood.css (or universal-pdf.css) Print Rules
+   ========================================================= */
+@media print {
+  /* 1. Hide UI, Sidebars, and Interactive Tabs */
+  nav, .sidebar, .theme-toggle, .streak-badge, .pdf-btn, .test-link, footer,
+  .directory, #styleTabs, #stylePanel {
+    display: none !important;
+  }
+
+  /* 2. Reset Body Layout for Paper */
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  main, .content {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 3. Force Full Grid Display (Prints all Diction/Style types) */
+  .dept-grid, #styleGrid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  /* 4. Format Cards for PDF Output */
+  .card, .type-card, .hero-card, .dept-card {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #cccccc !important;
+    box-shadow: none !important;
+    break-inside: avoid; /* Essential: prevents breaking in middle of a card */
+  }
+
+  .dept-tag {
+    color: #333333 !important;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: none !important;
+  }
+}
