@@ -113,6 +113,20 @@
             { "label": "8-Point Agenda", "href": "studyguide-subjects/AP/Development-Economics-Reviewer.html#agenda" },
             { "label": "Quick Reference", "href": "studyguide-subjects/AP/Development-Economics-Reviewer.html#reference-table" }
           ]
+        },
+
+        {
+          "title": "Pagkonsumo",
+          "lessons": [
+            { "label": "Pagkonsumo", "href": "studyguide-subjects/AP/Pagkonsumo.html#overview" },
+            { "label": "Mga Salik sa Pagkonsumo", "href": "studyguide-subjects/AP/Pagkonsumo.html#salik" },
+            { "label": "Matalinong Mamimili", "href": "studyguide-subjects/AP/Pagkonsumo.html#matalinog" },
+            { "label": "Walong Karapatan", "href": "studyguide-subjects/AP/Pagkonsumo.html#karapatan" },
+            { "label": "Limang Pananagutan", "href": "studyguide-subjects/AP/Pagkonsumo.html#pananagutan" },
+            { "label": "Mga Batas na Pumuprotekta", "href": "studyguide-subjects/AP/Pagkonsumo.html#batas" },
+            { "label": "Mga Ahensiya", "href": "studyguide-subjects/AP/Pagkonsumo.html#ahensiya" },
+            { "label": "Super Short Reviewer", "href": "studyguide-subjects/AP/Pagkonsumo.html#reviewer" }
+          ]
         }
       ],
       "viewAllLabel": "View all AP lessons →",

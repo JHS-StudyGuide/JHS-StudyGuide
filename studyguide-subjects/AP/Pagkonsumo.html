@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagkonsumo at Matalinong Mamimili — AP Study Guide</title>
+<link rel="stylesheet" href="Pagkonsumo.css">
+<link rel="stylesheet" href="../streak-style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="top-bar">
+  <a class="back" href="../../index.html">← Back to Main Hub</a>
+  <span class="label">AP · Pagkonsumo Reviewer</span>
+      <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+  <span class="streak-emoji" id="streak-emoji">🔥</span>
+  <span class="streak-count" id="streak-count">0</span>
+  <span class="streak-label">Streak</span>
+</div>
+  <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+</header>
+
+<div class="container">
+
+  <nav class="sidebar" aria-label="Section navigation">
+    <h3>Subject Archive</h3>
+    <div class="module-title">AP: Pagkonsumo at Matalinong Mamimili</div>
+    <ul class="module-section">
+      <li><a href="#overview">1. Pagkonsumo</a></li>
+      <li><a href="#kahalagahan">— Kahalagahan &amp; Ugnayan</a></li>
+      <li><a href="#salik">2. Mga Salik sa Pagkonsumo</a></li>
+      <li><a href="#salik" onclick="selectGroup('populasyon')">— Populasyon</a></li>
+      <li><a href="#salik" onclick="selectGroup('trabaho')">— Trabaho at Sahod</a></li>
+      <li><a href="#salik" onclick="selectGroup('presyo')">— Presyo at Interest Rate</a></li>
+      <li><a href="#salik" onclick="selectGroup('kumpiyansa')">— Kumpiyansa ng Mamimili</a></li>
+      <li><a href="#salik" onclick="selectGroup('advertising')">— Advertising at Mass Media</a></li>
+      <li><a href="#matalinong">3. Matalinong Mamimili</a></li>
+      <li><a href="#karagdagang">— Katangian ng Pilipinong Mamimili</a></li>
+      <li><a href="#karapatan">4. Walong Karapatan</a></li>
+      <li><a href="#pananagutan">5. Limang Pananagutan</a></li>
+      <li><a href="#batas">6. Mga Batas na Pumuprotekta</a></li>
+      <li><a href="#ahensiya">7. Mga Ahensiya</a></li>
+      <li><a href="#reviewer">Super Short Reviewer</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <header class="hero">
+      <div class="eyebrow">AP · Ekonomiks</div>
+      <h1>Pagkonsumo at Matalinong Mamimili</h1>
+      <p class="subtitle">Ano ang pagkonsumo, ang mga salik na humuhubog dito, ang katangian ng matalinong mamimili, at ang mga karapatan, pananagutan, at batas na nagpoprotekta sa mga mamimili sa Pilipinas.</p>
+    </header>
+
+    <section id="overview">
+      <div class="part-head">
+        <span class="part-label">Part I</span>
+        <h2>1. Pagkonsumo</h2>
+        <p>Ang batayang mga konsepto bago pag-usapan ang mga salik at karapatan ng mamimili.</p>
+      </div>
+      <div class="def-grid">
+        <div class="definition-box">
+          <strong>Pagkonsumo</strong> — Paggamit ng mga produkto at serbisyo upang matugunan ang pangangailangan at kagustuhan ng isang tao o sambahayan.
+        </div>
+        <div class="definition-box">
+          <strong>Gastusing Pangkonsumo</strong> — Pagbili ng mga produkto at serbisyo para gamitin ng isang sambahayan.
+        </div>
+        <div class="definition-box">
+          <strong>Gross Domestic Product (GDP)</strong> — Kabuuang halaga ng mga produkto at serbisyong nalilikha sa loob ng isang bansa sa isang takdang panahon.
+        </div>
+        <div class="definition-box">
+          <strong>Adam Smith</strong> — Ekonomistang nagsabing ang pagkonsumo ang pangunahing layunin ng produksiyon.
+        </div>
+      </div>
+    </section>
+
+    <section id="kahalagahan">
+      <div class="part-head">
+        <h2>Kahalagahan ng Pagkonsumo</h2>
+        <p>Bakit mahalaga ang pagkonsumo sa isang ekonomiya.</p>
+      </div>
+      <div class="dept-card" style="border-left-color: var(--peso);">
+        <ul>
+          <li>Tinutugunan nito ang pangangailangan at kagustuhan ng tao.</li>
+          <li>Nakaaapekto ito sa produksiyon ng mga produkto at serbisyo.</li>
+          <li>Nakaaapekto ito sa demand sa ekonomiya.</li>
+          <li>Kapag tumataas ang demand, maaaring tumaas din ang produksiyon at trabaho.</li>
+          <li>Nakakatulong ito sa pamahalaan sa paggawa ng mga patakaran at desisyong pang-ekonomiya.</li>
+          <li>Nakakatulong itong maunawaan ang ugnayan ng kita, ipon, at paggasta.</li>
+        </ul>
+      </div>
+
+      <h3 class="sub-h" style="margin-top:22px; font-family:'Fraunces',serif; font-size:1.15rem;">Pangangailangan at Kagustuhan</h3>
+      <div class="compare-grid">
+        <div class="compare-card needs">
+          <h4>Pangangailangan (Needs)</h4>
+          <p>Mga bagay na mahalaga upang mabuhay at magkaroon ng maayos na pamumuhay. Halimbawa: pagkain, tubig, tirahan, damit, gamot.</p>
+        </div>
+        <div class="compare-card wants">
+          <h4>Kagustuhan (Wants)</h4>
+          <p>Mga bagay na nais magkaroon ngunit hindi pangunahing kailangan upang mabuhay. Halimbawa: mamahaling cellphone, branded na damit, bagong gadget.</p>
+        </div>
+      </div>
+
+      <h3 class="sub-h" style="margin-top:22px; font-family:'Fraunces',serif; font-size:1.15rem;">Ugnayan ng Pagkonsumo at Produksiyon</h3>
+      <div class="cycle-flow">
+        <span class="cycle-step">Pagkonsumo</span><span class="cycle-arrow">→</span>
+        <span class="cycle-step">Demand</span><span class="cycle-arrow">→</span>
+        <span class="cycle-step">Produksiyon</span><span class="cycle-arrow">→</span>
+        <span class="cycle-step">Trabaho</span><span class="cycle-arrow">→</span>
+        <span class="cycle-step">Kita</span><span class="cycle-arrow">→</span>
+        <span class="cycle-step">Pagkonsumo</span>
+      </div>
+      <div class="callout">
+        <strong>Kapag mataas ang pagkonsumo:</strong> tumataas ang demand, maaaring dumami ang produksiyon at trabaho, tumataas ang kita ng mga manggagawa, at maaaring lalo pang tumaas ang pagkonsumo. <strong>Kapag bumababa ang demand,</strong> maaari ring bumaba ang produksiyon at magkaroon ng pagbabawas ng manggagawa o kawalan ng trabaho.
+      </div>
+    </section>
+
+    <section id="salik">
+      <div class="part-head">
+        <span class="part-label">Part I</span>
+        <h2>2. Mga Salik na Nakaiimpluwensiya sa Pagkonsumo</h2>
+        <p>Limang salik ang pangunahing humuhubog sa kung magkano at ano ang binibili ng mga tao. I-tap ang isa sa ibaba.</p>
+      </div>
+
+      <div class="directory">
+        <div class="directory-tabs" id="salikTabs" role="tablist" aria-label="Mga salik sa pagkonsumo"></div>
+        <div class="directory-panel" id="salikPanel"></div>
+      </div>
+    </section>
+
+    <section id="salik-reference">
+      <div class="part-head">
+        <h2>Full reference</h2>
+        <p>Parehong nilalaman ng directory sa itaas, nakalatag para sa mabilisang pagbabalik-aral.</p>
+      </div>
+      <div class="dept-grid" id="salikGrid"></div>
+    </section>
+
+    <section id="matalinong">
+      <div class="part-head">
+        <span class="part-label">Part I</span>
+        <h2>3. Mga Katangian ng Matalinong Mamimili</h2>
+        <p><strong style="color:var(--ink);">Matalinong Mamimili / Smart Consumer</strong> — Taong gumagawa ng maingat, makatwiran, at may-kaalamang desisyon bago bumili.</p>
+      </div>
+      <div class="type-grid">
+        <div class="type-card">
+          <span class="letter">1</span>
+          <h4>Paggawa ng Desisyong May Kaalaman</h4>
+          <p>Nagsasaliksik muna bago bumili — kumokontrol ng presyo, nagbabasa ng reviews, naghahambing ng produkto, sinusuri ang features at quality.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">2</span>
+          <h4>Nakatuon sa Halaga</h4>
+          <p><strong>Value for Money / Sulit</strong> — pagsusuri kung sulit sa perang gagastusin ang kalidad, dami, at gamit ng produkto. Hindi laging pinakamura ang pinakamagandang piliin.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">3</span>
+          <h4>May Kaalaman sa Karapatan at Responsibilidad</h4>
+          <p>Alam ng matalinong mamimili ang kanyang mga karapatan, responsibilidad, at ang mga batas na nagpoprotekta sa konsumer.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">4</span>
+          <h4>Iniiwasan ang Biglaang Pagbili</h4>
+          <p><strong>Impulse Buying</strong> — bago bumili, nag-iisip muna kung kailangan ba ito, kaya ba ng budget, sulit ba ito, o naimpluwensiyahan lamang ng advertisement.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">5</span>
+          <h4>Isinasaalang-alang ang Pangangailangan at Kagustuhan</h4>
+          <p><strong>Needs before Wants</strong> — inuuna ang mahahalagang pangangailangan bago ang mga luho o hindi kailangang bagay.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">6</span>
+          <h4>May Kamalayan sa Kapaligiran at Etika</h4>
+          <p>Isinasaalang-alang ang epekto ng produkto sa kalikasan, manggagawa, komunidad, at lipunan (<strong>Sustainable Product</strong>, <strong>Ethical Consumption</strong>).</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">7</span>
+          <h4>Sanay sa Digital at Teknolohiya</h4>
+          <p>Gumagamit ng online shopping platforms, websites, reviews, at digital payments upang magsaliksik at makagawa ng mas mahusay na desisyon.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="karagdagang">
+      <div class="part-head">
+        <h2>Karagdagang Katangian ng mga Pilipinong Mamimili</h2>
+        <p>Dalawang karagdagang katangian na madalas makita sa mga mamimiling Pilipino.</p>
+      </div>
+      <div class="dept-grid">
+        <div class="dept-card">
+          <h4>Matibay na Katapatan sa Brand</h4>
+          <ul><li><strong>Brand Loyalty</strong> — pagiging tapat ng mamimili sa isang partikular na brand dahil sa tiwala, kalidad, karanasan, o tradisyon.</li></ul>
+        </div>
+        <div class="dept-card">
+          <h4>Impluwensiya ng Word-of-Mouth at Tiwala</h4>
+          <ul>
+            <li><strong>Word-of-Mouth</strong> — rekomendasyon o opinyon mula sa pamilya, kaibigan, o ibang taong pinagkakatiwalaan.</li>
+            <li><strong>Content Creator / Influencer</strong> — taong gumagawa ng online content na maaaring makaimpluwensiya sa desisyon ng mga mamimili.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="karapatan">
+      <div class="part-head">
+        <span class="part-label">Part I</span>
+        <h2>4. Walong Pangunahing Karapatan ng mga Pilipinong Mamimili</h2>
+        <p>Ang <strong style="color:var(--ink);">Consumer Act of the Philippines (RA 7394)</strong> ay ipinasa noong 1992 upang protektahan ang mga mamimili laban sa hindi makatarungang kalakalan at mapanganib o substandard na produkto. Ang <strong style="color:var(--ink);">Department of Trade and Industry (DTI)</strong> ang pangunahing ahensiyang nangangalaga sa karapatan ng mga mamimili at patas na kalakalan.</p>
+      </div>
+      <div class="type-grid">
+        <div class="type-card">
+          <span class="letter">1</span>
+          <h4>Karapatan sa Pangunahing Pangangailangan</h4>
+          <p>Karapatang magkaroon ng access sa mga pangunahing produkto at serbisyo: pagkain, tubig, damit, tirahan, kalusugan, edukasyon, sanitasyon, serbisyong pampubliko.</p>
+          <div class="tip">Tandaan: pangangailangan muna bago luho.</div>
+        </div>
+        <div class="type-card">
+          <span class="letter">2</span>
+          <h4>Karapatan sa Kaligtasan</h4>
+          <p>Karapatang maprotektahan laban sa mga produktong maaaring makapinsala sa kalusugan o buhay. Dapat tingnan: label, warning, expiration date, PS mark, ICC mark.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">3</span>
+          <h4>Karapatan sa Impormasyon</h4>
+          <p>Karapatang makatanggap ng tama, sapat, at malinaw na impormasyon tungkol sa produkto o serbisyo — gamit, laman, dami, manufacturer, tamang paggamit, warranty at kontrata.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">4</span>
+          <h4>Karapatan sa Pagpili</h4>
+          <p>Karapatang pumili mula sa iba't ibang produkto at serbisyo na may makatarungang presyo at kalidad.</p>
+          <div class="tip">Tip: mag-canvass at magkumpara muna ng presyo.</div>
+        </div>
+        <div class="type-card">
+          <span class="letter">5</span>
+          <h4>Karapatan sa Pagkakatawan / Representasyon</h4>
+          <p>Karapatang maipahayag ang interes ng mga mamimili sa paggawa at pagpapatupad ng mga patakaran ng pamahalaan — hal. pakikilahok sa public hearings o consumer meetings.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">6</span>
+          <h4>Karapatan sa Kabayaran / Redress</h4>
+          <p>Karapatang makatanggap ng nararapat na solusyon kapag may depektibong produkto o hindi magandang serbisyo — replacement, refund, o repair.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">7</span>
+          <h4>Karapatan sa Edukasyong Pang-konsumer</h4>
+          <p>Karapatang magkaroon ng kaalaman at kasanayan upang maging matalinong mamimili — sa pamamagitan ng pagbabasa, seminar, conference, forum, at consumer education materials.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">8</span>
+          <h4>Karapatan sa Malusog na Kapaligiran</h4>
+          <p>Karapatang mamuhay at magtrabaho sa ligtas, malinis, at hindi mapanganib na kapaligiran. Responsibilidad din ng mamimili: reduce, reuse, recycle.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pananagutan">
+      <div class="part-head">
+        <span class="part-label">Part I</span>
+        <h2>5. Limang Pananagutan ng mga Pilipinong Mamimili</h2>
+        <p>Kasabay ng mga karapatan, may mga responsibilidad din ang bawat mamimili.</p>
+      </div>
+      <div class="type-grid">
+        <div class="type-card">
+          <span class="letter">1</span>
+          <h4>Mapanuring Kamalayan</h4>
+          <p>Pagiging mapagmatyag at mapagtanong tungkol sa produkto bago bumili — suriin ang presyo, kalidad, gamit, impormasyon, at epekto.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">2</span>
+          <h4>Pagkilos</h4>
+          <p>Hindi lamang dapat alam ng mamimili ang kanyang karapatan; dapat din niya itong gamitin at ipaglaban — hal. magreklamo nang maayos kapag nilabag ang karapatan.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">3</span>
+          <h4>Panlipunang Pagkalinga</h4>
+          <p>Pagiging mulat sa epekto ng sariling pagkonsumo sa ekonomiya, kapaligiran, manggagawa, at mahihina o marginalized na grupo.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">4</span>
+          <h4>Kamalayan sa Kapaligiran</h4>
+          <p>Pagiging responsable sa epekto ng pagkonsumo sa kalikasan — bawasan ang basura, mag-recycle, pumili ng sustainable products.</p>
+        </div>
+        <div class="type-card">
+          <span class="letter">5</span>
+          <h4>Pagkakaisa</h4>
+          <p>Pagtutulungan ng mga mamimili upang maprotektahan ang kanilang karapatan — pagsali sa consumer organizations, pagsuporta sa lokal na kooperatiba.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="batas">
+      <div class="part-head">
+        <span class="part-label">Part II</span>
+        <h2>6. Mga Batas na Pumuprotekta sa mga Mamimili</h2>
+        <p>Labing-apat na batas ang nagbibigay ng legal na proteksiyon sa mga mamimili sa Pilipinas, bawat isa may sariling saklaw at ahensiyang namamahala.</p>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>Batas</th><th>Layunin</th><th>Ahensiya</th><th>Tandaan</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Truth in Lending Act of 1963</strong><br><span class="ra">RA 3765</span></td>
+              <td>Malinaw na ipaalam sa nanghihiram ang tunay na halaga ng utang (interest, charges, terms, kondisyon).</td>
+              <td>BSP</td>
+              <td class="tandaan">Malinaw na impormasyon tungkol sa utang</td>
+            </tr>
+            <tr>
+              <td><strong>Price Act of 1992</strong><br><span class="ra">RA 7581</span></td>
+              <td>I-regulate ang presyo ng pangunahing pangangailangan; protektahan laban sa hindi makatarungang pagtaas ng presyo.</td>
+              <td>DTI, DA, DOH, DENR</td>
+              <td class="tandaan">Proteksiyon laban sa hindi makatarungang presyo</td>
+            </tr>
+            <tr>
+              <td><strong>Electronic Commerce Act of 2000</strong><br><span class="ra">RA 8792</span></td>
+              <td>Legal na pagkilala at proteksiyon sa online transactions, electronic documents at signatures.</td>
+              <td>DTI</td>
+              <td class="tandaan">Legal na pagkilala sa online transactions</td>
+            </tr>
+            <tr>
+              <td><strong>Magna Carta for Disabled Persons of 2006</strong><br><span class="ra">RA 7277</span> (amyendang RA 9442, RA 10754)</td>
+              <td>Palakasin ang karapatan at pribilehiyo ng PWDs sa kalusugan, edukasyon, at accessibility.</td>
+              <td>NCDA</td>
+              <td class="tandaan">Proteksiyon sa karapatan ng PWDs</td>
+            </tr>
+            <tr>
+              <td><strong>Credit Information System Act of 2008</strong><br><span class="ra">RA 9510</span></td>
+              <td>Magtatag ng centralized credit information system; palakasin ang access sa credit.</td>
+              <td>CIC</td>
+              <td class="tandaan">Organisadong credit information</td>
+            </tr>
+            <tr>
+              <td><strong>Universally Accessible Cheaper and Quality Medicines Act of 2008</strong><br><span class="ra">RA 9502</span></td>
+              <td>Gawing mas abot-kaya at accessible ang de-kalidad na gamot sa pamamagitan ng kompetisyon.</td>
+              <td>FDA (DOH)</td>
+              <td class="tandaan">Mas abot-kaya at accessible na gamot</td>
+            </tr>
+            <tr>
+              <td><strong>Expanded Senior Citizens Act of 2010</strong><br><span class="ra">RA 9994</span></td>
+              <td>Karagdagang benepisyo sa senior citizens: 20% discount, social pension, health benefits.</td>
+              <td>DOH, DOLE, DSWD, PhilHealth, TESDA, DOTr, DICT</td>
+              <td class="tandaan">Dagdag na benepisyo para sa senior citizens</td>
+            </tr>
+            <tr>
+              <td><strong>Data Privacy Act of 2012</strong><br><span class="ra">RA 10173</span></td>
+              <td>Protektahan ang personal data at privacy; tiyaking ligtas ang pangongolekta at paggamit ng impormasyon.</td>
+              <td>NPC</td>
+              <td class="tandaan">Proteksiyon sa personal information</td>
+            </tr>
+            <tr>
+              <td><strong>Toy and Game Safety Labeling Act of 2013</strong><br><span class="ra">RA 10620</span></td>
+              <td>Nag-uutos ng tamang safety labeling sa mga laruan; protektahan ang mga bata sa mapanganib na laruan.</td>
+              <td>DOH, DTI</td>
+              <td class="tandaan">Kaligtasan ng mga bata sa laruan</td>
+            </tr>
+            <tr>
+              <td><strong>Food Safety Act of 2013</strong><br><span class="ra">RA 10611</span></td>
+              <td>Palakasin ang regulasyon para sa kaligtasan ng pagkain mula bukid hanggang hapag-kainan.</td>
+              <td>DA, DOH</td>
+              <td class="tandaan">Ligtas na pagkain mula produksyon hanggang konsumo</td>
+            </tr>
+            <tr>
+              <td><strong>Philippine Lemon Law of 2013</strong><br><span class="ra">RA 10642</span></td>
+              <td>Proteksiyon sa mga bumili ng brand-new motor vehicle na may depekto — pagkukumpuni, pagpapalit, o refund.</td>
+              <td>DTI</td>
+              <td class="tandaan">Proteksiyon sa depektibong bagong sasakyan</td>
+            </tr>
+            <tr>
+              <td><strong>Philippine Competition Act of 2015</strong><br><span class="ra">RA 10667</span></td>
+              <td>Itaguyod ang patas na kompetisyon; iwasan ang monopolistic o unfair practices.</td>
+              <td>PCC</td>
+              <td class="tandaan">Patas na kompetisyon sa negosyo</td>
+            </tr>
+            <tr>
+              <td><strong>No Short-Changing Act of 2016</strong><br><span class="ra">RA 10909</span></td>
+              <td>Nag-uutos sa mga establishments na ibigay ang eksaktong sukli sa mga mamimili.</td>
+              <td>DTI</td>
+              <td class="tandaan">Eksaktong sukli</td>
+            </tr>
+            <tr>
+              <td><strong>National Payment Systems Act of 2018</strong><br><span class="ra">RA 11127</span></td>
+              <td>Nagreregula sa mga payment system upang gawing ligtas, mahusay, at maaasahan ang mga transaksiyon.</td>
+              <td>BSP</td>
+              <td class="tandaan">Ligtas at maayos na sistema ng pagbabayad</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="ahensiya">
+      <div class="part-head">
+        <h2>7. Mahahalagang Ahensiya ng Pamahalaan</h2>
+        <p>Mabilisang sanggunian sa mga ahensiyang binanggit sa mga batas sa itaas.</p>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Akronim</th><th>Buong Pangalan</th><th>Tungkulin</th></tr></thead>
+          <tbody>
+            <tr><td class="ra">DTI</td><td>Department of Trade and Industry</td><td>Pangunahing ahensiya na nangangalaga sa consumer rights at patas na kalakalan.</td></tr>
+            <tr><td class="ra">BSP</td><td>Bangko Sentral ng Pilipinas</td><td>Namamahala sa mga usaping may kaugnayan sa banking, credit, at payment systems.</td></tr>
+            <tr><td class="ra">DOH</td><td>Department of Health</td><td>Nangangasiwa sa mga usaping pangkalusugan, kabilang ang food, medicine, at toy safety.</td></tr>
+            <tr><td class="ra">DA</td><td>Department of Agriculture</td><td>May tungkulin sa food safety at mga produktong pang-agrikultura.</td></tr>
+            <tr><td class="ra">DENR</td><td>Department of Environment and Natural Resources</td><td>Nangangasiwa sa pangangalaga ng kalikasan at likas na yaman.</td></tr>
+            <tr><td class="ra">NCDA</td><td>National Council on Disability Affairs</td><td>Nagtataguyod ng kapakanan at karapatan ng PWDs.</td></tr>
+            <tr><td class="ra">CIC</td><td>Credit Information Corporation</td><td>Nangangasiwa sa credit information system.</td></tr>
+            <tr><td class="ra">FDA</td><td>Food and Drug Administration</td><td>Nangangasiwa sa kaligtasan at regulasyon ng mga gamot at iba pang regulated products.</td></tr>
+            <tr><td class="ra">NPC</td><td>National Privacy Commission</td><td>Nangangalaga sa privacy at personal data.</td></tr>
+            <tr><td class="ra">PCC</td><td>Philippine Competition Commission</td><td>Nangangasiwa sa patas na kompetisyon sa negosyo.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="reviewer">
+      <div class="part-head">
+        <h2>Super Short Reviewer</h2>
+        <p>Mabilisang recap bago ang pagsusulit — mnemonic-friendly para sa mabilisang pag-alala.</p>
+      </div>
+      <div class="mnemonic-grid">
+        <div class="mnemonic-card">
+          <h4>Pagkonsumo, sa isang linya</h4>
+          <p style="color:var(--ink-secondary); font-size:0.9rem;">Paggamit ng produkto at serbisyo upang matugunan ang pangangailangan at kagustuhan.</p>
+        </div>
+        <div class="mnemonic-card">
+          <h4>5 Salik sa Pagkonsumo — "PTPKA"</h4>
+          <ul>
+            <li><span class="letter-key">P</span> — Populasyon</li>
+            <li><span class="letter-key">T</span> — Trabaho at Sahod</li>
+            <li><span class="letter-key">P</span> — Presyo at Interest Rate</li>
+            <li><span class="letter-key">K</span> — Kumpiyansa ng Mamimili</li>
+            <li><span class="letter-key">A</span> — Advertising at Mass Media</li>
+          </ul>
+        </div>
+        <div class="mnemonic-card">
+          <h4>7 Katangian ng Matalinong Mamimili</h4>
+          <ol>
+            <li>May kaalaman sa desisyon</li>
+            <li>Nakatuon sa halaga</li>
+            <li>Alam ang karapatan at responsibilidad</li>
+            <li>Umiiwas sa impulse buying</li>
+            <li>Inuuna ang needs kaysa wants</li>
+            <li>May environmental at ethical awareness</li>
+            <li>Marunong gumamit ng digital technology</li>
+          </ol>
+        </div>
+        <div class="mnemonic-card">
+          <h4>8 Karapatan ng Mamimili</h4>
+          <ol>
+            <li>Pangunahing Pangangailangan</li>
+            <li>Kaligtasan</li>
+            <li>Impormasyon</li>
+            <li>Pagpili</li>
+            <li>Pagkakatawan</li>
+            <li>Kabayaran / Redress</li>
+            <li>Edukasyong Pang-konsumer</li>
+            <li>Malusog na Kapaligiran</li>
+          </ol>
+        </div>
+        <div class="mnemonic-card">
+          <h4>5 Pananagutan ng Mamimili</h4>
+          <ol>
+            <li>Mapanuring Kamalayan</li>
+            <li>Pagkilos</li>
+            <li>Panlipunang Pagkalinga</li>
+            <li>Kamalayan sa Kapaligiran</li>
+            <li>Pagkakaisa</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+        <!-- Dedication Card (Inside content block for full width alignment) -->
+      <div class="dedication-card">
+        <p>Thank you so much to Marycon for the extremely detailed Pagkonsumo Notes! 🧡 - From the JHS Study Guide Team</p>
+      </div>  
+  </main>
+
+</div>
+
+<footer class="page-footer">Pagkonsumo at Matalinong Mamimili Reviewer · AP · Study Hub</footer>
+
+
+<script src="assets/js/streak.js" defer></script>
+
+<script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<script>
+  /* ---------- Theme toggle ---------- */
+  const body = document.body;
+  const themeBtn = document.getElementById('themeToggle');
+  function applyTheme(t) {
+    if (t === 'light') { body.setAttribute('data-theme', 'light'); }
+    else { body.removeAttribute('data-theme'); }
+  }
+  applyTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  themeBtn.addEventListener('click', () => {
+    applyTheme(body.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  });
+
+  /* ---------- "Mga Salik sa Pagkonsumo" data ---------- */
+  const groups = [
+    {
+      id: 'populasyon',
+      name: 'Populasyon',
+      tag: 'Mas maraming tao, mas mataas na demand',
+      items: [
+        'Populasyon — kabuuang bilang ng mga taong naninirahan sa isang lugar o bansa',
+        'Positibo: mas mataas na demand, mas maraming produksiyon at trabaho, posibleng paglago ng ekonomiya',
+        'Negatibo kapag sobrang bilis ng paglaki: pressure sa pagkain, tubig, enerhiya; kakulangan sa pabahay; polusyon at pagkalbo ng kagubatan'
+      ]
+    },
+    {
+      id: 'trabaho',
+      name: 'Trabaho at Sahod',
+      tag: 'Kita ang nagpapagana ng paggasta',
+      items: [
+        'Employment/Empleo — kalagayan kung saan ang mga tao ay may trabaho at kumikita',
+        'Sahod — kabayarang natatanggap ng manggagawa kapalit ng kanyang trabaho',
+        'Mas maraming taong may matatag na trabaho at kita = mas malaking posibilidad na gumastos',
+        'Discretionary Spending — pera na natitira pagkatapos bayaran ang mga pangunahing pangangailangan (hal. gagamitin sa sine, shopping, o paglalakbay)'
+      ]
+    },
+    {
+      id: 'presyo',
+      name: 'Presyo at Interest Rate',
+      tag: 'Implasyon at kakayahang bumili',
+      items: [
+        'Presyo — halagang kailangang bayaran upang makabili ng produkto o serbisyo',
+        'Inflation/Implasyon — patuloy na pagtaas ng pangkalahatang presyo ng mga produkto at serbisyo',
+        'Purchasing Power/Kakayahang Bumili — dami ng produkto o serbisyong maaaring mabili ng isang yunit ng pera',
+        'Kapag mataas ang inflation: tumataas ang presyo, bumababa ang purchasing power, mas kaunti ang nabibili, maaaring mabawasan ang paggastos'
+      ]
+    },
+    {
+      id: 'kumpiyansa',
+      name: 'Kumpiyansa ng Mamimili',
+      tag: 'Tiwala sa ekonomiya',
+      items: [
+        'Consumer Confidence — antas ng tiwala ng mga mamimili sa kalagayan ng ekonomiya at sa kanilang sariling pinansiyal na kinabukasan',
+        'Kapag mataas ang kumpiyansa → mas malamang na gumastos ang mga tao',
+        'Kapag mababa ang kumpiyansa → mas malamang na mag-ipon at umiwas sa hindi kailangang gastos'
+      ]
+    },
+    {
+      id: 'advertising',
+      name: 'Advertising at Mass Media',
+      tag: 'Humuhubog sa kagustuhan',
+      items: [
+        'Advertising/Patalastas — paraan ng pagbibigay-kaalaman at paghikayat sa mga tao na bumili ng produkto o serbisyo',
+        'Mass Media — telebisyon, radyo, internet, social media — mga paraan ng pagpapalaganap ng impormasyon',
+        'Epekto: nagpapakilala ng bagong produkto, humuhubog sa kagustuhan, nagpapataas ng demand, nakaaimpluwensiya sa lifestyle at purchasing decisions'
+      ]
+    }
+  ];
+
+  const tabsEl = document.getElementById('salikTabs');
+  const panelEl = document.getElementById('salikPanel');
+  const gridEl = document.getElementById('salikGrid');
+
+  function renderPanel(group) {
+    panelEl.innerHTML = `
+      <span class="dept-tag">${group.tag}</span>
+      <h3>${group.name}</h3>
+      <ul>${group.items.map(i => `<li>${i}</li>`).join('')}</ul>
+    `;
+  }
+
+  groups.forEach((group, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = group.name;
+    btn.setAttribute('role', 'tab');
+    btn.id = 'tab-' + group.id;
+    if (i === 0) btn.classList.add('active');
+    btn.addEventListener('click', () => {
+      tabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPanel(group);
+    });
+    tabsEl.appendChild(btn);
+
+    const card = document.createElement('div');
+    card.className = 'dept-card';
+    card.id = group.id;
+    card.innerHTML = `<h4>${group.name}</h4><ul>${group.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+    gridEl.appendChild(card);
+  });
+
+  renderPanel(groups[0]);
+
+  /* ---------- Jump-to-tab helper for sidebar links ---------- */
+  function selectGroup(id) {
+    const btn = document.getElementById('tab-' + id);
+    const group = groups.find(g => g.id === id);
+    if (!btn || !group) return;
+    tabsEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPanel(group);
+  }
+</script>
+
+</body>
+</html>
