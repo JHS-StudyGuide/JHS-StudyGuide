@@ -20,7 +20,7 @@
 }
 
 .streak-badge:hover {
-  border-color: var(--card-accent, #22d3ee);
+  border-color: var(--card-accent, #ff7700);
   transform: translateY(-1px);
 }
 
@@ -32,7 +32,7 @@
 
 .streak-count {
   font-weight: 700;
-  color: var(--steel, var(--card-accent, #67e8f9));
+  color: var(--steel, var(--card-accent, #fff200));
   font-variant-numeric: tabular-nums;
 }
 
