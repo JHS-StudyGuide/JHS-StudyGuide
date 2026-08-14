@@ -287,6 +287,14 @@
             { "label": "BOH", "href": "studyguide-subjects/TLE/FOHBOH.html#boh" },
             { "label": "Department Explorer", "href": "studyguide-subjects/TLE/FOHBOH.html#interactive-explorer" }
           ]
+        },
+
+        {
+          "title": "PBX",
+          "lessons": [
+            { "label": "Front Desk Positioning", "href": "studyguide-subjects/TLE/PBX.html#positioning" },
+            { "label": "Front Office Communications", "href": "studyguide-subjects/TLE/PBX.html#communications" }
+          ]
         }
       ],
       "viewAllLabel": "View all TLE lessons →",
