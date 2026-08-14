@@ -83,9 +83,9 @@ function injectStreakStyles() {
       transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
       user-select: none; cursor: default; white-space: nowrap;
     }
-    .streak-badge:hover { border-color: var(--card-accent, #22d3ee); transform: translateY(-1px); }
+    .streak-badge:hover { border-color: var(--card-accent, #ff7700); transform: translateY(-1px); }
     .streak-emoji { font-size: 1rem; line-height: 1; filter: drop-shadow(0 0 2px rgba(255, 165, 0, 0.4)); }
-    .streak-count { font-weight: 700; color: var(--steel, var(--card-accent, #67e8f9)); font-variant-numeric: tabular-nums; }
+    .streak-count { font-weight: 700; color: var(--steel, var(--card-accent, #fff200))); font-variant-numeric: tabular-nums; }
     .streak-label { font-size: 0.78rem; color: var(--ink-secondary, #94a3b8); font-weight: 500; }
     @media (max-width: 640px) {
       .streak-badge { padding: 4px 8px; gap: 4px; font-size: 0.8rem; }
