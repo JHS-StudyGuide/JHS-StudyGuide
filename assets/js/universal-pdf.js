@@ -63,6 +63,8 @@
         font-size: 12pt;
         margin: 0 !important;
         padding: 0 !important;
+        -webkit-print-color-adjust: exact; /* Suggests grayscale mode */
+         print-color-adjust: exact;         /* Standard property */
       }
 
       main, .content {
