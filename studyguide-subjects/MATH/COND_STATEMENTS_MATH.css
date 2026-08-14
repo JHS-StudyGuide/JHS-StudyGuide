@@ -1,28 +1,33 @@
 :root {
-  --bg: #061810;
-  --bg-raised: #0d2a1d;
-  --ink: #ecfdf5;
+  /* Dark Mode (Default) — Deep Warm Charcoal & Gold/Amber */
+  --bg: #181308;
+  --bg-raised: #261e10;
+  --ink: #fef3c7;
   --ink-secondary: #9ca3af;
-  --rule: #1b4332;
-  --card-accent: #34d399;
-  --card-accent-strong: #059669;
-  --steel: #6ee7b7;
+  --rule: #453310;
+  --card-accent: #fbbf24;
+  --card-accent-strong: #d97706;
+  --steel: #fcd34d;
   --shadow: rgba(0, 0, 0, 0.5);
   --radius: 8px;
-  --green-gradient: linear-gradient(135deg, rgba(52, 211, 153, 0.18), rgba(5, 150, 105, 0.35));
+  --yellow-gradient: linear-gradient(135deg, rgba(251, 191, 36, 0.18), rgba(217, 119, 6, 0.35));
+  --green-gradient: linear-gradient(135deg, rgba(251, 191, 36, 0.18), rgba(217, 119, 6, 0.35)); /* Keeps compatibility if referenced elsewhere */
 }
 
-[data-theme="light"] {
-  --bg: #f0fdf4;
+[data-theme="light"],
+html.light {
+  /* Light Mode — Warm Cream & Rich Amber */
+  --bg: #fffbeb;
   --bg-raised: #ffffff;
-  --ink: #064e3b;
+  --ink: #78350f;
   --ink-secondary: #374151;
-  --rule: #d1fae5;
-  --card-accent: #059669;
-  --card-accent-strong: #047857;
-  --steel: #059669;
+  --rule: #fde68a;
+  --card-accent: #d97706;
+  --card-accent-strong: #b45309;
+  --steel: #d97706;
   --shadow: rgba(15, 23, 42, 0.08);
-  --green-gradient: linear-gradient(135deg, rgba(209, 250, 229, 0.8), rgba(167, 243, 208, 0.5));
+  --yellow-gradient: linear-gradient(135deg, rgba(253, 230, 138, 0.8), rgba(252, 211, 77, 0.5));
+  --green-gradient: linear-gradient(135deg, rgba(253, 230, 138, 0.8), rgba(252, 211, 77, 0.5)); /* Keeps compatibility if referenced elsewhere */
 }
 
 /* ---------- Core Reset & Base Styles ---------- */
