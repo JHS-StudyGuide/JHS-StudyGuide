@@ -140,13 +140,16 @@ setTimeout(() => {
     const streak = StreakManager.getStreak();
     const today = new Date().toDateString();
     
-    // Only fire if they haven't already earned a streak today
+    // Check localStorage flag to ensure this only fires once per day
+    const autoAwardKey = `autoAward_${today}`;
+    if (sessionStorage.getItem(autoAwardKey)) return;
+    
     const testedToday = streak.completedTests.some(t => t.date === today);
     
     if (!testedToday) {
-      // Re-use existing logic: treats 5 mins of reading as a 100% test.
       StreakManager.recordTestCompletion('5-Min Study Session', 100);
+      sessionStorage.setItem(autoAwardKey, 'true');
       alert('🔥 5 minutes of studying completed! Your daily streak has been updated.');
     }
   }
-}, 300000); // 300,000 milliseconds = 5 minutes
+}, 300000); // 5 minutes
