@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TLE · Hotel Services & Front Office Operations Unit Test</title>
+  <link rel="stylesheet" href="../../studyguide-subjects/TLE/PBX.css">
+  <link rel="stylesheet" href="../../assets/streak-counter.css">
+
+  <style>
+    /* GLOBAL RESETS TO PREVENT MOBILE OVERFLOW */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    :root {
+      --card-accent: #b86d29;
+      --card-accent-strong: #8f4f18;
+      --blue-gradient: linear-gradient(135deg, rgba(184, 109, 41, 0.22) 0%, rgba(143, 79, 24, 0.1) 100%);
+      --blue-bg-light: rgba(184, 109, 41, 0.15);
+      --blue-border: rgba(184, 109, 41, 0.4);
+      --rule: #42352d;
+      --bg-raised: #28201c;
+      --bg: #1a1412;
+      --ink: #faf4ed;
+      --ink-secondary: #b8ac9f;
+      --shadow: rgba(0, 0, 0, 0.45);
+      --radius: 14px;
+      --text-unanswered: #ef4444;
+    }
+
+    body[data-theme="light"] {
+      --bg-raised: #ffffff;
+      --bg: #f8f4ef;
+      --ink: #231b15;
+      --ink-secondary: #635447;
+      --rule: #e5dad0;
+      --shadow: rgba(30, 20, 15, 0.08);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: var(--bg-raised);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .top-bar a {
+      color: var(--card-accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .top-bar .title {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .hero .eyebrow {
+      color: var(--card-accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    .hero .subtitle {
+      color: var(--ink-secondary);
+      font-size: 0.98rem;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    /* WIZARD PROGRESS BAR */
+    .wizard-progress-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background: var(--rule);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #b86d29, #d97706);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px rgba(184, 109, 41, 0.5);
+    }
+
+    /* TWO-COLUMN LAYOUT */
+    .wizard-layout {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .wizard-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .wizard-sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 20px;
+    }
+
+    /* QUIZ CARD FORMATTING */
+    .quiz-container {
+      position: relative;
+      min-height: 280px;
+    }
+
+    .quiz-item {
+      display: none;
+      background: var(--bg-raised);
+      border: 1px solid var(--rule);
+      border-left: 5px solid var(--card-accent);
+      border-radius: var(--radius);
+      padding: 24px 24px 24px 28px;
+      box-shadow: 0 6px 18px var(--shadow);
+      position: relative;
+      animation: fadeIn 0.25s ease-in-out forwards;
+    }
+
+    .quiz-item.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .category-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      background: var(--blue-bg-light);
+      border: 1px solid var(--blue-border);
+      color: var(--card-accent);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .question {
+      font-size: 1.08rem;
+      font-weight: 700;
+      line-height: 1.45;
+      margin-bottom: 18px;
+      color: var(--ink);
+      display: block;
+    }
+
+    .options {
+      list-style-type: upper-alpha;
+      padding-left: 22px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .options li {
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      background: var(--bg);
+    }
+
+    .options li:hover {
+      border-color: var(--card-accent);
+      background: var(--blue-bg-light);
+      color: var(--card-accent);
+      transform: translateX(3px);
+    }
+
+    .options li.selected {
+      background: var(--card-accent) !important;
+      border-color: var(--card-accent-strong) !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 12px rgba(184, 109, 41, 0.4);
+    }
+
+    .option-btn {
+      background: transparent;
+      border: none;
+      color: inherit;
+      padding: 12px 10px;
+      border-radius: inherit;
+      cursor: inherit;
+      font-size: 0.96rem;
+      text-align: left;
+      width: 100%;
+      line-height: 1.4;
+    }
+
+    /* QUESTION GRID NAVIGATOR SIDEBAR */
+    .question-grid-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .grid-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+
+    .question-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .q-grid-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+      background: var(--bg);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .q-grid-btn:hover {
+      border-color: var(--card-accent);
+      color: var(--card-accent);
+      transform: translateY(-1px);
+    }
+
+    .q-grid-btn.answered-q {
+      border-color: var(--blue-border);
+      background: var(--blue-bg-light);
+      color: var(--card-accent);
+    }
+
+    .q-grid-btn.active-q {
+      border-color: var(--card-accent) !important;
+      background: var(--card-accent) !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 8px rgba(184, 109, 41, 0.5);
+    }
+
+    /* WIZARD NAVIGATION FOOTER */
+    .wizard-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .nav-btn {
+      background-color: var(--card-accent);
+      border: none;
+      color: #ffffff;
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background-color: var(--card-accent-strong);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.secondary {
+      background-color: transparent;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    .nav-btn.secondary:hover:not(:disabled) {
+      background-color: var(--bg-raised);
+      border-color: var(--card-accent);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    /* REVIEW & RESULT PANEL */
+    .result-panel {
+      text-align: center;
+      margin: 24px 0;
+      display: none;
+      background: var(--blue-gradient);
+      border: 2px solid var(--card-accent);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 6px 20px var(--shadow);
+    }
+
+    .score-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .score-message {
+      color: var(--ink-secondary);
+      margin-bottom: 0;
+    }
+
+    .answer-review {
+      display: none;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule);
+      color: var(--ink-secondary);
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+
+    .answer-review strong {
+      color: var(--ink);
+    }
+
+    .quiz-item.review-mode {
+      display: block !important;
+      margin-bottom: 20px;
+    }
+
+    .quiz-item.correct {
+      border-left-color: #22c55e;
+    }
+
+    .quiz-item.incorrect {
+      border-left-color: #ef4444;
+    }
+
+    .options li.correct-answer {
+      background: rgba(34, 197, 94, 0.16) !important;
+      color: var(--ink) !important;
+      border: 1px solid rgba(34, 197, 94, 0.45) !important;
+    }
+
+    .options li.incorrect-answer {
+      background: rgba(239, 68, 68, 0.14) !important;
+      color: var(--ink) !important;
+      border: 1px solid rgba(239, 68, 68, 0.35) !important;
+    }
+
+    .answer-badge {
+      display: inline-block;
+      margin-left: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .retake-container {
+      margin-top: 18px;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.88rem;
+      color: var(--ink-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .wizard-layout {
+        flex-direction: column;
+      }
+      
+      .wizard-sidebar {
+        width: 100%;
+        position: static;
+      }
+
+      .top-bar {
+        padding: 10px 14px;
+        gap: 8px;
+      }
+
+      .top-bar .title {
+        font-size: 0.9rem;
+      }
+
+      .quiz-item {
+        padding: 16px;
+      }
+
+      .wizard-nav {
+        flex-direction: column;
+      }
+
+      .nav-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+
+<header class="top-bar">
+  <a href="../../index.html">← Back to Main Hub</a>
+  <span class="title">TLE · Hotel Services Reviewer</span>
+
+  <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+    <span class="streak-emoji" id="streak-emoji">🔥</span>
+    <span class="streak-count" id="streak-count">0</span>
+    <span class="streak-label">Streak</span>
+  </div>
+
+  <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+</header>
+
+<div class="container">
+
+  <main class="content" id="quiz-start">
+
+    <header class="hero">
+      <div class="eyebrow">TLE · Hotel Operations Unit Test</div>
+      <h1>Hotel Services, Front Desk, FOH/BOH &amp; PBX</h1>
+      <p class="subtitle">
+        Review hotel department structures, ownership models, front desk functions, confidentiality, uniformed services, concierge, and PBX communication networks.
+      </p>
+    </header>
+
+    <!-- WIZARD PROGRESS TRACKER -->
+    <div class="wizard-progress-card" id="progressCard">
+      <div class="progress-meta">
+        <span id="progressText">Question 1 of 25</span>
+        <span id="progressPercent">4%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- TWO-COLUMN LAYOUT -->
+    <div class="wizard-layout">
+      
+      <!-- LEFT COLUMN: Main Quiz Card & Navigation -->
+      <div class="wizard-main">
+        <div class="quiz-container" id="quizContainer">
+
+          <!-- QUESTION 1 (Correct: C) -->
+          <div class="quiz-item active" data-type="mcq" data-answer="Front Office">
+            <span class="category-pill">Hotel Departments</span>
+            <span class="question">Which hotel department serves as the main hub for guest interaction, check-ins, reservations, and guest records, often called the "heart of the hotel"?</span>
+            <ul class="options">
+              <li><button class="option-btn">Housekeeping</button></li>
+              <li><button class="option-btn">Human Resources</button></li>
+              <li><button class="option-btn">Front Office</button></li>
+              <li><button class="option-btn">Engineering &amp; Maintenance</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 2 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Housekeeping">
+            <span class="category-pill">Hotel Departments</span>
+            <span class="question">Which department is responsible for cleaning guest rooms, managing laundry and linens, stocking supplies, and handling lost and found items?</span>
+            <ul class="options">
+              <li><button class="option-btn">Housekeeping</button></li>
+              <li><button class="option-btn">Sales &amp; Marketing</button></li>
+              <li><button class="option-btn">Front Office</button></li>
+              <li><button class="option-btn">Security &amp; Safety</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 3 (Correct: D) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Food &amp; Beverage">
+            <span class="category-pill">Hotel Departments</span>
+            <span class="question">Planning and preparing menus, managing dining areas, running banquets, and monitoring food waste fall under which department?</span>
+            <ul class="options">
+              <li><button class="option-btn">Engineering &amp; Maintenance</button></li>
+              <li><button class="option-btn">Human Resources</button></li>
+              <li><button class="option-btn">Security &amp; Safety</button></li>
+              <li><button class="option-btn">Food &amp; Beverage</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 4 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Promoting the hotel and attracting corporate and group bookings.">
+            <span class="category-pill">Hotel Departments</span>
+            <span class="question">What is a core responsibility of the Sales &amp; Marketing department in a hotel?</span>
+            <ul class="options">
+              <li><button class="option-btn">Managing physical keys and parking guest vehicles.</button></li>
+              <li><button class="option-btn">Promoting the hotel and attracting corporate and group bookings.</button></li>
+              <li><button class="option-btn">Conducting preventive maintenance on HVAC and plumbing systems.</button></li>
+              <li><button class="option-btn">Cleaning public areas and managing industrial washers.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 5 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Engineering &amp; Maintenance">
+            <span class="category-pill">Hotel Departments</span>
+            <span class="question">Which department manages building utilities, conducts preventive maintenance, and responds to technical concerns or emergency repairs?</span>
+            <ul class="options">
+              <li><button class="option-btn">Engineering &amp; Maintenance</button></li>
+              <li><button class="option-btn">Sales &amp; Marketing</button></li>
+              <li><button class="option-btn">Front Office</button></li>
+              <li><button class="option-btn">Human Resources</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 6 (Correct: C) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Franchise Hotel">
+            <span class="category-pill">Hotel Ownership Models</span>
+            <span class="question">A hotel that is owned by an individual or group but operated under a well-known brand name by paying fees to the brand owner is called a:</span>
+            <ul class="options">
+              <li><button class="option-btn">Independent Hotel</button></li>
+              <li><button class="option-btn">Resort Hotel</button></li>
+              <li><button class="option-btn">Franchise Hotel</button></li>
+              <li><button class="option-btn">Boutique Hotel</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 7 (Correct: D) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Small, stylish, and unique properties known for personalized service and creative design.">
+            <span class="category-pill">Hotel Ownership Models</span>
+            <span class="question">What defines a Boutique Hotel?</span>
+            <ul class="options">
+              <li><button class="option-btn">Massive destination properties designed primarily for large convention banquets.</button></li>
+              <li><button class="option-btn">Hotels operated strictly without any front office or reception personnel.</button></li>
+              <li><button class="option-btn">Properties owned directly by state governments to host official foreign dignitaries.</button></li>
+              <li><button class="option-btn">Small, stylish, and unique properties known for personalized service and creative design.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 8 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Independent Hotel">
+            <span class="category-pill">Hotel Ownership Models</span>
+            <span class="question">Privately owned and managed hotels that are not part of any larger corporate group or brand chain are classified as:</span>
+            <ul class="options">
+              <li><button class="option-btn">Chain Hotels</button></li>
+              <li><button class="option-btn">Independent Hotels</button></li>
+              <li><button class="option-btn">Franchise Hotels</button></li>
+              <li><button class="option-btn">Commercial Consortiums</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 9 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Tracking guest charges in a folio to keep billing accurate.">
+            <span class="category-pill">Front Desk Functions</span>
+            <span class="question">What is the primary objective of the Guest Accounting function in the Front Office?</span>
+            <ul class="options">
+              <li><button class="option-btn">Tracking guest charges in a folio to keep billing accurate.</button></li>
+              <li><button class="option-btn">Managing recruitment and calculating monthly payroll for hotel staff.</button></li>
+              <li><button class="option-btn">Monitoring 24/7 CCTV surveillance cameras across public halls.</button></li>
+              <li><button class="option-btn">Cleaning minibar fridges and ordering kitchen groceries.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 10 (Correct: C) -->
+          <div class="quiz-item" data-type="mcq" data-answer="To ensure rooms assigned to arriving guests are clean, ready, and not undergoing maintenance.">
+            <span class="category-pill">Front Desk Functions</span>
+            <span class="question">Why must the Front Office coordinate closely with Housekeeping and Engineering during Room Assignment?</span>
+            <ul class="options">
+              <li><button class="option-btn">To change the hotel's legal ownership structure before guest arrival.</button></li>
+              <li><button class="option-btn">To ensure all guests receive a complimentary tour ticket automatically.</button></li>
+              <li><button class="option-btn">To ensure rooms assigned to arriving guests are clean, ready, and not undergoing maintenance.</button></li>
+              <li><button class="option-btn">To audit the daily payroll records of the switchboard operators.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 11 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Avoid saying room numbers aloud in public areas during check-in.">
+            <span class="category-pill">Guest Confidentiality</span>
+            <span class="question">Which practice is essential for Front Office personnel to protect guest privacy and confidentiality?</span>
+            <ul class="options">
+              <li><button class="option-btn">Announce the guest's full name and room number across the lobby microphone.</button></li>
+              <li><button class="option-btn">Avoid saying room numbers aloud in public areas during check-in.</button></li>
+              <li><button class="option-btn">Share guest travel plans with outside visitors upon verbal request.</button></li>
+              <li><button class="option-btn">Leave physical guest registration cards unattended on public counters.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 12 (Correct: D) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Bell Attendant">
+            <span class="category-pill">Uniformed Services</span>
+            <span class="question">Which member of the Uniformed Services team is primarily responsible for escorting guests to their rooms, carrying luggage, and explaining room features?</span>
+            <ul class="options">
+              <li><button class="option-btn">PBX Operator</button></li>
+              <li><button class="option-btn">Night Auditor</button></li>
+              <li><button class="option-btn">Door Attendant</button></li>
+              <li><button class="option-btn">Bell Attendant</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 13 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Valet Parking">
+            <span class="category-pill">Uniformed Services</span>
+            <span class="question">Which service unit receives and parks guest vehicles upon arrival and retrieves them safely upon departure?</span>
+            <ul class="options">
+              <li><button class="option-btn">Valet Parking</button></li>
+              <li><button class="option-btn">Concierge Unit</button></li>
+              <li><button class="option-btn">Door Attendant</button></li>
+              <li><button class="option-btn">Purchasing Department</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 14 (Correct: C) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Concierge">
+            <span class="category-pill">Concierge Unit</span>
+            <span class="question">Which hotel role acts as a personal assistant and local expert, helping guests book city tours, reserve dining tables, and handle special celebration requests?</span>
+            <ul class="options">
+              <li><button class="option-btn">PBX Operator</button></li>
+              <li><button class="option-btn">Housekeeping Supervisor</button></li>
+              <li><button class="option-btn">Concierge</button></li>
+              <li><button class="option-btn">Valet Driver</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 15 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Folio">
+            <span class="category-pill">Front Office Accounting</span>
+            <span class="question">What is the term for the statement of account that records all financial charges, credits, and transactions for a guest during their stay?</span>
+            <ul class="options">
+              <li><button class="option-btn">Manifest</button></li>
+              <li><button class="option-btn">Folio</button></li>
+              <li><button class="option-btn">Voucher</button></li>
+              <li><button class="option-btn">Switchboard Log</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 16 (Correct: D) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Private Branch Exchange">
+            <span class="category-pill">PBX Communications</span>
+            <span class="question">What does the abbreviation PBX stand for in hotel operations?</span>
+            <ul class="options">
+              <li><button class="option-btn">Public Business Extension</button></li>
+              <li><button class="option-btn">Primary Building Exit</button></li>
+              <li><button class="option-btn">Personal Booking Exchange</button></li>
+              <li><button class="option-btn">Private Branch Exchange</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 17 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="To guarantee clarity and accuracy when spelling names and critical information.">
+            <span class="category-pill">PBX Communications</span>
+            <span class="question">Why do PBX operators use the phonetic alphabet when communicating phone messages or guest names?</span>
+            <ul class="options">
+              <li><button class="option-btn">To guarantee clarity and accuracy when spelling names and critical information.</button></li>
+              <li><button class="option-btn">To calculate room tax tariffs automatically.</button></li>
+              <li><button class="option-btn">To encrypt external outgoing calls against wiretapping.</button></li>
+              <li><button class="option-btn">To shorten call duration under five seconds.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 18 (Correct: C) -->
+          <div class="quiz-item" data-type="mcq" data-answer="All hotel areas where staff directly interact with guests to deliver service.">
+            <span class="category-pill">FOH vs BOH</span>
+            <span class="question">Which definition best describes Front of the House (FOH)?</span>
+            <ul class="options">
+              <li><button class="option-btn">The backstage crew offices dedicated strictly to payroll and supply purchasing.</button></li>
+              <li><button class="option-btn">Industrial areas reserved exclusively for laundry machinery and maintenance generators.</button></li>
+              <li><button class="option-btn">All hotel areas where staff directly interact with guests to deliver service.</button></li>
+              <li><button class="option-btn">Off-site corporate headquarters where regional branding decisions are made.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 19 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Laundry / Linen Room">
+            <span class="category-pill">FOH vs BOH</span>
+            <span class="question">Which of the following departments or zones is classified as Back of the House (BOH)?</span>
+            <ul class="options">
+              <li><button class="option-btn">Concierge Desk</button></li>
+              <li><button class="option-btn">Laundry / Linen Room</button></li>
+              <li><button class="option-btn">Lobby Lounge</button></li>
+              <li><button class="option-btn">Reception Counter</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 20 (Correct: D) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Bell Services Counter">
+            <span class="category-pill">FOH vs BOH</span>
+            <span class="question">Which area is considered a Front of the House (FOH) operational area?</span>
+            <ul class="options">
+              <li><button class="option-btn">Security &amp; Surveillance Control Room</button></li>
+              <li><button class="option-btn">Purchasing &amp; Receiving Dock</button></li>
+              <li><button class="option-btn">Human Resources Office</button></li>
+              <li><button class="option-btn">Bell Services Counter</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 21 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Near the entrance or center of the lobby for immediate visibility and accessibility.">
+            <span class="category-pill">Front Desk Positioning</span>
+            <span class="question">Where is the Front Desk intentionally placed in a hotel layout, and why?</span>
+            <ul class="options">
+              <li><button class="option-btn">Near the entrance or center of the lobby for immediate visibility and accessibility.</button></li>
+              <li><button class="option-btn">Inside the basement boiler room to prevent guest interruptions.</button></li>
+              <li><button class="option-btn">On the top guest floor adjacent to the executive penthouse suites.</button></li>
+              <li><button class="option-btn">Behind the kitchen dishwashing station to save space.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 22 (Correct: C) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Semi-circle or island layout">
+            <span class="category-pill">Front Desk Layout</span>
+            <span class="question">Which Front Desk design shape helps allow smoother guest traffic flow and friendly multi-guest interactions during rush hours?</span>
+            <ul class="options">
+              <li><button class="option-btn">Fully enclosed glass booth layout</button></li>
+              <li><button class="option-btn">Single narrow doorway layout</button></li>
+              <li><button class="option-btn">Semi-circle or island layout</button></li>
+              <li><button class="option-btn">Blind corner corridor layout</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 23 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Handheld two-way radios (walkie-talkies) and internal PBX extensions.">
+            <span class="category-pill">Communications</span>
+            <span class="question">Which tools are commonly used for Internal Communication between front office staff and housekeeping or maintenance teams?</span>
+            <ul class="options">
+              <li><button class="option-btn">Public social media posts and promotional brochures.</button></li>
+              <li><button class="option-btn">Handheld two-way radios (walkie-talkies) and internal PBX extensions.</button></li>
+              <li><button class="option-btn">External Online Travel Agency (OTA) chat portals.</button></li>
+              <li><button class="option-btn">Commercial radio broadcast stations.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 24 (Correct: D) -->
+          <div class="quiz-item" data-type="mcq" data-answer="0">
+            <span class="category-pill">PBX Switchboard</span>
+            <span class="question">In standard hotel phone operations, which extension digit does a guest dial from their room telephone to connect directly to the switchboard operator?</span>
+            <ul class="options">
+              <li><button class="option-btn">9</button></li>
+              <li><button class="option-btn">100</button></li>
+              <li><button class="option-btn">77</button></li>
+              <li><button class="option-btn">0</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 25 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="It eliminates the need for hundreds of individual external phone lines and centralizes call routing.">
+            <span class="category-pill">PBX Switchboard</span>
+            <span class="question">Why is the PBX system vital for hotel efficiency and cost management?</span>
+            <ul class="options">
+              <li><button class="option-btn">It eliminates the need for hundreds of individual external phone lines and centralizes call routing.</button></li>
+              <li><button class="option-btn">It replaces the need for human security guards across all floor corridors.</button></li>
+              <li><button class="option-btn">It automatically cooks room service meals without staff intervention.</button></li>
+              <li><button class="option-btn">It provides free unlimited international calling to external vendors without oversight.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+        </div>
+
+        <!-- WIZARD NAVIGATION CONTROLS -->
+        <div class="wizard-nav" id="wizardNav">
+          <button class="nav-btn secondary" id="prevBtn" type="button" disabled>← Previous</button>
+          <button class="nav-btn" id="nextBtn" type="button">Next →</button>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Question Grid Sidebar -->
+      <aside class="wizard-sidebar">
+        <div class="question-grid-card" id="questionGridCard">
+          <div class="grid-label">Jump to Question:</div>
+          <div class="question-grid" id="questionGrid"></div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- RESULT & REVIEW PANEL -->
+    <div class="result-panel" id="resultPanel">
+      <div class="score-text" id="scoreText">Your Score: 0/25</div>
+      <p class="score-message">Great job completing the hotel services unit test! Review your full answers below.</p>
+      <div class="retake-container">
+        <button class="nav-btn" id="retakeBtn" type="button">Retake Quiz</button>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      Use the Next, Previous, or Question Grid controls to navigate through all questions.
+    </div>
+  </main>
+</div>
+
+<script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="../../assets/js/streak.js" defer></script>
+
+<script>
+  const quizContainer = document.getElementById("quizContainer");
+  const resultPanel = document.getElementById("resultPanel");
+  const scoreText = document.getElementById("scoreText");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const retakeBtn = document.getElementById("retakeBtn");
+  const themeToggle = document.getElementById("themeToggle");
+  const progressCard = document.getElementById("progressCard");
+  const progressText = document.getElementById("progressText");
+  const progressPercent = document.getElementById("progressPercent");
+  const progressFill = document.getElementById("progressFill");
+
+  let currentQuestionIndex = 0;
+  let questions = [];
+
+  function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.getAttribute("data-theme");
+
+    if (currentTheme === "light") {
+      body.removeAttribute("data-theme");
+      themeToggle.textContent = "Toggle Light Mode";
+    } else {
+      body.setAttribute("data-theme", "light");
+      themeToggle.textContent = "Toggle Dark Mode";
+    }
+  }
+
+  themeToggle.addEventListener("click", toggleTheme);
+
+  // Render the numbers grid dynamically
+  function renderQuestionGrid() {
+    const grid = document.getElementById("questionGrid");
+    grid.innerHTML = "";
+
+    questions.forEach((_, idx) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "q-grid-btn";
+      btn.textContent = idx + 1;
+      btn.addEventListener("click", () => {
+        currentQuestionIndex = idx;
+        updateWizardUI();
+      });
+      grid.appendChild(btn);
+    });
+  }
+
+  function updateWizardUI() {
+    questions.forEach((q, idx) => {
+      if (idx === currentQuestionIndex) {
+        q.classList.add("active");
+      } else {
+        q.classList.remove("active");
+      }
+    });
+
+    const total = questions.length;
+    const currentNum = currentQuestionIndex + 1;
+    const percentage = Math.round((currentNum / total) * 100);
+
+    progressText.textContent = `Question ${currentNum} of ${total}`;
+    progressPercent.textContent = `${percentage}%`;
+    progressFill.style.width = `${percentage}%`;
+
+    prevBtn.disabled = (currentQuestionIndex === 0);
+
+    if (currentQuestionIndex === total - 1) {
+      nextBtn.textContent = "Submit Answers ✓";
+    } else {
+      nextBtn.textContent = "Next →";
+    }
+
+    // Update visual state of number buttons
+    const gridBtns = document.querySelectorAll(".q-grid-btn");
+    gridBtns.forEach((btn, idx) => {
+      btn.classList.remove("active-q", "answered-q");
+
+      const item = questions[idx];
+      const isAnswered = !!item.querySelector(".options li.selected");
+
+      if (isAnswered) btn.classList.add("answered-q");
+      if (idx === currentQuestionIndex) btn.classList.add("active-q");
+    });
+  }
+
+  function nextQuestion() {
+    if (currentQuestionIndex < questions.length - 1) {
+      currentQuestionIndex++;
+      updateWizardUI();
+    } else {
+      calculateScore();
+    }
+  }
+
+  function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+      currentQuestionIndex--;
+      updateWizardUI();
+    }
+  }
+
+  // EVENT DELEGATION FOR MCQ SELECTION
+  quizContainer.addEventListener("click", event => {
+    if (resultPanel.style.display === "block") return;
+
+    let li = event.target.closest("li");
+    if (!li || !li.parentElement || !li.parentElement.classList.contains("options")) return;
+
+    const quizItem = li.closest(".quiz-item");
+
+    quizItem.querySelectorAll(".options li").forEach(option => {
+      option.classList.remove("selected");
+    });
+
+    li.classList.add("selected");
+    quizItem.style.borderColor = "var(--rule)";
+    updateWizardUI(); // Refresh number grid states
+  });
+
+  function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function decodeHtml(html) {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value.trim();
+  }
+
+  function calculateScore() {
+    // PASS 1: Validate completeness without altering DOM answers
+    let firstUnansweredIndex = -1;
+
+    questions.forEach((item, idx) => {
+      const selectedLi = item.querySelector(".options li.selected");
+      if (!selectedLi) {
+        item.style.borderColor = "var(--text-unanswered)";
+        if (firstUnansweredIndex === -1) firstUnansweredIndex = idx;
+      } else {
+        item.style.borderColor = "var(--rule)";
+      }
+    });
+
+    // Stop immediately if any question is missing
+    if (firstUnansweredIndex !== -1) {
+      alert("Please answer all multiple-choice questions before submitting.");
+      currentQuestionIndex = firstUnansweredIndex;
+      updateWizardUI();
+      return;
+    }
+
+    // PASS 2: Score and reveal answers (only executes if 100% complete)
+    let score = 0;
+    const totalQuestions = questions.length;
+
+    questions.forEach(item => {
+      const review = item.querySelector(".answer-review");
+      item.classList.remove("correct", "incorrect");
+
+      const selectedLi = item.querySelector(".options li.selected");
+      const selectedButton = selectedLi.querySelector(".option-btn");
+      const selectedText = decodeHtml(selectedButton.textContent);
+      const correctAnswer = decodeHtml(item.getAttribute("data-answer") || "");
+
+      item.querySelectorAll(".options li").forEach(option => {
+        option.classList.remove("correct-answer", "incorrect-answer");
+        const badge = option.querySelector(".answer-badge");
+        if (badge) badge.remove();
+      });
+
+      item.querySelectorAll(".options li").forEach(option => {
+        const button = option.querySelector(".option-btn");
+        if (!button) return;
+
+        const optionText = decodeHtml(button.textContent);
+
+        if (optionText === correctAnswer) {
+          option.classList.add("correct-answer");
+          const badge = document.createElement("span");
+          badge.className = "answer-badge";
+          badge.textContent = "✓ Correct answer";
+          button.appendChild(badge);
+        }
+
+        if (option === selectedLi && selectedText !== correctAnswer) {
+          option.classList.add("incorrect-answer");
+          const badge = document.createElement("span");
+          badge.className = "answer-badge";
+          badge.textContent = "✗ Your answer";
+          button.appendChild(badge);
+        }
+      });
+
+      if (selectedText === correctAnswer) {
+        score++;
+        item.classList.add("correct");
+        review.innerHTML = "<strong>Correct.</strong> You selected the right answer.";
+      } else {
+        item.classList.add("incorrect");
+        review.innerHTML = `<strong>Correct answer:</strong> ${escapeHtml(correctAnswer)}`;
+      }
+      review.style.display = "block";
+    });
+
+    // Display results and switch view to review mode
+    progressCard.style.display = "none";
+    document.getElementById("wizardNav").style.display = "none";
+    document.getElementById("questionGridCard").style.display = "none";
+
+    questions.forEach(q => {
+      q.classList.remove("active");
+      q.classList.add("review-mode");
+    });
+
+    scoreText.textContent = `Your Score: ${score}/${totalQuestions}`;
+    resultPanel.style.display = "block";
+
+    resultPanel.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    if (typeof StreakManager !== "undefined") {
+      StreakManager.recordTestCompletion(
+        "TLE Hotel Services & Operations Unit Test",
+        score / totalQuestions
+      );
+    }
+  }
+
+  function retakeQuiz() {
+    document.getElementById("questionGridCard").style.display = "block";
+    progressCard.style.display = "block";
+    document.getElementById("wizardNav").style.display = "flex";
+    resultPanel.style.display = "none";
+
+    // Reset MCQs
+    quizContainer.querySelectorAll(".options li.selected")
+      .forEach(option => option.classList.remove("selected"));
+
+    questions.forEach(item => {
+      item.style.borderColor = "var(--rule)";
+      item.classList.remove("correct", "incorrect", "review-mode");
+
+      const review = item.querySelector(".answer-review");
+      if (review) {
+        review.style.display = "none";
+        review.innerHTML = "";
+      }
+
+      item.querySelectorAll(".options li").forEach(option => {
+        option.classList.remove("correct-answer", "incorrect-answer");
+        const badge = option.querySelector(".answer-badge");
+        if (badge) badge.remove();
+      });
+    });
+
+    currentQuestionIndex = 0;
+    updateWizardUI();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  nextBtn.addEventListener("click", nextQuestion);
+  prevBtn.addEventListener("click", prevQuestion);
+  retakeBtn.addEventListener("click", retakeQuiz);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    questions = Array.from(quizContainer.querySelectorAll(".quiz-item"));
+    renderQuestionGrid();
+    updateWizardUI();
+  });
+</script>
+
+</body>
+</html>
