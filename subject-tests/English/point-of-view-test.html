@@ -11,38 +11,35 @@
   /* ==========================================================================
      Centering Fixes for PC
      ========================================================================== */
-  /* Ensure padding doesn't affect width calculations */
-  * { box-sizing: border-box; } /* Handles universal padding correctly */
+  * { box-sizing: border-box; } 
 
-  /* Force main content wrapper to center *itself* on the page */
   .content {
     width: 100%;
-    max-width: 1000px; /* Limit overall container width for PC readability */
-    margin: 0 auto;   /* Definitive technique for desktop centering */
+    max-width: 1000px; 
+    margin: 0 auto;   
     display: flex;
     flex-direction: column;
-    align-items: center; /* Horizontally center children (hero, quiz) *inside* this div */
-    text-align: left;    /* Ensure text inside elements aligns left */
-    padding: 0 15px;     /* Standard mobile side padding */
+    align-items: center; 
+    text-align: left;    
+    padding: 0 15px;     
   }
 
-  /* Style for the main quiz container */
   .quiz-container {
     width: 100%;
-    max-width: 700px; /* Standard reading width limitation for quiz boxes */
+    max-width: 700px; 
     margin-top: 10px;
-    counter-reset: question-counter; /* Initialize CSS counter for numbering */
+    counter-reset: question-counter; 
   }
 
   /* ==========================================================================
      Question & Option Formatting (Numbered & Bulleted)
      ========================================================================== */
   .quiz-item {
-    counter-increment: question-counter; /* Increment counter for each item */
+    counter-increment: question-counter; 
     background: var(--bg-raised);
     border: 1px solid var(--rule);
     border-radius: var(--radius);
-    padding: 20px 20px 20px 50px; /* More padding left to accommodate number */
+    padding: 20px 20px 20px 50px; 
     margin-bottom: 20px;
     box-shadow: 0 1px 2px var(--shadow);
     position: relative;
@@ -57,7 +54,6 @@
     display: block;
   }
 
-  /* Insert the "1.)" style number before the question */
   .question::before {
     content: counter(question-counter) ".) ";
     position: absolute;
@@ -66,10 +62,9 @@
     color: var(--card-accent);
   }
 
-  /* Options as a bulleted list (A, B, C, D) */
   .options {
-    list-style-type: upper-alpha; /* A, B, C bullets */
-    padding-left: 25px; /* Padding for bullets */
+    list-style-type: upper-alpha; 
+    padding-left: 25px; 
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -81,26 +76,42 @@
     border-radius: 6px;
     transition: all 0.15s ease;
     cursor: pointer;
+    border: 1px solid transparent;
   }
 
-  /* Hover effect for the whole LI choice */
   .options li:hover {
     background-color: var(--bg);
     color: var(--card-accent);
   }
 
-  /* Selected state applied to the LI choice */
   .options li.selected {
     background: var(--card-accent-strong) !important;
     color: #ffffff !important;
   }
 
-  /* Adjust existing button styling inside LI to be a transparent wrapper */
+  /* Answer Feedback States */
+  .options li.correct-answer {
+    background-color: #15803d !important;
+    color: #ffffff !important;
+    border-color: #22c55e !important;
+  }
+
+  .options li.wrong-answer {
+    background-color: #b91c1c !important;
+    color: #ffffff !important;
+    border-color: #f87171 !important;
+  }
+
+  .quiz-container.submitted .options li {
+    pointer-events: none;
+    cursor: default;
+  }
+
   .option-btn {
     background: transparent;
     border: none;
     color: inherit;
-    padding: 8px 5px; /* Padding inside choice box */
+    padding: 8px 5px; 
     border-radius: inherit;
     cursor: inherit;
     font-size: 0.95rem;
@@ -109,7 +120,7 @@
     transition: none;
   }
   
-  /* Result Panel Styling (Centered) */
+  /* Result Panel Styling */
   .result-panel {
     text-align: center;
     margin: 30px auto;
@@ -322,7 +333,9 @@
         </ul>
       </div>
 
-    </div><div style="text-align: center; margin-top: 20px;">
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
         <button class="action-btn" id="submitBtn">Submit Answers</button>
     </div>
 
@@ -336,11 +349,9 @@
   </div>
 </main>
 
+<script src="../../assets/js/streak.js" defer></script>
+
 <script>
-  /* ==========================================================================
-     Quiz Randomization & Interaction Logic
-     ========================================================================== */
-  
   const quizContainer = document.getElementById('quizContainer');
   const resultPanel = document.getElementById('resultPanel');
   const scoreText = document.getElementById('scoreText');
@@ -350,79 +361,88 @@
   // Randomize question order on load
   function shuffleQuestions() {
       const questions = Array.from(quizContainer.children);
-      
-      // Fisher-Yates shuffle algorithm
       for (let i = questions.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
-          quizContainer.appendChild(questions[j]); // Re-appending moves them in the DOM
+          quizContainer.appendChild(questions[j]);
       }
-      
-      // CSS Counters handle the sequential numbering automagically now.
   }
 
-  // Handle option selection (Delegated to options list)
+  // Option selection handler
   quizContainer.addEventListener('click', e => {
-      const li = e.target.closest('li'); // Target the list item box
+      const li = e.target.closest('li');
       if (li && li.parentElement.classList.contains('options')) {
           const quizItem = li.closest('.quiz-item');
-          // Clear previous selection in this question (remove from LI)
           quizItem.querySelectorAll('.options li').forEach(el => el.classList.remove('selected'));
-          // Add selection to clicked list item
           li.classList.add('selected');
-          // Reset unanswered warning color if fixed
           quizItem.style.borderColor = 'var(--rule)';
       }
   });
 
-  // Calculate score and log streak
+  // Calculate score & reveal answers
   function calculateScore() {
     const quizItems = document.querySelectorAll('.quiz-item');
     let score = 0;
     const totalQuestions = quizItems.length;
     let allAnswered = true;
 
+    // Check for unselected questions first
     quizItems.forEach(item => {
-      const correctTextKey = item.getAttribute('data-correct');
-      const selectedLi = item.querySelector('.options li.selected'); // Look for selected LI
-      
+      const selectedLi = item.querySelector('.options li.selected');
       if (!selectedLi) {
         allAnswered = false;
-        // Highlight unanswered questions
         item.style.borderColor = 'red';
       } else {
-          item.style.borderColor = 'var(--rule)'; // Reset if fixed
-          // Extract text from the button inside the LI box
-          const selectedText = selectedLi.querySelector('.option-btn').innerText;
-          
-          // Check correctness based on hardcoded keys derived from note definitions
-          if(isCorrect(selectedText, correctTextKey)) {
-              score++;
-          }
+        item.style.borderColor = 'var(--rule)';
       }
     });
 
     if(!allAnswered) {
         alert("Please answer all questions before submitting.");
-        // Scroll to the first unanswered
         const firstUnanswered = document.querySelector('.quiz-item[style*="border-color: red"]');
         if(firstUnanswered) firstUnanswered.scrollIntoView({behavior: "smooth", block: "center"});
         return;
     }
 
-    // Display result
+    // Lock interactions after submission
+    quizContainer.classList.add('submitted');
+
+    // Highlight correct & wrong options
+    quizItems.forEach(item => {
+      const correctKey = item.getAttribute('data-correct');
+      const selectedLi = item.querySelector('.options li.selected');
+      const options = item.querySelectorAll('.options li');
+
+      options.forEach(li => {
+        const optionText = li.querySelector('.option-btn').innerText;
+        const isRightAnswer = isCorrect(optionText, correctKey);
+
+        if (isRightAnswer) {
+          li.classList.add('correct-answer');
+        }
+
+        if (li === selectedLi) {
+          if (isRightAnswer) {
+            score++;
+          } else {
+            li.classList.add('wrong-answer');
+          }
+        }
+      });
+    });
+
+    // Display score panel
     scoreText.innerText = `Your Score: ${score}/${totalQuestions}`;
     resultPanel.style.display = 'block';
     resultPanel.scrollIntoView({behavior: "smooth", block: "center"});
 
-    // Log the streak using external StreakManager
+    // Record streak
     if (typeof StreakManager !== 'undefined') {
         StreakManager.recordTestCompletion('POV Test', score / totalQuestions);
     }
   }
 
-  // Helper function to check correctness based on definitions derived from source notes
+  // Answer key verification
   function isCorrect(selectedText, correctKey) {
-      // definitions match definitions in Point-of-view.html
       if(correctKey === "Lens" && selectedText.includes("perspective through which a story is told")) return true;
       if(correctKey === "1st" && selectedText.includes("I, me, we, us")) return true;
       if(correctKey === "2nd" && selectedText === "Second Person.") return true;
@@ -444,49 +464,23 @@
 
   // Retake quiz
   function retakeQuiz() {
-      // Clear selections (look for LI)
-      document.querySelectorAll('.options li.selected').forEach(btn => btn.classList.remove('selected'));
-      // Hide result panel
+      quizContainer.classList.remove('submitted');
+      document.querySelectorAll('.options li').forEach(li => {
+          li.classList.remove('selected', 'correct-answer', 'wrong-answer');
+      });
       resultPanel.style.display = 'none';
-      // Reset question borders
       document.querySelectorAll('.quiz-item').forEach(item => item.style.borderColor = 'var(--rule)');
-      // Re-shuffle for next time (numbering updates automatically via CSS)
       shuffleQuestions();
-      window.scrollTo(0,0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Event Listeners
   submitBtn.addEventListener('click', calculateScore);
   retakeBtn.addEventListener('click', retakeQuiz);
 
-  // Initialize on load
   document.addEventListener('DOMContentLoaded', () => {
       shuffleQuestions();
   });
 </script>
-
-<script>
-  /* ==========================================================================
-     Theme Toggle Logic (Preserved from Point-of-view.html)
-     ========================================================================== */
-  const toggleBtn = document.getElementById('themeToggle');
-  const body = document.body;
-
-  // Initialize theme from localStorage
-  const currentTheme = localStorage.getItem('theme') || 'dark';
-  body.setAttribute('data-theme', currentTheme);
-  toggleBtn.textContent = currentTheme === 'light' ? 'Toggle Dark Mode' : 'Toggle Light Mode';
-
-  toggleBtn.addEventListener('click', () => {
-    let theme = body.getAttribute('data-theme');
-    let newTheme = theme === 'dark' ? 'light' : 'dark';
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    toggleBtn.textContent = newTheme === 'light' ? 'Toggle Dark Mode' : 'Toggle Light Mode';
-  });
-</script>
-
-<script src="../../assets/js/streak.js" defer></script>
 
 </body>
 </html>
