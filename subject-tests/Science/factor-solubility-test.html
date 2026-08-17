@@ -666,12 +666,16 @@
     return div.innerHTML;
   }
 
+  function decodeHtml(html) {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value.trim();
+  }
+
   function calculateScore() {
     const quizItems = document.querySelectorAll(".quiz-item");
     let score = 0;
     let allAnswered = true;
-
-    // Pre-calculations prevent conflicts during scoring
     const totalQuestions = quizItems.length;
 
     quizItems.forEach(item => {
@@ -688,11 +692,13 @@
       const selectedButton = selectedLi.querySelector(".option-btn");
       if (!selectedButton) return;
 
-      const selectedText = selectedButton.textContent.trim();
-      const correctAnswer = item.getAttribute("data-answer");
+      // Decode and trim both strings to ensure identical formatting
+      const selectedText = decodeHtml(selectedButton.textContent);
+      const correctAnswer = decodeHtml(item.getAttribute("data-answer") || "");
+
       const review = item.querySelector(".answer-review");
 
-      // Clear any previous review markers.
+      // Reset review state
       item.classList.remove("correct", "incorrect");
       item.querySelectorAll(".options li").forEach(option => {
         option.classList.remove("correct-answer", "incorrect-answer");
@@ -700,12 +706,12 @@
         if (badge) badge.remove();
       });
 
-      // Mark the correct option and, when needed, the user's incorrect choice.
+      // Highlight options
       item.querySelectorAll(".options li").forEach(option => {
         const button = option.querySelector(".option-btn");
         if (!button) return;
 
-        const optionText = button.textContent.trim();
+        const optionText = decodeHtml(button.textContent);
 
         if (optionText === correctAnswer) {
           option.classList.add("correct-answer");
@@ -724,6 +730,7 @@
         }
       });
 
+      // Compare decoded strings
       if (selectedText === correctAnswer) {
         score++;
         item.classList.add("correct");
@@ -752,22 +759,16 @@
       return;
     }
 
-    // scoring panel logic
     scoreText.textContent = `Your Score: ${score}/${totalQuestions}`;
     resultPanel.style.display = "block";
-
-    // Hide main submit button
     submitBtn.style.display = "none";
 
-    // Scroll to results
     resultPanel.scrollIntoView({
       behavior: "smooth",
       block: "center"
     });
 
-    // Handle external score logging if library available
     if (typeof StreakManager !== "undefined") {
-      // Updated test identifier name
       StreakManager.recordTestCompletion(
         "Chemistry Solubility & pH Scale Test",
         score / totalQuestions
@@ -775,6 +776,7 @@
     }
   }
 
+  
   function retakeQuiz() {
     // Show main submit button again
     submitBtn.style.display = "inline-block";
