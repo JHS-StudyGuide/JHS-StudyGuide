@@ -43,48 +43,75 @@
        METHOD 1: PRINT / PDF EXPORT OVERRIDES (@media print)
        --------------------------------------------------- */
     @media print {
+      /* Enforce strict printable page margins & page dimensions */
+      @page {
+        margin: 12mm 15mm !important;
+        size: auto;
+      }
+
       /* Hide navigation, sidebars, interactive tabs, and UI elements */
       nav, .sidebar, .theme-toggle, .streak-badge, .pdf-btn, .test-link, footer,
       .directory, #styleTabs, #stylePanel, header.topbar .back, header.topbar .label {
         display: none !important;
       }
 
-      /* Force full Grid to print every item instead of just the active tab */
-      .dept-grid, #styleGrid {
+      /* Force full Grid to print every item instead of just active tabs */
+      .dept-grid, #styleGrid, [id$="Grid"] {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
       }
 
-      /* Reset body & background for crisp black-and-white output */
-      body {
+      /* Reset body & background to avoid clipping or hidden scrollable areas */
+      html, body {
         background: #ffffff !important;
         color: #000000 !important;
-        font-size: 12pt;
+        font-size: 11pt !important;
         margin: 0 !important;
         padding: 0 !important;
-      }
-
-      main, .content {
         width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
       }
 
-      /* Clean card formatting for PDF output */
-      .card, .type-card, .hero-card, .dept-card {
+      main, .content, .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        box-shadow: none !important;
+      }
+
+      /* Prevent headings from detaching at the bottom of a page */
+      h1, h2, h3, h4, h5, h6 {
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+        color: #000000 !important;
+      }
+
+      /* Clean card formatting with break protection */
+      .card, .type-card, .hero-card, .dept-card, .definition-box, .mnemonic-card, tr, .callout {
         border: 1px solid #cccccc !important;
         background: #ffffff !important;
         color: #000000 !important;
         box-shadow: none !important;
-        break-inside: avoid; /* Prevents awkward page breaks in cards */
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
       }
 
-      .dept-tag {
+      /* Ensure tables, graphics, and images fit within paper margins */
+      table, img, svg, figure {
+        max-width: 100% !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      .dept-tag, .unit-badge {
         color: #333333 !important;
       }
 
-      /* Clean links */
+      /* Clean links for print */
       a {
         color: #000000 !important;
         text-decoration: none !important;
@@ -110,6 +137,7 @@
     if (themeToggle && !document.querySelector('.pdf-btn')) {
       const btn = document.createElement('button');
       btn.className = 'pdf-btn';
+      btn.type = 'button';
       btn.title = 'Download / Print PDF';
       
       // Native window.print() handles SAVE-AS-PDF dialog
