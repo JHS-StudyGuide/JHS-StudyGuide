@@ -1,34 +1,36 @@
 /* =========================================================
-   FRONT DESK OPERATIONS (PAGKONSUMO-BASED GREEN PALETTE)
+   FRONT DESK OPERATIONS (EARTHY BROWN PALETTE)
    ========================================================= */
 
 :root {
-  --bg: #101711;
-  --bg-raised: #182219;
-  --ink: #eef3ea;
-  --ink-secondary: #a9b6a3;
-  --rule: #2b3a2c;
-  --gold: #d9a441;
-  --gold-bright: #f0c368;
-  --peso: #2f9e5f;
-  --peso-bright: #4bc27e;
-  --card-accent: #2f9e5f;
+  --bg: #1a1412;
+  --bg-raised: #28201c;
+  --ink: #faf4ed;
+  --ink-secondary: #b8ac9f;
+  --rule: #42352d;
+  --gold: #d99b41;
+  --gold-bright: #f0be68;
+  --peso: #a85d26;
+  --peso-bright: #c87a38;
+  --card-accent: #b86d29;
+  --card-accent-strong: #8f4f18;
   --shadow: rgba(0, 0, 0, 0.45);
   --radius: 10px;
 }
 
 [data-theme="light"], html.light {
-  --bg: #f6f8f2;
+  --bg: #f8f4ef;
   --bg-raised: #ffffff;
-  --ink: #16211a;
-  --ink-secondary: #56634f;
-  --rule: #dde3d2;
-  --gold: #ad7d1e;
-  --gold-bright: #8a6414;
-  --peso: #1f7a4d;
-  --peso-bright: #186238;
-  --card-accent: #1f7a4d;
-  --shadow: rgba(20, 30, 15, 0.08);
+  --ink: #231b15;
+  --ink-secondary: #635447;
+  --rule: #e5dad0;
+  --gold: #a66e1e;
+  --gold-bright: #825211;
+  --peso: #8c471b;
+  --peso-bright: #6e3512;
+  --card-accent: #8c471b;
+  --card-accent-strong: #6e3512;
+  --shadow: rgba(30, 20, 15, 0.08);
 }
 
 /* Reset & Base Styles */
