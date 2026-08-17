@@ -8,6 +8,17 @@
   <link rel="stylesheet" href="../../assets/streak-counter.css">
 
   <style>
+
+    /* GLOBAL RESETS TO PREVENT MOBILE OVERFLOW */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
     :root {
       --card-accent: #2563eb;
       --card-accent-strong: #1d4ed8;
@@ -74,7 +85,7 @@
 
     .content {
       width: 100%;
-      max-width: 800px;
+      max-width: 1050px;
       margin: 0 auto;
       padding: 24px 16px;
     }
@@ -140,6 +151,25 @@
       border-radius: 999px;
       transition: width 0.3s ease;
       box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+    }
+
+    /* TWO-COLUMN LAYOUT */
+    .wizard-layout {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .wizard-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .wizard-sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 20px;
     }
 
     /* QUIZ CARD FORMATTING */
@@ -308,6 +338,87 @@
       text-align: center;
     }
 
+    .syllable-btn.correct-syl {
+      background: rgba(34, 197, 94, 0.16) !important;
+      border-color: #22c55e !important;
+      color: var(--ink) !important;
+    }
+
+    .syllable-btn.correct-syl .stress-badge {
+      background: #22c55e !important;
+      color: #ffffff !important;
+    }
+
+    .syllable-btn.incorrect-syl {
+      background: rgba(239, 68, 68, 0.14) !important;
+      border-color: #ef4444 !important;
+      color: var(--ink) !important;
+    }
+
+    .syllable-btn.incorrect-syl .stress-badge {
+      background: #ef4444 !important;
+      color: #ffffff !important;
+    }
+
+    /* QUESTION GRID NAVIGATOR SIDEBAR */
+    .question-grid-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .grid-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+
+    .question-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .q-grid-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+      background: var(--bg);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .q-grid-btn:hover {
+      border-color: var(--card-accent);
+      color: var(--card-accent);
+      transform: translateY(-1px);
+    }
+
+    .q-grid-btn.answered-q {
+      border-color: var(--blue-border);
+      background: var(--blue-bg-light);
+      color: var(--card-accent);
+    }
+
+    .q-grid-btn.active-q {
+      border-color: var(--card-accent) !important;
+      background: var(--card-accent) !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
+    }
+
     /* WIZARD NAVIGATION FOOTER */
     .wizard-nav {
       display: flex;
@@ -434,40 +545,56 @@
       color: var(--ink-secondary);
     }
 
-    .syllable-btn.correct-syl {
-  background: rgba(34, 197, 94, 0.16) !important;
-  border-color: #22c55e !important;
-  color: var(--ink) !important;
-}
+@media (max-width: 768px) {
+  /* LAYOUT & SIDEBAR STACKING */
+  .wizard-layout {
+    flex-direction: column;
+  }
+  
+  .wizard-sidebar {
+    width: 100%;
+    position: static;
+  }
 
-.syllable-btn.correct-syl .stress-badge {
-  background: #22c55e !important;
-  color: #ffffff !important;
-}
+  /* TOP BAR MOBILE SPACING */
+  .top-bar {
+    padding: 10px 14px;
+    gap: 8px;
+  }
 
-.syllable-btn.incorrect-syl {
-  background: rgba(239, 68, 68, 0.14) !important;
-  border-color: #ef4444 !important;
-  color: var(--ink) !important;
-}
+  .top-bar .title {
+    font-size: 0.9rem;
+  }
 
-.syllable-btn.incorrect-syl .stress-badge {
-  background: #ef4444 !important;
-  color: #ffffff !important;
-}
+  /* SCANSION BUTTON COMPACT PACKING */
+  .scansion-box {
+    padding: 10px 6px;
+    gap: 6px;
+  }
 
-    @media (max-width: 600px) {
-      .quiz-item {
-        padding: 18px;
-      }
-      .wizard-nav {
-        flex-direction: column;
-      }
-      .nav-btn {
-        width: 100%;
-        justify-content: center;
-      }
-    }
+  .syllable-btn {
+    min-width: 44px;
+    padding: 8px 6px;
+  }
+
+  .syl-text {
+    font-size: 0.88rem;
+  }
+
+  /* QUESTION CARD & BUTTONS */
+  .quiz-item {
+    padding: 16px;
+  }
+
+  .wizard-nav {
+    flex-direction: column;
+  }
+
+  .nav-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
   </style>
 </head>
 
@@ -509,425 +636,441 @@
       </div>
     </div>
 
-    <div class="quiz-container" id="quizContainer">
+    <!-- TWO-COLUMN LAYOUT -->
+    <div class="wizard-layout">
+      
+      <!-- LEFT COLUMN: Main Quiz Card & Navigation -->
+      <div class="wizard-main">
+        <div class="quiz-container" id="quizContainer">
 
-      <!-- SCANSION QUESTION 1 -->
-      <div class="quiz-item active" data-type="scansion" data-correct-pattern="u,s,u,s,u,s,u,s,u,s">
-        <span class="category-pill">Interactive Scansion</span>
-        <span class="question">Identify the unstressed (x) and stressed (/) syllables for Shakespeare's Sonnet 18 line by clicking each syllable:</span>
-        <div class="scansion-box">
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Shall</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">I</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">com-</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">pare</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">thee</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">to</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">a</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">sum-</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">mer's</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">day?</span></button>
+          <!-- SCANSION QUESTION 1 -->
+          <div class="quiz-item active" data-type="scansion" data-correct-pattern="u,s,u,s,u,s,u,s,u,s">
+            <span class="category-pill">Interactive Scansion</span>
+            <span class="question">Identify the unstressed (x) and stressed (/) syllables for Shakespeare's Sonnet 18 line by clicking each syllable:</span>
+            <div class="scansion-box">
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Shall</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">I</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">com-</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">pare</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">thee</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">to</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">a</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">sum-</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">mer's</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">day?</span></button>
+            </div>
+            <div class="scansion-hint">Target pattern: Iambic Pentameter (5 da-DUM feet)</div>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- SCANSION QUESTION 2 -->
+          <div class="quiz-item" data-type="scansion" data-correct-pattern="u,s,u,s,u,s,u,s">
+            <span class="category-pill">Interactive Scansion</span>
+            <span class="question">Mark the stressed (/) and unstressed (x) syllables in Wordsworth's Daffodils line:</span>
+            <div class="scansion-box">
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">I</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">wan-</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">dered</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">lone-</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">ly</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">as</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">a</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">cloud</span></button>
+            </div>
+            <div class="scansion-hint">Target pattern: Iambic Tetrameter (4 da-DUM feet)</div>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- SCANSION QUESTION 3 -->
+          <div class="quiz-item" data-type="scansion" data-correct-pattern="s,u,s,u,s,u,s,u">
+            <span class="category-pill">Interactive Scansion</span>
+            <span class="question">Identify the stressed (/) and unstressed (x) rhythm for Shakespeare's Macbeth chant:</span>
+            <div class="scansion-box">
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Dou-</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">ble,</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">dou-</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">ble,</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">toil</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">and</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">trou-</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">ble</span></button>
+            </div>
+            <div class="scansion-hint">Target pattern: Trochaic Tetrameter (4 DUM-da feet)</div>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- SCANSION QUESTION 4 -->
+          <div class="quiz-item" data-type="scansion" data-correct-pattern="u,u,s,u,u,s,u,u,s,u,u,s">
+            <span class="category-pill">Interactive Scansion</span>
+            <span class="question">Set the unstressed (x) and stressed (/) syllables for Clement Clarke Moore's Anapestic line:</span>
+            <div class="scansion-box">
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">'Twas</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">the</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">night</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">be-</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">fore</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Christ-</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">mas,</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">when</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">all</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">through</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">the</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">house</span></button>
+            </div>
+            <div class="scansion-hint">Target pattern: Anapestic Tetrameter (4 da-da-DUM feet)</div>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- SCANSION QUESTION 5 -->
+          <div class="quiz-item" data-type="scansion" data-correct-pattern="s,u,u,s,u,u">
+            <span class="category-pill">Interactive Scansion</span>
+            <span class="question">Mark the stressed (/) and unstressed (x) syllables in Tennyson's Dactylic phrase:</span>
+            <div class="scansion-box">
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Half</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">a</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">league,</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">half</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">a</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">league</span></button>
+            </div>
+            <div class="scansion-hint">Target pattern: Dactylic Dimeter (2 DUM-da-da feet)</div>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- SCANSION QUESTION 6 -->
+          <div class="quiz-item" data-type="scansion" data-correct-pattern="s,s,s,s">
+            <span class="category-pill">Interactive Scansion</span>
+            <span class="question">Identify the consecutive stressed (/) syllables in this short Spondaic burst:</span>
+            <div class="scansion-box">
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Cry,</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">cry!</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Troy</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">burns</span></button>
+            </div>
+            <div class="scansion-hint">Target pattern: Spondaic burst (4 consecutive DUM-DUM stresses)</div>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- SCANSION QUESTION 7 -->
+          <div class="quiz-item" data-type="scansion" data-correct-pattern="u,s">
+            <span class="category-pill">Interactive Scansion</span>
+            <span class="question">Identify the unstressed (x) and stressed (/) syllable pattern for a single <strong>IAMBIC</strong> foot:</span>
+            <div class="scansion-box">
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">DUM</span></button>
+            </div>
+            <div class="scansion-hint">Target pattern: Unstressed / Stressed</div>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- SCANSION QUESTION 8 -->
+          <div class="quiz-item" data-type="scansion" data-correct-pattern="s,u">
+            <span class="category-pill">Interactive Scansion</span>
+            <span class="question">Identify the stressed (/) and unstressed (x) syllable pattern for a single <strong>TROCHAIC</strong> foot:</span>
+            <div class="scansion-box">
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">DUM</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
+            </div>
+            <div class="scansion-hint">Target pattern: Stressed / Unstressed</div>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- SCANSION QUESTION 9 -->
+          <div class="quiz-item" data-type="scansion" data-correct-pattern="u,u,s">
+            <span class="category-pill">Interactive Scansion</span>
+            <span class="question">Mark the unstressed (x) and stressed (/) syllables for a single <strong>ANAPESTIC</strong> foot:</span>
+            <div class="scansion-box">
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">DUM</span></button>
+            </div>
+            <div class="scansion-hint">Target pattern: Unstressed / Unstressed / Stressed</div>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- SCANSION QUESTION 10 -->
+          <div class="quiz-item" data-type="scansion" data-correct-pattern="s,u,u">
+            <span class="category-pill">Interactive Scansion</span>
+            <span class="question">Mark the stressed (/) and unstressed (x) syllables for a single <strong>DACTYLIC</strong> foot:</span>
+            <div class="scansion-box">
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">DUM</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
+              <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
+            </div>
+            <div class="scansion-hint">Target pattern: Stressed / Unstressed / Unstressed</div>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- STANDARD MCQ QUESTIONS -->
+          <div class="quiz-item" data-type="mcq" data-answer="Repetition of similar ending sounds in words.">
+            <span class="category-pill">Rhyme Definitions</span>
+            <span class="question">What is the core definition of rhyme in poetry?</span>
+            <ul class="options">
+              <li><button class="option-btn">Repetition of similar ending sounds in words.</button></li>
+              <li><button class="option-btn">The arrangement of words by formal dictionary definition.</button></li>
+              <li><button class="option-btn">The total number of stressed syllables per sentence.</button></li>
+              <li><button class="option-btn">The regional dialect used by character dialogue.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="It creates sound repetition that makes poetry sound musical and memorable.">
+            <span class="category-pill">Rhyme Purpose</span>
+            <span class="question">What is the primary purpose of using rhyme in a poem?</span>
+            <ul class="options">
+              <li><button class="option-btn">It creates sound repetition that makes poetry sound musical and memorable.</button></li>
+              <li><button class="option-btn">It forces all lines to have exactly ten syllables.</button></li>
+              <li><button class="option-btn">It eliminates abstract vocabulary from the stanza.</button></li>
+              <li><button class="option-btn">It changes formal diction into slang automatically.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Internal Rhyme">
+            <span class="category-pill">Rhyme Types</span>
+            <span class="question">Which type of rhyme occurs when words rhyme within the same line of poetry, creating a faster rhythm?</span>
+            <ul class="options">
+              <li><button class="option-btn">Internal Rhyme</button></li>
+              <li><button class="option-btn">End Rhyme</button></li>
+              <li><button class="option-btn">Slant Rhyme</button></li>
+              <li><button class="option-btn">Spondaic Rhyme</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Slant Rhyme">
+            <span class="category-pill">Rhyme Types</span>
+            <span class="question">Which rhyme type refers to a near/almost-rhyme where ending sounds are similar but do not match exactly?</span>
+            <ul class="options">
+              <li><button class="option-btn">Slant Rhyme</button></li>
+              <li><button class="option-btn">Couplet Rhyme</button></li>
+              <li><button class="option-btn">Exact End Rhyme</button></li>
+              <li><button class="option-btn">Trochaic Rhyme</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="End Rhyme">
+            <span class="category-pill">Rhyme Types</span>
+            <span class="question">What is the most common type of rhyme, occurring when the last words in lines sound alike?</span>
+            <ul class="options">
+              <li><button class="option-btn">End Rhyme</button></li>
+              <li><button class="option-btn">Internal Rhyme</button></li>
+              <li><button class="option-btn">Pyrrhic Rhyme</button></li>
+              <li><button class="option-btn">Slant Rhyme</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Couplets">
+            <span class="category-pill">Rhyme Schemes</span>
+            <span class="question">What term describes an AABB rhyme scheme pattern where two consecutive lines rhyme, followed by another pair?</span>
+            <ul class="options">
+              <li><button class="option-btn">Couplets</button></li>
+              <li><button class="option-btn">Alternating</button></li>
+              <li><button class="option-btn">Free Verse</button></li>
+              <li><button class="option-btn">Dactylic Pairs</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="ABAB">
+            <span class="category-pill">Rhyme Schemes</span>
+            <span class="question">How is an alternating rhyme pattern, where every other line rhymes, denoted in rhyme scheme notation?</span>
+            <ul class="options">
+              <li><button class="option-btn">ABAB</button></li>
+              <li><button class="option-btn">AABB</button></li>
+              <li><button class="option-btn">ABCC</button></li>
+              <li><button class="option-btn">AAAA</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Foot">
+            <span class="category-pill">Meter Breakdown</span>
+            <span class="question">What is the basic repeating unit of poetic meter, typically composed of 2 to 3 syllables?</span>
+            <ul class="options">
+              <li><button class="option-btn">Foot</button></li>
+              <li><button class="option-btn">Scheme</button></li>
+              <li><button class="option-btn">Diction</button></li>
+              <li><button class="option-btn">Syntax</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Unstressed / Stressed (da-DUM)">
+            <span class="category-pill">Metrical Feet</span>
+            <span class="question">Which syllable stress pattern defines an Iambic metrical foot?</span>
+            <ul class="options">
+              <li><button class="option-btn">Unstressed / Stressed (da-DUM)</button></li>
+              <li><button class="option-btn">Stressed / Unstressed (DUM-da)</button></li>
+              <li><button class="option-btn">Stressed / Stressed (DUM-DUM)</button></li>
+              <li><button class="option-btn">Unstressed / Unstressed / Stressed (da-da-DUM)</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Trochee">
+            <span class="category-pill">Metrical Feet</span>
+            <span class="question">Which metrical foot consists of a stressed syllable followed by an unstressed syllable (DUM-da)?</span>
+            <ul class="options">
+              <li><button class="option-btn">Trochee</button></li>
+              <li><button class="option-btn">Iamb</button></li>
+              <li><button class="option-btn">Anapest</button></li>
+              <li><button class="option-btn">Pyrrhic</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Two unstressed syllables followed by one stressed syllable (da-da-DUM)">
+            <span class="category-pill">Metrical Feet</span>
+            <span class="question">How is an Anapestic metrical foot structured?</span>
+            <ul class="options">
+              <li><button class="option-btn">Two unstressed syllables followed by one stressed syllable (da-da-DUM)</button></li>
+              <li><button class="option-btn">One stressed syllable followed by two unstressed syllables (DUM-da-da)</button></li>
+              <li><button class="option-btn">Two consecutive stressed syllables (DUM-DUM)</button></li>
+              <li><button class="option-btn">Two consecutive unstressed syllables (da-da)</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Dactyl">
+            <span class="category-pill">Metrical Feet</span>
+            <span class="question">A metrical foot with one stressed syllable followed by two unstressed syllables (DUM-da-da) is known as a:</span>
+            <ul class="options">
+              <li><button class="option-btn">Dactyl</button></li>
+              <li><button class="option-btn">Anapest</button></li>
+              <li><button class="option-btn">Spondee</button></li>
+              <li><button class="option-btn">Iamb</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Two consecutive stressed syllables (DUM-DUM) used for emphasis">
+            <span class="category-pill">Metrical Feet</span>
+            <span class="question">What describes a Spondaic foot (Spondee) in poetry?</span>
+            <ul class="options">
+              <li><button class="option-btn">Two consecutive stressed syllables (DUM-DUM) used for emphasis</button></li>
+              <li><button class="option-btn">Two consecutive unstressed syllables (da-da)</button></li>
+              <li><button class="option-btn">An unstressed syllable followed by a stressed syllable (da-DUM)</button></li>
+              <li><button class="option-btn">A foot containing four light syllables</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Formal Diction">
+            <span class="category-pill">Diction Levels</span>
+            <span class="question">Which level of diction features dignified, precise language suitable for academic papers, business communications, and official presentations?</span>
+            <ul class="options">
+              <li><button class="option-btn">Formal Diction</button></li>
+              <li><button class="option-btn">Informal Diction</button></li>
+              <li><button class="option-btn">Colloquial Diction</button></li>
+              <li><button class="option-btn">Slang Diction</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Slang Diction">
+            <span class="category-pill">Diction Levels</span>
+            <span class="question">Which category covers highly informal, trendy, and culture-specific words that evolve quickly within specific demographic groups?</span>
+            <ul class="options">
+              <li><button class="option-btn">Slang Diction</button></li>
+              <li><button class="option-btn">Formal Diction</button></li>
+              <li><button class="option-btn">Concrete Diction</button></li>
+              <li><button class="option-btn">Abstract Diction</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Colloquial Diction">
+            <span class="category-pill">Diction Levels</span>
+            <span class="question">Regional phrases, idioms, or conversational expressions unique to a specific geographic area or community belong to:</span>
+            <ul class="options">
+              <li><button class="option-btn">Colloquial Diction</button></li>
+              <li><button class="option-btn">Formal Diction</button></li>
+              <li><button class="option-btn">Abstract Vocabulary</button></li>
+              <li><button class="option-btn">Spondaic Structure</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Concrete Words">
+            <span class="category-pill">Word Categories</span>
+            <span class="question">Words such as 'Rose,' 'Thunder,' 'Iron,' and 'Raindrop' refer to tangible physical things perceived with the senses. These are:</span>
+            <ul class="options">
+              <li><button class="option-btn">Concrete Words</button></li>
+              <li><button class="option-btn">Abstract Words</button></li>
+              <li><button class="option-btn">Colloquial Terms</button></li>
+              <li><button class="option-btn">Metrical Feet</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Abstract Words">
+            <span class="category-pill">Word Categories</span>
+            <span class="question">Terms like 'Love,' 'Freedom,' 'Justice,' and 'Courage' represent theoretical ideas, emotions, or concepts. How are they categorized?</span>
+            <ul class="options">
+              <li><button class="option-btn">Abstract Words</button></li>
+              <li><button class="option-btn">Concrete Words</button></li>
+              <li><button class="option-btn">Slang Words</button></li>
+              <li><button class="option-btn">Sensory Imagery</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Literary Style">
+            <span class="category-pill">Style & Voice</span>
+            <span class="question">What term refers to the unique way a writer blends syntax, imagery, and devices to use language and express ideas?</span>
+            <ul class="options">
+              <li><button class="option-btn">Literary Style</button></li>
+              <li><button class="option-btn">Rhyme Scheme</button></li>
+              <li><button class="option-btn">Meter Breakdown</button></li>
+              <li><button class="option-btn">Foot Dimension</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="The internal feeling, atmosphere, or overall emotional response created within the reader.">
+            <span class="category-pill">Mood Analysis</span>
+            <span class="question">What is the definition of 'Mood' in literature?</span>
+            <ul class="options">
+              <li><button class="option-btn">The internal feeling, atmosphere, or overall emotional response created within the reader.</button></li>
+              <li><button class="option-btn">The author's personal attitude toward the topic or audience.</button></li>
+              <li><button class="option-btn">The speed at which metrical feet repeat in a line.</button></li>
+              <li><button class="option-btn">The literal dictionary definition of a concrete noun.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <div class="quiz-item" data-type="mcq" data-answer="Tone is the author&#x27;s attitude toward the subject, while Mood is the emotional environment felt by the audience.">
+            <span class="category-pill">Tone vs. Mood</span>
+            <span class="question">What is the core distinction between Tone and Mood?</span>
+            <ul class="options">
+              <li><button class="option-btn">Tone is the author&#x27;s attitude toward the subject, while Mood is the emotional environment felt by the audience.</button></li>
+              <li><button class="option-btn">Tone is the reader's feeling, while Mood is the author's precise syllable arrangement.</button></li>
+              <li><button class="option-btn">Tone applies only to formal diction, while Mood applies only to slang.</button></li>
+              <li><button class="option-btn">There is no distinction; Tone and Mood are identical terms.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
         </div>
-        <div class="scansion-hint">Target pattern: Iambic Pentameter (5 da-DUM feet)</div>
-        <div class="answer-review"></div>
-      </div>
 
-      <!-- SCANSION QUESTION 2 -->
-      <div class="quiz-item" data-type="scansion" data-correct-pattern="u,s,u,s,u,s,u,s">
-        <span class="category-pill">Interactive Scansion</span>
-        <span class="question">Mark the stressed (/) and unstressed (x) syllables in Wordsworth's Daffodils line:</span>
-        <div class="scansion-box">
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">I</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">wan-</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">dered</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">lone-</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">ly</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">as</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">a</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">cloud</span></button>
+        <!-- WIZARD NAVIGATION CONTROLS -->
+        <div class="wizard-nav" id="wizardNav">
+          <button class="nav-btn secondary" id="prevBtn" type="button" disabled>← Previous</button>
+          <button class="nav-btn" id="nextBtn" type="button">Next →</button>
         </div>
-        <div class="scansion-hint">Target pattern: Iambic Tetrameter (4 da-DUM feet)</div>
-        <div class="answer-review"></div>
       </div>
 
-      <!-- SCANSION QUESTION 3 -->
-      <div class="quiz-item" data-type="scansion" data-correct-pattern="s,u,s,u,s,u,s,u">
-        <span class="category-pill">Interactive Scansion</span>
-        <span class="question">Identify the stressed (/) and unstressed (x) rhythm for Shakespeare's Macbeth chant:</span>
-        <div class="scansion-box">
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Dou-</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">ble,</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">dou-</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">ble,</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">toil</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">and</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">trou-</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">ble</span></button>
+      <!-- RIGHT COLUMN: Question Grid Sidebar -->
+      <aside class="wizard-sidebar">
+        <div class="question-grid-card" id="questionGridCard">
+          <div class="grid-label">Jump to Question:</div>
+          <div class="question-grid" id="questionGrid"></div>
         </div>
-        <div class="scansion-hint">Target pattern: Trochaic Tetrameter (4 DUM-da feet)</div>
-        <div class="answer-review"></div>
-      </div>
+      </aside>
 
-      <!-- SCANSION QUESTION 4 -->
-      <div class="quiz-item" data-type="scansion" data-correct-pattern="u,u,s,u,u,s,u,u,s,u,u,s">
-        <span class="category-pill">Interactive Scansion</span>
-        <span class="question">Set the unstressed (x) and stressed (/) syllables for Clement Clarke Moore's Anapestic line:</span>
-        <div class="scansion-box">
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">'Twas</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">the</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">night</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">be-</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">fore</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Christ-</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">mas,</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">when</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">all</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">through</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">the</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">house</span></button>
-        </div>
-        <div class="scansion-hint">Target pattern: Anapestic Tetrameter (4 da-da-DUM feet)</div>
-        <div class="answer-review"></div>
-      </div>
-
-      <!-- SCANSION QUESTION 5 -->
-      <div class="quiz-item" data-type="scansion" data-correct-pattern="s,u,u,s,u,u">
-        <span class="category-pill">Interactive Scansion</span>
-        <span class="question">Mark the stressed (/) and unstressed (x) syllables in Tennyson's Dactylic phrase:</span>
-        <div class="scansion-box">
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Half</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">a</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">league,</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">half</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">a</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">league</span></button>
-        </div>
-        <div class="scansion-hint">Target pattern: Dactylic Dimeter (2 DUM-da-da feet)</div>
-        <div class="answer-review"></div>
-      </div>
-
-      <!-- SCANSION QUESTION 6 -->
-      <div class="quiz-item" data-type="scansion" data-correct-pattern="s,s,s,s">
-        <span class="category-pill">Interactive Scansion</span>
-        <span class="question">Identify the consecutive stressed (/) syllables in this short Spondaic burst:</span>
-        <div class="scansion-box">
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Cry,</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">cry!</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">Troy</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">burns</span></button>
-        </div>
-        <div class="scansion-hint">Target pattern: Spondaic burst (4 consecutive DUM-DUM stresses)</div>
-        <div class="answer-review"></div>
-      </div>
-
-      <!-- SCANSION QUESTION 7 -->
-      <div class="quiz-item" data-type="scansion" data-correct-pattern="u,s">
-        <span class="category-pill">Interactive Scansion</span>
-        <span class="question">Identify the unstressed (x) and stressed (/) syllable pattern for a single <strong>IAMBIC</strong> foot:</span>
-        <div class="scansion-box">
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">DUM</span></button>
-        </div>
-        <div class="scansion-hint">Target pattern: Unstressed / Stressed</div>
-        <div class="answer-review"></div>
-      </div>
-
-      <!-- SCANSION QUESTION 8 -->
-      <div class="quiz-item" data-type="scansion" data-correct-pattern="s,u">
-        <span class="category-pill">Interactive Scansion</span>
-        <span class="question">Identify the stressed (/) and unstressed (x) syllable pattern for a single <strong>TROCHAIC</strong> foot:</span>
-        <div class="scansion-box">
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">DUM</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
-        </div>
-        <div class="scansion-hint">Target pattern: Stressed / Unstressed</div>
-        <div class="answer-review"></div>
-      </div>
-
-      <!-- SCANSION QUESTION 9 -->
-      <div class="quiz-item" data-type="scansion" data-correct-pattern="u,u,s">
-        <span class="category-pill">Interactive Scansion</span>
-        <span class="question">Mark the unstressed (x) and stressed (/) syllables for a single <strong>ANAPESTIC</strong> foot:</span>
-        <div class="scansion-box">
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">DUM</span></button>
-        </div>
-        <div class="scansion-hint">Target pattern: Unstressed / Unstressed / Stressed</div>
-        <div class="answer-review"></div>
-      </div>
-
-      <!-- SCANSION QUESTION 10 -->
-      <div class="quiz-item" data-type="scansion" data-correct-pattern="s,u,u">
-        <span class="category-pill">Interactive Scansion</span>
-        <span class="question">Mark the stressed (/) and unstressed (x) syllables for a single <strong>DACTYLIC</strong> foot:</span>
-        <div class="scansion-box">
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">DUM</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
-          <button type="button" class="syllable-btn" data-stress="u"><span class="stress-badge">x</span><span class="syl-text">da</span></button>
-        </div>
-        <div class="scansion-hint">Target pattern: Stressed / Unstressed / Unstressed</div>
-        <div class="answer-review"></div>
-      </div>
-
-      <!-- STANDARD MCQ QUESTIONS -->
-      <div class="quiz-item" data-type="mcq" data-answer="Repetition of similar ending sounds in words.">
-        <span class="category-pill">Rhyme Definitions</span>
-        <span class="question">What is the core definition of rhyme in poetry?</span>
-        <ul class="options">
-          <li><button class="option-btn">Repetition of similar ending sounds in words.</button></li>
-          <li><button class="option-btn">The arrangement of words by formal dictionary definition.</button></li>
-          <li><button class="option-btn">The total number of stressed syllables per sentence.</button></li>
-          <li><button class="option-btn">The regional dialect used by character dialogue.</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="It creates sound repetition that makes poetry sound musical and memorable.">
-        <span class="category-pill">Rhyme Purpose</span>
-        <span class="question">What is the primary purpose of using rhyme in a poem?</span>
-        <ul class="options">
-          <li><button class="option-btn">It creates sound repetition that makes poetry sound musical and memorable.</button></li>
-          <li><button class="option-btn">It forces all lines to have exactly ten syllables.</button></li>
-          <li><button class="option-btn">It eliminates abstract vocabulary from the stanza.</button></li>
-          <li><button class="option-btn">It changes formal diction into slang automatically.</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Internal Rhyme">
-        <span class="category-pill">Rhyme Types</span>
-        <span class="question">Which type of rhyme occurs when words rhyme within the same line of poetry, creating a faster rhythm?</span>
-        <ul class="options">
-          <li><button class="option-btn">Internal Rhyme</button></li>
-          <li><button class="option-btn">End Rhyme</button></li>
-          <li><button class="option-btn">Slant Rhyme</button></li>
-          <li><button class="option-btn">Spondaic Rhyme</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Slant Rhyme">
-        <span class="category-pill">Rhyme Types</span>
-        <span class="question">Which rhyme type refers to a near/almost-rhyme where ending sounds are similar but do not match exactly?</span>
-        <ul class="options">
-          <li><button class="option-btn">Slant Rhyme</button></li>
-          <li><button class="option-btn">Couplet Rhyme</button></li>
-          <li><button class="option-btn">Exact End Rhyme</button></li>
-          <li><button class="option-btn">Trochaic Rhyme</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="End Rhyme">
-        <span class="category-pill">Rhyme Types</span>
-        <span class="question">What is the most common type of rhyme, occurring when the last words in lines sound alike?</span>
-        <ul class="options">
-          <li><button class="option-btn">End Rhyme</button></li>
-          <li><button class="option-btn">Internal Rhyme</button></li>
-          <li><button class="option-btn">Pyrrhic Rhyme</button></li>
-          <li><button class="option-btn">Slant Rhyme</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Couplets">
-        <span class="category-pill">Rhyme Schemes</span>
-        <span class="question">What term describes an AABB rhyme scheme pattern where two consecutive lines rhyme, followed by another pair?</span>
-        <ul class="options">
-          <li><button class="option-btn">Couplets</button></li>
-          <li><button class="option-btn">Alternating</button></li>
-          <li><button class="option-btn">Free Verse</button></li>
-          <li><button class="option-btn">Dactylic Pairs</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="ABAB">
-        <span class="category-pill">Rhyme Schemes</span>
-        <span class="question">How is an alternating rhyme pattern, where every other line rhymes, denoted in rhyme scheme notation?</span>
-        <ul class="options">
-          <li><button class="option-btn">ABAB</button></li>
-          <li><button class="option-btn">AABB</button></li>
-          <li><button class="option-btn">ABCC</button></li>
-          <li><button class="option-btn">AAAA</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Foot">
-        <span class="category-pill">Meter Breakdown</span>
-        <span class="question">What is the basic repeating unit of poetic meter, typically composed of 2 to 3 syllables?</span>
-        <ul class="options">
-          <li><button class="option-btn">Foot</button></li>
-          <li><button class="option-btn">Scheme</button></li>
-          <li><button class="option-btn">Diction</button></li>
-          <li><button class="option-btn">Syntax</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Unstressed / Stressed (da-DUM)">
-        <span class="category-pill">Metrical Feet</span>
-        <span class="question">Which syllable stress pattern defines an Iambic metrical foot?</span>
-        <ul class="options">
-          <li><button class="option-btn">Unstressed / Stressed (da-DUM)</button></li>
-          <li><button class="option-btn">Stressed / Unstressed (DUM-da)</button></li>
-          <li><button class="option-btn">Stressed / Stressed (DUM-DUM)</button></li>
-          <li><button class="option-btn">Unstressed / Unstressed / Stressed (da-da-DUM)</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Trochee">
-        <span class="category-pill">Metrical Feet</span>
-        <span class="question">Which metrical foot consists of a stressed syllable followed by an unstressed syllable (DUM-da)?</span>
-        <ul class="options">
-          <li><button class="option-btn">Trochee</button></li>
-          <li><button class="option-btn">Iamb</button></li>
-          <li><button class="option-btn">Anapest</button></li>
-          <li><button class="option-btn">Pyrrhic</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Two unstressed syllables followed by one stressed syllable (da-da-DUM)">
-        <span class="category-pill">Metrical Feet</span>
-        <span class="question">How is an Anapestic metrical foot structured?</span>
-        <ul class="options">
-          <li><button class="option-btn">Two unstressed syllables followed by one stressed syllable (da-da-DUM)</button></li>
-          <li><button class="option-btn">One stressed syllable followed by two unstressed syllables (DUM-da-da)</button></li>
-          <li><button class="option-btn">Two consecutive stressed syllables (DUM-DUM)</button></li>
-          <li><button class="option-btn">Two consecutive unstressed syllables (da-da)</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Dactyl">
-        <span class="category-pill">Metrical Feet</span>
-        <span class="question">A metrical foot with one stressed syllable followed by two unstressed syllables (DUM-da-da) is known as a:</span>
-        <ul class="options">
-          <li><button class="option-btn">Dactyl</button></li>
-          <li><button class="option-btn">Anapest</button></li>
-          <li><button class="option-btn">Spondee</button></li>
-          <li><button class="option-btn">Iamb</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Two consecutive stressed syllables (DUM-DUM) used for emphasis">
-        <span class="category-pill">Metrical Feet</span>
-        <span class="question">What describes a Spondaic foot (Spondee) in poetry?</span>
-        <ul class="options">
-          <li><button class="option-btn">Two consecutive stressed syllables (DUM-DUM) used for emphasis</button></li>
-          <li><button class="option-btn">Two consecutive unstressed syllables (da-da)</button></li>
-          <li><button class="option-btn">An unstressed syllable followed by a stressed syllable (da-DUM)</button></li>
-          <li><button class="option-btn">A foot containing four light syllables</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Formal Diction">
-        <span class="category-pill">Diction Levels</span>
-        <span class="question">Which level of diction features dignified, precise language suitable for academic papers, business communications, and official presentations?</span>
-        <ul class="options">
-          <li><button class="option-btn">Formal Diction</button></li>
-          <li><button class="option-btn">Informal Diction</button></li>
-          <li><button class="option-btn">Colloquial Diction</button></li>
-          <li><button class="option-btn">Slang Diction</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Slang Diction">
-        <span class="category-pill">Diction Levels</span>
-        <span class="question">Which category covers highly informal, trendy, and culture-specific words that evolve quickly within specific demographic groups?</span>
-        <ul class="options">
-          <li><button class="option-btn">Slang Diction</button></li>
-          <li><button class="option-btn">Formal Diction</button></li>
-          <li><button class="option-btn">Concrete Diction</button></li>
-          <li><button class="option-btn">Abstract Diction</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Colloquial Diction">
-        <span class="category-pill">Diction Levels</span>
-        <span class="question">Regional phrases, idioms, or conversational expressions unique to a specific geographic area or community belong to:</span>
-        <ul class="options">
-          <li><button class="option-btn">Colloquial Diction</button></li>
-          <li><button class="option-btn">Formal Diction</button></li>
-          <li><button class="option-btn">Abstract Vocabulary</button></li>
-          <li><button class="option-btn">Spondaic Structure</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Concrete Words">
-        <span class="category-pill">Word Categories</span>
-        <span class="question">Words such as 'Rose,' 'Thunder,' 'Iron,' and 'Raindrop' refer to tangible physical things perceived with the senses. These are:</span>
-        <ul class="options">
-          <li><button class="option-btn">Concrete Words</button></li>
-          <li><button class="option-btn">Abstract Words</button></li>
-          <li><button class="option-btn">Colloquial Terms</button></li>
-          <li><button class="option-btn">Metrical Feet</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Abstract Words">
-        <span class="category-pill">Word Categories</span>
-        <span class="question">Terms like 'Love,' 'Freedom,' 'Justice,' and 'Courage' represent theoretical ideas, emotions, or concepts. How are they categorized?</span>
-        <ul class="options">
-          <li><button class="option-btn">Abstract Words</button></li>
-          <li><button class="option-btn">Concrete Words</button></li>
-          <li><button class="option-btn">Slang Words</button></li>
-          <li><button class="option-btn">Sensory Imagery</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Literary Style">
-        <span class="category-pill">Style & Voice</span>
-        <span class="question">What term refers to the unique way a writer blends syntax, imagery, and devices to use language and express ideas?</span>
-        <ul class="options">
-          <li><button class="option-btn">Literary Style</button></li>
-          <li><button class="option-btn">Rhyme Scheme</button></li>
-          <li><button class="option-btn">Meter Breakdown</button></li>
-          <li><button class="option-btn">Foot Dimension</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="The internal feeling, atmosphere, or overall emotional response created within the reader.">
-        <span class="category-pill">Mood Analysis</span>
-        <span class="question">What is the definition of 'Mood' in literature?</span>
-        <ul class="options">
-          <li><button class="option-btn">The internal feeling, atmosphere, or overall emotional response created within the reader.</button></li>
-          <li><button class="option-btn">The author's personal attitude toward the topic or audience.</button></li>
-          <li><button class="option-btn">The speed at which metrical feet repeat in a line.</button></li>
-          <li><button class="option-btn">The literal dictionary definition of a concrete noun.</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-      <div class="quiz-item" data-type="mcq" data-answer="Tone is the author&#x27;s attitude toward the subject, while Mood is the emotional environment felt by the audience.">
-        <span class="category-pill">Tone vs. Mood</span>
-        <span class="question">What is the core distinction between Tone and Mood?</span>
-        <ul class="options">
-          <li><button class="option-btn">Tone is the author&#x27;s attitude toward the subject, while Mood is the emotional environment felt by the audience.</button></li>
-          <li><button class="option-btn">Tone is the reader's feeling, while Mood is the author's precise syllable arrangement.</button></li>
-          <li><button class="option-btn">Tone applies only to formal diction, while Mood applies only to slang.</button></li>
-          <li><button class="option-btn">There is no distinction; Tone and Mood are identical terms.</button></li>
-        </ul>
-        <div class="answer-review"></div>
-      </div>
-
-    </div>
-
-    <!-- WIZARD NAVIGATION CONTROLS -->
-    <div class="wizard-nav" id="wizardNav">
-      <button class="nav-btn secondary" id="prevBtn" type="button" disabled>← Previous</button>
-      <button class="nav-btn" id="nextBtn" type="button">Next →</button>
     </div>
 
     <!-- RESULT & REVIEW PANEL -->
@@ -940,7 +1083,7 @@
     </div>
 
     <div class="footer-note">
-      Use the Next and Previous controls to navigate through all questions.
+      Use the Next, Previous, or Question Grid controls to navigate through all questions.
     </div>
   </main>
 </div>
@@ -979,6 +1122,24 @@
 
   themeToggle.addEventListener("click", toggleTheme);
 
+  // Render the numbers grid dynamically
+  function renderQuestionGrid() {
+    const grid = document.getElementById("questionGrid");
+    grid.innerHTML = "";
+
+    questions.forEach((_, idx) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "q-grid-btn";
+      btn.textContent = idx + 1;
+      btn.addEventListener("click", () => {
+        currentQuestionIndex = idx;
+        updateWizardUI();
+      });
+      grid.appendChild(btn);
+    });
+  }
+
   function updateWizardUI() {
     questions.forEach((q, idx) => {
       if (idx === currentQuestionIndex) {
@@ -1003,6 +1164,25 @@
     } else {
       nextBtn.textContent = "Next →";
     }
+
+    // Update visual state of number buttons
+    const gridBtns = document.querySelectorAll(".q-grid-btn");
+    gridBtns.forEach((btn, idx) => {
+      btn.classList.remove("active-q", "answered-q");
+
+      const item = questions[idx];
+      const type = item.getAttribute("data-type") || "mcq";
+      let isAnswered = false;
+
+      if (type === "mcq") {
+        isAnswered = !!item.querySelector(".options li.selected");
+      } else if (type === "scansion") {
+        isAnswered = true; // Scansion questions have default states
+      }
+
+      if (isAnswered) btn.classList.add("answered-q");
+      if (idx === currentQuestionIndex) btn.classList.add("active-q");
+    });
   }
 
   function nextQuestion() {
@@ -1052,6 +1232,7 @@
 
     li.classList.add("selected");
     quizItem.style.borderColor = "var(--rule)";
+    updateWizardUI(); // Refresh number grid states
   });
 
   function escapeHtml(text) {
@@ -1067,142 +1248,144 @@
   }
 
   function calculateScore() {
-  // PASS 1: Validate completeness without altering DOM answers
-  let firstUnansweredIndex = -1;
+    // PASS 1: Validate completeness without altering DOM answers
+    let firstUnansweredIndex = -1;
 
-  questions.forEach((item, idx) => {
-    const type = item.getAttribute("data-type") || "mcq";
-    if (type === "mcq") {
-      const selectedLi = item.querySelector(".options li.selected");
-      if (!selectedLi) {
-        item.style.borderColor = "var(--text-unanswered)";
-        if (firstUnansweredIndex === -1) firstUnansweredIndex = idx;
-      } else {
-        item.style.borderColor = "var(--rule)";
-      }
-    }
-  });
-
-  // Stop immediately if any question is missing
-  if (firstUnansweredIndex !== -1) {
-    alert("Please answer all multiple-choice questions before submitting.");
-    currentQuestionIndex = firstUnansweredIndex;
-    updateWizardUI();
-    return;
-  }
-
-  // PASS 2: Score and reveal answers (only executes if 100% complete)
-  let score = 0;
-  const totalQuestions = questions.length;
-
-  questions.forEach(item => {
-    const type = item.getAttribute("data-type") || "mcq";
-    const review = item.querySelector(".answer-review");
-
-    item.classList.remove("correct", "incorrect");
-
-    if (type === "scansion") {
-      const pattern = item.getAttribute("data-correct-pattern").split(",");
-      const buttons = item.querySelectorAll(".syllable-btn");
-      let isCorrect = true;
-
-      buttons.forEach((btn, idx) => {
-        btn.classList.remove("correct-syl", "incorrect-syl");
-        const userStress = btn.getAttribute("data-stress");
-        const correctStress = pattern[idx];
-
-        if (userStress === correctStress) {
-          btn.classList.add("correct-syl");
+    questions.forEach((item, idx) => {
+      const type = item.getAttribute("data-type") || "mcq";
+      if (type === "mcq") {
+        const selectedLi = item.querySelector(".options li.selected");
+        if (!selectedLi) {
+          item.style.borderColor = "var(--text-unanswered)";
+          if (firstUnansweredIndex === -1) firstUnansweredIndex = idx;
         } else {
-          btn.classList.add("incorrect-syl");
-          isCorrect = false;
+          item.style.borderColor = "var(--rule)";
         }
-      });
-
-      if (isCorrect) {
-        score++;
-        item.classList.add("correct");
-        review.innerHTML = "<strong>Correct!</strong> Your stress markings match the pattern.";
-      } else {
-        item.classList.add("incorrect");
-        const prettyPattern = pattern.map(s => s === "s" ? "/" : "x").join(" ");
-        review.innerHTML = `<strong>Incorrect stress marking.</strong> Correct sequence: <code>${prettyPattern}</code>`;
       }
-      review.style.display = "block";
+    });
 
-    } else { // MCQ Evaluation
-      const selectedLi = item.querySelector(".options li.selected");
-      const selectedButton = selectedLi.querySelector(".option-btn");
-      const selectedText = decodeHtml(selectedButton.textContent);
-      const correctAnswer = decodeHtml(item.getAttribute("data-answer") || "");
-
-      item.querySelectorAll(".options li").forEach(option => {
-        option.classList.remove("correct-answer", "incorrect-answer");
-        const badge = option.querySelector(".answer-badge");
-        if (badge) badge.remove();
-      });
-
-      item.querySelectorAll(".options li").forEach(option => {
-        const button = option.querySelector(".option-btn");
-        if (!button) return;
-
-        const optionText = decodeHtml(button.textContent);
-
-        if (optionText === correctAnswer) {
-          option.classList.add("correct-answer");
-          const badge = document.createElement("span");
-          badge.className = "answer-badge";
-          badge.textContent = "✓ Correct answer";
-          button.appendChild(badge);
-        }
-
-        if (option === selectedLi && selectedText !== correctAnswer) {
-          option.classList.add("incorrect-answer");
-          const badge = document.createElement("span");
-          badge.className = "answer-badge";
-          badge.textContent = "✗ Your answer";
-          button.appendChild(badge);
-        }
-      });
-
-      if (selectedText === correctAnswer) {
-        score++;
-        item.classList.add("correct");
-        review.innerHTML = "<strong>Correct.</strong> You selected the right answer.";
-      } else {
-        item.classList.add("incorrect");
-        review.innerHTML = `<strong>Correct answer:</strong> ${escapeHtml(correctAnswer)}`;
-      }
-      review.style.display = "block";
+    // Stop immediately if any question is missing
+    if (firstUnansweredIndex !== -1) {
+      alert("Please answer all multiple-choice questions before submitting.");
+      currentQuestionIndex = firstUnansweredIndex;
+      updateWizardUI();
+      return;
     }
-  });
 
-  // Display results and switch view to review mode
-  progressCard.style.display = "none";
-  document.getElementById("wizardNav").style.display = "none";
+    // PASS 2: Score and reveal answers (only executes if 100% complete)
+    let score = 0;
+    const totalQuestions = questions.length;
 
-  questions.forEach(q => {
-    q.classList.remove("active");
-    q.classList.add("review-mode");
-  });
+    questions.forEach(item => {
+      const type = item.getAttribute("data-type") || "mcq";
+      const review = item.querySelector(".answer-review");
 
-  scoreText.textContent = `Your Score: ${score}/${totalQuestions}`;
-  resultPanel.style.display = "block";
+      item.classList.remove("correct", "incorrect");
 
-  resultPanel.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
+      if (type === "scansion") {
+        const pattern = item.getAttribute("data-correct-pattern").split(",");
+        const buttons = item.querySelectorAll(".syllable-btn");
+        let isCorrect = true;
 
-  if (typeof StreakManager !== "undefined") {
-    StreakManager.recordTestCompletion(
-      "English Poetic Scansion & Diction Unit Test",
-      score / totalQuestions
-    );
+        buttons.forEach((btn, idx) => {
+          btn.classList.remove("correct-syl", "incorrect-syl");
+          const userStress = btn.getAttribute("data-stress");
+          const correctStress = pattern[idx];
+
+          if (userStress === correctStress) {
+            btn.classList.add("correct-syl");
+          } else {
+            btn.classList.add("incorrect-syl");
+            isCorrect = false;
+          }
+        });
+
+        if (isCorrect) {
+          score++;
+          item.classList.add("correct");
+          review.innerHTML = "<strong>Correct!</strong> Your stress markings match the pattern.";
+        } else {
+          item.classList.add("incorrect");
+          const prettyPattern = pattern.map(s => s === "s" ? "/" : "x").join(" ");
+          review.innerHTML = `<strong>Incorrect stress marking.</strong> Correct sequence: <code>${prettyPattern}</code>`;
+        }
+        review.style.display = "block";
+
+      } else { // MCQ Evaluation
+        const selectedLi = item.querySelector(".options li.selected");
+        const selectedButton = selectedLi.querySelector(".option-btn");
+        const selectedText = decodeHtml(selectedButton.textContent);
+        const correctAnswer = decodeHtml(item.getAttribute("data-answer") || "");
+
+        item.querySelectorAll(".options li").forEach(option => {
+          option.classList.remove("correct-answer", "incorrect-answer");
+          const badge = option.querySelector(".answer-badge");
+          if (badge) badge.remove();
+        });
+
+        item.querySelectorAll(".options li").forEach(option => {
+          const button = option.querySelector(".option-btn");
+          if (!button) return;
+
+          const optionText = decodeHtml(button.textContent);
+
+          if (optionText === correctAnswer) {
+            option.classList.add("correct-answer");
+            const badge = document.createElement("span");
+            badge.className = "answer-badge";
+            badge.textContent = "✓ Correct answer";
+            button.appendChild(badge);
+          }
+
+          if (option === selectedLi && selectedText !== correctAnswer) {
+            option.classList.add("incorrect-answer");
+            const badge = document.createElement("span");
+            badge.className = "answer-badge";
+            badge.textContent = "✗ Your answer";
+            button.appendChild(badge);
+          }
+        });
+
+        if (selectedText === correctAnswer) {
+          score++;
+          item.classList.add("correct");
+          review.innerHTML = "<strong>Correct.</strong> You selected the right answer.";
+        } else {
+          item.classList.add("incorrect");
+          review.innerHTML = `<strong>Correct answer:</strong> ${escapeHtml(correctAnswer)}`;
+        }
+        review.style.display = "block";
+      }
+    });
+
+    // Display results and switch view to review mode
+    progressCard.style.display = "none";
+    document.getElementById("wizardNav").style.display = "none";
+    document.getElementById("questionGridCard").style.display = "none";
+
+    questions.forEach(q => {
+      q.classList.remove("active");
+      q.classList.add("review-mode");
+    });
+
+    scoreText.textContent = `Your Score: ${score}/${totalQuestions}`;
+    resultPanel.style.display = "block";
+
+    resultPanel.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    if (typeof StreakManager !== "undefined") {
+      StreakManager.recordTestCompletion(
+        "English Poetic Scansion & Diction Unit Test",
+        score / totalQuestions
+      );
+    }
   }
-}
 
   function retakeQuiz() {
+    document.getElementById("questionGridCard").style.display = "block";
     progressCard.style.display = "block";
     document.getElementById("wizardNav").style.display = "flex";
     resultPanel.style.display = "none";
@@ -1211,13 +1394,13 @@
     quizContainer.querySelectorAll(".options li.selected")
       .forEach(option => option.classList.remove("selected"));
 
-// Reset Scansion Syllables
-quizContainer.querySelectorAll(".syllable-btn").forEach(btn => {
-  btn.setAttribute("data-stress", "u");
-  btn.classList.remove("correct-syl", "incorrect-syl");
-  const badge = btn.querySelector(".stress-badge");
-  if (badge) badge.textContent = "x";
-});
+    // Reset Scansion Syllables
+    quizContainer.querySelectorAll(".syllable-btn").forEach(btn => {
+      btn.setAttribute("data-stress", "u");
+      btn.classList.remove("correct-syl", "incorrect-syl");
+      const badge = btn.querySelector(".stress-badge");
+      if (badge) badge.textContent = "x";
+    });
 
     questions.forEach(item => {
       item.style.borderColor = "var(--rule)";
@@ -1251,6 +1434,7 @@ quizContainer.querySelectorAll(".syllable-btn").forEach(btn => {
 
   document.addEventListener("DOMContentLoaded", () => {
     questions = Array.from(quizContainer.querySelectorAll(".quiz-item"));
+    renderQuestionGrid();
     updateWizardUI();
   });
 </script>
