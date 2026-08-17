@@ -1,0 +1,36 @@
+/* ---------- Universal Dedication Card & Footer ---------- */
+.dedication-card {
+  width: 100%;
+  margin: 32px 0 16px;
+  background: var(--bg-raised);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+  border: 2px solid var(--card-accent);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  text-align: center;
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+.dedication-card p {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.footer-note {
+  color: var(--ink-secondary);
+  text-align: center;
+  padding: 8px 0 24px;
+  font-size: 0.92rem;
+}
+
+footer.page-footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--ink-secondary);
+  font-size: 12px;
+  border-top: 1px solid var(--rule);
+  margin-top: 20px;
+}
