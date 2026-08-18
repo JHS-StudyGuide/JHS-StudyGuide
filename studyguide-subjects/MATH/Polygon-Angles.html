@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MATH: Polygons - Study Hub Reviewer</title>
-  <link rel="stylesheet" href="Polygon-Angles.css">
-<link rel="icon" type="image/png" href="https://jhs-studyguide.github.io/JHS-StudyGuide/favicon.png">
+  <link rel="stylesheet" href="Polygon-Angles.css" />
+  <link rel="stylesheet" href="../../assets/streak-counter.css">
+  <script src="../../assets/js/universal-pdf.js" defer></script>
+  <link rel="icon" type="image/png" href="https://jhs-studyguide.github.io/JHS-StudyGuide/favicon.png">
 </head>
 <body>
 
   <header class="top-bar">
     <a href="../../index.html">← Back to Main Hub</a>
-    <span>MATH: Geometry Reviewer</span>
-    
-<div class="streak-badge" id="streak-badge" title="Daily Study Streak">
-  <span class="streak-emoji" id="streak-emoji">🔥</span>
-  <span class="streak-count" id="streak-count">0</span>
-  <span class="streak-label">Streak</span>
-</div>
-    <button class="theme-toggle" onclick="toggleTheme()">☀</button>
+    <span class="title">MATH: Geometry Reviewer</span>
+
+    <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+      <span class="streak-emoji" id="streak-emoji">🔥</span>
+      <span class="streak-count" id="streak-count">0</span>
+      <span class="streak-label">Streak</span>
+    </div>
+    <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
   </header>
 
   <div class="container">
-    <nav class="sidebar">
+    <nav class="sidebar" aria-label="Section navigation">
       <h3>Subject Archive</h3>
       <div class="module-title">MATH: Geometry</div>
       <ul class="module-section">
@@ -30,166 +32,260 @@
         <li><a href="#diagonals">2. Diagonals Formula</a></li>
         <li><a href="#angles">3. Angle Relationships</a></li>
         <li><a href="#area">4. Area &amp; Apothem</a></li>
-        <li><a href="#applications">5. Real-Life Applications</a></li>
-        <li><a href="#truthvalue">6. Truth Value and Conditional Statements</a></li>
-        <li><a href="#formulasall">7. Formula Table</a></li>
-        <li><a href="#interactive">Interactive Explorer</a></li>
+        <li><a href="#applications">5. Biological Applications</a></li>
+        <li><a href="#truthvalue">6. Truth Value &amp; Conditionals</a></li>
+        <li><a href="#formulasall">7. Quick Reference Matrix</a></li>
+        <li><a href="#interactive">8. Interactive Explorer</a></li>
       </ul>
     </nav>
 
     <main class="content">
-      <h1>Polygons</h1>
-      <div class="subtitle">Comprehensive overview of polygon properties, diagonals, angle relationships, and biological applications.</div>
+      <header class="hero" id="overview">
+        <div>
+          <span class="dept-tag">Geometry &amp; Polygons</span>
+          <h1>Polygons Quick Guide</h1>
+          <p class="subtitle">
+            Polygon notes reviewer. Study for the msa lol.
+          </p>
+        </div>
+      </header>
 
+      <!-- Section 1: Classification -->
       <section id="classification">
-        <h2>1. Definitions &amp; Classifications</h2>
-        <p>A polygon is a closed two-dimensional geometric figure formed by a finite number of straight line segments connected end-to-end. Polygons can be broadly classified by their angle configurations:</p>
-        <ul>
-          <li><strong>Convex Polygons:</strong> No interior angle is greater than 180°, and all diagonals lie entirely inside the figure.</li>
-          <li><strong>Concave Polygons:</strong> At least one interior angle is strictly greater than 180°, causing at least one diagonal or line segment between internal points to pass outside the figure's boundary.</li>
-          <li><strong>Equilateral Polygon:</strong> All sides of the polygon are congruent or equal.</li>
-          <li><strong>Equiangular Polygon:</strong> All angles of the polygon are congruent or equal.</li>
-          <li><strong>Regular Polygon:</strong> The polygon is convex, equilateral, and equiangular.</li>
-          <li><strong>Irregular Polygon:</strong> The polygon is missing one or more properties of a regular polygon.</li>
-          <li><strong>Vertex:</strong> The intersection of two adjacent sides/lines of a polygon.</li>
-          <li><strong>Interior Angles:</strong> The adjacent lines of a polygon forming an angle which reside inside the lines of said polygon.</li>
-          <li><strong>Exterior Angles:</strong> The adjacent lines of a polygon forming an angle which reside inside the lines of said polygon.</li>
-          <li><strong>Diagonals:</strong> A line within the walls of a polygon touching two non-consecutive vertexes.</li>
-        </ul>
+        <div class="part-head">
+          <h2>1. Classification &amp; Core Terms</h2>
+        </div>
+
+        <div class="dept-grid">
+          <div class="dept-card">
+            <h4>Shape Types</h4>
+            <ul>
+              <li><strong>Convex:</strong> no corner "caves in" — every angle is 180° or less, so diagonals stay inside the shape.</li>
+              <li><strong>Concave:</strong> at least one corner caves in (angle over 180°), so a diagonal can poke outside the shape.</li>
+              <li><strong>Equilateral:</strong> every side is the same length.</li>
+              <li><strong>Equiangular:</strong> every angle is the same size.</li>
+              <li><strong>Regular:</strong> convex, and both equal sides AND equal angles — the "perfect" version.</li>
+              <li><strong>Irregular:</strong> anything that doesn't hit all three regular conditions.</li>
+            </ul>
+          </div>
+
+          <div class="dept-card">
+            <h4>Basic Parts</h4>
+            <ul>
+              <li><strong>Vertex:</strong> a corner — where two sides meet.</li>
+              <li><strong>Interior Angle:</strong> the angle you'd measure standing inside the shape, at a corner.</li>
+              <li><strong>Exterior Angle:</strong> the angle just outside that same corner, formed by stretching one side past the vertex.</li>
+              <li><strong>Diagonal:</strong> a straight line connecting two corners that aren't next to each other.</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
+      <!-- Section 2: Diagonals -->
       <section id="diagonals">
-        <h2>2. Calculation of Diagonals</h2>
-        <p>A diagonal is a line segment connecting any two non-adjacent vertices of a polygon. Because a single vertex cannot draw a line to itself or its two immediately adjacent neighbors without overlapping the perimeter sides, the number of diagonals from a single vertex is always:</p>
-        <div class="formula-box">Diagonals from One Vertex = s - 3</div>
-        <p>To find the total number of unique diagonals (d) across the entire s-sided polygon without exhaustive drawing, we account for every vertex and divide by 2 (to prevent double-counting):</p>
-        <div class="formula-box">d = [s(s - 3)] / 2</div>
-        <p><strong>Example (Octagon, s = 8):</strong> d = [8(8 - 3)] / 2 = (8 × 5) / 2 = 20 total diagonals.</p>
-        <p><strong>Algebraic Decoding:</strong> If a polygon has d = 54 diagonals, solve for s using quadratic equations: 54 = [s(s - 3)] / 2 ⇒ 108 = s² - 3s ⇒ s² - 3s - 108 = 0. Factoring yields (s - 12)(s + 9) = 0, meaning the polygon has 12 sides.</p>
+        <div class="part-head">
+          <h2>2. Counting Diagonals</h2>
+        </div>
+
+        <div class="type-grid">
+          <div class="type-card">
+            <span class="unit-badge">From one corner</span>
+            <h4>Diagonals per Vertex</h4>
+            <div class="formula-box" style="margin: 8px 0;">s - 3</div>
+            <p>A corner can't connect to itself, or to the two corners right next to it — so subtract those 3.</p>
+          </div>
+
+          <div class="type-card">
+            <span class="unit-badge">Whole shape</span>
+            <h4>Total Diagonals (d)</h4>
+            <div class="formula-box" style="margin: 8px 0;">d = [s(s - 3)] / 2</div>
+            <p>Do that count for every corner, then divide by 2 so you don't count each diagonal twice.</p>
+          </div>
+        </div>
+
+        <details style="margin-top: 14px; background: var(--bg-raised); padding: 12px 16px; border-radius: var(--radius); border: 1px solid var(--rule); cursor: pointer;">
+          <summary style="font-weight: 600; color: var(--card-accent);">See a worked example</summary>
+          <div style="margin-top: 10px; font-size: 0.9rem; color: var(--ink-secondary);">
+            <p><strong>Octagon (8 sides):</strong> d = [8 × (8 − 3)] / 2 = [8 × 5] / 2 = <strong>20 diagonals</strong>.</p>
+            <p style="margin-top: 6px;"><strong>Working backward (if d = 54):</strong> 54 = [s(s − 3)] / 2 → multiply both sides by 2 → 108 = s² − 3s → s² − 3s − 108 = 0 → factors to (s − 12)(s + 9) = 0 → <strong>s = 12 sides</strong> (12-sided shapes only, since sides can't be negative).</p>
+          </div>
+        </details>
       </section>
 
+      <!-- Section 3: Angle Relationships -->
       <section id="angles">
-        <h2>3. Interior &amp; Exterior Angle Relationships</h2>
-        <p><strong>Interior Angles Sum Theorem:</strong> Any s-sided polygon can be partitioned into exactly (s - 2) internal triangles from a single vertex. Since each triangle contributes 180°, the total interior angle sum (S<sub>i</sub>) depends solely on side count:</p>
-        <div class="formula-box">S<sub>i</sub> = (s - 2) × 180°</div>
-        <p>In a <strong>regular polygon</strong> (where all sides and angles are equal), each individual interior angle is divided equally among all vertices: <code>m∠<sub>i</sub> = [(s - 2) × 180°] / s</code>.</p>
-        <p><strong>Sum of Exterior Angles Invariance:</strong> Regardless of how complex, large, or concave a polygon is, the sum of its exterior angles (one per vertex) is strictly invariant and always completes a full rotation:</p>
-        <div class="formula-box">Sum of Exterior Angles = 360°</div>
-        <p>In a regular polygon, each exterior angle is simply: <code>m∠<sub>e</sub> = 360° / s</code>. Furthermore, at any given vertex, the interior and exterior angles are supplementary: <code>m∠<sub>i</sub> + m∠<sub>e</sub> = 180°</code>.</p>
+        <div class="part-head">
+          <h2>3. Interior &amp; Exterior Angles</h2>
+        </div>
+
+        <div class="type-grid">
+          <div class="type-card">
+            <span class="unit-badge">Interior Angles</span>
+            <h4>Sum = (s − 2) × 180°</h4>
+            <p>Any polygon can be cut into triangles from one corner — always (s − 2) of them. Since each triangle is 180°, multiply.</p>
+            <div class="metric-note" style="margin-top: 8px; font-weight: 600;">One angle, if regular: m∠<sub>i</sub> = [(s − 2) × 180°] / s</div>
+          </div>
+
+          <div class="type-card">
+            <span class="unit-badge">Exterior Angles</span>
+            <h4>Sum = 360°</h4>
+            <p>Walk all the way around the outside of any convex polygon and you turn exactly one full circle — 360°, no matter the shape.</p>
+            <div class="metric-note" style="margin-top: 8px; font-weight: 600;">One angle, if regular: m∠<sub>e</sub> = 360° / s</div>
+          </div>
+        </div>
       </section>
 
+      <!-- Section 4: Area & Apothem -->
       <section id="area">
-        <h2>4. Polygon Area via Apothem</h2>
-        <p>The area of a regular polygon connects one-dimensional lineal measurements to planar space. By drawing segments from the center of the polygon to each vertex, the figure divides into equal isosceles triangles.</p>
-        <p>Using the <strong>apothem (a)</strong>—the perpendicular distance from the center to the midpoint of any side—and the side length (s) across (n) total sides, the area formula is:</p>
-        <div class="formula-box">Area = 1/2 × a × n × s</div>
-        <p><em>Note: Since Perimeter (P) = n × s, this formula is frequently simplified in architectural and engineering design as Area = 1/2 × a × P.</em></p>
+        <div class="part-head">
+          <h2>4. Area of a Regular Polygon</h2>
+        </div>
+
+        <div class="formula-box">Area = 1/2 × a × n × s &nbsp;≡&nbsp; Area = 1/2 × a × P</div>
+        <p style="font-size: 0.9rem; color: var(--ink-secondary); text-align: center;">
+          <strong>a</strong> = apothem (center to the middle of a side) · <strong>n</strong> = number of sides · <strong>s</strong> = length of one side · <strong>P</strong> = perimeter (n × s) — the two formulas are the same thing written two ways.
+        </p>
       </section>
 
+      <!-- Section 5: Real-Life Applications -->
       <section id="applications">
-        <h2>5. Real-Life Applications: Nature &amp; Biology</h2>
-        <p>Abstract geometric properties frequently manifest as structural adaptations in biology and natural architecture. A primary example is the compound eye of a housefly, which is packed with microscopic corneal lenses called facets.</p>
-        <p>Each facet is shaped as a regular hexagon (s = 6). Applying our interior angle formula demonstrates why this shape tiles so efficiently without wasted interstitial space:</p>
-        <div class="formula-box">m∠<sub>i</sub> = [(6 - 2) × 180°] / 6 = (4 × 180°) / 6 = 120°</div>
-        <p>Because three hexagonal vertices meet perfectly at a point (120° × 3 = 360°), hexagons provide optimal mechanical stability and surface area maximization in biological structures.</p>
+        <div class="part-head">
+          <h2>5. Where This Shows Up in Nature</h2>
+        </div>
+
+        <div class="type-card" style="border-left: 4px solid var(--card-accent);">
+          <h4>Fly Eyes &amp; Honeycombs</h4>
+          <p>A regular hexagon has <strong>s = 6</strong>, so each interior angle works out to:</p>
+          <div class="formula-box" style="margin: 8px 0; font-size: 0.95rem;">m∠<sub>i</sub> = [(6 − 2) × 180°] / 6 = 120°</div>
+          <p style="font-size: 0.88rem; color: var(--ink-secondary);">
+            Three 120° corners fit together with zero gaps (3 × 120° = 360°) — that's why bees build honeycombs out of hexagons and why a housefly's compound eye is packed with hexagonal lenses. It's the most efficient way to tile a surface.
+          </p>
+        </div>
       </section>
 
+      <!-- Section 6: Truth Value & Conditionals -->
       <section id="truthvalue">
-        <h2>6. Truth Value and Conditional Statements</h2>
-        <p>Truth Value is how true a statement is according to its hypothesis and conclusion. A Conditional statement is a statement holding a hypothesis and conclusion (if, then statement)</p>
-        <ul>
-          <li><strong>Hypothesis (if):</strong> This is the condition of the conclusion. The truth value of the hypothesis does <i>NOT</i> matter. Represented by "p".</li>
-          <li><strong>Conclusion (then):</strong> This is the result of the hypothesis. If the conclusion is false, the entire statement is false unless the hypothesis is also false. Represented by "q".</li>
-          <li><strong>Counter-example:</strong> This is the example wherein it disproves the conclusion. If a statement has no counter-example, it is true.</li>
-          <li><strong>p > q:</strong> This simply means "hypothesis in relation to the conclusion".</li>
-        </ul>
-        <table>
-          <tr>
-          <th>p</th>
-          <th>q</th>
-          <th>p > q</th>
-          </tr>
-          <tr>
-          <td>True</td>
-          <td>True</td>
-          <td>True</td>
-          </tr>
-          <tr>
-          <td><strong>False</strong></td>
-          <td>True</td>
-          <td>True</td>
-          </tr>
-          <tr>
-          <td>True</td>
-          <td><strong>False</strong></td>
-          <td><strong>False</strong></td>
-          </tr>
-          <tr>
-          <td><strong>False</strong></td>
-          <td><strong>False</strong></td>
-          <td>True</td>
-          </tr>
-        </table>
+        <div class="part-head">
+          <h2>6. Conditional Statements (p → q)</h2>
+        </div>
+
+        <!-- Interactive Truth Evaluator Widget -->
+        <div class="type-card" style="margin-bottom: 18px;">
+          <span class="dept-tag">Try It: Pick Any Combo</span>
+          <h4 style="margin-bottom: 8px;">"If p, then q" — is it true?</h4>
+          <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 8px;">
+            <label style="font-size: 0.9rem;">
+              If (p) is:
+              <select id="pVal" onchange="calcTruth()" style="background: var(--bg); color: var(--ink); border: 1px solid var(--rule); padding: 4px 8px; border-radius: 4px;">
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </label>
+
+            <label style="font-size: 0.9rem;">
+              then (q) is:
+              <select id="qVal" onchange="calcTruth()" style="background: var(--bg); color: var(--ink); border: 1px solid var(--rule); padding: 4px 8px; border-radius: 4px;">
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </label>
+
+            <div style="font-weight: 700; font-size: 1rem;">
+              Statement is: <span id="pqResult" style="color: var(--card-accent);">True</span>
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size: 0.9rem; color: var(--ink-secondary); margin-bottom: 10px;">
+          The whole statement is only <strong>false</strong> in one situation: when p is true but q turns out false — that's the only way a promise gets broken. Every other combination counts as true.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>p</th>
+                <th>q</th>
+                <th>p → q</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>True</td><td>True</td><td><strong>True</strong></td></tr>
+              <tr><td>False</td><td>True</td><td><strong>True</strong></td></tr>
+              <tr><td>True</td><td>False</td><td><strong style="color:#ef4444;">False</strong> (the only false row!)</td></tr>
+              <tr><td>False</td><td>False</td><td><strong>True</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
+      <!-- Section 7: Reference Matrix Table -->
       <section id="formulasall">
-        <h2>7. Comprehensive Formulas Reference Table</h2>
+        <div class="part-head">
+          <h2>7. Quick Reference Formula Matrix</h2>
+        </div>
         <div class="table-wrapper">
           <table>
             <thead>
               <tr>
                 <th>Concept</th>
-                <th>Formula / Value</th>
-                <th>Explanation</th>
+                <th>Formula</th>
+                <th>Plain-language reminder</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Diagonals from 1 Vertex</td>
+                <td>Diagonals (1 corner)</td>
                 <td><code>s - 3</code></td>
-                <td>Cannot connect to itself or its two adjacent vertices.</td>
+                <td>Skip yourself + your 2 neighbors</td>
               </tr>
               <tr>
                 <td>Total Diagonals (d)</td>
                 <td><code>d = [s(s - 3)] / 2</code></td>
-                <td>Counts all unique diagonal segments across every vertex.</td>
+                <td>Every non-adjacent pair, no double-counting</td>
               </tr>
               <tr>
-                <td>Sum of Interior Angles (S<sub>i</sub>)</td>
+                <td>Interior Angle Sum</td>
                 <td><code>S<sub>i</sub> = (s - 2) × 180°</code></td>
-                <td>Based on partitioning the interior into (s - 2) triangles.</td>
+                <td>(s − 2) triangles fit inside</td>
               </tr>
               <tr>
-                <td>Each Interior Angle (Regular)</td>
+                <td>One Interior ∠</td>
                 <td><code>m∠<sub>i</sub> = [(s - 2) × 180°] / s</code></td>
-                <td>Equal division of total interior angle sum over all sides.</td>
+                <td>Regular shapes only — split the sum evenly</td>
               </tr>
               <tr>
-                <td>Sum of Exterior Angles</td>
+                <td>Exterior Angle Sum</td>
                 <td><code>360°</code></td>
-                <td>Always constant regardless of polygon shape or side count.</td>
+                <td>One full trip around, always</td>
               </tr>
               <tr>
-                <td>Each Exterior Angle (Regular)</td>
+                <td>One Exterior ∠</td>
                 <td><code>m∠<sub>e</sub> = 360° / s</code></td>
-                <td>Equal division of full 360° rotation by number of sides.</td>
+                <td>Regular shapes only</td>
               </tr>
               <tr>
-                <td>Area of Regular Polygon</td>
+                <td>Regular Area</td>
                 <td><code>Area = 1/2 × a × n × s</code></td>
-                <td>a = apothem, n = number of sides, s = side length.</td>
+                <td>a = apothem, n = sides, s = side length</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
+      <!-- Interactive Polygon Canvas Explorer -->
       <div id="interactive" class="interactive-card">
-        <h2>Interactive Polygon Explorer</h2>
-        <p>Adjust the slider below to change the number of sides (s) and see how polygon properties scale dynamically in real time!</p>
+        <h2>8. Interactive Polygon Explorer</h2>
+        <p style="font-size: 0.9rem; color: var(--ink-secondary);">Slide to change the number of sides and watch every value update live.</p>
+
+        <!-- Live SVG Canvas Renderer -->
+        <div style="text-align: center; margin: 16px 0;">
+          <svg id="polygonSvg" width="180" height="180" style="overflow: visible;"></svg>
+        </div>
 
         <div class="slider-container">
-          <label for="sideSlider"><strong>Number of Sides (s): <span id="sideDisplay">8</span> (<span id="polygonName">Octagon</span>)</strong></label>
+          <label for="sideSlider"><strong>Sides (s): <span id="sideDisplay">8</span> (<span id="polygonName">Octagon</span>)</strong></label>
           <input type="range" id="sideSlider" min="3" max="20" value="8" oninput="updatePolygon(this.value)">
         </div>
 
@@ -203,49 +299,70 @@
             <div id="valIntSum" class="stat-value">1080°</div>
           </div>
           <div class="stat-box">
-            <div>Each Interior ∠ (Regular)</div>
+            <div>Each Interior ∠</div>
             <div id="valIntSingle" class="stat-value">135°</div>
           </div>
           <div class="stat-box">
-            <div>Each Exterior ∠ (Regular)</div>
+            <div>Each Exterior ∠</div>
             <div id="valExtSingle" class="stat-value">45°</div>
           </div>
         </div>
       </div>
 
-      <div class="test-cta">
-  <h3>Done learning?</h3>
-  <a href="../../subject-tests/Math/Polygon-angles.html" class="btn-test">
-    Take the test →
-  </a>
-</div>
-
     </main>
   </div>
 
-<script src="../../assets/js/streak.js" defer></script>
+  <footer class="page-footer">MATH: Geometry Reviewer · Polygon Properties &amp; Logic Review Hub</footer>
 
-  <script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-        
+  <script src="../../assets/js/streak.js" defer></script>
+  <script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
   <script>
-    function toggleTheme() {
-      const body = document.body;
-      const currentTheme = body.getAttribute("data-theme");
+    /* ---------- Theme Toggle ---------- */
+    const themeToggleBtn = document.getElementById("themeToggle");
+    themeToggleBtn.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
       if (currentTheme === "light") {
-        body.removeAttribute("data-theme");
+        document.documentElement.removeAttribute("data-theme");
+        themeToggleBtn.textContent = "Toggle Light Mode";
       } else {
-        body.setAttribute("data-theme", "light");
+        document.documentElement.setAttribute("data-theme", "light");
+        themeToggleBtn.textContent = "Toggle Dark Mode";
       }
+    });
+
+    /* ---------- Logic Evaluator ---------- */
+    function calcTruth() {
+      const p = document.getElementById("pVal").value === "true";
+      const q = document.getElementById("qVal").value === "true";
+      const result = !p || q;
+      const resEl = document.getElementById("pqResult");
+      resEl.innerText = result ? "True" : "False";
+      resEl.style.color = result ? "var(--card-accent)" : "#ef4444";
     }
 
+    /* ---------- Interactive SVG Polygon Renderer ---------- */
     const polygonNames = {
       3: "Triangle", 4: "Quadrilateral", 5: "Pentagon", 6: "Hexagon",
       7: "Heptagon", 8: "Octagon", 9: "Nonagon", 10: "Decagon",
-      11: "Hendecagon", 12: "Dodecagon", 13: "Tridecagon or 13-gon", 14: "Tetradecagon or 14-gon",
-      15: "Pentadecagon or 15-gon", 16: "Hexadecagon or 16-gon", 17: "Heptadecagon or 17-gon", 18: "Octadecagon or 18-gon",
-      19: "Enneadecagon or 19-gon", 20: "Icosagon or 20-gon"
+      11: "Hendecagon", 12: "Dodecagon", 13: "Tridecagon", 14: "Tetradecagon",
+      15: "Pentadecagon", 16: "Hexadecagon", 17: "Heptadecagon", 18: "Octadecagon",
+      19: "Enneadecagon", 20: "Icosagon"
     };
+
+    function drawPolygon(sides) {
+      const svg = document.getElementById("polygonSvg");
+      if (!svg) return;
+      svg.innerHTML = "";
+      const r = 70, cx = 90, cy = 90, points = [];
+      for (let i = 0; i < sides; i++) {
+        const angle = (i * 2 * Math.PI / sides) - Math.PI / 2;
+        const x = cx + r * Math.cos(angle);
+        const y = cy + r * Math.sin(angle);
+        points.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+      }
+      svg.innerHTML = `<polygon points="${points.join(' ')}" fill="rgba(251, 191, 36, 0.18)" stroke="var(--card-accent)" stroke-width="2.5"/>`;
+    }
 
     function updatePolygon(sides) {
       const s = parseInt(sides);
@@ -261,8 +378,12 @@
       document.getElementById("valIntSum").innerText = `${intSum}°`;
       document.getElementById("valIntSingle").innerText = `${intSingle.replace('.0', '')}°`;
       document.getElementById("valExtSingle").innerText = `${extSingle.replace('.0', '')}°`;
-    }
-  </script>
 
+      drawPolygon(s);
+    }
+
+    // Initial render call
+    drawPolygon(8);
+  </script>
 </body>
 </html>
