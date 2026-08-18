@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MATH · Polygons & Conditional Statements MSA Reviewer</title>
+  <link rel="stylesheet" href="../../studyguide-subjects/MATH/Polygons.css">
+  <link rel="stylesheet" href="../../assets/streak-counter.css">
+
+  <style>
+    /* GLOBAL RESETS TO PREVENT MOBILE OVERFLOW */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    :root {
+      --card-accent: #eab308;
+      --card-accent-strong: #ca8a04;
+      --blue-gradient: linear-gradient(135deg, rgba(234, 179, 8, 0.22) 0%, rgba(202, 138, 4, 0.1) 100%);
+      --blue-bg-light: rgba(234, 179, 8, 0.15);
+      --blue-border: rgba(234, 179, 8, 0.4);
+      --rule: #38331a;
+      --bg-raised: #222014;
+      --bg: #14130c;
+      --ink: #fefce8;
+      --ink-secondary: #a39e82;
+      --shadow: rgba(0, 0, 0, 0.45);
+      --radius: 14px;
+      --text-unanswered: #ef4444;
+    }
+
+    body[data-theme="light"] {
+      --bg-raised: #ffffff;
+      --bg: #fefce8;
+      --ink: #1c1917;
+      --ink-secondary: #716a5c;
+      --rule: #e5d8b0;
+      --shadow: rgba(30, 25, 0, 0.08);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: var(--bg-raised);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .top-bar a {
+      color: var(--card-accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .top-bar .title {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .hero .eyebrow {
+      color: var(--card-accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    .hero .subtitle {
+      color: var(--ink-secondary);
+      font-size: 0.98rem;
+      margin: 0 auto;
+      max-width: 650px;
+    }
+
+    /* WIZARD PROGRESS BAR */
+    .wizard-progress-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background: var(--rule);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #eab308, #f59e0b);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px rgba(234, 179, 8, 0.5);
+    }
+
+    /* TWO-COLUMN LAYOUT */
+    .wizard-layout {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .wizard-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .wizard-sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 20px;
+    }
+
+    /* QUIZ CARD FORMATTING */
+    .quiz-container {
+      position: relative;
+      min-height: 280px;
+    }
+
+    .quiz-item {
+      display: none;
+      background: var(--bg-raised);
+      border: 1px solid var(--rule);
+      border-left: 5px solid var(--card-accent);
+      border-radius: var(--radius);
+      padding: 24px 24px 24px 28px;
+      box-shadow: 0 6px 18px var(--shadow);
+      position: relative;
+      animation: fadeIn 0.25s ease-in-out forwards;
+    }
+
+    .quiz-item.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .category-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      background: var(--blue-bg-light);
+      border: 1px solid var(--blue-border);
+      color: var(--card-accent);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .question {
+      font-size: 1.08rem;
+      font-weight: 700;
+      line-height: 1.45;
+      margin-bottom: 18px;
+      color: var(--ink);
+      display: block;
+    }
+
+    .options {
+      list-style-type: upper-alpha;
+      padding-left: 22px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .options li {
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      background: var(--bg);
+    }
+
+    .options li:hover {
+      border-color: var(--card-accent);
+      background: var(--blue-bg-light);
+      color: var(--card-accent);
+      transform: translateX(3px);
+    }
+
+    .options li.selected {
+      background: var(--card-accent) !important;
+      border-color: var(--card-accent-strong) !important;
+      color: #14130c !important;
+      font-weight: 600;
+      box-shadow: 0 0 12px rgba(234, 179, 8, 0.4);
+    }
+
+    .option-btn {
+      background: transparent;
+      border: none;
+      color: inherit;
+      padding: 12px 10px;
+      border-radius: inherit;
+      cursor: inherit;
+      font-size: 0.96rem;
+      text-align: left;
+      width: 100%;
+      line-height: 1.4;
+    }
+
+    /* QUESTION GRID NAVIGATOR SIDEBAR */
+    .question-grid-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .grid-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+
+    .question-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .q-grid-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+      background: var(--bg);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .q-grid-btn:hover {
+      border-color: var(--card-accent);
+      color: var(--card-accent);
+      transform: translateY(-1px);
+    }
+
+    .q-grid-btn.answered-q {
+      border-color: var(--blue-border);
+      background: var(--blue-bg-light);
+      color: var(--card-accent);
+    }
+
+    .q-grid-btn.active-q {
+      border-color: var(--card-accent) !important;
+      background: var(--card-accent) !important;
+      color: #14130c !important;
+      box-shadow: 0 0 8px rgba(234, 179, 8, 0.5);
+    }
+
+    /* WIZARD NAVIGATION FOOTER */
+    .wizard-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .nav-btn {
+      background-color: var(--card-accent);
+      border: none;
+      color: #14130c;
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background-color: var(--card-accent-strong);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.secondary {
+      background-color: transparent;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    .nav-btn.secondary:hover:not(:disabled) {
+      background-color: var(--bg-raised);
+      border-color: var(--card-accent);
+      color: var(--card-accent);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    /* REVIEW & RESULT PANEL */
+    .result-panel {
+      text-align: center;
+      margin: 24px 0;
+      display: none;
+      background: var(--blue-gradient);
+      border: 2px solid var(--card-accent);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 6px 20px var(--shadow);
+    }
+
+    .score-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .score-message {
+      color: var(--ink-secondary);
+      margin-bottom: 0;
+    }
+
+    .answer-review {
+      display: none;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule);
+      color: var(--ink-secondary);
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+
+    .answer-review strong {
+      color: var(--ink);
+    }
+
+    .quiz-item.review-mode {
+      display: block !important;
+      margin-bottom: 20px;
+    }
+
+    .quiz-item.correct {
+      border-left-color: #22c55e;
+    }
+
+    .quiz-item.incorrect {
+      border-left-color: #ef4444;
+    }
+
+    .options li.correct-answer {
+      background: rgba(34, 197, 94, 0.16) !important;
+      color: var(--ink) !important;
+      border: 1px solid rgba(34, 197, 94, 0.45) !important;
+    }
+
+    .options li.incorrect-answer {
+      background: rgba(239, 68, 68, 0.14) !important;
+      color: var(--ink) !important;
+      border: 1px solid rgba(239, 68, 68, 0.35) !important;
+    }
+
+    .answer-badge {
+      display: inline-block;
+      margin-left: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .retake-container {
+      margin-top: 18px;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.88rem;
+      color: var(--ink-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .wizard-layout {
+        flex-direction: column;
+      }
+      
+      .wizard-sidebar {
+        width: 100%;
+        position: static;
+      }
+
+      .top-bar {
+        padding: 10px 14px;
+        gap: 8px;
+      }
+
+      .top-bar .title {
+        font-size: 0.9rem;
+      }
+
+      .quiz-item {
+        padding: 16px;
+      }
+
+      .wizard-nav {
+        flex-direction: column;
+      }
+
+      .nav-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+<link rel="icon" type="image/png" href="https://jhs-studyguide.github.io/JHS-StudyGuide/favicon.png">
+</head>
+
+<body data-theme="dark">
+
+<header class="top-bar">
+  <a href="../../index.html">← Back to Main Hub</a>
+  <span class="title">MATH · Polygons & Conditional Statements</span>
+
+  <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+    <span class="streak-emoji" id="streak-emoji">🔥</span>
+    <span class="streak-count" id="streak-count">0</span>
+    <span class="streak-label">Streak</span>
+  </div>
+
+  <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+</header>
+
+<div class="container">
+
+  <main class="content" id="quiz-start">
+
+    <header class="hero">
+      <div class="eyebrow">MATH · MSA Reviewer</div>
+      <h1>Polygons & Conditional Statements MSA Reviewer</h1>
+      <p class="subtitle">
+        Polygon Convexity, Angles, and Sides, Number of Diagonals in a Polygon, Interior & Exterior Angle Relationships, 
+        Hypothesis/Conclusion & If–Then Statements, Converse, Inverse & Contrapositive, Truth Values & Logical Equivalences and Inductive Reasoning
+      </p>
+    </header>
+
+    <!-- WIZARD PROGRESS TRACKER -->
+    <div class="wizard-progress-card" id="progressCard">
+      <div class="progress-meta">
+        <span id="progressText">Question 1 of 25</span>
+        <span id="progressPercent">4%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- TWO-COLUMN LAYOUT -->
+    <div class="wizard-layout">
+      
+      <!-- LEFT COLUMN: Main Quiz Card & Navigation -->
+      <div class="wizard-main">
+        <div class="quiz-container" id="quizContainer">
+
+          <!-- QUESTION 1 (Correct: B) -->
+          <div class="quiz-item active" data-type="mcq" data-answer="Convex Polygon">
+            <span class="category-pill">Polygon Properties</span>
+            <span class="question">A polygon in which every interior angle measures less than or equal to 180°, ensuring that all diagonals remain inside the figure, is classified as a:</span>
+            <ul class="options">
+              <li><button class="option-btn">Concave Polygon</button></li>
+              <li><button class="option-btn">Convex Polygon</button></li>
+              <li><button class="option-btn">Irregular Polygon</button></li>
+              <li><button class="option-btn">Complex Polygon</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 2 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Regular Polygon">
+            <span class="category-pill">Polygon Properties</span>
+            <span class="question">Which term describes a convex polygon that is both equilateral (all sides equal) and equiangular (all angles equal)?</span>
+            <ul class="options">
+              <li><button class="option-btn">Concave Polygon</button></li>
+              <li><button class="option-btn">Regular Polygon</button></li>
+              <li><button class="option-btn">Irregular Polygon</button></li>
+              <li><button class="option-btn">Complex Polygon</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 3 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="d = [s(s - 3)] / 2">
+            <span class="category-pill">Polygon Diagonals</span>
+            <span class="question">Which algebraic formula accurately calculates the total number of diagonals (d) in a convex polygon with s sides?</span>
+            <ul class="options">
+              <li><button class="option-btn">d = s(s - 3)</button></li>
+              <li><button class="option-btn">d = [s(s - 3)] / 2</button></li>
+              <li><button class="option-btn">d = (s - 2) * 180°</button></li>
+              <li><button class="option-btn">d = 360° / s</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 4 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="35">
+            <span class="category-pill">Polygon Diagonals</span>
+            <span class="question">How many total diagonals can be drawn inside a convex decagon (10-sided polygon)?</span>
+            <ul class="options">
+              <li><button class="option-btn">35</button></li>
+              <li><button class="option-btn">70</button></li>
+              <li><button class="option-btn">20</button></li>
+              <li><button class="option-btn">30</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 5 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="8">
+            <span class="category-pill">Polygon Diagonals</span>
+            <span class="question">If a convex polygon has exactly 20 total diagonals, how many sides does it have?</span>
+            <ul class="options">
+              <li><button class="option-btn">6</button></li>
+              <li><button class="option-btn">8</button></li>
+              <li><button class="option-btn">10</button></li>
+              <li><button class="option-btn">12</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 6 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="5">
+            <span class="category-pill">Polygon Diagonals</span>
+            <span class="question">How many diagonals can be drawn from a single vertex of a convex octagon (8 sides)?</span>
+            <ul class="options">
+              <li><button class="option-btn">8</button></li>
+              <li><button class="option-btn">5</button></li>
+              <li><button class="option-btn">6</button></li>
+              <li><button class="option-btn">20</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 7 (Correct: C) -->
+          <div class="quiz-item" data-type="mcq" data-answer="720°">
+            <span class="category-pill">Interior Angles</span>
+            <span class="question">What is the sum of the interior angles of a convex hexagon (6 sides)?</span>
+            <ul class="options">
+              <li><button class="option-btn">540°</button></li>
+              <li><button class="option-btn">1080°</button></li>
+              <li><button class="option-btn">720°</button></li>
+              <li><button class="option-btn">360°</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 8 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="135°">
+            <span class="category-pill">Interior Angles</span>
+            <span class="question">What is the measure of a single interior angle of a regular octagon (8 sides)?</span>
+            <ul class="options">
+              <li><button class="option-btn">108°</button></li>
+              <li><button class="option-btn">135°</button></li>
+              <li><button class="option-btn">140°</button></li>
+              <li><button class="option-btn">120°</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 9 (Correct: C) -->
+          <div class="quiz-item" data-type="mcq" data-answer="180°">
+            <span class="category-pill">Interior &amp; Exterior Angles</span>
+            <span class="question">At any vertex of a convex polygon, an interior angle and its adjacent exterior angle form a linear pair. What is the sum of their measures?</span>
+            <ul class="options">
+              <li><button class="option-btn">90°</button></li>
+              <li><button class="option-btn">360°</button></li>
+              <li><button class="option-btn">180°</button></li>
+              <li><button class="option-btn">270°</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 10 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="360°">
+            <span class="category-pill">Exterior Angles</span>
+            <span class="question">What is the sum of the exterior angles (one at each vertex) of ANY convex polygon, regardless of its number of sides?</span>
+            <ul class="options">
+              <li><button class="option-btn">180°</button></li>
+              <li><button class="option-btn">360°</button></li>
+              <li><button class="option-btn">(s - 2) * 180°</button></li>
+              <li><button class="option-btn">540°</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 11 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="9">
+            <span class="category-pill">Exterior Angles</span>
+            <span class="question">If each exterior angle of a regular polygon measures 40°, how many sides does the polygon have?</span>
+            <ul class="options">
+              <li><button class="option-btn">8</button></li>
+              <li><button class="option-btn">9</button></li>
+              <li><button class="option-btn">10</button></li>
+              <li><button class="option-btn">12</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 12 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Exterior = 36°, Sides = 10">
+            <span class="category-pill">Interior &amp; Exterior Angles</span>
+            <span class="question">If one interior angle of a regular polygon is 144°, what is the measure of its exterior angle, and how many sides does the polygon have?</span>
+            <ul class="options">
+              <li><button class="option-btn">Exterior = 36°, Sides = 10</button></li>
+              <li><button class="option-btn">Exterior = 44°, Sides = 8</button></li>
+              <li><button class="option-btn">Exterior = 54°, Sides = 12</button></li>
+              <li><button class="option-btn">Exterior = 36°, Sides = 12</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 13 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Two angles are vertical">
+            <span class="category-pill">Conditional Statements</span>
+            <span class="question">In the conditional statement "If two angles are vertical, then they are congruent", what is the hypothesis (p)?</span>
+            <ul class="options">
+              <li><button class="option-btn">Two angles are vertical</button></li>
+              <li><button class="option-btn">They are congruent</button></li>
+              <li><button class="option-btn">Two angles are not vertical</button></li>
+              <li><button class="option-btn">Vertical angles are not congruent</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 14 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="If a triangle is equilateral, then it is equiangular.">
+            <span class="category-pill">Conditional Statements</span>
+            <span class="question">Which option correctly transforms the statement "All equilateral triangles are equiangular" into an if–then statement?</span>
+            <ul class="options">
+              <li><button class="option-btn">If a triangle is equilateral, then it is equiangular.</button></li>
+              <li><button class="option-btn">If a triangle is equiangular, then it is equilateral.</button></li>
+              <li><button class="option-btn">A triangle is equilateral if and only if it is equiangular.</button></li>
+              <li><button class="option-btn">If a triangle is not equilateral, then it is not equiangular.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 15 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="If the ground is wet, then it is raining.">
+            <span class="category-pill">Converse</span>
+            <span class="question">What is the converse (q → p) of the conditional statement: "If it is raining, then the ground is wet"?</span>
+            <ul class="options">
+              <li><button class="option-btn">If the ground is wet, then it is raining.</button></li>
+              <li><button class="option-btn">If it is not raining, then the ground is not wet.</button></li>
+              <li><button class="option-btn">If the ground is not wet, then it is not raining.</button></li>
+              <li><button class="option-btn">If it is raining, then the ground is not wet.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 16 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="If a number is not even, then it is not divisible by 2.">
+            <span class="category-pill">Inverse</span>
+            <span class="question">What is the inverse (~p → ~q) of the statement: "If a number is even, then it is divisible by 2"?</span>
+            <ul class="options">
+              <li><button class="option-btn">If a number is not even, then it is not divisible by 2.</button></li>
+              <li><button class="option-btn">If a number is divisible by 2, then it is even.</button></li>
+              <li><button class="option-btn">If a number is not divisible by 2, then it is not even.</button></li>
+              <li><button class="option-btn">If a number is even, then it is not divisible by 2.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 17 (Correct: C) -->
+          <div class="quiz-item" data-type="mcq" data-answer="~q → ~p">
+            <span class="category-pill">Contrapositive</span>
+            <span class="question">Given the original conditional statement p → q, which symbolic form represents its contrapositive?</span>
+            <ul class="options">
+              <li><button class="option-btn">q → p</button></li>
+              <li><button class="option-btn">~p → ~q</button></li>
+              <li><button class="option-btn">~q → ~p</button></li>
+              <li><button class="option-btn">~p → q</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 18 (Correct: C) -->
+          <div class="quiz-item" data-type="mcq" data-answer="If an angle is not a right angle, then its measure is not 90°.">
+            <span class="category-pill">Contrapositive</span>
+            <span class="question">What is the contrapositive (~q → ~p) of the statement: "If an angle is 90°, then it is a right angle"?</span>
+            <ul class="options">
+              <li><button class="option-btn">If an angle is a right angle, then it is 90°.</button></li>
+              <li><button class="option-btn">If an angle is not 90°, then it is not a right angle.</button></li>
+              <li><button class="option-btn">If an angle is not a right angle, then its measure is not 90°.</button></li>
+              <li><button class="option-btn">An angle is 90° if and only if it is a right angle.</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 19 (Correct: C) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Contrapositive (~q → ~p)">
+            <span class="category-pill">Logical Equivalence</span>
+            <span class="question">Which related statement always shares the exact same truth value as the original conditional statement (p → q)?</span>
+            <ul class="options">
+              <li><button class="option-btn">Converse (q → p)</button></li>
+              <li><button class="option-btn">Inverse (~p → ~q)</button></li>
+              <li><button class="option-btn">Contrapositive (~q → ~p)</button></li>
+              <li><button class="option-btn">Biconditional (p ↔ q)</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 20 (Correct: C) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Converse and Inverse">
+            <span class="category-pill">Logical Equivalence</span>
+            <span class="question">Which pair of statements are logically equivalent to each other, always sharing the same truth value?</span>
+            <ul class="options">
+              <li><button class="option-btn">Conditional and Converse</button></li>
+              <li><button class="option-btn">Inverse and Contrapositive</button></li>
+              <li><button class="option-btn">Converse and Inverse</button></li>
+              <li><button class="option-btn">Conditional and Inverse</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 21 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="When p is True and q is False">
+            <span class="category-pill">Truth Values</span>
+            <span class="question">Under what single combination of truth values is a conditional statement p → q FALSE?</span>
+            <ul class="options">
+              <li><button class="option-btn">When p is False and q is True</button></li>
+              <li><button class="option-btn">When p is True and q is False</button></li>
+              <li><button class="option-btn">When p is False and q is False</button></li>
+              <li><button class="option-btn">When both p and q are True</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 22 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="False">
+            <span class="category-pill">Truth Values</span>
+            <span class="question">Consider the TRUE conditional statement: "If a shape is a square, then it is a rectangle." What is the truth value of its converse ("If a shape is a rectangle, then it is a square")?</span>
+            <ul class="options">
+              <li><button class="option-btn">True</button></li>
+              <li><button class="option-btn">False</button></li>
+              <li><button class="option-btn">Logically Equivalent</button></li>
+              <li><button class="option-btn">Undetermined</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 23 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="It must be True">
+            <span class="category-pill">Truth Values</span>
+            <span class="question">If a conditional statement p → q is proven to be TRUE, what can be definitively concluded about the truth value of its contrapositive (~q → ~p)?</span>
+            <ul class="options">
+              <li><button class="option-btn">It must be False</button></li>
+              <li><button class="option-btn">It must be True</button></li>
+              <li><button class="option-btn">It depends on the converse</button></li>
+              <li><button class="option-btn">It cannot be determined</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 24 (Correct: A) -->
+          <div class="quiz-item" data-type="mcq" data-answer="It must be True">
+            <span class="category-pill">Truth Values</span>
+            <span class="question">If the inverse (~p → ~q) of a conditional statement is TRUE, what must be the truth value of its converse (q → p)?</span>
+            <ul class="options">
+              <li><button class="option-btn">It must be True</button></li>
+              <li><button class="option-btn">It must be False</button></li>
+              <li><button class="option-btn">It could be True or False</button></li>
+              <li><button class="option-btn">It cannot be determined</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+          <!-- QUESTION 25 (Correct: B) -->
+          <div class="quiz-item" data-type="mcq" data-answer="Inductive Reasoning">
+            <span class="category-pill">Reasoning Modes</span>
+            <span class="question">Arriving at a general conclusion or unproven conjecture by observing specific patterns and examples is known as:</span>
+            <ul class="options">
+              <li><button class="option-btn">Deductive Reasoning</button></li>
+              <li><button class="option-btn">Inductive Reasoning</button></li>
+              <li><button class="option-btn">Contrapositive Proof</button></li>
+              <li><button class="option-btn">Direct Inference</button></li>
+            </ul>
+            <div class="answer-review"></div>
+          </div>
+
+        </div>
+
+        <!-- WIZARD NAVIGATION CONTROLS -->
+        <div class="wizard-nav" id="wizardNav">
+          <button class="nav-btn secondary" id="prevBtn" type="button" disabled>← Previous</button>
+          <button class="nav-btn" id="nextBtn" type="button">Next →</button>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Question Grid Sidebar -->
+      <aside class="wizard-sidebar">
+        <div class="question-grid-card" id="questionGridCard">
+          <div class="grid-label">Jump to Question:</div>
+          <div class="question-grid" id="questionGrid"></div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- RESULT & REVIEW PANEL -->
+    <div class="result-panel" id="resultPanel">
+      <div class="score-text" id="scoreText">Your Score: 0/25</div>
+      <p class="score-message">Great job completing the Polygons &amp; Conditional Statements unit test! Review your full answers below.</p>
+      <div class="retake-container">
+        <button class="nav-btn" id="retakeBtn" type="button">Retake Quiz</button>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      Use the Next, Previous, or Question Grid controls to navigate through all questions.
+    </div>
+  </main>
+</div>
+
+<script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="../../assets/js/streak.js" defer></script>
+
+<script>
+  const quizContainer = document.getElementById("quizContainer");
+  const resultPanel = document.getElementById("resultPanel");
+  const scoreText = document.getElementById("scoreText");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const retakeBtn = document.getElementById("retakeBtn");
+  const themeToggle = document.getElementById("themeToggle");
+  const progressCard = document.getElementById("progressCard");
+  const progressText = document.getElementById("progressText");
+  const progressPercent = document.getElementById("progressPercent");
+  const progressFill = document.getElementById("progressFill");
+
+  let currentQuestionIndex = 0;
+  let questions = [];
+
+  function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.getAttribute("data-theme");
+
+    if (currentTheme === "light") {
+      body.removeAttribute("data-theme");
+      themeToggle.textContent = "Toggle Light Mode";
+    } else {
+      body.setAttribute("data-theme", "light");
+      themeToggle.textContent = "Toggle Dark Mode";
+    }
+  }
+
+  themeToggle.addEventListener("click", toggleTheme);
+
+  // Render the numbers grid dynamically
+  function renderQuestionGrid() {
+    const grid = document.getElementById("questionGrid");
+    grid.innerHTML = "";
+
+    questions.forEach((_, idx) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "q-grid-btn";
+      btn.textContent = idx + 1;
+      btn.addEventListener("click", () => {
+        currentQuestionIndex = idx;
+        updateWizardUI();
+      });
+      grid.appendChild(btn);
+    });
+  }
+
+  function updateWizardUI() {
+    questions.forEach((q, idx) => {
+      if (idx === currentQuestionIndex) {
+        q.classList.add("active");
+      } else {
+        q.classList.remove("active");
+      }
+    });
+
+    const total = questions.length;
+    const currentNum = currentQuestionIndex + 1;
+    const percentage = Math.round((currentNum / total) * 100);
+
+    progressText.textContent = `Question ${currentNum} of ${total}`;
+    progressPercent.textContent = `${percentage}%`;
+    progressFill.style.width = `${percentage}%`;
+
+    prevBtn.disabled = (currentQuestionIndex === 0);
+
+    if (currentQuestionIndex === total - 1) {
+      nextBtn.textContent = "Submit Answers ✓";
+    } else {
+      nextBtn.textContent = "Next →";
+    }
+
+    // Update visual state of number buttons
+    const gridBtns = document.querySelectorAll(".q-grid-btn");
+    gridBtns.forEach((btn, idx) => {
+      btn.classList.remove("active-q", "answered-q");
+
+      const item = questions[idx];
+      const isAnswered = !!item.querySelector(".options li.selected");
+
+      if (isAnswered) btn.classList.add("answered-q");
+      if (idx === currentQuestionIndex) btn.classList.add("active-q");
+    });
+  }
+
+  function nextQuestion() {
+    if (currentQuestionIndex < questions.length - 1) {
+      currentQuestionIndex++;
+      updateWizardUI();
+    } else {
+      calculateScore();
+    }
+  }
+
+  function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+      currentQuestionIndex--;
+      updateWizardUI();
+    }
+  }
+
+  // EVENT DELEGATION FOR MCQ SELECTION
+  quizContainer.addEventListener("click", event => {
+    if (resultPanel.style.display === "block") return;
+
+    let li = event.target.closest("li");
+    if (!li || !li.parentElement || !li.parentElement.classList.contains("options")) return;
+
+    const quizItem = li.closest(".quiz-item");
+
+    quizItem.querySelectorAll(".options li").forEach(option => {
+      option.classList.remove("selected");
+    });
+
+    li.classList.add("selected");
+    quizItem.style.borderColor = "var(--rule)";
+    updateWizardUI(); // Refresh number grid states
+  });
+
+  function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function decodeHtml(html) {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value.trim();
+  }
+
+  function calculateScore() {
+    // PASS 1: Validate completeness without altering DOM answers
+    let firstUnansweredIndex = -1;
+
+    questions.forEach((item, idx) => {
+      const selectedLi = item.querySelector(".options li.selected");
+      if (!selectedLi) {
+        item.style.borderColor = "var(--text-unanswered)";
+        if (firstUnansweredIndex === -1) firstUnansweredIndex = idx;
+      } else {
+        item.style.borderColor = "var(--rule)";
+      }
+    });
+
+    // Stop immediately if any question is missing
+    if (firstUnansweredIndex !== -1) {
+      alert("Please answer all multiple-choice questions before submitting.");
+      currentQuestionIndex = firstUnansweredIndex;
+      updateWizardUI();
+      return;
+    }
+
+    // PASS 2: Score and reveal answers (only executes if 100% complete)
+    let score = 0;
+    const totalQuestions = questions.length;
+
+    questions.forEach(item => {
+      const review = item.querySelector(".answer-review");
+      item.classList.remove("correct", "incorrect");
+
+      const selectedLi = item.querySelector(".options li.selected");
+      const selectedButton = selectedLi.querySelector(".option-btn");
+      const selectedText = decodeHtml(selectedButton.textContent);
+      const correctAnswer = decodeHtml(item.getAttribute("data-answer") || "");
+
+      item.querySelectorAll(".options li").forEach(option => {
+        option.classList.remove("correct-answer", "incorrect-answer");
+        const badge = option.querySelector(".answer-badge");
+        if (badge) badge.remove();
+      });
+
+      item.querySelectorAll(".options li").forEach(option => {
+        const button = option.querySelector(".option-btn");
+        if (!button) return;
+
+        const optionText = decodeHtml(button.textContent);
+
+        if (optionText === correctAnswer) {
+          option.classList.add("correct-answer");
+          const badge = document.createElement("span");
+          badge.className = "answer-badge";
+          badge.textContent = "✓ Correct answer";
+          button.appendChild(badge);
+        }
+
+        if (option === selectedLi && selectedText !== correctAnswer) {
+          option.classList.add("incorrect-answer");
+          const badge = document.createElement("span");
+          badge.className = "answer-badge";
+          badge.textContent = "✗ Your answer";
+          button.appendChild(badge);
+        }
+      });
+
+      if (selectedText === correctAnswer) {
+        score++;
+        item.classList.add("correct");
+        review.innerHTML = "<strong>Correct.</strong> You selected the right answer.";
+      } else {
+        item.classList.add("incorrect");
+        review.innerHTML = `<strong>Correct answer:</strong> ${escapeHtml(correctAnswer)}`;
+      }
+      review.style.display = "block";
+    });
+
+    // Display results and switch view to review mode
+    progressCard.style.display = "none";
+    document.getElementById("wizardNav").style.display = "none";
+    document.getElementById("questionGridCard").style.display = "none";
+
+    questions.forEach(q => {
+      q.classList.remove("active");
+      q.classList.add("review-mode");
+    });
+
+    scoreText.textContent = `Your Score: ${score}/${totalQuestions}`;
+    resultPanel.style.display = "block";
+
+    resultPanel.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    if (typeof StreakManager !== "undefined") {
+      StreakManager.recordTestCompletion(
+        "MATH Polygons & Conditional Statements Unit Test",
+        score / totalQuestions
+      );
+    }
+  }
+
+  function retakeQuiz() {
+    document.getElementById("questionGridCard").style.display = "block";
+    progressCard.style.display = "block";
+    document.getElementById("wizardNav").style.display = "flex";
+    resultPanel.style.display = "none";
+
+    // Reset MCQs
+    quizContainer.querySelectorAll(".options li.selected")
+      .forEach(option => option.classList.remove("selected"));
+
+    questions.forEach(item => {
+      item.style.borderColor = "var(--rule)";
+      item.classList.remove("correct", "incorrect", "review-mode");
+
+      const review = item.querySelector(".answer-review");
+      if (review) {
+        review.style.display = "none";
+        review.innerHTML = "";
+      }
+
+      item.querySelectorAll(".options li").forEach(option => {
+        option.classList.remove("correct-answer", "incorrect-answer");
+        const badge = option.querySelector(".answer-badge");
+        if (badge) badge.remove();
+      });
+    });
+
+    currentQuestionIndex = 0;
+    updateWizardUI();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  nextBtn.addEventListener("click", nextQuestion);
+  prevBtn.addEventListener("click", prevQuestion);
+  retakeBtn.addEventListener("click", retakeQuiz);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    questions = Array.from(quizContainer.querySelectorAll(".quiz-item"));
+    renderQuestionGrid();
+    updateWizardUI();
+  });
+</script>
+
+</body>
+</html>
