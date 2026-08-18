@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MATH · Polygons & Conditional Statements MSA Reviewer</title>
   <link rel="stylesheet" href="../../studyguide-subjects/MATH/Polygons.css">
+  <!-- KaTeX Math Renderer -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
   <link rel="stylesheet" href="../../assets/streak-counter.css">
   <link rel="icon" type="image/png" href="https://jhs-studyguide.github.io/JHS-StudyGuide/favicon.png">
   <style>
@@ -740,18 +744,18 @@
             <div class="answer-review"></div>
           </div>
 
-          <!-- QUESTION 5 (Problem-Solving Input: Truth Table Rows) -->
-          <div class="quiz-item" data-type="problem" data-answer="4" data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>Rows = 2ⁿ</span></div><div class='math-step'><strong>Step 1:</strong> Count distinct simple proposition variables ($p$ and $q$ $\rightarrow n = 2$)</div><div class='math-step'><strong>Step 2:</strong> Calculate $2^2 = 4\text{ total rows/truth combinations}$</div>">
-            <span class="category-pill">Truth Tables & Logic Input</span>
-            <span class="question">How many total truth combinations (rows) are present in a standard truth table evaluating a conditional statement containing 2 simple statements (p and q)?</span>
+<!-- QUESTION 5 (Problem-Solving Input: Finding Sides from Interior Sum) -->
+          <div class="quiz-item" data-type="problem" data-answer="11" data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>s = (S / 180°) + 2</span></div><div class='math-step'><strong>Step 1:</strong> Divide total interior angle sum by 180°: $\frac{1620^\circ}{180^\circ} = 9\text{ triangles}$</div><div class='math-step'><strong>Step 2:</strong> Add 2 to calculate total sides: $s = 9 + 2 = 11\text{ sides}$</div>">
+            <span class="category-pill">Interior Angles & Problem Solving</span>
+            <span class="question">The sum of all interior angles of a convex polygon is 1620°. Calculate the total number of sides (s) the polygon has:</span>
             <div class="problem-box">
               <div class="step-block">
                 <div class="step-title">✏️ Enter Your Answer:</div>
-                <div class="step-desc">Calculate total truth table rows:</div>
-                <span class="input-hint-comment">(e.g., 8)</span>
+                <div class="step-desc">Calculate total number of sides (s):</div>
+                <span class="input-hint-comment">(e.g., 10)</span>
                 <div class="input-wrapper">
                   <input type="number" class="num-input" placeholder="Type answer..." step="1">
-                  <span class="unit-tag">rows</span>
+                  <span class="unit-tag">sides</span>
                 </div>
               </div>
             </div>
@@ -1268,6 +1272,15 @@
 
   function calculateScore() {
     let firstUnansweredIndex = -1;
+
+    if (window.renderMathInElement) {
+  renderMathInElement(review, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false}
+    ]
+  });
+}
 
     questions.forEach((item, idx) => {
       const type = item.getAttribute("data-type") || "mcq";
