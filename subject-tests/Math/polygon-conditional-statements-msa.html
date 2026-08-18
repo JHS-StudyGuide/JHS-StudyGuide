@@ -1125,7 +1125,7 @@
 <script src="../../assets/js/streak.js" defer></script>
 
 <script>
-  const quizContainer = document.getElementById("quizContainer");
+ const quizContainer = document.getElementById("quizContainer");
   const resultPanel = document.getElementById("resultPanel");
   const scoreText = document.getElementById("scoreText");
   const prevBtn = document.getElementById("prevBtn");
@@ -1271,16 +1271,8 @@
   }
 
   function calculateScore() {
+    // PASS 1: Validate completeness without altering DOM answers
     let firstUnansweredIndex = -1;
-
-    if (window.renderMathInElement) {
-  renderMathInElement(review, {
-    delimiters: [
-      {left: '$$', right: '$$', display: true},
-      {left: '$', right: '$', display: false}
-    ]
-  });
-}
 
     questions.forEach((item, idx) => {
       const type = item.getAttribute("data-type") || "mcq";
@@ -1305,6 +1297,7 @@
       }
     });
 
+    // Stop immediately if any question is missing
     if (firstUnansweredIndex !== -1) {
       alert("Please answer all questions before submitting.");
       currentQuestionIndex = firstUnansweredIndex;
@@ -1312,6 +1305,7 @@
       return;
     }
 
+    // PASS 2: Score and reveal answers (only executes if 100% complete)
     let score = 0;
     const totalQuestions = questions.length;
 
@@ -1336,7 +1330,7 @@
         }
         review.style.display = "block";
 
-      } else {
+      } else { // MCQ Evaluation
         const selectedLi = item.querySelector(".options li.selected");
         const selectedButton = selectedLi.querySelector(".option-btn");
         const selectedText = decodeHtml(selectedButton.textContent);
@@ -1381,8 +1375,19 @@
         }
         review.style.display = "block";
       }
+
+      // Render KaTeX Math inside the review element after innerHTML is populated
+      if (window.renderMathInElement && review) {
+        renderMathInElement(review, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ]
+        });
+      }
     });
 
+    // Display results and switch view to review mode
     progressCard.style.display = "none";
     document.getElementById("wizardNav").style.display = "none";
     document.getElementById("questionGridCard").style.display = "none";
