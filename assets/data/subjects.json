@@ -208,6 +208,15 @@
           ]
         },
         {
+          "title": "Seperations Methods",
+          "lessons": [
+            { "label": "Types of Mixtures", "href": "studyguide-subjects/SCI/Seperation.html#types-mixtures" },
+            { "label": "Comparison Table", "href": "studyguide-subjects/SCI/Seperation.html#comparison-table" },
+            { "label": "Colloids & Key Properties", "href": "studyguide-subjects/SCI/Seperation.html#colloids" },
+            { "label": "Methods of Separating", "href": "studyguide-subjects/SCI/Seperation.html#seperation-methods" }
+          ]
+        },
+        {
           "title": "Acids & Bases",
           "lessons": [
             { "label": "Key Terms", "href": "studyguide-subjects/SCI/Acids-and-Bases.html#key-terms" },
