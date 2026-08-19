@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CHEM · Solutions, Mixtures, Concentrations & Acids/Bases Test</title>
-  
+
   <!-- KaTeX Math & Chemistry Renderer -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
@@ -13,11 +14,14 @@
   <link rel="icon" type="image/png" href="https://jhs-studyguide.github.io/JHS-StudyGuide/favicon.png">
 
   <style>
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       overflow-x: hidden;
       max-width: 100%;
     }
@@ -204,8 +208,15 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .category-pill {
@@ -606,7 +617,7 @@
       .wizard-layout {
         flex-direction: column;
       }
-      
+
       .wizard-sidebar {
         width: 100%;
         position: static;
@@ -639,911 +650,983 @@
 
 <body data-theme="dark">
 
-<header class="top-bar">
-  <a href="../../index.html">← Back to Main Hub</a>
-  <span class="title">CHEM · Solutions, Mixtures & Concentration MSA</span>
+  <header class="top-bar">
+    <a href="../../index.html">← Back to Main Hub</a>
+    <span class="title">CHEM · MSA Reviewer</span>
 
-  <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
-    <span class="streak-emoji" id="streak-emoji">🔥</span>
-    <span class="streak-count" id="streak-count">0</span>
-    <span class="streak-label">Streak</span>
+    <div class="streak-badge" id="streak-badge" title="Daily Study Streak">
+      <span class="streak-emoji" id="streak-emoji">🔥</span>
+      <span class="streak-count" id="streak-count">0</span>
+      <span class="streak-label">Streak</span>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
+  </header>
+
+  <div class="container">
+
+    <main class="content" id="quiz-start">
+
+      <header class="hero">
+        <div class="eyebrow">Science · Chemistry </div>
+        <h1>MSA Reviewer</h1>
+        <p class="subtitle">
+          Quantitative Concentration Calculations, Colloids vs Solutions,
+          Factors Affecting Solubility, Separation Methods, and Acids & Bases.
+        </p>
+      </header>
+
+      <!-- WIZARD PROGRESS TRACKER -->
+      <div class="wizard-progress-card" id="progressCard">
+        <div class="progress-meta">
+          <span id="progressText">Question 1 of 35</span>
+          <span id="progressPercent">3%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <!-- TWO-COLUMN LAYOUT -->
+      <div class="wizard-layout">
+
+        <!-- LEFT COLUMN: Main Quiz Card & Navigation -->
+        <div class="wizard-main">
+          <div class="quiz-container" id="quizContainer">
+
+            <!-- QUESTION 1 (Problem-Solving Input: Mass Percent % m/m) -->
+            <div class="quiz-item active" data-type="problem" data-answer="15"
+              data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>\% m/m = \left(\frac{\text{Mass of Solute}}{\text{Mass of Solution}}\right) \times 100</span></div><div class='math-step'><strong>Step 1:</strong> Calculate total mass of solution: $15\text{ g} + 85\text{ g} = 100\text{ g}$</div><div class='math-step'><strong>Step 2:</strong> Divide solute mass by solution mass and multiply by 100: $\left(\frac{15\text{ g}}{100\text{ g}}\right) \times 100 = 15\%$</div>">
+              <span class="category-pill">Concentration Calculations & Problem Solving</span>
+              <span class="question">A solution is prepared by dissolving $15\text{ g}$ of table salt ($NaCl$) into
+                $85\text{ g}$ of water ($H_2O$). Calculate the mass percent ($\% m/m$) of $NaCl$ in the solution:</span>
+              <div class="problem-box">
+                <div class="step-block">
+                  <div class="step-title">✏️ Enter Your Answer:</div>
+                  <div class="step-desc">Calculate mass percent (% m/m):</div>
+                  <span class="input-hint-comment">(e.g., 20)</span>
+                  <div class="input-wrapper">
+                    <input type="number" class="num-input" placeholder="Type answer..." step="any">
+                    <span class="unit-tag">%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 2 (Problem-Solving Input: Solute Mass from % m/m) -->
+            <div class="quiz-item" data-type="problem" data-answer="30"
+              data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>\text{Mass of Solute} = \frac{\% m/m \times \text{Mass of Solution}}{100}</span></div><div class='math-step'><strong>Step 1:</strong> Multiply mass percent by total solution mass: $12 \times 250 = 3000$</div><div class='math-step'><strong>Step 2:</strong> Divide by 100: $\frac{3000}{100} = 30\text{ g}$</div>">
+              <span class="category-pill">Concentration Calculations & Problem Solving</span>
+              <span class="question">How many grams of glucose solute are needed to prepare $250\text{ g}$ of a $12\%$
+                glucose solution by mass?</span>
+              <div class="problem-box">
+                <div class="step-block">
+                  <div class="step-title">✏️ Enter Your Answer:</div>
+                  <div class="step-desc">Calculate required solute mass in grams:</div>
+                  <span class="input-hint-comment">(e.g., 25)</span>
+                  <div class="input-wrapper">
+                    <input type="number" class="num-input" placeholder="Type answer..." step="any">
+                    <span class="unit-tag">g</span>
+                  </div>
+                </div>
+              </div>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 3 (Problem-Solving Input: Mass/Volume Percent % m/v) -->
+            <div class="quiz-item" data-type="problem" data-answer="4"
+              data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>\% m/v = \left(\frac{\text{Mass of Solute (g)}}{\text{Volume of Solution (mL)}}\right) \times 100</span></div><div class='math-step'><strong>Step 1:</strong> Divide mass of solute ($8\text{ g}$) by total solution volume ($200\text{ mL}$): $\frac{8}{200} = 0.04$</div><div class='math-step'><strong>Step 2:</strong> Multiply by 100: $0.04 \times 100 = 4\%$</div>">
+              <span class="category-pill">Concentration Calculations & Problem Solving</span>
+              <span class="question">A chemist dissolves $8\text{ g}$ of sodium hydroxide ($NaOH$) in enough water to
+                make a total of $200\text{ mL}$ of solution. Calculate the mass/volume percent ($\% m/v$):</span>
+              <div class="problem-box">
+                <div class="step-block">
+                  <div class="step-title">✏️ Enter Your Answer:</div>
+                  <div class="step-desc">Calculate mass/volume percent (% m/v):</div>
+                  <span class="input-hint-comment">(e.g., 5)</span>
+                  <div class="input-wrapper">
+                    <input type="number" class="num-input" placeholder="Type answer..." step="any">
+                    <span class="unit-tag">%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 4 (Problem-Solving Input: Volume Percent % v/v) -->
+            <div class="quiz-item" data-type="problem" data-answer="70"
+              data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>\% v/v = \left(\frac{\text{Volume of Solute}}{\text{Volume of Solution}}\right) \times 100</span></div><div class='math-step'><strong>Step 1:</strong> Divide volume of solute ($70\text{ mL}$) by total volume ($100\text{ mL}$): $\frac{70}{100} = 0.70$</div><div class='math-step'><strong>Step 2:</strong> Multiply by 100: $0.70 \times 100 = 70\%$</div>">
+              <span class="category-pill">Concentration Calculations & Problem Solving</span>
+              <span class="question">A disinfectant rubbing alcohol solution contains $70\text{ mL}$ of pure isopropyl
+                alcohol blended with water to yield a total volume of $100\text{ mL}$. Calculate the volume percent ($\%
+                v/v$) of alcohol:</span>
+              <div class="problem-box">
+                <div class="step-block">
+                  <div class="step-title">✏️ Enter Your Answer:</div>
+                  <div class="step-desc">Calculate volume percent (% v/v):</div>
+                  <span class="input-hint-comment">(e.g., 50)</span>
+                  <div class="input-wrapper">
+                    <input type="number" class="num-input" placeholder="Type answer..." step="any">
+                    <span class="unit-tag">%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 5 (Problem-Solving Input: Saline Mass Percent) -->
+            <div class="quiz-item" data-type="problem" data-answer="6"
+              data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>\% m/m = \left(\frac{\text{Mass of Solute}}{\text{Mass of Solute} + \text{Mass of Solvent}}\right) \times 100</span></div><div class='math-step'><strong>Step 1:</strong> Find total mass of solution: $12\text{ g} + 188\text{ g} = 200\text{ g}$</div><div class='math-step'><strong>Step 2:</strong> Calculate mass percent: $\left(\frac{12\text{ g}}{200\text{ g}}\right) \times 100 = 6\%$</div>">
+              <span class="category-pill">Concentration Calculations & Problem Solving</span>
+              <span class="question">A saline solution is prepared by dissolving $12\text{ g}$ of salt into $188\text{
+                g}$ of pure water. Calculate the exact mass percent ($\% m/m$) of salt in this solution:</span>
+              <div class="problem-box">
+                <div class="step-block">
+                  <div class="step-title">✏️ Enter Your Answer:</div>
+                  <div class="step-desc">Calculate mass percent (% m/m):</div>
+                  <span class="input-hint-comment">(e.g., 10)</span>
+                  <div class="input-wrapper">
+                    <input type="number" class="num-input" placeholder="Type answer..." step="any">
+                    <span class="unit-tag">%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 6 (MCQ) -->
+            <div class="quiz-item" data-type="mcq"
+              data-answer="Colloids scatter a beam of light passing through them (Tyndall Effect).">
+              <span class="category-pill">Solutions, Suspensions & Colloids</span>
+              <span class="question">Which property distinguishes a colloid from a true solution?</span>
+              <ul class="options">
+                <li><button class="option-btn">Particles in a colloid settle at the bottom over time.</button></li>
+                <li><button class="option-btn">Colloids scatter a beam of light passing through them (Tyndall
+                    Effect).</button></li>
+                <li><button class="option-btn">Colloids have the smallest particle sizes among all mixtures.</button>
+                </li>
+                <li><button class="option-btn">Colloids can be easily separated using standard filter paper.</button>
+                </li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 7 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Dispersion">
+              <span class="category-pill">Solutions, Suspensions & Colloids</span>
+              <span class="question">Breaking down large particles into smaller colloidal-sized particles (such as
+                grinding paint pigments) is known as which process?</span>
+              <ul class="options">
+                <li><button class="option-btn">Condensation</button></li>
+                <li><button class="option-btn">Decantation</button></li>
+                <li><button class="option-btn">Dispersion</button></li>
+                <li><button class="option-btn">Crystallization</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 8 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Colloid">
+              <span class="category-pill">Solutions, Suspensions & Colloids</span>
+              <span class="question">What type of mixture has medium-sized particles, a cloudy appearance, does NOT
+                settle over time, and exhibits Brownian motion?</span>
+              <ul class="options">
+                <li><button class="option-btn">Solution</button></li>
+                <li><button class="option-btn">Colloid</button></li>
+                <li><button class="option-btn">Suspension</button></li>
+                <li><button class="option-btn">Coarse Heterogeneous Liquid</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 9 (MCQ) -->
+            <div class="quiz-item" data-type="mcq"
+              data-answer="Heterogeneous mixture with the largest particles that settle over time.">
+              <span class="category-pill">Solutions, Suspensions & Colloids</span>
+              <span class="question">Which of the following best describes a suspension?</span>
+              <ul class="options">
+                <li><button class="option-btn">Transparent mixture with the smallest particle size.</button></li>
+                <li><button class="option-btn">Homogeneous mixture with 1 visible phase that does not scatter
+                    light.</button></li>
+                <li><button class="option-btn">Heterogeneous mixture with the largest particles that settle over
+                    time.</button></li>
+                <li><button class="option-btn">Solution where solute particles are completely dissolved into individual
+                    ions.</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 10 (MCQ) -->
+            <div class="quiz-item" data-type="mcq"
+              data-answer="Milk and fog are colloids whose medium particles scatter light via the Tyndall Effect.">
+              <span class="category-pill">Solutions, Suspensions & Colloids</span>
+              <span class="question">Why does a beam of light become visible when passed through milk or fog, but not
+                when passed through saltwater?</span>
+              <ul class="options">
+                <li><button class="option-btn">Saltwater particles absorb all light energy.</button></li>
+                <li><button class="option-btn">Milk and fog are colloids whose medium particles scatter light via the
+                    Tyndall Effect.</button></li>
+                <li><button class="option-btn">Milk and fog are pure chemical compounds that reflect light.</button>
+                </li>
+                <li><button class="option-btn">Saltwater is a suspension that completely blocks light
+                    transmission.</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 11 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Milk, fog, blood, and toothpaste">
+              <span class="category-pill">Solutions, Suspensions & Colloids</span>
+              <span class="question">Which of the following sets contains ONLY colloidal mixtures?</span>
+              <ul class="options">
+                <li><button class="option-btn">Saltwater, sugar water, and vinegar</button></li>
+                <li><button class="option-btn">Milk, fog, blood, and toothpaste</button></li>
+                <li><button class="option-btn">Muddy water, sand in water, and oil in water</button></li>
+                <li><button class="option-btn">Pure water, ethanol, and air</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 12 (MCQ) -->
+            <div class="quiz-item" data-type="mcq"
+              data-answer="Immiscible, because oil is nonpolar while water is polar ('Like Dissolves Like').">
+              <span class="category-pill">Solubility & Factors</span>
+              <span class="question">Vegetable oil and water form two distinct layers when mixed. This behavior
+                classifies oil and water as what type of liquids, and why?</span>
+              <ul class="options">
+                <li><button class="option-btn">Miscible, because both are nonpolar.</button></li>
+                <li><button class="option-btn">Immiscible, because oil is nonpolar while water is polar ('Like Dissolves
+                    Like').</button></li>
+                <li><button class="option-btn">Miscible, because oil dissolves in polar water.</button></li>
+                <li><button class="option-btn">Immiscible, because both substances are ionic compounds.</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 13 (MCQ) -->
+            <div class="quiz-item" data-type="mcq"
+              data-answer="Solid solubility generally increases with higher temperature.">
+              <span class="category-pill">Solubility & Factors</span>
+              <span class="question">According to solubility trends, how does an increase in temperature generally
+                affect the solubility of most solid solutes in liquids?</span>
+              <ul class="options">
+                <li><button class="option-btn">Solid solubility decreases sharply.</button></li>
+                <li><button class="option-btn">Solid solubility remains completely unaffected.</button></li>
+                <li><button class="option-btn">Solid solubility generally increases with higher temperature.</button>
+                </li>
+                <li><button class="option-btn">Solid solubility drops to zero at higher temperatures.</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 14 (MCQ) -->
+            <div class="quiz-item" data-type="mcq"
+              data-answer="Heating increases kinetic energy, making gas particles less soluble in liquids.">
+              <span class="category-pill">Solubility & Factors</span>
+              <span class="question">Why does heating a carbonated drink cause dissolved $CO_2$ gas bubbles to rapidly
+                escape from the liquid?</span>
+              <ul class="options">
+                <li><button class="option-btn">Gas solubility increases with temperature.</button></li>
+                <li><button class="option-btn">Heating increases kinetic energy, making gas particles less soluble in
+                    liquids.</button></li>
+                <li><button class="option-btn">Heat increases atmospheric pressure above the liquid.</button></li>
+                <li><button class="option-btn">Gas particles chemically react with water molecules to form
+                    solids.</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 15 (MCQ) -->
+            <div class="quiz-item" data-type="mcq"
+              data-answer="Henry's Law: Opening the bottle drops gas pressure, decreasing $CO_2$ solubility.">
+              <span class="category-pill">Solubility & Factors</span>
+              <span class="question">What principle explains why carbonated soda fizzes and releases $CO_2$ gas when the
+                bottle cap is opened?</span>
+              <ul class="options">
+                <li><button class="option-btn">Henry's Law: Opening the bottle drops gas pressure, decreasing $CO_2$
+                    solubility.</button></li>
+                <li><button class="option-btn">Raoult's Law: Temperature decreases rapidly when opening the
+                    bottle.</button></li>
+                <li><button class="option-btn">Tyndall Effect: Light causes the dissolved gas to condense.</button></li>
+                <li><button class="option-btn">Law of Conservation of Mass: Gas volume increases as density
+                    increases.</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 16 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="$Li_2SO_4$ (Lithium Sulfate)">
+              <span class="category-pill">Solubility & Factors</span>
+              <span class="question">Which salt exhibits an atypical DECREASE in solubility as temperature
+                increases?</span>
+              <ul class="options">
+                <li><button class="option-btn">$KNO_3$ (Potassium Nitrate)</button></li>
+                <li><button class="option-btn">$NaCl$ (Sodium Chloride)</button></li>
+                <li><button class="option-btn">$Li_2SO_4$ (Lithium Sulfate)</button></li>
+                <li><button class="option-btn">$KCl$ (Potassium Chloride)</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 17 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Unsaturated">
+              <span class="category-pill">Solubility & Concepts</span>
+              <span class="question">If 100 g of water at 20°C can hold a maximum of 36 g of NaCl, how is a solution
+                containing 20 g of NaCl dissolved in 100 g of water at 20°C classified?</span>
+              <ul class="options">
+                <li><button class="option-btn">Saturated</button></li>
+                <li><button class="option-btn">Unsaturated</button></li>
+                <li><button class="option-btn">Supersaturated</button></li>
+                <li><button class="option-btn">Suspension</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 18 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Slopes downward (solubility decreases)">
+              <span class="category-pill">Solubility & Concepts</span>
+              <span class="question">On a general solubility graph, what trend line direction typically represents the
+                solubility curve of dissolved gases in liquid water as temperature increases?</span>
+              <ul class="options">
+                <li><button class="option-btn">Slopes upward (solubility increases)</button></li>
+                <li><button class="option-btn">Slopes downward (solubility decreases)</button></li>
+                <li><button class="option-btn">Remains perfectly horizontal</button></li>
+                <li><button class="option-btn">Fluctuates unpredictably</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 19 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Supersaturated">
+              <span class="category-pill">Concentration Expressions</span>
+              <span class="question">A solution that contains more dissolved solute than a saturated solution can
+                normally hold at a given temperature is classified as:</span>
+              <ul class="options">
+                <li><button class="option-btn">Unsaturated</button></li>
+                <li><button class="option-btn">Saturated</button></li>
+                <li><button class="option-btn">Supersaturated</button></li>
+                <li><button class="option-btn">Heterogeneous suspension</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 20 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="24.0%">
+              <span class="category-pill">Concentration Expressions</span>
+              <span class="question">A salt solution is prepared by mixing $2.35\text{ g}$ of $NaCl$ into $7.45\text{
+                g}$ of $H_2O$. What is the mass percent ($\% m/m$) of $NaCl$?</span>
+              <ul class="options">
+                <li><button class="option-btn">31.5%</button></li>
+                <li><button class="option-btn">24.0%</button></li>
+                <li><button class="option-btn">23.5%</button></li>
+                <li><button class="option-btn">14.2%</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 21 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="30.0\text{ g}">
+              <span class="category-pill">Concentration Expressions</span>
+              <span class="question">How many grams of glucose solute are contained in $200\text{ g}$ of a $15.0\%$
+                glucose solution?</span>
+              <ul class="options">
+                <li><button class="option-btn">$15.0\text{ g}$</button></li>
+                <li><button class="option-btn">$30.0\text{ g}$</button></li>
+                <li><button class="option-btn">$170.0\text{ g}$</button></li>
+                <li><button class="option-btn">$300.0\text{ g}$</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 22 (MCQ) -->
+            <div class="quiz-item" data-type="mcq"
+              data-answer="$\left( \frac{\text{Volume of Solute}}{\text{Volume of Solution}} \right) \times 100$">
+              <span class="category-pill">Concentration Expressions</span>
+              <span class="question">What is the correct mathematical expression for Volume Percent ($\% v/v$)?</span>
+              <ul class="options">
+                <li><button class="option-btn">$\left( \frac{\text{Volume of Solvent}}{\text{Volume of Solute}} \right)
+                    \times 100$</button></li>
+                <li><button class="option-btn">$\left( \frac{\text{Volume of Solute}}{\text{Volume of Solution}} \right)
+                    \times 100$</button></li>
+                <li><button class="option-btn">$\left( \frac{\text{Mass of Solute}}{\text{Volume of Solution}} \right)
+                    \times 100$</button></li>
+                <li><button class="option-btn">$\left( \frac{\text{Volume of Solute}}{\text{Mass of Solvent}} \right)
+                    \times 100$</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 23 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="2.0%">
+              <span class="category-pill">Concentration Expressions</span>
+              <span class="question">If $5.0\text{ g}$ of salt is dissolved in enough water to make $250\text{ mL}$ of
+                solution, what is the mass/volume percent ($\% m/v$)?</span>
+              <ul class="options">
+                <li><button class="option-btn">2.0%</button></li>
+                <li><button class="option-btn">5.0%</button></li>
+                <li><button class="option-btn">20.0%</button></li>
+                <li><button class="option-btn">50.0%</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 24 (MCQ) -->
+            <div class="quiz-item" data-type="mcq"
+              data-answer="Rubbing alcohol, because it is present in the smaller amount.">
+              <span class="category-pill">Concentration Expressions</span>
+              <span class="question">In a solution formed by dissolving $10\text{ mL}$ of rubbing alcohol in $90\text{
+                mL}$ of water, which component is identified as the solute?</span>
+              <ul class="options">
+                <li><button class="option-btn">Water, because it is liquid.</button></li>
+                <li><button class="option-btn">Rubbing alcohol, because it is present in the smaller amount.</button>
+                </li>
+                <li><button class="option-btn">Both alcohol and water are solvents.</button></li>
+                <li><button class="option-btn">Neither; it forms a heterogeneous mixture.</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 25 (MCQ) -->
+            <div class="quiz-item" data-type="mcq"
+              data-answer="Filtration to remove sand, followed by distillation of the saltwater solution.">
+              <span class="category-pill">Separation Methods</span>
+              <span class="question">How can a mixture of insoluble sand and dissolved salt in water be completely
+                separated into dry sand, dry salt, and pure water?</span>
+              <ul class="options">
+                <li><button class="option-btn">Decantation followed by sieving.</button></li>
+                <li><button class="option-btn">Filtration to remove sand, followed by distillation of the saltwater
+                    solution.</button></li>
+                <li><button class="option-btn">Centrifugation followed by magnetic separation.</button></li>
+                <li><button class="option-btn">Chromatography followed by crystallization.</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 26 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Distillation">
+              <span class="category-pill">Separation Methods</span>
+              <span class="question">Which separation technique relies specifically on differences in the boiling points
+                of miscible liquids?</span>
+              <ul class="options">
+                <li><button class="option-btn">Centrifugation</button></li>
+                <li><button class="option-btn">Distillation</button></li>
+                <li><button class="option-btn">Sieving</button></li>
+                <li><button class="option-btn">Filtration</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 27 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Centrifugation">
+              <span class="category-pill">Separation Methods</span>
+              <span class="question">Spinning a blood sample at high speeds to separate plasma from denser red blood
+                cells is an application of:</span>
+              <ul class="options">
+                <li><button class="option-btn">Centrifugation</button></li>
+                <li><button class="option-btn">Magnetic Separation</button></li>
+                <li><button class="option-btn">Chromatography</button></li>
+                <li><button class="option-btn">Sifting</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 28 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Chromatography">
+              <span class="category-pill">Separation Methods</span>
+              <span class="question">Which method is best suited for separating individual color pigments present in
+                black ink?</span>
+              <ul class="options">
+                <li><button class="option-btn">Evaporation</button></li>
+                <li><button class="option-btn">Chromatography</button></li>
+                <li><button class="option-btn">Decantation</button></li>
+                <li><button class="option-btn">Crystallization</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 29 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Decantation">
+              <span class="category-pill">Separation Methods</span>
+              <span class="question">Carefully pouring off top oil liquid from a mixture of oil and water without
+                disturbing the lower water layer is called:</span>
+              <ul class="options">
+                <li><button class="option-btn">Filtration</button></li>
+                <li><button class="option-btn">Decantation</button></li>
+                <li><button class="option-btn">Crystallization</button></li>
+                <li><button class="option-btn">Sifting</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 30 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Red stays red; Blue turns red.">
+              <span class="category-pill">Acids and Bases</span>
+              <span class="question">What occurs when red and blue litmus papers are dipped into an acidic solution (pH
+                < 7)?</span>
+                  <ul class="options">
+                    <li><button class="option-btn">Red stays red; Blue turns red.</button></li>
+                    <li><button class="option-btn">Red turns blue; Blue stays blue.</button></li>
+                    <li><button class="option-btn">Red stays red; Blue stays blue.</button></li>
+                    <li><button class="option-btn">Red turns blue; Blue turns red.</button></li>
+                  </ul>
+                  <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 31 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Red turns blue; Blue stays blue.">
+              <span class="category-pill">Acids and Bases</span>
+              <span class="question">What happens to red and blue litmus papers when tested in an alkaline (basic)
+                solution (pH > 7)?</span>
+              <ul class="options">
+                <li><button class="option-btn">Red stays red; Blue turns red.</button></li>
+                <li><button class="option-btn">Red turns blue; Blue stays blue.</button></li>
+                <li><button class="option-btn">Red stays red; Blue stays blue.</button></li>
+                <li><button class="option-btn">Both turn completely clear.</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 32 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Strong Acid">
+              <span class="category-pill">Acids and Bases</span>
+              <span class="question">A household liquid test yields a pH reading of 2. How is this solution
+                categorized?</span>
+              <ul class="options">
+                <li><button class="option-btn">Strong Base</button></li>
+                <li><button class="option-btn">Weak Base</button></li>
+                <li><button class="option-btn">Neutral Solution</button></li>
+                <li><button class="option-btn">Strong Acid</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 33 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="$HCl$ (Hydrochloric acid)">
+              <span class="category-pill">Acids and Bases</span>
+              <span class="question">Which of the following is listed as a strong acid because it dissociates 100% into
+                ions in solution?</span>
+              <ul class="options">
+                <li><button class="option-btn">$CH_3COOH$ (Acetic acid)</button></li>
+                <li><button class="option-btn">$HCl$ (Hydrochloric acid)</button></li>
+                <li><button class="option-btn">$H_2O$ (Water)</button></li>
+                <li><button class="option-btn">$NH_3$ (Ammonia)</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 34 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="$NaOH$ (Sodium Hydroxide)">
+              <span class="category-pill">Acids and Bases</span>
+              <span class="question">Strong bases are hydroxide ($OH^-$) compounds that ionize 100% in solution. Which
+                compound is a strong base?</span>
+              <ul class="options">
+                <li><button class="option-btn">$NaOH$ (Sodium Hydroxide)</button></li>
+                <li><button class="option-btn">$NaHCO_3$ (Baking Soda)</button></li>
+                <li><button class="option-btn">$HNO_3$ (Nitric Acid)</button></li>
+                <li><button class="option-btn">$NaCl$ (Sodium Chloride)</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+            <!-- QUESTION 35 (MCQ) -->
+            <div class="quiz-item" data-type="mcq" data-answer="Salt + Water">
+              <span class="category-pill">Acids and Bases</span>
+              <span class="question">What products are formed when an acid reacts with a base in a neutralization
+                reaction?</span>
+              <ul class="options">
+                <li><button class="option-btn">Oxide + Hydrogen gas</button></li>
+                <li><button class="option-btn">Salt + Water</button></li>
+                <li><button class="option-btn">Precipitate + Gas</button></li>
+                <li><button class="option-btn">Acid + Colloid</button></li>
+              </ul>
+              <div class="answer-review"></div>
+            </div>
+
+          </div>
+
+          <!-- WIZARD NAVIGATION CONTROLS -->
+          <div class="wizard-nav" id="wizardNav">
+            <button class="nav-btn secondary" id="prevBtn" type="button" disabled>← Previous</button>
+            <button class="nav-btn" id="nextBtn" type="button">Next →</button>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Question Grid Sidebar -->
+        <aside class="wizard-sidebar">
+          <div class="question-grid-card" id="questionGridCard">
+            <div class="grid-label">Jump to Question:</div>
+            <div class="question-grid" id="questionGrid"></div>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- RESULT & REVIEW PANEL -->
+      <div class="result-panel" id="resultPanel">
+        <div class="score-text" id="scoreText">Your Score: 0/35</div>
+        <p class="score-message">Great job completing the Chemistry Summative Unit Test! Review your answers and
+          explanations below.</p>
+        <div class="retake-container">
+          <button class="nav-btn" id="retakeBtn" type="button">Retake Quiz</button>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        Use the Next, Previous, or Question Grid controls to navigate through all questions.
+      </div>
+    </main>
   </div>
 
-  <button class="theme-toggle" id="themeToggle" type="button">Toggle Light Mode</button>
-</header>
+  <script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script src="../../assets/js/streak.js" defer></script>
 
-<div class="container">
+  <script>
+    const quizContainer = document.getElementById("quizContainer");
+    const resultPanel = document.getElementById("resultPanel");
+    const scoreText = document.getElementById("scoreText");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const retakeBtn = document.getElementById("retakeBtn");
+    const themeToggle = document.getElementById("themeToggle");
+    const progressCard = document.getElementById("progressCard");
+    const progressText = document.getElementById("progressText");
+    const progressPercent = document.getElementById("progressPercent");
+    const progressFill = document.getElementById("progressFill");
 
-  <main class="content" id="quiz-start">
+    let currentQuestionIndex = 0;
+    let questions = [];
 
-    <header class="hero">
-      <div class="eyebrow">CHEM · MSA Reviewer</div>
-      <h1>Chemistry Summative Reviewer</h1>
-      <p class="subtitle">
-        35-Question Comprehensive Evaluation covering Quantitative Concentration Calculations, Colloids vs Solutions, Factors Affecting Solubility, Separation Methods, and Acids & Bases.
-      </p>
-    </header>
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.getAttribute("data-theme");
 
-    <!-- WIZARD PROGRESS TRACKER -->
-    <div class="wizard-progress-card" id="progressCard">
-      <div class="progress-meta">
-        <span id="progressText">Question 1 of 35</span>
-        <span id="progressPercent">3%</span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-    </div>
-
-    <!-- TWO-COLUMN LAYOUT -->
-    <div class="wizard-layout">
-      
-      <!-- LEFT COLUMN: Main Quiz Card & Navigation -->
-      <div class="wizard-main">
-        <div class="quiz-container" id="quizContainer">
-
-          <!-- QUESTION 1 (Problem-Solving Input: Mass Percent % m/m) -->
-          <div class="quiz-item active" data-type="problem" data-answer="15" data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>\% m/m = \left(\frac{\text{Mass of Solute}}{\text{Mass of Solution}}\right) \times 100</span></div><div class='math-step'><strong>Step 1:</strong> Calculate total mass of solution: $15\text{ g} + 85\text{ g} = 100\text{ g}$</div><div class='math-step'><strong>Step 2:</strong> Divide solute mass by solution mass and multiply by 100: $\left(\frac{15\text{ g}}{100\text{ g}}\right) \times 100 = 15\%$</div>">
-            <span class="category-pill">Concentration Calculations & Problem Solving</span>
-            <span class="question">A solution is prepared by dissolving $15\text{ g}$ of table salt ($NaCl$) into $85\text{ g}$ of water ($H_2O$). Calculate the mass percent ($\% m/m$) of $NaCl$ in the solution:</span>
-            <div class="problem-box">
-              <div class="step-block">
-                <div class="step-title">✏️ Enter Your Answer:</div>
-                <div class="step-desc">Calculate mass percent (% m/m):</div>
-                <span class="input-hint-comment">(e.g., 20)</span>
-                <div class="input-wrapper">
-                  <input type="number" class="num-input" placeholder="Type answer..." step="any">
-                  <span class="unit-tag">%</span>
-                </div>
-              </div>
-            </div>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 2 (Problem-Solving Input: Solute Mass from % m/m) -->
-          <div class="quiz-item" data-type="problem" data-answer="30" data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>\text{Mass of Solute} = \frac{\% m/m \times \text{Mass of Solution}}{100}</span></div><div class='math-step'><strong>Step 1:</strong> Multiply mass percent by total solution mass: $12 \times 250 = 3000$</div><div class='math-step'><strong>Step 2:</strong> Divide by 100: $\frac{3000}{100} = 30\text{ g}$</div>">
-            <span class="category-pill">Concentration Calculations & Problem Solving</span>
-            <span class="question">How many grams of glucose solute are needed to prepare $250\text{ g}$ of a $12\%$ glucose solution by mass?</span>
-            <div class="problem-box">
-              <div class="step-block">
-                <div class="step-title">✏️ Enter Your Answer:</div>
-                <div class="step-desc">Calculate required solute mass in grams:</div>
-                <span class="input-hint-comment">(e.g., 25)</span>
-                <div class="input-wrapper">
-                  <input type="number" class="num-input" placeholder="Type answer..." step="any">
-                  <span class="unit-tag">g</span>
-                </div>
-              </div>
-            </div>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 3 (Problem-Solving Input: Mass/Volume Percent % m/v) -->
-          <div class="quiz-item" data-type="problem" data-answer="4" data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>\% m/v = \left(\frac{\text{Mass of Solute (g)}}{\text{Volume of Solution (mL)}}\right) \times 100</span></div><div class='math-step'><strong>Step 1:</strong> Divide mass of solute ($8\text{ g}$) by total solution volume ($200\text{ mL}$): $\frac{8}{200} = 0.04$</div><div class='math-step'><strong>Step 2:</strong> Multiply by 100: $0.04 \times 100 = 4\%$</div>">
-            <span class="category-pill">Concentration Calculations & Problem Solving</span>
-            <span class="question">A chemist dissolves $8\text{ g}$ of sodium hydroxide ($NaOH$) in enough water to make a total of $200\text{ mL}$ of solution. Calculate the mass/volume percent ($\% m/v$):</span>
-            <div class="problem-box">
-              <div class="step-block">
-                <div class="step-title">✏️ Enter Your Answer:</div>
-                <div class="step-desc">Calculate mass/volume percent (% m/v):</div>
-                <span class="input-hint-comment">(e.g., 5)</span>
-                <div class="input-wrapper">
-                  <input type="number" class="num-input" placeholder="Type answer..." step="any">
-                  <span class="unit-tag">%</span>
-                </div>
-              </div>
-            </div>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 4 (Problem-Solving Input: Volume Percent % v/v) -->
-          <div class="quiz-item" data-type="problem" data-answer="70" data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>\% v/v = \left(\frac{\text{Volume of Solute}}{\text{Volume of Solution}}\right) \times 100</span></div><div class='math-step'><strong>Step 1:</strong> Divide volume of solute ($70\text{ mL}$) by total volume ($100\text{ mL}$): $\frac{70}{100} = 0.70$</div><div class='math-step'><strong>Step 2:</strong> Multiply by 100: $0.70 \times 100 = 70\%$</div>">
-            <span class="category-pill">Concentration Calculations & Problem Solving</span>
-            <span class="question">A disinfectant rubbing alcohol solution contains $70\text{ mL}$ of pure isopropyl alcohol blended with water to yield a total volume of $100\text{ mL}$. Calculate the volume percent ($\% v/v$) of alcohol:</span>
-            <div class="problem-box">
-              <div class="step-block">
-                <div class="step-title">✏️ Enter Your Answer:</div>
-                <div class="step-desc">Calculate volume percent (% v/v):</div>
-                <span class="input-hint-comment">(e.g., 50)</span>
-                <div class="input-wrapper">
-                  <input type="number" class="num-input" placeholder="Type answer..." step="any">
-                  <span class="unit-tag">%</span>
-                </div>
-              </div>
-            </div>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 5 (Problem-Solving Input: Saline Mass Percent) -->
-          <div class="quiz-item" data-type="problem" data-answer="6" data-solution="<div><strong>Target Formula:</strong> <span class='formula-badge'>\% m/m = \left(\frac{\text{Mass of Solute}}{\text{Mass of Solute} + \text{Mass of Solvent}}\right) \times 100</span></div><div class='math-step'><strong>Step 1:</strong> Find total mass of solution: $12\text{ g} + 188\text{ g} = 200\text{ g}$</div><div class='math-step'><strong>Step 2:</strong> Calculate mass percent: $\left(\frac{12\text{ g}}{200\text{ g}}\right) \times 100 = 6\%$</div>">
-            <span class="category-pill">Concentration Calculations & Problem Solving</span>
-            <span class="question">A saline solution is prepared by dissolving $12\text{ g}$ of salt into $188\text{ g}$ of pure water. Calculate the exact mass percent ($\% m/m$) of salt in this solution:</span>
-            <div class="problem-box">
-              <div class="step-block">
-                <div class="step-title">✏️ Enter Your Answer:</div>
-                <div class="step-desc">Calculate mass percent (% m/m):</div>
-                <span class="input-hint-comment">(e.g., 10)</span>
-                <div class="input-wrapper">
-                  <input type="number" class="num-input" placeholder="Type answer..." step="any">
-                  <span class="unit-tag">%</span>
-                </div>
-              </div>
-            </div>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 6 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Colloids scatter a beam of light passing through them (Tyndall Effect).">
-            <span class="category-pill">Solutions, Suspensions & Colloids</span>
-            <span class="question">Which property distinguishes a colloid from a true solution?</span>
-            <ul class="options">
-              <li><button class="option-btn">Particles in a colloid settle at the bottom over time.</button></li>
-              <li><button class="option-btn">Colloids scatter a beam of light passing through them (Tyndall Effect).</button></li>
-              <li><button class="option-btn">Colloids have the smallest particle sizes among all mixtures.</button></li>
-              <li><button class="option-btn">Colloids can be easily separated using standard filter paper.</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 7 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Dispersion">
-            <span class="category-pill">Solutions, Suspensions & Colloids</span>
-            <span class="question">Breaking down large particles into smaller colloidal-sized particles (such as grinding paint pigments) is known as which process?</span>
-            <ul class="options">
-              <li><button class="option-btn">Condensation</button></li>
-              <li><button class="option-btn">Decantation</button></li>
-              <li><button class="option-btn">Dispersion</button></li>
-              <li><button class="option-btn">Crystallization</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 8 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Colloid">
-            <span class="category-pill">Solutions, Suspensions & Colloids</span>
-            <span class="question">What type of mixture has medium-sized particles, a cloudy appearance, does NOT settle over time, and exhibits Brownian motion?</span>
-            <ul class="options">
-              <li><button class="option-btn">Solution</button></li>
-              <li><button class="option-btn">Colloid</button></li>
-              <li><button class="option-btn">Suspension</button></li>
-              <li><button class="option-btn">Coarse Heterogeneous Liquid</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 9 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Heterogeneous mixture with the largest particles that settle over time.">
-            <span class="category-pill">Solutions, Suspensions & Colloids</span>
-            <span class="question">Which of the following best describes a suspension?</span>
-            <ul class="options">
-              <li><button class="option-btn">Transparent mixture with the smallest particle size.</button></li>
-              <li><button class="option-btn">Homogeneous mixture with 1 visible phase that does not scatter light.</button></li>
-              <li><button class="option-btn">Heterogeneous mixture with the largest particles that settle over time.</button></li>
-              <li><button class="option-btn">Solution where solute particles are completely dissolved into individual ions.</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 10 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Milk and fog are colloids whose medium particles scatter light via the Tyndall Effect.">
-            <span class="category-pill">Solutions, Suspensions & Colloids</span>
-            <span class="question">Why does a beam of light become visible when passed through milk or fog, but not when passed through saltwater?</span>
-            <ul class="options">
-              <li><button class="option-btn">Saltwater particles absorb all light energy.</button></li>
-              <li><button class="option-btn">Milk and fog are colloids whose medium particles scatter light via the Tyndall Effect.</button></li>
-              <li><button class="option-btn">Milk and fog are pure chemical compounds that reflect light.</button></li>
-              <li><button class="option-btn">Saltwater is a suspension that completely blocks light transmission.</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 11 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Milk, fog, blood, and toothpaste">
-            <span class="category-pill">Solutions, Suspensions & Colloids</span>
-            <span class="question">Which of the following sets contains ONLY colloidal mixtures?</span>
-            <ul class="options">
-              <li><button class="option-btn">Saltwater, sugar water, and vinegar</button></li>
-              <li><button class="option-btn">Milk, fog, blood, and toothpaste</button></li>
-              <li><button class="option-btn">Muddy water, sand in water, and oil in water</button></li>
-              <li><button class="option-btn">Pure water, ethanol, and air</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 12 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Immiscible, because oil is nonpolar while water is polar ('Like Dissolves Like').">
-            <span class="category-pill">Solubility & Factors</span>
-            <span class="question">Vegetable oil and water form two distinct layers when mixed. This behavior classifies oil and water as what type of liquids, and why?</span>
-            <ul class="options">
-              <li><button class="option-btn">Miscible, because both are nonpolar.</button></li>
-              <li><button class="option-btn">Immiscible, because oil is nonpolar while water is polar ('Like Dissolves Like').</button></li>
-              <li><button class="option-btn">Miscible, because oil dissolves in polar water.</button></li>
-              <li><button class="option-btn">Immiscible, because both substances are ionic compounds.</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 13 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Solid solubility generally increases with higher temperature.">
-            <span class="category-pill">Solubility & Factors</span>
-            <span class="question">According to solubility trends, how does an increase in temperature generally affect the solubility of most solid solutes in liquids?</span>
-            <ul class="options">
-              <li><button class="option-btn">Solid solubility decreases sharply.</button></li>
-              <li><button class="option-btn">Solid solubility remains completely unaffected.</button></li>
-              <li><button class="option-btn">Solid solubility generally increases with higher temperature.</button></li>
-              <li><button class="option-btn">Solid solubility drops to zero at higher temperatures.</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 14 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Heating increases kinetic energy, making gas particles less soluble in liquids.">
-            <span class="category-pill">Solubility & Factors</span>
-            <span class="question">Why does heating a carbonated drink cause dissolved $CO_2$ gas bubbles to rapidly escape from the liquid?</span>
-            <ul class="options">
-              <li><button class="option-btn">Gas solubility increases with temperature.</button></li>
-              <li><button class="option-btn">Heating increases kinetic energy, making gas particles less soluble in liquids.</button></li>
-              <li><button class="option-btn">Heat increases atmospheric pressure above the liquid.</button></li>
-              <li><button class="option-btn">Gas particles chemically react with water molecules to form solids.</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 15 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Henry's Law: Opening the bottle drops gas pressure, decreasing $CO_2$ solubility.">
-            <span class="category-pill">Solubility & Factors</span>
-            <span class="question">What principle explains why carbonated soda fizzes and releases $CO_2$ gas when the bottle cap is opened?</span>
-            <ul class="options">
-              <li><button class="option-btn">Henry's Law: Opening the bottle drops gas pressure, decreasing $CO_2$ solubility.</button></li>
-              <li><button class="option-btn">Raoult's Law: Temperature decreases rapidly when opening the bottle.</button></li>
-              <li><button class="option-btn">Tyndall Effect: Light causes the dissolved gas to condense.</button></li>
-              <li><button class="option-btn">Law of Conservation of Mass: Gas volume increases as density increases.</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 16 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="$Li_2SO_4$ (Lithium Sulfate)">
-            <span class="category-pill">Solubility & Factors</span>
-            <span class="question">Which salt exhibits an atypical DECREASE in solubility as temperature increases?</span>
-            <ul class="options">
-              <li><button class="option-btn">$KNO_3$ (Potassium Nitrate)</button></li>
-              <li><button class="option-btn">$NaCl$ (Sodium Chloride)</button></li>
-              <li><button class="option-btn">$Li_2SO_4$ (Lithium Sulfate)</button></li>
-              <li><button class="option-btn">$KCl$ (Potassium Chloride)</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 17 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Unsaturated">
-            <span class="category-pill">Solubility & Graphs</span>
-            <span class="question">If a solubility curve indicates that $140\text{ g}$ of $KNO_3$ dissolves in $100\text{ g}$ of $H_2O$ at $70^\circ\text{C}$, what is the state of a solution containing $100\text{ g}$ of $KNO_3$ in $100\text{ g}$ of $H_2O$ at $70^\circ\text{C}$?</span>
-            <ul class="options">
-              <li><button class="option-btn">Saturated</button></li>
-              <li><button class="option-btn">Unsaturated</button></li>
-              <li><button class="option-btn">Supersaturated</button></li>
-              <li><button class="option-btn">Precipitated</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 18 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="$140\text{ g / }100\text{ g }H_2O$">
-            <span class="category-pill">Solubility & Graphs</span>
-            <span class="question">Based on standard solubility curves in water, what is the approximate maximum solubility limit of Potassium Nitrate ($KNO_3$) at $70^\circ\text{C}$?</span>
-            <ul class="options">
-              <li><button class="option-btn">$35\text{ g / }100\text{ g }H_2O$</button></li>
-              <li><button class="option-btn">$50\text{ g / }100\text{ g }H_2O$</button></li>
-              <li><button class="option-btn">$140\text{ g / }100\text{ g }H_2O$</button></li>
-              <li><button class="option-btn">$220\text{ g / }100\text{ g }H_2O$</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 19 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Supersaturated">
-            <span class="category-pill">Concentration Expressions</span>
-            <span class="question">A solution that contains more dissolved solute than a saturated solution can normally hold at a given temperature is classified as:</span>
-            <ul class="options">
-              <li><button class="option-btn">Unsaturated</button></li>
-              <li><button class="option-btn">Saturated</button></li>
-              <li><button class="option-btn">Supersaturated</button></li>
-              <li><button class="option-btn">Heterogeneous suspension</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 20 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="24.0%">
-            <span class="category-pill">Concentration Expressions</span>
-            <span class="question">A salt solution is prepared by mixing $2.35\text{ g}$ of $NaCl$ into $7.45\text{ g}$ of $H_2O$. What is the mass percent ($\% m/m$) of $NaCl$?</span>
-            <ul class="options">
-              <li><button class="option-btn">31.5%</button></li>
-              <li><button class="option-btn">24.0%</button></li>
-              <li><button class="option-btn">23.5%</button></li>
-              <li><button class="option-btn">14.2%</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 21 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="30.0\text{ g}">
-            <span class="category-pill">Concentration Expressions</span>
-            <span class="question">How many grams of glucose solute are contained in $200\text{ g}$ of a $15.0\%$ glucose solution?</span>
-            <ul class="options">
-              <li><button class="option-btn">$15.0\text{ g}$</button></li>
-              <li><button class="option-btn">$30.0\text{ g}$</button></li>
-              <li><button class="option-btn">$170.0\text{ g}$</button></li>
-              <li><button class="option-btn">$300.0\text{ g}$</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 22 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="$\left( \frac{\text{Volume of Solute}}{\text{Volume of Solution}} \right) \times 100$">
-            <span class="category-pill">Concentration Expressions</span>
-            <span class="question">What is the correct mathematical expression for Volume Percent ($\% v/v$)?</span>
-            <ul class="options">
-              <li><button class="option-btn">$\left( \frac{\text{Volume of Solvent}}{\text{Volume of Solute}} \right) \times 100$</button></li>
-              <li><button class="option-btn">$\left( \frac{\text{Volume of Solute}}{\text{Volume of Solution}} \right) \times 100$</button></li>
-              <li><button class="option-btn">$\left( \frac{\text{Mass of Solute}}{\text{Volume of Solution}} \right) \times 100$</button></li>
-              <li><button class="option-btn">$\left( \frac{\text{Volume of Solute}}{\text{Mass of Solvent}} \right) \times 100$</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 23 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="2.0%">
-            <span class="category-pill">Concentration Expressions</span>
-            <span class="question">If $5.0\text{ g}$ of salt is dissolved in enough water to make $250\text{ mL}$ of solution, what is the mass/volume percent ($\% m/v$)?</span>
-            <ul class="options">
-              <li><button class="option-btn">2.0%</button></li>
-              <li><button class="option-btn">5.0%</button></li>
-              <li><button class="option-btn">20.0%</button></li>
-              <li><button class="option-btn">50.0%</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 24 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Rubbing alcohol, because it is present in the smaller amount.">
-            <span class="category-pill">Concentration Expressions</span>
-            <span class="question">In a solution formed by dissolving $10\text{ mL}$ of rubbing alcohol in $90\text{ mL}$ of water, which component is identified as the solute?</span>
-            <ul class="options">
-              <li><button class="option-btn">Water, because it is liquid.</button></li>
-              <li><button class="option-btn">Rubbing alcohol, because it is present in the smaller amount.</button></li>
-              <li><button class="option-btn">Both alcohol and water are solvents.</button></li>
-              <li><button class="option-btn">Neither; it forms a heterogeneous mixture.</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 25 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Filtration to remove sand, followed by distillation of the saltwater solution.">
-            <span class="category-pill">Separation Methods</span>
-            <span class="question">How can a mixture of insoluble sand and dissolved salt in water be completely separated into dry sand, dry salt, and pure water?</span>
-            <ul class="options">
-              <li><button class="option-btn">Decantation followed by sieving.</button></li>
-              <li><button class="option-btn">Filtration to remove sand, followed by distillation of the saltwater solution.</button></li>
-              <li><button class="option-btn">Centrifugation followed by magnetic separation.</button></li>
-              <li><button class="option-btn">Chromatography followed by crystallization.</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 26 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Distillation">
-            <span class="category-pill">Separation Methods</span>
-            <span class="question">Which separation technique relies specifically on differences in the boiling points of miscible liquids?</span>
-            <ul class="options">
-              <li><button class="option-btn">Centrifugation</button></li>
-              <li><button class="option-btn">Distillation</button></li>
-              <li><button class="option-btn">Sieving</button></li>
-              <li><button class="option-btn">Filtration</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 27 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Centrifugation">
-            <span class="category-pill">Separation Methods</span>
-            <span class="question">Spinning a blood sample at high speeds to separate plasma from denser red blood cells is an application of:</span>
-            <ul class="options">
-              <li><button class="option-btn">Centrifugation</button></li>
-              <li><button class="option-btn">Magnetic Separation</button></li>
-              <li><button class="option-btn">Chromatography</button></li>
-              <li><button class="option-btn">Sifting</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 28 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Chromatography">
-            <span class="category-pill">Separation Methods</span>
-            <span class="question">Which method is best suited for separating individual color pigments present in black ink?</span>
-            <ul class="options">
-              <li><button class="option-btn">Evaporation</button></li>
-              <li><button class="option-btn">Chromatography</button></li>
-              <li><button class="option-btn">Decantation</button></li>
-              <li><button class="option-btn">Crystallization</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 29 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Decantation">
-            <span class="category-pill">Separation Methods</span>
-            <span class="question">Carefully pouring off top oil liquid from a mixture of oil and water without disturbing the lower water layer is called:</span>
-            <ul class="options">
-              <li><button class="option-btn">Filtration</button></li>
-              <li><button class="option-btn">Decantation</button></li>
-              <li><button class="option-btn">Crystallization</button></li>
-              <li><button class="option-btn">Sifting</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 30 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Red stays red; Blue turns red.">
-            <span class="category-pill">Acids and Bases</span>
-            <span class="question">What occurs when red and blue litmus papers are dipped into an acidic solution (pH < 7)?</span>
-            <ul class="options">
-              <li><button class="option-btn">Red stays red; Blue turns red.</button></li>
-              <li><button class="option-btn">Red turns blue; Blue stays blue.</button></li>
-              <li><button class="option-btn">Red stays red; Blue stays blue.</button></li>
-              <li><button class="option-btn">Red turns blue; Blue turns red.</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 31 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Red turns blue; Blue stays blue.">
-            <span class="category-pill">Acids and Bases</span>
-            <span class="question">What happens to red and blue litmus papers when tested in an alkaline (basic) solution (pH > 7)?</span>
-            <ul class="options">
-              <li><button class="option-btn">Red stays red; Blue turns red.</button></li>
-              <li><button class="option-btn">Red turns blue; Blue stays blue.</button></li>
-              <li><button class="option-btn">Red stays red; Blue stays blue.</button></li>
-              <li><button class="option-btn">Both turn completely clear.</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 32 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Strong Acid">
-            <span class="category-pill">Acids and Bases</span>
-            <span class="question">A household liquid test yields a pH reading of 2. How is this solution categorized?</span>
-            <ul class="options">
-              <li><button class="option-btn">Strong Base</button></li>
-              <li><button class="option-btn">Weak Base</button></li>
-              <li><button class="option-btn">Neutral Solution</button></li>
-              <li><button class="option-btn">Strong Acid</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 33 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="$HCl$ (Hydrochloric acid)">
-            <span class="category-pill">Acids and Bases</span>
-            <span class="question">Which of the following is listed as a strong acid because it dissociates 100% into ions in solution?</span>
-            <ul class="options">
-              <li><button class="option-btn">$CH_3COOH$ (Acetic acid)</button></li>
-              <li><button class="option-btn">$HCl$ (Hydrochloric acid)</button></li>
-              <li><button class="option-btn">$H_2O$ (Water)</button></li>
-              <li><button class="option-btn">$NH_3$ (Ammonia)</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 34 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="$NaOH$ (Sodium Hydroxide)">
-            <span class="category-pill">Acids and Bases</span>
-            <span class="question">Strong bases are hydroxide ($OH^-$) compounds that ionize 100% in solution. Which compound is a strong base?</span>
-            <ul class="options">
-              <li><button class="option-btn">$NaOH$ (Sodium Hydroxide)</button></li>
-              <li><button class="option-btn">$NaHCO_3$ (Baking Soda)</button></li>
-              <li><button class="option-btn">$HNO_3$ (Nitric Acid)</button></li>
-              <li><button class="option-btn">$NaCl$ (Sodium Chloride)</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-          <!-- QUESTION 35 (MCQ) -->
-          <div class="quiz-item" data-type="mcq" data-answer="Salt + Water">
-            <span class="category-pill">Acids and Bases</span>
-            <span class="question">What products are formed when an acid reacts with a base in a neutralization reaction?</span>
-            <ul class="options">
-              <li><button class="option-btn">Oxide + Hydrogen gas</button></li>
-              <li><button class="option-btn">Salt + Water</button></li>
-              <li><button class="option-btn">Precipitate + Gas</button></li>
-              <li><button class="option-btn">Acid + Colloid</button></li>
-            </ul>
-            <div class="answer-review"></div>
-          </div>
-
-        </div>
-
-        <!-- WIZARD NAVIGATION CONTROLS -->
-        <div class="wizard-nav" id="wizardNav">
-          <button class="nav-btn secondary" id="prevBtn" type="button" disabled>← Previous</button>
-          <button class="nav-btn" id="nextBtn" type="button">Next →</button>
-        </div>
-      </div>
-
-      <!-- RIGHT COLUMN: Question Grid Sidebar -->
-      <aside class="wizard-sidebar">
-        <div class="question-grid-card" id="questionGridCard">
-          <div class="grid-label">Jump to Question:</div>
-          <div class="question-grid" id="questionGrid"></div>
-        </div>
-      </aside>
-
-    </div>
-
-    <!-- RESULT & REVIEW PANEL -->
-    <div class="result-panel" id="resultPanel">
-      <div class="score-text" id="scoreText">Your Score: 0/35</div>
-      <p class="score-message">Great job completing the Chemistry Summative Unit Test! Review your answers and explanations below.</p>
-      <div class="retake-container">
-        <button class="nav-btn" id="retakeBtn" type="button">Retake Quiz</button>
-      </div>
-    </div>
-
-    <div class="footer-note">
-      Use the Next, Previous, or Question Grid controls to navigate through all questions.
-    </div>
-  </main>
-</div>
-
-<script data-goatcounter="https://jhsstudyguideteam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="../../assets/js/streak.js" defer></script>
-
-<script>
-  const quizContainer = document.getElementById("quizContainer");
-  const resultPanel = document.getElementById("resultPanel");
-  const scoreText = document.getElementById("scoreText");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const retakeBtn = document.getElementById("retakeBtn");
-  const themeToggle = document.getElementById("themeToggle");
-  const progressCard = document.getElementById("progressCard");
-  const progressText = document.getElementById("progressText");
-  const progressPercent = document.getElementById("progressPercent");
-  const progressFill = document.getElementById("progressFill");
-
-  let currentQuestionIndex = 0;
-  let questions = [];
-
-  function toggleTheme() {
-    const body = document.body;
-    const currentTheme = body.getAttribute("data-theme");
-
-    if (currentTheme === "light") {
-      body.removeAttribute("data-theme");
-      themeToggle.textContent = "Toggle Light Mode";
-    } else {
-      body.setAttribute("data-theme", "light");
-      themeToggle.textContent = "Toggle Dark Mode";
+      if (currentTheme === "light") {
+        body.removeAttribute("data-theme");
+        themeToggle.textContent = "Toggle Light Mode";
+      } else {
+        body.setAttribute("data-theme", "light");
+        themeToggle.textContent = "Toggle Dark Mode";
+      }
     }
-  }
 
-  themeToggle.addEventListener("click", toggleTheme);
+    themeToggle.addEventListener("click", toggleTheme);
 
-  function renderQuestionGrid() {
-    const grid = document.getElementById("questionGrid");
-    grid.innerHTML = "";
+    function renderQuestionGrid() {
+      const grid = document.getElementById("questionGrid");
+      grid.innerHTML = "";
 
-    questions.forEach((_, idx) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "q-grid-btn";
-      btn.textContent = idx + 1;
-      btn.addEventListener("click", () => {
-        currentQuestionIndex = idx;
-        updateWizardUI();
+      questions.forEach((_, idx) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "q-grid-btn";
+        btn.textContent = idx + 1;
+        btn.addEventListener("click", () => {
+          currentQuestionIndex = idx;
+          updateWizardUI();
+        });
+        grid.appendChild(btn);
       });
-      grid.appendChild(btn);
-    });
-  }
+    }
 
-  function updateWizardUI() {
-    questions.forEach((q, idx) => {
-      if (idx === currentQuestionIndex) {
-        q.classList.add("active");
+    function updateWizardUI() {
+      questions.forEach((q, idx) => {
+        if (idx === currentQuestionIndex) {
+          q.classList.add("active");
+        } else {
+          q.classList.remove("active");
+        }
+      });
+
+      const total = questions.length;
+      const currentNum = currentQuestionIndex + 1;
+      const percentage = Math.round((currentNum / total) * 100);
+
+      progressText.textContent = `Question ${currentNum} of ${total}`;
+      progressPercent.textContent = `${percentage}%`;
+      progressFill.style.width = `${percentage}%`;
+
+      prevBtn.disabled = (currentQuestionIndex === 0);
+
+      if (currentQuestionIndex === total - 1) {
+        nextBtn.textContent = "Submit Answers ✓";
       } else {
+        nextBtn.textContent = "Next →";
+      }
+
+      const gridBtns = document.querySelectorAll(".q-grid-btn");
+      gridBtns.forEach((btn, idx) => {
+        btn.classList.remove("active-q", "answered-q");
+
+        const item = questions[idx];
+        const type = item.getAttribute("data-type") || "mcq";
+        let isAnswered = false;
+
+        if (type === "mcq") {
+          isAnswered = !!item.querySelector(".options li.selected");
+        } else if (type === "problem" || type === "input") {
+          const inputEl = item.querySelector(".num-input");
+          isAnswered = inputEl && inputEl.value.trim() !== "";
+        }
+
+        if (isAnswered) btn.classList.add("answered-q");
+        if (idx === currentQuestionIndex) btn.classList.add("active-q");
+      });
+
+      renderMathInCurrentCard();
+    }
+
+    function nextQuestion() {
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        updateWizardUI();
+      } else {
+        calculateScore();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        updateWizardUI();
+      }
+    }
+
+    quizContainer.addEventListener("click", event => {
+      if (resultPanel.style.display === "block") return;
+
+      let li = event.target.closest("li");
+      if (!li || !li.parentElement || !li.parentElement.classList.contains("options")) return;
+
+      const quizItem = li.closest(".quiz-item");
+
+      quizItem.querySelectorAll(".options li").forEach(option => {
+        option.classList.remove("selected");
+      });
+
+      li.classList.add("selected");
+      quizItem.style.borderColor = "var(--rule)";
+      updateWizardUI();
+    });
+
+    quizContainer.addEventListener("input", event => {
+      if (event.target.classList.contains("num-input")) {
+        const quizItem = event.target.closest(".quiz-item");
+        if (quizItem) quizItem.style.borderColor = "var(--rule)";
+        updateWizardUI();
+      }
+    });
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function decodeHtml(html) {
+      const txt = document.createElement("textarea");
+      txt.innerHTML = html;
+      return txt.value.trim();
+    }
+
+    function calculateScore() {
+      let firstUnansweredIndex = -1;
+
+      questions.forEach((item, idx) => {
+        const type = item.getAttribute("data-type") || "mcq";
+
+        if (type === "mcq") {
+          const selectedLi = item.querySelector(".options li.selected");
+          if (!selectedLi) {
+            item.style.borderColor = "var(--text-unanswered)";
+            if (firstUnansweredIndex === -1) firstUnansweredIndex = idx;
+          } else {
+            item.style.borderColor = "var(--rule)";
+          }
+        } else if (type === "problem" || type === "input") {
+          const inputEl = item.querySelector(".num-input");
+          const val = inputEl ? inputEl.value.trim() : "";
+          if (val === "" || isNaN(parseFloat(val))) {
+            item.style.borderColor = "var(--text-unanswered)";
+            if (firstUnansweredIndex === -1) firstUnansweredIndex = idx;
+          } else {
+            item.style.borderColor = "var(--rule)";
+          }
+        }
+      });
+
+      if (firstUnansweredIndex !== -1) {
+        alert("Please answer all questions before submitting.");
+        currentQuestionIndex = firstUnansweredIndex;
+        updateWizardUI();
+        return;
+      }
+
+      let score = 0;
+      const totalQuestions = questions.length;
+
+      questions.forEach(item => {
+        const type = item.getAttribute("data-type") || "mcq";
+        const review = item.querySelector(".answer-review");
+        item.classList.remove("correct", "incorrect");
+
+        if (type === "problem" || type === "input") {
+          const inputEl = item.querySelector(".num-input");
+          const userInput = parseFloat(inputEl ? inputEl.value.trim() : "");
+          const correctAnswer = parseFloat(item.getAttribute("data-answer") || "0");
+          const solutionText = item.getAttribute("data-solution") || "";
+
+          if (userInput === correctAnswer) {
+            score++;
+            item.classList.add("correct");
+            review.innerHTML = `<strong>Correct!</strong> Your answer of <strong>${correctAnswer}</strong> is accurate.<br>${solutionText}`;
+          } else {
+            item.classList.add("incorrect");
+            review.innerHTML = `<strong>Incorrect.</strong> You entered ${userInput}. The correct answer is <strong>${correctAnswer}</strong>.<br>${solutionText}`;
+          }
+          review.style.display = "block";
+
+        } else {
+          const selectedLi = item.querySelector(".options li.selected");
+          const selectedButton = selectedLi.querySelector(".option-btn");
+          const selectedText = decodeHtml(selectedButton.textContent);
+          const correctAnswer = decodeHtml(item.getAttribute("data-answer") || "");
+
+          item.querySelectorAll(".options li").forEach(option => {
+            option.classList.remove("correct-answer", "incorrect-answer");
+            const badge = option.querySelector(".answer-badge");
+            if (badge) badge.remove();
+          });
+
+          item.querySelectorAll(".options li").forEach(option => {
+            const button = option.querySelector(".option-btn");
+            if (!button) return;
+
+            const optionText = decodeHtml(button.textContent);
+
+            if (optionText === correctAnswer) {
+              option.classList.add("correct-answer");
+              const badge = document.createElement("span");
+              badge.className = "answer-badge";
+              badge.textContent = "✓ Correct answer";
+              button.appendChild(badge);
+            }
+
+            if (option === selectedLi && selectedText !== correctAnswer) {
+              option.classList.add("incorrect-answer");
+              const badge = document.createElement("span");
+              badge.className = "answer-badge";
+              badge.textContent = "✗ Your answer";
+              button.appendChild(badge);
+            }
+          });
+
+          if (selectedText === correctAnswer) {
+            score++;
+            item.classList.add("correct");
+            review.innerHTML = "<strong>Correct.</strong> You selected the right answer.";
+          } else {
+            item.classList.add("incorrect");
+            review.innerHTML = `<strong>Correct answer:</strong> ${escapeHtml(correctAnswer)}`;
+          }
+          review.style.display = "block";
+        }
+
+        if (window.renderMathInElement && review) {
+          renderMathInElement(review, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false }
+            ]
+          });
+        }
+      });
+
+      progressCard.style.display = "none";
+      document.getElementById("wizardNav").style.display = "none";
+      document.getElementById("questionGridCard").style.display = "none";
+
+      questions.forEach(q => {
         q.classList.remove("active");
+        q.classList.add("review-mode");
+      });
+
+      scoreText.textContent = `Your Score: ${score}/${totalQuestions}`;
+      resultPanel.style.display = "block";
+
+      resultPanel.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+      if (typeof StreakManager !== "undefined") {
+        StreakManager.recordTestCompletion(
+          "CHEM Solutions, Mixtures & Concentration Unit Test",
+          score / totalQuestions
+        );
       }
-    });
-
-    const total = questions.length;
-    const currentNum = currentQuestionIndex + 1;
-    const percentage = Math.round((currentNum / total) * 100);
-
-    progressText.textContent = `Question ${currentNum} of ${total}`;
-    progressPercent.textContent = `${percentage}%`;
-    progressFill.style.width = `${percentage}%`;
-
-    prevBtn.disabled = (currentQuestionIndex === 0);
-
-    if (currentQuestionIndex === total - 1) {
-      nextBtn.textContent = "Submit Answers ✓";
-    } else {
-      nextBtn.textContent = "Next →";
     }
 
-    const gridBtns = document.querySelectorAll(".q-grid-btn");
-    gridBtns.forEach((btn, idx) => {
-      btn.classList.remove("active-q", "answered-q");
+    function retakeQuiz() {
+      document.getElementById("questionGridCard").style.display = "block";
+      progressCard.style.display = "block";
+      document.getElementById("wizardNav").style.display = "flex";
+      resultPanel.style.display = "none";
 
-      const item = questions[idx];
-      const type = item.getAttribute("data-type") || "mcq";
-      let isAnswered = false;
+      quizContainer.querySelectorAll(".options li.selected")
+        .forEach(option => option.classList.remove("selected"));
 
-      if (type === "mcq") {
-        isAnswered = !!item.querySelector(".options li.selected");
-      } else if (type === "problem" || type === "input") {
-        const inputEl = item.querySelector(".num-input");
-        isAnswered = inputEl && inputEl.value.trim() !== "";
-      }
+      quizContainer.querySelectorAll(".num-input")
+        .forEach(input => input.value = "");
 
-      if (isAnswered) btn.classList.add("answered-q");
-      if (idx === currentQuestionIndex) btn.classList.add("active-q");
-    });
+      questions.forEach(item => {
+        item.style.borderColor = "var(--rule)";
+        item.classList.remove("correct", "incorrect", "review-mode");
 
-    renderMathInCurrentCard();
-  }
-
-  function nextQuestion() {
-    if (currentQuestionIndex < questions.length - 1) {
-      currentQuestionIndex++;
-      updateWizardUI();
-    } else {
-      calculateScore();
-    }
-  }
-
-  function prevQuestion() {
-    if (currentQuestionIndex > 0) {
-      currentQuestionIndex--;
-      updateWizardUI();
-    }
-  }
-
-  quizContainer.addEventListener("click", event => {
-    if (resultPanel.style.display === "block") return;
-
-    let li = event.target.closest("li");
-    if (!li || !li.parentElement || !li.parentElement.classList.contains("options")) return;
-
-    const quizItem = li.closest(".quiz-item");
-
-    quizItem.querySelectorAll(".options li").forEach(option => {
-      option.classList.remove("selected");
-    });
-
-    li.classList.add("selected");
-    quizItem.style.borderColor = "var(--rule)";
-    updateWizardUI();
-  });
-
-  quizContainer.addEventListener("input", event => {
-    if (event.target.classList.contains("num-input")) {
-      const quizItem = event.target.closest(".quiz-item");
-      if (quizItem) quizItem.style.borderColor = "var(--rule)";
-      updateWizardUI();
-    }
-  });
-
-  function escapeHtml(text) {
-    const div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
-  }
-
-  function decodeHtml(html) {
-    const txt = document.createElement("textarea");
-    txt.innerHTML = html;
-    return txt.value.trim();
-  }
-
-  function calculateScore() {
-    let firstUnansweredIndex = -1;
-
-    questions.forEach((item, idx) => {
-      const type = item.getAttribute("data-type") || "mcq";
-
-      if (type === "mcq") {
-        const selectedLi = item.querySelector(".options li.selected");
-        if (!selectedLi) {
-          item.style.borderColor = "var(--text-unanswered)";
-          if (firstUnansweredIndex === -1) firstUnansweredIndex = idx;
-        } else {
-          item.style.borderColor = "var(--rule)";
+        const review = item.querySelector(".answer-review");
+        if (review) {
+          review.style.display = "none";
+          review.innerHTML = "";
         }
-      } else if (type === "problem" || type === "input") {
-        const inputEl = item.querySelector(".num-input");
-        const val = inputEl ? inputEl.value.trim() : "";
-        if (val === "" || isNaN(parseFloat(val))) {
-          item.style.borderColor = "var(--text-unanswered)";
-          if (firstUnansweredIndex === -1) firstUnansweredIndex = idx;
-        } else {
-          item.style.borderColor = "var(--rule)";
-        }
-      }
-    });
-
-    if (firstUnansweredIndex !== -1) {
-      alert("Please answer all questions before submitting.");
-      currentQuestionIndex = firstUnansweredIndex;
-      updateWizardUI();
-      return;
-    }
-
-    let score = 0;
-    const totalQuestions = questions.length;
-
-    questions.forEach(item => {
-      const type = item.getAttribute("data-type") || "mcq";
-      const review = item.querySelector(".answer-review");
-      item.classList.remove("correct", "incorrect");
-
-      if (type === "problem" || type === "input") {
-        const inputEl = item.querySelector(".num-input");
-        const userInput = parseFloat(inputEl ? inputEl.value.trim() : "");
-        const correctAnswer = parseFloat(item.getAttribute("data-answer") || "0");
-        const solutionText = item.getAttribute("data-solution") || "";
-
-        if (userInput === correctAnswer) {
-          score++;
-          item.classList.add("correct");
-          review.innerHTML = `<strong>Correct!</strong> Your answer of <strong>${correctAnswer}</strong> is accurate.<br>${solutionText}`;
-        } else {
-          item.classList.add("incorrect");
-          review.innerHTML = `<strong>Incorrect.</strong> You entered ${userInput}. The correct answer is <strong>${correctAnswer}</strong>.<br>${solutionText}`;
-        }
-        review.style.display = "block";
-
-      } else {
-        const selectedLi = item.querySelector(".options li.selected");
-        const selectedButton = selectedLi.querySelector(".option-btn");
-        const selectedText = decodeHtml(selectedButton.textContent);
-        const correctAnswer = decodeHtml(item.getAttribute("data-answer") || "");
 
         item.querySelectorAll(".options li").forEach(option => {
           option.classList.remove("correct-answer", "incorrect-answer");
           const badge = option.querySelector(".answer-badge");
           if (badge) badge.remove();
         });
+      });
 
-        item.querySelectorAll(".options li").forEach(option => {
-          const button = option.querySelector(".option-btn");
-          if (!button) return;
+      currentQuestionIndex = 0;
+      updateWizardUI();
 
-          const optionText = decodeHtml(button.textContent);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
 
-          if (optionText === correctAnswer) {
-            option.classList.add("correct-answer");
-            const badge = document.createElement("span");
-            badge.className = "answer-badge";
-            badge.textContent = "✓ Correct answer";
-            button.appendChild(badge);
-          }
-
-          if (option === selectedLi && selectedText !== correctAnswer) {
-            option.classList.add("incorrect-answer");
-            const badge = document.createElement("span");
-            badge.className = "answer-badge";
-            badge.textContent = "✗ Your answer";
-            button.appendChild(badge);
-          }
-        });
-
-        if (selectedText === correctAnswer) {
-          score++;
-          item.classList.add("correct");
-          review.innerHTML = "<strong>Correct.</strong> You selected the right answer.";
-        } else {
-          item.classList.add("incorrect");
-          review.innerHTML = `<strong>Correct answer:</strong> ${escapeHtml(correctAnswer)}`;
-        }
-        review.style.display = "block";
-      }
-
-      if (window.renderMathInElement && review) {
-        renderMathInElement(review, {
+    function renderMathInCurrentCard() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
           delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false}
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false }
           ]
         });
       }
-    });
-
-    progressCard.style.display = "none";
-    document.getElementById("wizardNav").style.display = "none";
-    document.getElementById("questionGridCard").style.display = "none";
-
-    questions.forEach(q => {
-      q.classList.remove("active");
-      q.classList.add("review-mode");
-    });
-
-    scoreText.textContent = `Your Score: ${score}/${totalQuestions}`;
-    resultPanel.style.display = "block";
-
-    resultPanel.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-
-    if (typeof StreakManager !== "undefined") {
-      StreakManager.recordTestCompletion(
-        "CHEM Solutions, Mixtures & Concentration Unit Test",
-        score / totalQuestions
-      );
     }
-  }
 
-  function retakeQuiz() {
-    document.getElementById("questionGridCard").style.display = "block";
-    progressCard.style.display = "block";
-    document.getElementById("wizardNav").style.display = "flex";
-    resultPanel.style.display = "none";
+    nextBtn.addEventListener("click", nextQuestion);
+    prevBtn.addEventListener("click", prevQuestion);
+    retakeBtn.addEventListener("click", retakeQuiz);
 
-    quizContainer.querySelectorAll(".options li.selected")
-      .forEach(option => option.classList.remove("selected"));
-
-    quizContainer.querySelectorAll(".num-input")
-      .forEach(input => input.value = "");
-
-    questions.forEach(item => {
-      item.style.borderColor = "var(--rule)";
-      item.classList.remove("correct", "incorrect", "review-mode");
-
-      const review = item.querySelector(".answer-review");
-      if (review) {
-        review.style.display = "none";
-        review.innerHTML = "";
-      }
-
-      item.querySelectorAll(".options li").forEach(option => {
-        option.classList.remove("correct-answer", "incorrect-answer");
-        const badge = option.querySelector(".answer-badge");
-        if (badge) badge.remove();
-      });
+    document.addEventListener("DOMContentLoaded", () => {
+      questions = Array.from(quizContainer.querySelectorAll(".quiz-item"));
+      renderQuestionGrid();
+      updateWizardUI();
     });
-
-    currentQuestionIndex = 0;
-    updateWizardUI();
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
-
-  function renderMathInCurrentCard() {
-    if (window.renderMathInElement) {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: '$$', right: '$$', display: true},
-          {left: '$', right: '$', display: false}
-        ]
-      });
-    }
-  }
-
-  nextBtn.addEventListener("click", nextQuestion);
-  prevBtn.addEventListener("click", prevQuestion);
-  retakeBtn.addEventListener("click", retakeQuiz);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    questions = Array.from(quizContainer.querySelectorAll(".quiz-item"));
-    renderQuestionGrid();
-    updateWizardUI();
-  });
-</script>
+  </script>
 
 </body>
+
 </html>
