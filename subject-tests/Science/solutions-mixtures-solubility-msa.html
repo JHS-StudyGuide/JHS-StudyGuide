@@ -613,6 +613,43 @@
       color: var(--ink-secondary);
     }
 
+    /* =========================================
+       📱 MOBILE KATEX CUTOFF FIX (V3 - MEDIA QUERY) 
+       ========================================= */
+    @media screen and (max-width: 490px) {
+      
+      /* 1. Scale down the entire KaTeX math output so fractions fit */
+      .katex-display, .katex {
+        font-size: 0.75em !important; 
+      }
+
+      /* 2. Enforce strict hard-stops on the answer review containers */
+      .quiz-item,
+      .answer-review,
+      .problem-box,
+      .formula-badge,
+      .math-step {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      /* 3. If an equation is STILL too long after scaling, isolate the scrollbar to the math */
+      .katex-display {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px !important; 
+        display: block !important;
+      }
+      
+      /* 4. Guarantee the outer body cannot scroll horizontally */
+      body, html {
+        overflow-x: hidden !important;
+        width: 100vw !important;
+      }
+    }
+
     @media (max-width: 768px) {
       .wizard-layout {
         flex-direction: column;
